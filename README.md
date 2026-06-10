@@ -4,9 +4,13 @@ Migración a **Next.js** de la landing page oficial de Hotel y Cabañas Brisas d
 
 Este repositorio es la evolución tecnológica del proyecto original desarrollado en HTML/CSS/JS vanilla → [ver repositorio original](https://github.com/SebaGiordano/brisas-de-oro)
 
+## 🌐 Sitio publicado
+
+**[https://brisas-de-oro-next.vercel.app](https://brisas-de-oro-next.vercel.app)**
+
 ## 🚀 Estado del proyecto
 
-Actualmente en desarrollo local. El deploy a producción está planificado como parte de la Etapa 2 del proyecto, junto con la integración al backend ASP.NET Core + SQL Server.
+Publicado en Vercel. En desarrollo activo con integración al backend ASP.NET Core + SQL Server planificada como Etapa 2.
 
 ## ✨ Funcionalidades
 
