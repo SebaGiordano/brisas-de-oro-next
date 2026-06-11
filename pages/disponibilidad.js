@@ -24,8 +24,8 @@ const I18N = {
     cargando:'Consultando disponibilidad…',
     sinResultados:'No se encontraron alojamientos para las fechas seleccionadas.',
     volverIntentar:'← Volver e intentar de nuevo',
-    sinDispTitulo:'No encontramos disponibilidad para las fechas seleccionadas',
-    sinDispSub:'Igualmente podés consultarnos por otras fechas o por disponibilidad futura',
+    sinDispTitulo:'No hay disponibilidad para el rango de fechas seleccionadas',
+    sinDispSub:'Conocé nuestros alojamientos y escribinos por WhatsApp para consultar disponibilidad futura',
     // Resultados
     dispDisponibles:'Disponibles', dispTuSeleccion:'Tu selección',
     dispOtrasOpciones:'Otras opciones disponibles', dispNoDisponibles:'No disponibles',
@@ -852,6 +852,7 @@ export default function Disponibilidad() {
                   </>
                 )}
               </div>
+              <div className="disp-banner-sep" aria-hidden="true" />
 
               {/* Fila 2: Huéspedes · Tipo */}
               <div className="disp-banner-fila disp-banner-fila--2">
@@ -903,7 +904,7 @@ export default function Disponibilidad() {
             /* Ningún alojamiento disponible: mensaje + todas las cards funcionales */
             <section className="disp-seccion">
               <div style={{ textAlign:'center', padding:'1.5rem 0 2rem', borderBottom:'1px solid var(--borde)', marginBottom:'2rem' }}>
-                <p style={{ fontSize:'1.05rem', fontWeight:700, color:'var(--texto)', marginBottom:'0.4rem' }}>{t.sinDispTitulo}</p>
+                <p style={{ fontSize:'1.26rem', fontWeight:700, color:'var(--texto)', marginBottom:'0.4rem' }}>{t.sinDispTitulo}</p>
                 <p style={{ fontSize:'0.85rem', color:'var(--texto-suave)' }}>{t.sinDispSub}</p>
               </div>
               <div className="disp-grid">
