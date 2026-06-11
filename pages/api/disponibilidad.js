@@ -1,6 +1,6 @@
 export default async function handler(req, res) {
   const params = new URLSearchParams(req.query).toString()
-  const backendUrl = `http://localhost:5272/api/disponibilidad${params ? `?${params}` : ''}`
+  const backendUrl = `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5272'}/api/disponibilidad${params ? `?${params}` : ''}`
 
   try {
     const response = await fetch(backendUrl)
