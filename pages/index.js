@@ -699,9 +699,6 @@ export default function Home() {
       requestAnimationFrame(() => requestAnimationFrame(initAll));
     })();
     (function() {
-      const API_KEY  = 'IfltJvQV87vmStKapeMIGw8EVsnR2FIc';
-      const LAT      = -31.4285;
-      const LON      = -64.4872;
       const CONT     = document.getElementById('clima-container');
     
       const DIAS_ES  = ['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'];
@@ -820,15 +817,11 @@ export default function Home() {
     
       async function fetchClima() {
         if (!CONT) return;
-        const loc  = `${LAT},${LON}`;
         const lang = currentLang;
         try {
-          const [rC, rD] = await Promise.all([
-            fetch(`https://api.tomorrow.io/v4/weather/realtime?location=${loc}&apikey=${API_KEY}&units=metric`),
-            fetch(`https://api.tomorrow.io/v4/weather/forecast?location=${loc}&apikey=${API_KEY}&units=metric&timesteps=1d`)
-          ]);
-          if (!rC.ok || !rD.ok) throw new Error('error');
-          const [curr, daily] = await Promise.all([rC.json(), rD.json()]);
+          const r = await fetch('/api/clima');
+          if (!r.ok) throw new Error('error');
+          const { realtime: curr, forecast: daily } = await r.json();
           renderClima(curr, daily, lang);
         } catch(e) {
           CONT.innerHTML = `<div class="clima-error"><span style="font-size:1.5rem;display:block;margin-bottom:0.5rem">🌡️</span>No se pudo cargar el clima. Intentá más tarde.</div>`;

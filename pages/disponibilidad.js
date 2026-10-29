@@ -4,9 +4,6 @@ import Head from 'next/head'
 
 const WSP = '543541548053'
 const API_URL = '/api/disponibilidad'
-const CLIMA_KEY = 'IfltJvQV87vmStKapeMIGw8EVsnR2FIc'
-const CLIMA_LAT = -31.4285
-const CLIMA_LON = -64.4872
 
 /* ── Traducciones ── */
 const I18N = {
@@ -418,14 +415,10 @@ function SeccionClima({ lang }) {
   useEffect(() => {
     let mounted = true
     async function fetchData() {
-      const loc = `${CLIMA_LAT},${CLIMA_LON}`
       try {
-        const [rC, rD] = await Promise.all([
-          fetch(`https://api.tomorrow.io/v4/weather/realtime?location=${loc}&apikey=${CLIMA_KEY}&units=metric`),
-          fetch(`https://api.tomorrow.io/v4/weather/forecast?location=${loc}&apikey=${CLIMA_KEY}&units=metric&timesteps=1d`),
-        ])
-        if (!rC.ok || !rD.ok) throw new Error()
-        const [curr, daily] = await Promise.all([rC.json(), rD.json()])
+        const r = await fetch('/api/clima')
+        if (!r.ok) throw new Error()
+        const { realtime: curr, forecast: daily } = await r.json()
         if (mounted) { setDatos({ curr, daily }); setClimaErr(false) }
       } catch { if (mounted) setClimaErr(true) }
     }
