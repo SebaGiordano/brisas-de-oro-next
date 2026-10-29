@@ -4,18 +4,20 @@ import Head from 'next/head'
 
 const WSP = '543541548053'
 const API_URL = '/api/disponibilidad'
+const MAPS_CASA = 'https://maps.app.goo.gl/LNTt8TeZjFvNtwUY9'
 
 /* ── Traducciones ── */
 const I18N = {
   es: {
     // Nav
-    navNosotros:'Quiénes somos', navAlojamientos:'Alojamientos', navInfo:'Info importante',
+    navNosotros:'Nosotros', navAlojamientos:'Alojamientos', navInfo:'Info importante',
     navServicios:'Servicios', navClima:'Clima', navTestimonios:'Reseñas',
     navUbicacion:'Ubicación', navCta:'Consultar →',
     // Banner
     bannerIngreso:'Ingreso', bannerEgreso:'Egreso', bannerHuespedes:'Huéspedes',
     bannerTipo:'Tipo', bannerModificar:'← Modificar búsqueda',
     bannerNochesLabel:'Estadía', bannerNoche:'noche', bannerNoches:'noches',
+    bannerCheckin:'Check-in · 13:00 hs', bannerCheckinCasa:'Check-in · 14:00 hs', bannerCheckout:'Check-out · 10:00 hs',
     franjaTexto:'¿Te interesa algún alojamiento? Antes de consultar, te recomendamos leer la <span style="color:var(--oro);font-weight:700;">información importante</span>',
     // Estados
     cargando:'Consultando disponibilidad…',
@@ -32,7 +34,7 @@ const I18N = {
     unidad:'unidad disponible', unidades:'unidades disponibles',
     // Tipo labels
     tipoCualquiera:'Cualquier tipo', tipoHabitacion:'Habitación de hotel',
-    tipoCabana:'Cabaña', tipoApart:'Apart Hotel',
+    tipoCabana:'Cabaña', tipoApart:'Apart Hotel', tipoCasa:'Casa',
     // Alojamientos
     habNombre:'Habitaciones de hotel',
     habMeta1:'1–4 personas', habMeta2:'Desayuno incluido',
@@ -49,6 +51,11 @@ const I18N = {
     cgNombre:'Cabaña grande',
     cgMeta1:'Hasta 7/8 personas', cgMeta2:'2 dormitorios',
     cgFeatures:['Aire frío/calor','Cocina equipada','Asador privado','Limpieza c/3 días'],
+    casaNombre:'Casa con Pileta · Icho Cruz',
+    casaMeta1:'Hasta 10 personas', casaMeta2:'3 dormitorios',
+    casaFeatures:['Pileta privada','Parque','Parrillero','Cocina equipada','Wi-Fi y DirecTV','Pet friendly'],
+    casaUbic:'📍 Icho Cruz · a 15 min del complejo', casaHorario:'Check-in 14:00 · Check-out 10:00',
+    casaNoIncluye:'No incluye desayuno ni blancos (opcionales)',
     // Clima
     climaLabel:'Villa Carlos Paz · Sierras de Córdoba', climaTitle:'Clima para tu viaje',
     climaDesc:'Consultá el pronóstico antes de preparar tu equipaje. Datos en tiempo real, actualizados automáticamente.',
@@ -106,6 +113,8 @@ const I18N = {
     footerAloj:'Alojamientos',
     footerAloj1:'Cabaña chica (hasta 3 pers.)', footerAloj2:'Cabaña mediana (hasta 6 pers.)',
     footerAloj3:'Cabaña grande (hasta 8 pers.)', footerAloj4:'Habitaciones de hotel', footerAloj5:'Apart Hotel',
+    footerAloj6:'Casa con Pileta · Icho Cruz (hasta 10 pers.)', footerCasaDir:'Uruguay esq. Lombardo, Icho Cruz',
+    topbarDirCorta:'Av. Ramón J. Cárcano 2590', topbarCasa:'Casa con Pileta · Icho Cruz', topbarCasaCorta:'Casa · Icho Cruz',
     footerInfo:'Información', footerCheckin:'Check-in: 13:00 hs', footerCheckout:'Check-out: 10:00 hs',
     footerTambien:'También en',
     footerCopy:'© 2026 Hotel y Cabañas Brisas de Oro · Villa Carlos Paz, Córdoba, Argentina',
@@ -118,6 +127,7 @@ const I18N = {
     bannerIngreso:'Check-in', bannerEgreso:'Check-out', bannerHuespedes:'Guests',
     bannerTipo:'Type', bannerModificar:'← Modify search',
     bannerNochesLabel:'Stay', bannerNoche:'night', bannerNoches:'nights',
+    bannerCheckin:'Check-in · 13:00 hs', bannerCheckinCasa:'Check-in · 14:00 hs', bannerCheckout:'Check-out · 10:00 hs',
     franjaTexto:'Interested in an accommodation? Before inquiring, we recommend reading the <span style="color:var(--oro);font-weight:700;">important information</span>',
     cargando:'Checking availability…',
     sinResultados:'No accommodations found for the selected dates.',
@@ -130,7 +140,7 @@ const I18N = {
     btnWsp:'Inquire on WhatsApp',
     unidad:'unit available', unidades:'units available',
     tipoCualquiera:'Any type', tipoHabitacion:'Hotel room',
-    tipoCabana:'Cabin', tipoApart:'Apart Hotel',
+    tipoCabana:'Cabin', tipoApart:'Apart Hotel', tipoCasa:'House',
     habNombre:'Hotel rooms',
     habMeta1:'1–4 guests', habMeta2:'Breakfast included',
     habFeatures:['Buffet breakfast','A/C 24hs','Heating','Daily cleaning','Private bathroom'],
@@ -146,6 +156,11 @@ const I18N = {
     cgNombre:'Large cabin',
     cgMeta1:'Up to 7/8 guests', cgMeta2:'2 bedrooms',
     cgFeatures:['Hot & cold A/C','Full kitchen','Private BBQ','Cleaning every 3 days'],
+    casaNombre:'House with Pool · Icho Cruz',
+    casaMeta1:'Up to 10 guests', casaMeta2:'3 bedrooms',
+    casaFeatures:['Private pool','Garden','BBQ area','Full kitchen','Wi-Fi & DirecTV','Pet friendly'],
+    casaUbic:'📍 Icho Cruz · 15 min from the resort', casaHorario:'Check-in 2:00 pm · Check-out 10:00 am',
+    casaNoIncluye:'Breakfast and linens not included (linens available)',
     climaLabel:'Villa Carlos Paz · Córdoba Hills', climaTitle:'Weather for your trip',
     climaDesc:'Check the forecast before packing. Real-time data, updated automatically.',
     climaNote:'Data provided by Tomorrow.io · Updated automatically',
@@ -200,18 +215,21 @@ const I18N = {
     footerAloj:'Accommodations',
     footerAloj1:'Small cabin (up to 3 guests)', footerAloj2:'Medium cabin (up to 6 guests)',
     footerAloj3:'Large cabin (up to 8 guests)', footerAloj4:'Hotel rooms', footerAloj5:'Apart Hotel',
+    footerAloj6:'House with Pool · Icho Cruz (up to 10 guests)', footerCasaDir:'Uruguay & Lombardo, Icho Cruz',
+    topbarDirCorta:'Av. Ramón J. Cárcano 2590', topbarCasa:'House with Pool · Icho Cruz', topbarCasaCorta:'House · Icho Cruz',
     footerInfo:'Information', footerCheckin:'Check-in: 1:00 pm', footerCheckout:'Check-out: 10:00 am',
     footerTambien:'Also on',
     footerCopy:'© 2026 Hotel y Cabañas Brisas de Oro · Villa Carlos Paz, Córdoba, Argentina',
     footerCopyMobile:'© 2026 Brisas de Oro · Villa Carlos Paz, Córdoba, Argentina',
   },
   pt: {
-    navNosotros:'Quem somos', navAlojamientos:'Hospedagem', navInfo:'Info importante',
+    navNosotros:'Sobre nós', navAlojamientos:'Hospedagem', navInfo:'Info importante',
     navServicios:'Serviços', navClima:'Clima', navTestimonios:'Avaliações',
     navUbicacion:'Localização', navCta:'Consultar →',
     bannerIngreso:'Chegada', bannerEgreso:'Saída', bannerHuespedes:'Hóspedes',
     bannerTipo:'Tipo', bannerModificar:'← Modificar busca',
     bannerNochesLabel:'Estadia', bannerNoche:'noite', bannerNoches:'noites',
+    bannerCheckin:'Check-in · 13:00 hs', bannerCheckinCasa:'Check-in · 14:00 hs', bannerCheckout:'Check-out · 10:00 hs',
     franjaTexto:'Tem interesse em alguma acomodação? Antes de consultar, recomendamos ler as <span style="color:var(--oro);font-weight:700;">informações importantes</span>',
     cargando:'Consultando disponibilidade…',
     sinResultados:'Nenhuma hospedagem encontrada para as datas selecionadas.',
@@ -224,7 +242,7 @@ const I18N = {
     btnWsp:'Consultar pelo WhatsApp',
     unidad:'unidade disponível', unidades:'unidades disponíveis',
     tipoCualquiera:'Qualquer tipo', tipoHabitacion:'Quarto de hotel',
-    tipoCabana:'Chalé', tipoApart:'Apart Hotel',
+    tipoCabana:'Chalé', tipoApart:'Apart Hotel', tipoCasa:'Casa',
     habNombre:'Quartos de hotel',
     habMeta1:'1–4 pessoas', habMeta2:'Café incluído',
     habFeatures:['Café buffet','A/C 24hs','Aquecimento','Limpeza diária','Banheiro privativo'],
@@ -240,6 +258,11 @@ const I18N = {
     cgNombre:'Chalé grande',
     cgMeta1:'Até 7/8 pessoas', cgMeta2:'2 quartos',
     cgFeatures:['A/C frio e calor','Cozinha equipada','Churrasqueira privativa','Limpeza a cada 3 dias'],
+    casaNombre:'Casa com Piscina · Icho Cruz',
+    casaMeta1:'Até 10 pessoas', casaMeta2:'3 quartos',
+    casaFeatures:['Piscina privativa','Jardim','Churrasqueira','Cozinha equipada','Wi-Fi e DirecTV','Pet friendly'],
+    casaUbic:'📍 Icho Cruz · a 15 min do complexo', casaHorario:'Check-in 14:00 · Check-out 10:00',
+    casaNoIncluye:'Não inclui café da manhã nem roupa de cama e banho (opcional)',
     climaLabel:'Villa Carlos Paz · Serras de Córdoba', climaTitle:'Clima para a sua viagem',
     climaDesc:'Confira a previsão antes de fazer as malas. Dados em tempo real, atualizados automaticamente.',
     climaNote:'Dados fornecidos por Tomorrow.io · Atualizado automaticamente',
@@ -294,6 +317,8 @@ const I18N = {
     footerAloj:'Hospedagem',
     footerAloj1:'Chalé pequeno (até 3 pess.)', footerAloj2:'Chalé médio (até 6 pess.)',
     footerAloj3:'Chalé grande (até 8 pess.)', footerAloj4:'Quartos de hotel', footerAloj5:'Apart Hotel',
+    footerAloj6:'Casa com Piscina · Icho Cruz (até 10 pess.)', footerCasaDir:'Uruguay esq. Lombardo, Icho Cruz',
+    topbarDirCorta:'Av. Ramón J. Cárcano 2590', topbarCasa:'Casa com Piscina · Icho Cruz', topbarCasaCorta:'Casa · Icho Cruz',
     footerInfo:'Informações', footerCheckin:'Check-in: 13:00 hs', footerCheckout:'Check-out: 10:00 hs',
     footerTambien:'Também em',
     footerCopy:'© 2026 Hotel y Cabañas Brisas de Oro · Villa Carlos Paz, Córdoba, Argentina',
@@ -308,6 +333,7 @@ const ALOJ_BASE = {
   cabanaChica:  { id:'cabanaChica',  tipo:'Cabaña',    iconoMeta1:'personas', iconoMeta2:'cama',         fotos:['/fotos/cabana-chica/portada.jpeg','/fotos/cabana-chica/1.jpeg','/fotos/cabana-chica/2.jpeg','/fotos/cabana-chica/3.jpeg','/fotos/cabana-chica/4.jpeg','/fotos/cabana-chica/5.jpeg'] },
   cabanaMediana:{ id:'cabanaMediana',tipo:'Cabaña',    iconoMeta1:'personas', iconoMeta2:'cama',         fotos:['/fotos/cabana-mediana/portada.webp','/fotos/cabana-mediana/1.jpeg','/fotos/cabana-mediana/2.jpeg','/fotos/cabana-mediana/3.jpeg','/fotos/cabana-mediana/4.jpeg','/fotos/cabana-mediana/5.jpeg','/fotos/cabana-mediana/6.jpeg'] },
   cabanaGrande: { id:'cabanaGrande', tipo:'Cabaña',    iconoMeta1:'personas', iconoMeta2:'camas',        fotos:['/fotos/cabana-grande/portada.jpeg','/fotos/cabana-grande/1.jpeg','/fotos/cabana-grande/2.jpeg','/fotos/cabana-grande/3.jpeg','/fotos/cabana-grande/4.jpeg','/fotos/cabana-grande/5.jpeg','/fotos/cabana-grande/6.jpeg'] },
+  casa:         { id:'casa',         tipo:'Casa',      iconoMeta1:'personas', iconoMeta2:'camas',        fotos:['/fotos/casa/portada.jpeg','/fotos/casa/1.jpeg','/fotos/casa/2.jpeg','/fotos/casa/3.jpeg','/fotos/casa/4.jpeg','/fotos/casa/5.jpeg'] },
 }
 
 /* Aplica las traducciones de `t` sobre cada entrada del API response */
@@ -318,6 +344,7 @@ function parsearRespuesta(data, t) {
     cabanaChica:  { nombre:t.ccNombre,  meta1:t.ccMeta1,  meta2:t.ccMeta2,  features:t.ccFeatures },
     cabanaMediana:{ nombre:t.cmNombre,  meta1:t.cmMeta1,  meta2:t.cmMeta2,  features:t.cmFeatures },
     cabanaGrande: { nombre:t.cgNombre,  meta1:t.cgMeta1,  meta2:t.cgMeta2,  features:t.cgFeatures },
+    casa:         { nombre:t.casaNombre, meta1:t.casaMeta1, meta2:t.casaMeta2, features:t.casaFeatures },
   }
   return Object.entries(ALOJ_BASE).map(([clave, base]) => {
     const info = data[clave] || {}
@@ -329,11 +356,23 @@ function normalizarTipo(t) {
   return (t || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/\s+/g, '')
 }
 
+/* La landing manda el tipo con el texto de la opción en el idioma activo
+   (ej. "Cabin", "Chalé", "House"): se lleva cada variante a una clave común */
+const TIPO_CANONICO = {
+  habitacion:'habitacion', room:'habitacion', quarto:'habitacion',
+  cabana:'cabana', cabin:'cabana', chale:'cabana',
+  aparthotel:'apart', apart:'apart',
+  casa:'casa', house:'casa',
+}
+
+function tipoCanonico(t) {
+  const n = normalizarTipo(t)
+  return TIPO_CANONICO[n] || n
+}
+
 function tipoCoincide(tipoQuery, tipoResultado) {
   if (!tipoQuery || normalizarTipo(tipoQuery) === 'cualquiera') return true
-  const q = normalizarTipo(tipoQuery)
-  const r = normalizarTipo(tipoResultado || '')
-  return r.includes(q) || q.includes(r)
+  return tipoCanonico(tipoQuery) === tipoCanonico(tipoResultado)
 }
 
 function formatFecha(s) {
@@ -343,11 +382,12 @@ function formatFecha(s) {
 }
 
 function etiquetaTipo(tipo, t) {
-  const n = normalizarTipo(tipo || '')
-  if (!tipo || n === 'cualquiera') return t.tipoCualquiera
-  if (n === 'habitacion') return t.tipoHabitacion
-  if (n === 'cabana') return t.tipoCabana
-  if (n === 'aparthotel' || n === 'apart') return t.tipoApart
+  if (!tipo || normalizarTipo(tipo) === 'cualquiera') return t.tipoCualquiera
+  const c = tipoCanonico(tipo)
+  if (c === 'habitacion') return t.tipoHabitacion
+  if (c === 'cabana') return t.tipoCabana
+  if (c === 'apart') return t.tipoApart
+  if (c === 'casa') return t.tipoCasa
   return tipo
 }
 
@@ -638,6 +678,10 @@ function IcoMeta({ tipo }) {
   return null
 }
 
+function IconoPin() {
+  return <svg width="11" height="14" viewBox="0 0 11 14" fill="none" style={{ flexShrink:0, opacity:0.7 }}><path d="M5.5 0C2.46 0 0 2.46 0 5.5C0 9.625 5.5 14 5.5 14C5.5 14 11 9.625 11 5.5C11 2.46 8.54 0 5.5 0ZM5.5 7.5C4.395 7.5 3.5 6.605 3.5 5.5C3.5 4.395 4.395 3.5 5.5 3.5C6.605 3.5 7.5 4.395 7.5 5.5C7.5 6.606 6.605 7.5 5.5 7.5Z" fill="var(--oro)"/></svg>
+}
+
 function IconoWsp() {
   return (
     <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -670,6 +714,13 @@ function CardAlojamiento({ item, destacado, noDisponible, sinBadge, wspUrl, t })
           <span style={{ display:'flex', alignItems:'center', gap:'0.3rem' }}><IcoMeta tipo={item.iconoMeta2} />{item.meta2}</span>
         </div>
         <div className="card-features">{item.features.map(f => <span key={f} className="feature-tag">{f}</span>)}</div>
+        {item.id === 'casa' && (
+          <>
+            <p className="card-nota">{t.casaUbic}</p>
+            <p className="card-nota">{t.casaHorario}</p>
+            <p className="card-nota">{t.casaNoIncluye}</p>
+          </>
+        )}
         {!noDisponible && item.unidadesDisponibles > 0 && (
           <p className="disp-unidades">{item.unidadesDisponibles === 1 ? `1 ${t.unidad}` : `${item.unidadesDisponibles} ${t.unidades}`}</p>
         )}
@@ -729,6 +780,7 @@ export default function Disponibilidad() {
     : 0
 
   const esCualquiera = !tipo || normalizarTipo(tipo) === 'cualquiera'
+  const esCasa = !esCualquiera && tipoCanonico(tipo) === 'casa'
   const disponiblesCoincidentes = (resultados||[]).filter(r => r.disponible && tipoCoincide(tipo, r.tipo))
   const disponiblesOtros        = (resultados||[]).filter(r => r.disponible && !esCualquiera && !tipoCoincide(tipo, r.tipo))
   const noDisponibles           = (resultados||[]).filter(r => !r.disponible)
@@ -749,10 +801,19 @@ export default function Disponibilidad() {
       {/* TOPBAR */}
       <div className="topbar" id="main-topbar">
         <div className="topbar-inner">
-          <a className="topbar-dir" href="https://www.google.com/maps/search/Av.+Ram%C3%B3n+J.+C%C3%A1rcano+2590+Villa+Carlos+Paz+C%C3%B3rdoba+Argentina" target="_blank" rel="noopener noreferrer">
-            <svg width="11" height="14" viewBox="0 0 11 14" fill="none" style={{ flexShrink:0, opacity:0.7 }}><path d="M5.5 0C2.46 0 0 2.46 0 5.5C0 9.625 5.5 14 5.5 14C5.5 14 11 9.625 11 5.5C11 2.46 8.54 0 5.5 0ZM5.5 7.5C4.395 7.5 3.5 6.605 3.5 5.5C3.5 4.395 4.395 3.5 5.5 3.5C6.605 3.5 7.5 4.395 7.5 5.5C7.5 6.606 6.605 7.5 5.5 7.5Z" fill="var(--oro)"/></svg>
-            <span>Av. Ramón J. Cárcano 2590 · Villa Carlos Paz, Córdoba</span>
-          </a>
+          <div className="topbar-dirs">
+            <a className="topbar-dir" href="https://www.google.com/maps/search/Av.+Ram%C3%B3n+J.+C%C3%A1rcano+2590+Villa+Carlos+Paz+C%C3%B3rdoba+Argentina" target="_blank" rel="noopener noreferrer">
+              <IconoPin />
+              <span className="solo-desktop">Av. Ramón J. Cárcano 2590 · Villa Carlos Paz, Córdoba</span>
+              <span className="solo-mobile">{t.topbarDirCorta}</span>
+            </a>
+            <span className="topbar-sep" />
+            <a className="topbar-dir" href={MAPS_CASA} target="_blank" rel="noopener noreferrer">
+              <IconoPin />
+              <span className="solo-desktop">{t.topbarCasa}</span>
+              <span className="solo-mobile">{t.topbarCasaCorta}</span>
+            </a>
+          </div>
         </div>
       </div>
 
@@ -817,7 +878,7 @@ export default function Disponibilidad() {
                     {t.bannerIngreso}
                   </span>
                   <span className="disp-banner-valor">{formatFecha(fechaIngreso)}</span>
-                  <span className="disp-banner-sub">Check-in · 13:00 hs</span>
+                  <span className="disp-banner-sub">{esCasa ? t.bannerCheckinCasa : t.bannerCheckin}</span>
                 </div>
                 <div className="disp-banner-sep" aria-hidden="true" />
                 <div className="disp-banner-item">
@@ -828,7 +889,7 @@ export default function Disponibilidad() {
                     {t.bannerEgreso}
                   </span>
                   <span className="disp-banner-valor">{formatFecha(fechaEgreso)}</span>
-                  <span className="disp-banner-sub">Check-out · 10:00 hs</span>
+                  <span className="disp-banner-sub">{t.bannerCheckout}</span>
                 </div>
                 {cantNoches > 0 && (
                   <>
@@ -987,6 +1048,7 @@ export default function Disponibilidad() {
               <ul>
                 <li>{t.footerAloj1}</li><li>{t.footerAloj2}</li>
                 <li>{t.footerAloj3}</li><li>{t.footerAloj4}</li><li>{t.footerAloj5}</li>
+                <li>{t.footerAloj6}</li>
               </ul>
             </div>
             <div className="footer-col">
@@ -995,6 +1057,7 @@ export default function Disponibilidad() {
                 <li>{t.footerCheckin}</li><li>{t.footerCheckout}</li>
                 <li><a href="https://wa.me/543541548053" target="_blank" rel="noopener noreferrer">3541-548053</a></li>
                 <li><a href="https://www.google.com/maps/search/Av.+Ram%C3%B3n+J.+C%C3%A1rcano+2590+Villa+Carlos+Paz" target="_blank" rel="noopener noreferrer">Av. Ramón J. Cárcano 2590</a></li>
+                <li><a href={MAPS_CASA} target="_blank" rel="noopener noreferrer">{t.footerCasaDir}</a></li>
                 <li><a href="https://www.instagram.com/brisasdeoro" target="_blank" rel="noopener noreferrer">@brisasdeoro</a></li>
                 <li><a href="mailto:brisasdeoro@gmail.com">brisasdeoro@gmail.com</a></li>
               </ul>

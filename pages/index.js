@@ -8,7 +8,7 @@ export default function Home() {
       es: {
         'sticky.btn':'Buscar',
         'topbar.dir':'Av. Ramón J. Cárcano 2590 · Villa Carlos Paz, Córdoba',
-        'topbar.mail':'Escribinos','nav.nosotros':'Quiénes somos','nav.alojamientos':'Alojamientos','nav.servicios':'Servicios',
+        'topbar.mail':'Escribinos','nav.nosotros':'Nosotros','nav.alojamientos':'Alojamientos','nav.servicios':'Servicios',
         'nav.testimonios':'Reseñas','nav.ubicacion':'Ubicación','nav.info':'Info importante','nav.clima':'Clima','nav.info':'Info importante','nav.clima':'Clima','nav.cta':'Consultar →',
         'hero.eyebrow':'Bienvenidos a Hotel y Cabañas Brisas de Oro',
         'hero.title':'Viví <em>momentos inolvidables</em>',
@@ -58,7 +58,7 @@ export default function Home() {
         'ubic.label':'Dónde estamos','ubic.title':'En plena avenida, rodeados de naturaleza',
         'ubic.desc':'Ubicados sobre una de las avenidas principales de Villa Carlos Paz, con las sierras como horizonte y el río a pocos pasos.',
         'ubic.d1a':'1 cuadra','ubic.d1b':'Balneario Playas de Oro','ubic.d2a':'Al lado','ubic.d2b':'Río San Antonio',
-        'ubic.d3a':'21–25 cuadras','ubic.d3b':'Centro de Villa Carlos Paz','ubic.d4a':'30 minutos','ubic.d4b':'Aeropuerto Internacional de Córdoba',
+        'ubic.d3a':'25 cuadras · 2,5 km','ubic.d3b':'Centro de Villa Carlos Paz','ubic.d4a':'45 minutos','ubic.d4b':'Aeropuerto Internacional de Córdoba',
         'ubic.mapa':'Google Maps — próximamente',
         'cta.title':'¿Listo para reservar tus vacaciones?','cta.sub':'Escribinos directo por WhatsApp y te respondemos al instante.','cta.btn':'Consultar por WhatsApp',
         'footer.desc':'Complejo familiar atendido por sus dueños, donde el trato personalizado y el clima hogareño hacen que cada huésped se sienta en casa. Rodeados de las sierras cordobesas y a orillas del río San Antonio.',
@@ -101,6 +101,18 @@ export default function Home() {
         'clima.desc':'Consultá el pronóstico antes de preparar tu equipaje. Datos en tiempo real, actualizados automáticamente.',
         'clima.note':'Datos provistos por Tomorrow.io · Actualizado automáticamente',
         'footer.a5':'Apart Hotel',
+        'topbar.dir.short':'Av. Ramón J. Cárcano 2590','topbar.casa':'Casa con Pileta · Icho Cruz','topbar.casa.short':'Casa · Icho Cruz',
+        'widget.casa':'Casa',
+        'aloj.tipo6':'Casa · Icho Cruz',
+        'aloj.card6.name':'Casa con Pileta · Icho Cruz','aloj.card6.meta':'👥 Hasta 10 personas · 🛏 3 dormitorios','aloj.card6.meta1':'👥 Hasta 10 personas','aloj.card6.meta2':'🛏 3 dormitorios',
+        'aloj.card6.noincluye':'No incluye desayuno ni blancos (opcionales)','aloj.card6.ubic':'📍 Icho Cruz · a 15 min del complejo',
+        'feat.pileta.priv':'Pileta privada','feat.parrillero':'Parrillero','feat.wifi.tv':'Wi-Fi y DirecTV','feat.pet':'Pet friendly',
+        'ubic.casa.title':'Casa con Pileta · Icho Cruz','ubic.casa.sub':'Alojamiento independiente, fuera del complejo Brisas de Oro.',
+        'ubic.casa.dir':'Calle Uruguay esq. Lombardo, Icho Cruz',
+        'ubic.casa.d1a':'15 min (9 km)','ubic.casa.d1b':'Brisas de Oro','ubic.casa.d2a':'20 min (13 km)','ubic.casa.d2b':'Centro de Villa Carlos Paz',
+        'ubic.casa.d3a':'22 min (13,5 km)','ubic.casa.d3b':'Terminal de ómnibus de Carlos Paz','ubic.casa.d4a':'1 h (57 km)','ubic.casa.d4b':'Aeropuerto de Córdoba',
+        'ubic.casa.btn':'Cómo llegar',
+        'footer.a6':'Casa con Pileta · Icho Cruz (hasta 10 pers.)','footer.casa.dir':'Uruguay esq. Lombardo, Icho Cruz',
       },
       en: {
         'sticky.btn':'Search',
@@ -155,7 +167,7 @@ export default function Home() {
         'ubic.label':'Where we are','ubic.title':'On the main avenue, surrounded by nature',
         'ubic.desc':'Located on one of the main avenues of Villa Carlos Paz, with the mountains on the horizon and the river just steps away.',
         'ubic.d1a':'1 block','ubic.d1b':'Playas de Oro beach','ubic.d2a':'Next door','ubic.d2b':'San Antonio River',
-        'ubic.d3a':'21–25 blocks','ubic.d3b':'Villa Carlos Paz city center','ubic.d4a':'30 minutes','ubic.d4b':'Córdoba International Airport',
+        'ubic.d3a':'25 blocks · 2.5 km','ubic.d3b':'Villa Carlos Paz city center','ubic.d4a':'45 minutes','ubic.d4b':'Córdoba International Airport',
         'ubic.mapa':'Google Maps — coming soon',
         'cta.title':'Ready to book your vacation?','cta.sub':'Write us directly on WhatsApp and we\'ll reply instantly.','cta.btn':'Contact us on WhatsApp',
         'footer.desc':'Family resort run by its owners, one block from Playas de Oro beach. The warmth you always wanted, in the heart of the Córdoba mountains.',
@@ -198,11 +210,23 @@ export default function Home() {
         'aloj.franja':'Interested in an accommodation? Before inquiring, we recommend reading the <span style="color:var(--oro);font-weight:700;">important information</span>',
         'info.cta.btn':'Contact us on WhatsApp',
         'footer.a5':'Apart Hotel',
+        'topbar.dir.short':'Av. Ramón J. Cárcano 2590','topbar.casa':'House with Pool · Icho Cruz','topbar.casa.short':'House · Icho Cruz',
+        'widget.casa':'House',
+        'aloj.tipo6':'House · Icho Cruz',
+        'aloj.card6.name':'House with Pool · Icho Cruz','aloj.card6.meta':'👥 Up to 10 guests · 🛏 3 bedrooms','aloj.card6.meta1':'👥 Up to 10 guests','aloj.card6.meta2':'🛏 3 bedrooms',
+        'aloj.card6.noincluye':'Breakfast and linens not included (linens available)','aloj.card6.ubic':'📍 Icho Cruz · 15 min from the resort',
+        'feat.pileta.priv':'Private pool','feat.parrillero':'BBQ area','feat.wifi.tv':'Wi-Fi & DirecTV','feat.pet':'Pet friendly',
+        'ubic.casa.title':'House with Pool · Icho Cruz','ubic.casa.sub':'Independent accommodation, outside the Brisas de Oro resort.',
+        'ubic.casa.dir':'Calle Uruguay & Lombardo, Icho Cruz',
+        'ubic.casa.d1a':'15 min (9 km)','ubic.casa.d1b':'Brisas de Oro','ubic.casa.d2a':'20 min (13 km)','ubic.casa.d2b':'Villa Carlos Paz city center',
+        'ubic.casa.d3a':'22 min (13.5 km)','ubic.casa.d3b':'Carlos Paz bus terminal','ubic.casa.d4a':'1 h (57 km)','ubic.casa.d4b':'Córdoba Airport',
+        'ubic.casa.btn':'Get directions',
+        'footer.a6':'House with Pool · Icho Cruz (up to 10 guests)','footer.casa.dir':'Uruguay & Lombardo, Icho Cruz',
       },
       pt: {
         'sticky.btn':'Buscar',
         'topbar.dir':'Av. Ramón J. Cárcano 2590 · Villa Carlos Paz, Córdoba',
-        'topbar.mail':'Escreva-nos','nav.nosotros':'Quem somos','nav.alojamientos':'Hospedagem','nav.servicios':'Serviços',
+        'topbar.mail':'Escreva-nos','nav.nosotros':'Sobre nós','nav.alojamientos':'Hospedagem','nav.servicios':'Serviços',
         'nav.testimonios':'Avaliações','nav.ubicacion':'Localização','nav.info':'Info importante','nav.clima':'Clima','nav.info':'Info importante','nav.clima':'Clima','nav.cta':'Consultar →',
         'hero.eyebrow':'Bem-vindos ao Hotel e Cabanas<br class="br-mobile"> Brisas de Oro',
         'hero.title':'Viva <em>momentos inesquecíveis</em>',
@@ -252,7 +276,7 @@ export default function Home() {
         'ubic.label':'Onde estamos','ubic.title':'Na avenida principal, rodeados de natureza',
         'ubic.desc':'Localizados em uma das avenidas principais de Villa Carlos Paz, com as serras no horizonte e o rio a poucos passos.',
         'ubic.d1a':'1 quarteirão','ubic.d1b':'Praia Playas de Oro','ubic.d2a':'Ao lado','ubic.d2b':'Rio San Antonio',
-        'ubic.d3a':'21–25 quarteirões','ubic.d3b':'Centro de Villa Carlos Paz','ubic.d4a':'30 minutos','ubic.d4b':'Aeroporto Internacional de Córdoba',
+        'ubic.d3a':'25 quarteirões · 2,5 km','ubic.d3b':'Centro de Villa Carlos Paz','ubic.d4a':'45 minutos','ubic.d4b':'Aeroporto Internacional de Córdoba',
         'ubic.mapa':'Google Maps — em breve',
         'cta.title':'Pronto para reservar suas férias?','cta.sub':'Escreva para nós pelo WhatsApp e respondemos na hora.','cta.btn':'Consultar pelo WhatsApp',
         'footer.desc':'Complexo familiar gerenciado pelos proprietários, onde o atendimento personalizado e o clima acolhedor fazem cada hóspede se sentir em casa. Rodeados pelas serras cordobesas e às margens do Rio San Antonio.',
@@ -295,6 +319,18 @@ export default function Home() {
         'aloj.franja':'Tem interesse em alguma acomodação? Antes de consultar, recomendamos ler as <span style="color:var(--oro);font-weight:700;">informações importantes</span>',
         'info.cta.btn':'Consultar pelo WhatsApp',
         'footer.a5':'Apart Hotel',
+        'topbar.dir.short':'Av. Ramón J. Cárcano 2590','topbar.casa':'Casa com Piscina · Icho Cruz','topbar.casa.short':'Casa · Icho Cruz',
+        'widget.casa':'Casa',
+        'aloj.tipo6':'Casa · Icho Cruz',
+        'aloj.card6.name':'Casa com Piscina · Icho Cruz','aloj.card6.meta':'👥 Até 10 pessoas · 🛏 3 quartos','aloj.card6.meta1':'👥 Até 10 pessoas','aloj.card6.meta2':'🛏 3 quartos',
+        'aloj.card6.noincluye':'Não inclui café da manhã nem roupa de cama e banho (opcional)','aloj.card6.ubic':'📍 Icho Cruz · a 15 min do complexo',
+        'feat.pileta.priv':'Piscina privativa','feat.parrillero':'Churrasqueira','feat.wifi.tv':'Wi-Fi e DirecTV','feat.pet':'Pet friendly',
+        'ubic.casa.title':'Casa com Piscina · Icho Cruz','ubic.casa.sub':'Hospedagem independente, fora do complexo Brisas de Oro.',
+        'ubic.casa.dir':'Calle Uruguay esq. Lombardo, Icho Cruz',
+        'ubic.casa.d1a':'15 min (9 km)','ubic.casa.d1b':'Brisas de Oro','ubic.casa.d2a':'20 min (13 km)','ubic.casa.d2b':'Centro de Villa Carlos Paz',
+        'ubic.casa.d3a':'22 min (13,5 km)','ubic.casa.d3b':'Rodoviária de Carlos Paz','ubic.casa.d4a':'1 h (57 km)','ubic.casa.d4b':'Aeroporto de Córdoba',
+        'ubic.casa.btn':'Como chegar',
+        'footer.a6':'Casa com Piscina · Icho Cruz (até 10 pessoas)','footer.casa.dir':'Uruguay esq. Lombardo, Icho Cruz',
       }
     };
     
@@ -693,7 +729,7 @@ export default function Home() {
       // Inicializar todos los carruseles
       function initAll() {
         ['car-cabana-chica','car-cabana-mediana','car-cabana-grande',
-         'car-habitaciones','car-apart'].forEach(initCard);
+         'car-habitaciones','car-apart','car-casa'].forEach(initCard);
       }
     
       requestAnimationFrame(() => requestAnimationFrame(initAll));
@@ -1065,6 +1101,7 @@ export default function Home() {
           cabGrande: 'Hola, quiero consultar por la cabaña grande.',
           habit:     'Hola, quiero consultar por una habitación.',
           apart:     'Hola, quiero consultar por el apart hotel.',
+          casa:      'Hola, quiero consultar por la Casa con Pileta en Icho Cruz.',
         },
         en: {
           general:   'Hello! I would like to check availability at Brisas de Oro.',
@@ -1073,6 +1110,7 @@ export default function Home() {
           cabGrande: 'Hello, I would like to inquire about the large cabin.',
           habit:     'Hello, I would like to inquire about a hotel room.',
           apart:     'Hello, I would like to inquire about the apart hotel.',
+          casa:      'Hello, I would like to inquire about the House with Pool in Icho Cruz.',
         },
         pt: {
           general:   'Olá! Gostaria de consultar disponibilidade no Brisas de Oro.',
@@ -1081,6 +1119,7 @@ export default function Home() {
           cabGrande: 'Olá, gostaria de consultar sobre o chalé grande.',
           habit:     'Olá, gostaria de consultar sobre um quarto de hotel.',
           apart:     'Olá, gostaria de consultar sobre o apart hotel.',
+          casa:      'Olá, gostaria de consultar sobre a Casa com Piscina em Icho Cruz.',
         }
       };
       const t = msgs[getLang()] || msgs.es;
@@ -1325,14 +1364,27 @@ export default function Home() {
 <!-- ============================================================ TOPBAR -->
 <div class="topbar" id="main-topbar">
   <div class="topbar-inner">
-    <a class="topbar-dir"
-       href="https://www.google.com/maps/search/Av.+Ram%C3%B3n+J.+C%C3%A1rcano+2590+Villa+Carlos+Paz+C%C3%B3rdoba+Argentina"
-       target="_blank" rel="noopener">
-      <svg width="11" height="14" viewBox="0 0 11 14" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;opacity:0.7">
+    <div class="topbar-dirs">
+      <a class="topbar-dir"
+         href="https://www.google.com/maps/search/Av.+Ram%C3%B3n+J.+C%C3%A1rcano+2590+Villa+Carlos+Paz+C%C3%B3rdoba+Argentina"
+         target="_blank" rel="noopener">
+        <svg width="11" height="14" viewBox="0 0 11 14" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;opacity:0.7">
         <path d="M5.5 0C2.46 0 0 2.46 0 5.5C0 9.625 5.5 14 5.5 14C5.5 14 11 9.625 11 5.5C11 2.46 8.54 0 5.5 0ZM5.5 7.5C4.395 7.5 3.5 6.605 3.5 5.5C3.5 4.395 4.395 3.5 5.5 3.5C6.605 3.5 7.5 4.395 7.5 5.5C7.5 6.605 6.605 7.5 5.5 7.5Z" fill="var(--oro)"/>
       </svg>
-      <span data-i18n="topbar.dir">Av. Ramón J. Cárcano 2590 · Villa Carlos Paz, Córdoba</span>
-    </a>
+        <span class="solo-desktop" data-i18n="topbar.dir">Av. Ramón J. Cárcano 2590 · Villa Carlos Paz, Córdoba</span>
+        <span class="solo-mobile" data-i18n="topbar.dir.short">Av. Ramón J. Cárcano 2590</span>
+      </a>
+      <span class="topbar-sep"></span>
+      <a class="topbar-dir"
+         href="https://maps.app.goo.gl/LNTt8TeZjFvNtwUY9"
+         target="_blank" rel="noopener">
+        <svg width="11" height="14" viewBox="0 0 11 14" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;opacity:0.7">
+        <path d="M5.5 0C2.46 0 0 2.46 0 5.5C0 9.625 5.5 14 5.5 14C5.5 14 11 9.625 11 5.5C11 2.46 8.54 0 5.5 0ZM5.5 7.5C4.395 7.5 3.5 6.605 3.5 5.5C3.5 4.395 4.395 3.5 5.5 3.5C6.605 3.5 7.5 4.395 7.5 5.5C7.5 6.605 6.605 7.5 5.5 7.5Z" fill="var(--oro)"/>
+      </svg>
+        <span class="solo-desktop" data-i18n="topbar.casa">Casa con Pileta · Icho Cruz</span>
+        <span class="solo-mobile" data-i18n="topbar.casa.short">Casa · Icho Cruz</span>
+      </a>
+    </div>
   </div>
 </div>
 
@@ -1438,6 +1490,7 @@ export default function Home() {
         <option data-i18n-opt="widget.cabana">Cabaña</option>
         <option data-i18n-opt="widget.habitacion">Habitación</option>
         <option data-i18n-opt="widget.apart">Apart Hotel</option>
+        <option data-i18n-opt="widget.casa">Casa</option>
       </select>
       <div class="custom-tipo-wrap" id="s-tipo-wrap">
         <button type="button" class="custom-tipo-trigger" onclick="toggleCustomTipo('s-tipo-wrap')">
@@ -1449,6 +1502,7 @@ export default function Home() {
           <button type="button" class="custom-tipo-opt" data-index="2" data-abbr="Cab." data-i18n="widget.cabana" ontouchstart="preTouchCustomTipo(this)" onclick="selectCustomTipo('s-tipo','s-tipo-wrap',this)">Cabaña</button>
           <button type="button" class="custom-tipo-opt" data-index="3" data-abbr="Hab." data-i18n="widget.habitacion" ontouchstart="preTouchCustomTipo(this)" onclick="selectCustomTipo('s-tipo','s-tipo-wrap',this)">Habitación</button>
           <button type="button" class="custom-tipo-opt" data-index="4" data-abbr="Apart" data-i18n="widget.apart" ontouchstart="preTouchCustomTipo(this)" onclick="selectCustomTipo('s-tipo','s-tipo-wrap',this)">Apart Hotel</button>
+          <button type="button" class="custom-tipo-opt" data-index="5" data-abbr="Casa" data-i18n="widget.casa" ontouchstart="preTouchCustomTipo(this)" onclick="selectCustomTipo('s-tipo','s-tipo-wrap',this)">Casa</button>
         </div>
       </div>
     </div>
@@ -1530,6 +1584,7 @@ export default function Home() {
             <option data-i18n-opt="widget.cabana">Cabaña</option>
             <option data-i18n-opt="widget.habitacion">Habitación</option>
             <option data-i18n-opt="widget.apart">Apart Hotel</option>
+            <option data-i18n-opt="widget.casa">Casa</option>
           </select>
           <div class="custom-tipo-wrap" id="tipo-aloj-wrap">
             <button type="button" class="custom-tipo-trigger" onclick="toggleCustomTipo('tipo-aloj-wrap')">
@@ -1541,6 +1596,7 @@ export default function Home() {
               <button type="button" class="custom-tipo-opt" data-index="1" data-i18n="widget.cabana" ontouchstart="preTouchCustomTipo(this)" onclick="selectCustomTipo('tipo-aloj','tipo-aloj-wrap',this)">Cabaña</button>
               <button type="button" class="custom-tipo-opt" data-index="2" data-i18n="widget.habitacion" ontouchstart="preTouchCustomTipo(this)" onclick="selectCustomTipo('tipo-aloj','tipo-aloj-wrap',this)">Habitación</button>
               <button type="button" class="custom-tipo-opt" data-index="3" data-i18n="widget.apart" ontouchstart="preTouchCustomTipo(this)" onclick="selectCustomTipo('tipo-aloj','tipo-aloj-wrap',this)">Apart Hotel</button>
+              <button type="button" class="custom-tipo-opt" data-index="4" data-i18n="widget.casa" ontouchstart="preTouchCustomTipo(this)" onclick="selectCustomTipo('tipo-aloj','tipo-aloj-wrap',this)">Casa</button>
             </div>
           </div>
         </div>
@@ -1805,7 +1861,7 @@ export default function Home() {
           <span class="card-type-badge" data-i18n="aloj.tipo2">Cabaña mediana</span>
           <div class="card-hover-panel">
             <p class="card-hover-name" data-i18n="aloj.card2.name">Cabaña mediana</p>
-            <p class="card-hover-meta" data-i18n="aloj.card2.meta">👥 Hasta 5/6 personas · 🛏 2 dormitorios</p>
+            <p class="card-hover-meta" data-i18n="aloj.card2.meta">👥 Hasta 5/6 personas · 🛏 1 dormitorio</p>
             <a class="btn-consultar-card" href="javascript:void(0)" onclick="abrirWsp(getMsgWsp('cabMed'))" data-i18n="aloj.consultar">Consultar</a>
           </div>
         </div>
@@ -1843,7 +1899,7 @@ export default function Home() {
           <span class="card-type-badge" data-i18n="aloj.tipo3">Cabaña grande</span>
           <div class="card-hover-panel">
             <p class="card-hover-name" data-i18n="aloj.card3.name">Cabaña grande</p>
-            <p class="card-hover-meta" data-i18n="aloj.card3.meta">👥 Hasta 7/8 personas · 🛏 3 dormitorios</p>
+            <p class="card-hover-meta" data-i18n="aloj.card3.meta">👥 Hasta 7/8 personas · 🛏 2 dormitorios</p>
             <a class="btn-consultar-card" href="javascript:void(0)" onclick="abrirWsp(getMsgWsp('cabGrande'))" data-i18n="aloj.consultar">Consultar</a>
           </div>
         </div>
@@ -1936,7 +1992,48 @@ export default function Home() {
             <span class="feature-tag" data-i18n="feat.limp1">Limpieza diaria</span>
           </div>
         </div>
-      </div>    </div>
+      </div>
+
+      <!-- CARD 6 — Casa con Pileta · Icho Cruz (fuera del complejo) -->
+      <div class="aloj-card">
+        <div class="card-img">
+          <div class="card-carousel" id="car-casa">
+            <div class="card-carousel-track">
+              <img src="/fotos/casa/portada.jpeg" alt="Casa con Pileta · Icho Cruz">
+              <img src="/fotos/casa/1.jpeg" alt="">
+              <img src="/fotos/casa/2.jpeg" alt="">
+              <img src="/fotos/casa/3.jpeg" alt="">
+              <img src="/fotos/casa/4.jpeg" alt="">
+              <img src="/fotos/casa/5.jpeg" alt="">
+            </div>
+            <button class="card-arrow prev" onclick="moverCard('car-casa',-1,event)">&#8249;</button>
+            <button class="card-arrow next" onclick="moverCard('car-casa',1,event)">&#8250;</button>
+            <div class="card-dots" id="dots-car-casa"></div>
+            <span class="card-counter" id="counter-car-casa">1 / 6</span>
+          </div>
+          <span class="card-type-badge" data-i18n="aloj.tipo6">Casa · Icho Cruz</span>
+          <div class="card-hover-panel">
+            <p class="card-hover-name" data-i18n="aloj.card6.name">Casa con Pileta · Icho Cruz</p>
+            <p class="card-hover-meta" data-i18n="aloj.card6.meta">👥 Hasta 10 personas · 🛏 3 dormitorios</p>
+            <a class="btn-consultar-card" href="javascript:void(0)" onclick="abrirWsp(getMsgWsp('casa'))" data-i18n="aloj.consultar">Consultar</a>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="card-name" data-i18n="aloj.card6.name">Casa con Pileta · Icho Cruz</p>
+          <div class="card-meta"><span data-i18n="aloj.card6.meta1">👥 Hasta 10 personas</span><span data-i18n="aloj.card6.meta2">🛏 3 dormitorios</span></div>
+          <div class="card-features">
+            <span class="feature-tag" data-i18n="feat.pileta.priv">Pileta privada</span>
+            <span class="feature-tag" data-i18n="feat.parque">Parque</span>
+            <span class="feature-tag" data-i18n="feat.parrillero">Parrillero</span>
+            <span class="feature-tag" data-i18n="feat.cocina">Cocina equipada</span>
+            <span class="feature-tag" data-i18n="feat.wifi.tv">Wi-Fi y DirecTV</span>
+            <span class="feature-tag" data-i18n="feat.pet">Pet friendly</span>
+          </div>
+          <p class="card-nota" data-i18n="aloj.card6.noincluye">No incluye desayuno ni blancos (opcionales)</p>
+          <p class="card-nota" data-i18n="aloj.card6.ubic">📍 Icho Cruz · a 15 min del complejo</p>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -2376,7 +2473,7 @@ export default function Home() {
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M3 7l9-4 9 4M4 21V7M20 21V7M9 21v-4h6v4M9 10h.01M15 10h.01M9 14h.01M15 14h.01"/></svg>
           </span>
           <div class="dist-text">
-            <strong data-i18n="ubic.d3a">Aprox. 20–25 cuadras</strong>
+            <strong data-i18n="ubic.d3a">25 cuadras · 2,5 km</strong>
             <span data-i18n="ubic.d3b">Centro de Villa Carlos Paz</span>
           </div>
         </li>
@@ -2386,7 +2483,7 @@ export default function Home() {
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg>
           </span>
           <div class="dist-text">
-            <strong data-i18n="ubic.d4a">40 minutos</strong>
+            <strong data-i18n="ubic.d4a">45 minutos</strong>
             <span data-i18n="ubic.d4b">Aeropuerto Internacional de Córdoba</span>
           </div>
         </li>
@@ -2403,6 +2500,59 @@ export default function Home() {
         title="Hotel y Cabañas Brisas de Oro — Av. Ramón J. Cárcano 2590, Villa Carlos Paz">
       </iframe>
     </div>
+  </div>
+  <!-- Casa con Pileta · Icho Cruz — alojamiento independiente, fuera del complejo (sin mapa embebido) -->
+  <div class="ubic-casa">
+    <h3 class="ubic-casa-title" data-i18n="ubic.casa.title">Casa con Pileta · Icho Cruz</h3>
+    <p class="ubic-casa-sub" data-i18n="ubic.casa.sub">Alojamiento independiente, fuera del complejo Brisas de Oro.</p>
+    <p class="ubic-casa-dir">
+      <svg width="11" height="14" viewBox="0 0 11 14" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0">
+          <path d="M5.5 0C2.46 0 0 2.46 0 5.5C0 9.625 5.5 14 5.5 14C5.5 14 11 9.625 11 5.5C11 2.46 8.54 0 5.5 0ZM5.5 7.5C4.395 7.5 3.5 6.605 3.5 5.5C3.5 4.395 4.395 3.5 5.5 3.5C6.605 3.5 7.5 4.395 7.5 5.5C7.5 6.605 6.605 7.5 5.5 7.5Z" fill="var(--oro)"/>
+        </svg>
+      <span data-i18n="ubic.casa.dir">Calle Uruguay esq. Lombardo, Icho Cruz</span>
+    </p>
+    <ul class="dist-list ubic-casa-dist">
+      <li>
+        <span class="dist-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </span>
+        <div class="dist-text">
+          <strong data-i18n="ubic.casa.d1a">15 min (9 km)</strong>
+          <span data-i18n="ubic.casa.d1b">Brisas de Oro</span>
+        </div>
+      </li>
+      <li>
+        <span class="dist-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M3 7l9-4 9 4M4 21V7M20 21V7M9 21v-4h6v4M9 10h.01M15 10h.01M9 14h.01M15 14h.01"/></svg>
+        </span>
+        <div class="dist-text">
+          <strong data-i18n="ubic.casa.d2a">20 min (13 km)</strong>
+          <span data-i18n="ubic.casa.d2b">Centro de Villa Carlos Paz</span>
+        </div>
+      </li>
+      <li>
+        <span class="dist-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="15" rx="2"/><path d="M4 11h16M8 18v3M16 18v3"/><circle cx="8" cy="14.5" r="0.8"/><circle cx="16" cy="14.5" r="0.8"/></svg>
+        </span>
+        <div class="dist-text">
+          <strong data-i18n="ubic.casa.d3a">22 min (13,5 km)</strong>
+          <span data-i18n="ubic.casa.d3b">Terminal de ómnibus de Carlos Paz</span>
+        </div>
+      </li>
+      <li>
+        <span class="dist-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg>
+        </span>
+        <div class="dist-text">
+          <strong data-i18n="ubic.casa.d4a">1 h (57 km)</strong>
+          <span data-i18n="ubic.casa.d4b">Aeropuerto de Córdoba</span>
+        </div>
+      </li>
+    </ul>
+    <a class="ubic-casa-btn" href="https://maps.app.goo.gl/LNTt8TeZjFvNtwUY9" target="_blank" rel="noopener">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+      <span data-i18n="ubic.casa.btn">Cómo llegar</span>
+    </a>
   </div>
 </section>
 <div class="cta-banner">
@@ -2426,11 +2576,12 @@ export default function Home() {
       <div class="footer-col">
         <h4 data-i18n="footer.aloj">Alojamientos</h4>
         <ul>
-          <li data-i18n="footer.a1">Cabaña chica</li>
-          <li data-i18n="footer.a2">Cabaña mediana</li>
-          <li data-i18n="footer.a3">Cabaña grande</li>
+          <li data-i18n="footer.a1">Cabaña chica (hasta 3 pers.)</li>
+          <li data-i18n="footer.a2">Cabaña mediana (hasta 6 pers.)</li>
+          <li data-i18n="footer.a3">Cabaña grande (hasta 8 pers.)</li>
           <li data-i18n="footer.a4">Habitaciones de hotel</li>
           <li data-i18n="footer.a5">Apart Hotel</li>
+          <li data-i18n="footer.a6">Casa con Pileta · Icho Cruz (hasta 10 pers.)</li>
         </ul>
       </div>
       <div class="footer-col">
@@ -2455,6 +2606,16 @@ export default function Home() {
                onmouseout="this.style.color='';this.style.opacity='0.7'">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
               Av. Ramón J. Cárcano 2590
+            </a>
+          </li>
+          <li>
+            <a href="https://maps.app.goo.gl/LNTt8TeZjFvNtwUY9"
+               target="_blank"
+               style="color:var(--footer-text);opacity:0.7;text-decoration:none;display:flex;align-items:center;gap:0.4rem;transition:color 0.25s,opacity 0.25s;"
+               onmouseover="this.style.color='var(--oro)';this.style.opacity='1'"
+               onmouseout="this.style.color='';this.style.opacity='0.7'">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
+              <span data-i18n="footer.casa.dir">Uruguay esq. Lombardo, Icho Cruz</span>
             </a>
           </li>
           <li>
