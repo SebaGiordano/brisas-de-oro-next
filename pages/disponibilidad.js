@@ -824,7 +824,7 @@ export default function Disponibilidad() {
                     {t.bannerIngreso}
                   </span>
                   <span className="disp-banner-valor">{formatFecha(fechaIngreso)}</span>
-                  <span className="disp-banner-sub">Check-in · 14:00 hs</span>
+                  <span className="disp-banner-sub">Check-in · 13:00 hs</span>
                 </div>
                 <div className="disp-banner-sep" aria-hidden="true" />
                 <div className="disp-banner-item">
