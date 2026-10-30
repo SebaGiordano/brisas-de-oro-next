@@ -922,69 +922,52 @@ export default function Disponibilidad() {
         <div className="disp-banner">
           <div className="disp-banner-inner">
             <div className="disp-banner-datos">
-
-              {/* Fila 1: Ingreso · Egreso · Estadía */}
-              <div className="disp-banner-fila disp-banner-fila--1">
-                <div className="disp-banner-item">
-                  <span className="disp-banner-label">
-                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#555" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{flexShrink:0}}>
-                      <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
-                    </svg>
-                    {t.bannerIngreso}
-                  </span>
-                  <span className="disp-banner-valor">{formatFecha(fechaIngreso)}</span>
-                  <span className="disp-banner-sub">{esCasa ? t.bannerCheckinCasa : t.bannerCheckin}</span>
-                </div>
-                <div className="disp-banner-sep" aria-hidden="true" />
-                <div className="disp-banner-item">
-                  <span className="disp-banner-label">
-                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#555" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{flexShrink:0}}>
-                      <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
-                    </svg>
-                    {t.bannerEgreso}
-                  </span>
-                  <span className="disp-banner-valor">{formatFecha(fechaEgreso)}</span>
-                  <span className="disp-banner-sub">{t.bannerCheckout}</span>
-                </div>
-                {cantNoches > 0 && (
-                  <>
-                    <div className="disp-banner-sep" aria-hidden="true" />
-                    <div className="disp-banner-item">
-                      <span className="disp-banner-label">
-                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#555" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{flexShrink:0}}>
-                          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-                        </svg>
-                        {t.bannerNochesLabel}
-                      </span>
-                      <span className="disp-banner-valor">{cantNoches} {cantNoches === 1 ? t.bannerNoche : t.bannerNoches}</span>
-                    </div>
-                  </>
-                )}
+              <div className="disp-banner-item">
+                <span className="disp-banner-label">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#555" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{flexShrink:0}}>
+                    <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+                  </svg>
+                  {t.bannerIngreso}
+                </span>
+                <span className="disp-banner-valor">{formatFecha(fechaIngreso)}</span>
+                <span className="disp-banner-sub">{esCasa ? t.bannerCheckinCasa : t.bannerCheckin}</span>
               </div>
-              <div className="disp-banner-sep" aria-hidden="true" />
-
-              {/* Fila 2: Huéspedes · Tipo */}
-              <div className="disp-banner-fila disp-banner-fila--2">
-                <div className="disp-banner-item">
-                  <span className="disp-banner-label">
-                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#555" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{flexShrink:0}}>
-                      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                    </svg>
-                    {t.bannerHuespedes}
-                  </span>
-                  <span className="disp-banner-valor">{personasValidas ? personas : '—'}</span>
-                </div>
-                {!esCualquiera && tipo && (
-                  <>
-                    <div className="disp-banner-sep" aria-hidden="true" />
-                    <div className="disp-banner-item">
-                      <span className="disp-banner-label">{t.bannerTipo}</span>
-                      <span className="disp-banner-valor">{etiquetaTipo(tipo, t)}</span>
-                    </div>
-                  </>
-                )}
+              <div className="disp-banner-item">
+                <span className="disp-banner-label">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#555" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{flexShrink:0}}>
+                    <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+                  </svg>
+                  {t.bannerEgreso}
+                </span>
+                <span className="disp-banner-valor">{formatFecha(fechaEgreso)}</span>
+                <span className="disp-banner-sub">{t.bannerCheckout}</span>
               </div>
-
+              {cantNoches > 0 && (
+                  <div className="disp-banner-item">
+                    <span className="disp-banner-label">
+                      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#555" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{flexShrink:0}}>
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                      </svg>
+                      {t.bannerNochesLabel}
+                    </span>
+                    <span className="disp-banner-valor">{cantNoches} {cantNoches === 1 ? t.bannerNoche : t.bannerNoches}</span>
+                  </div>
+              )}
+              <div className="disp-banner-item">
+                <span className="disp-banner-label">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#555" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{flexShrink:0}}>
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                  </svg>
+                  {t.bannerHuespedes}
+                </span>
+                <span className="disp-banner-valor">{personasValidas ? personas : '—'}</span>
+              </div>
+              {!esCualquiera && tipo && (
+                  <div className="disp-banner-item">
+                    <span className="disp-banner-label">{t.bannerTipo}</span>
+                    <span className="disp-banner-valor">{etiquetaTipo(tipo, t)}</span>
+                  </div>
+              )}
             </div>
             <a href="/" className="disp-banner-btn">{t.bannerModificar}</a>
           </div>

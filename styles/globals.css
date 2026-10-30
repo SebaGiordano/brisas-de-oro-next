@@ -239,7 +239,6 @@ nav.top-hidden { top: 0; }
 
 @media (max-width: 768px) {
   .wsp-float { animation: none !important; }
-  .mobile-break { display: block; }
   .solo-mobile { display: block !important; }
   .solo-desktop { display: none !important; }
   .br-mobile { display: inline; }
@@ -260,7 +259,6 @@ nav.top-hidden { top: 0; }
 @media (min-width: 769px) {
   .desktop-break { display: inline; }
   .br-desktop { display: inline; }
-  .mobile-break { display: inline !important; }
   .date-ph { display: none; }
   .sticky-btn { background: #fff !important; color: var(--oro) !important; border: 1.5px solid var(--oro) !important; font-weight: 700 !important; font-size: 14px !important; }
   .sticky-btn:hover { background: #fffaf0 !important; }
@@ -543,8 +541,16 @@ section { padding: 5.5rem 5%; }
 .nosotros-img-badge span { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: #F5F2EC; display: block; font-style: italic; }
 .nosotros-text p { color: var(--texto-medio); line-height: 1.9; font-size: 0.93rem; margin-bottom: 1.1rem; }
 .nosotros-text .section-label { color: var(--oro) !important; }
-.highlight-box { background: var(--crema-a); border-left: 2px solid var(--oro); padding: 1rem 1.25rem; margin-top: 1.5rem; }
+/* Marco en diagonal: línea dorada arriba a la izquierda y abajo a la derecha */
+.highlight-box { background: var(--crema-a); position: relative; padding: 1.25rem; margin-top: 1.5rem; text-align: center; }
+.highlight-box::before,
+.highlight-box::after { content: ''; position: absolute; width: 50%; height: 1px; background: var(--oro); }
+.highlight-box::before { top: 0; left: 0; }
+.highlight-box::after  { bottom: 0; right: 0; }
+.cita-linea { display: block; white-space: nowrap; }
 .highlight-box p { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-style: italic; color: var(--texto-medio); margin: 0; line-height: 1.65; }
+/* Texto de "Nuestra casa": la bienvenida va en su propio renglón (<br>), el resto balanceado */
+.casa-desc { color: var(--texto-medio); font-size: 0.9rem; line-height: 1.75; margin: 1rem auto 0; max-width: 520px; text-align: center; text-wrap: balance; }
 .info-chips { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-top: 1.4rem; }
 .chip {
   background: var(--blanco); border: 1px solid var(--borde);
@@ -964,6 +970,7 @@ section { padding: 5.5rem 5%; }
 
 /* ===================== CTA BANNER ===================== */
 .cta-banner { background: var(--texto); padding: 5rem 5%; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.cta-linea { display: block; }
 .cta-banner h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.9rem, 3.5vw, 2.8rem); color: #F5F2EC; font-weight: 400; margin-bottom: 0.75rem; }
 .cta-banner p { font-size: 0.9rem; color: rgba(245,242,236,0.6); margin-bottom: 2.5rem; }
 .btn-cta-wsp { display: inline-flex; align-items: center; gap: 0.55rem; background: var(--verde-wsp); color: #fff; padding: 0.8rem 2rem; border-radius: 8px; text-decoration: none; font-size: 0.83rem; font-weight: 600; transition: background 0.25s, transform 0.25s; }
@@ -1646,27 +1653,23 @@ footer { background: var(--footer-bg); color: var(--footer-text); padding: 3.5re
   gap: 1rem;
   flex-wrap: wrap;
 }
+/* Grilla de resumen: una fila de columnas iguales; el separador es el borde de cada celda */
 .disp-banner-datos {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0;
+  flex: 1 1 560px;
+  min-width: 0;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
 }
-/* En desktop las filas se "disuelven" en el flex padre */
-.disp-banner-fila { display: contents; }
 .disp-banner-item {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 0.12rem;
   padding: 0 1.1rem;
+  min-width: 0;
 }
-.disp-banner-fila--1 .disp-banner-item:first-child { padding-left: 0; }
-.disp-banner-sep {
-  width: 1px;
-  height: 34px;
-  background: var(--borde);
-  flex-shrink: 0;
-}
+.disp-banner-item + .disp-banner-item { border-left: 1px solid var(--borde); }
 .disp-banner-label {
   display: flex;
   align-items: center;
@@ -1873,24 +1876,18 @@ footer { background: var(--footer-bg); color: var(--footer-text); padding: 3.5re
   .disp-banner { top: 96px; padding: 12px 16px; }
   .disp-banner-inner  { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
   .disp-banner-datos  { width: 100%; box-sizing: border-box; }
-  /* Filas en grid */
-  .disp-banner-fila   { display: grid; width: 100%; box-sizing: border-box; }
-  .disp-banner-sep    { display: none; }
-  .disp-banner-fila--1 { grid-template-columns: 38% 38% 24%; }
-  .disp-banner-fila--2 {
-    grid-template-columns: 38% 62%;
-    margin-top: 12px;
-    padding-top: 12px;
-    border-top: 1px solid #e5e0d8;
+  /* Grilla 2 × 2 de columnas iguales: Ingreso | Egreso, Estadía | Huéspedes.
+     El separador vertical es el borde derecho de la columna 1 y el horizontal, el borde superior de cada fila */
+  .disp-banner-datos { flex: none; grid-auto-flow: row; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .disp-banner-item { justify-content: flex-start; padding: 0.55rem 12px; }
+  .disp-banner-item + .disp-banner-item { border-left: none; }
+  .disp-banner-item:nth-child(odd) { border-right: 1px solid #e5e0d8; }
+  .disp-banner-item:nth-child(n+3) { border-top: 1px solid #e5e0d8; }
+  /* Cantidad impar de bloques (sin Estadía, o con Tipo): el último ocupa la fila entera, centrado y en un renglón */
+  .disp-banner-item:last-child:nth-child(odd) {
+    grid-column: 1 / -1; border-right: none;
+    flex-direction: row; align-items: center; justify-content: center; gap: 0.5rem;
   }
-  /* Padding interno de columnas */
-  .disp-banner-item { padding: 0 10px; }
-  .disp-banner-fila--1 .disp-banner-item:first-child,
-  .disp-banner-fila--2 .disp-banner-item:first-child { padding-left: 0; }
-  /* Fila 1: divisorias verticales a la derecha de Ingreso y Egreso */
-  .disp-banner-fila--1 .disp-banner-item:not(:last-child) { border-right: 1px solid #e5e0d8; }
-  /* Fila 2: divisoria izquierda en Tipo para alinear con la divisoria Ingreso/Egreso de fila 1 */
-  .disp-banner-fila--2 .disp-banner-item:not(:first-child) { border-left: 1px solid #e5e0d8; }
   /* Evitar que "Check-out · 10:00 hs" se parta en dos líneas */
   .disp-banner-sub { white-space: nowrap; }
   .disp-banner-btn    { width: 100%; text-align: center; }
@@ -1949,6 +1946,7 @@ footer { background: var(--footer-bg); color: var(--footer-text); padding: 3.5re
   /* Reseñas: título, rating y flechas centrados */
   .test-header { flex-direction: column; align-items: center; }
   .test-header > div:last-child { justify-content: center; }
+  .titulo-corte { display: block; }
   /* En mobile se ve una columna por vez: la tarjeta sola conserva su alto natural, como las demás */
   .test-col--una .test-card { flex: none; justify-content: flex-start; }
   .test-col--una .test-autor { margin-top: auto; }
@@ -1966,16 +1964,11 @@ footer { background: var(--footer-bg); color: var(--footer-text); padding: 3.5re
   .hero-badges.hero-badges--es { flex-wrap: wrap; }
   .hero-badges { justify-content: center; row-gap: 0.35rem; }
 
-  /* 2. Quiénes somos: párrafos centrados; la cita lleva líneas doradas cortas arriba y abajo */
+  /* 2. Quiénes somos: párrafos centrados */
   .nosotros-text p { text-align: center; }
-  .highlight-box { border-left: none; position: relative; padding: 1.35rem 1.25rem; }
-  .highlight-box::before,
-  .highlight-box::after {
-    content: ''; position: absolute; left: 50%; transform: translateX(-50%);
-    width: 48px; height: 2px; background: var(--oro);
-  }
-  .highlight-box::before { top: 0; }
-  .highlight-box::after  { bottom: 0; }
+  /* Cita: siempre en dos renglones, también con letra grande (la fuente no supera el ancho disponible) */
+  .highlight-box { padding-left: 0.75rem; padding-right: 0.75rem; }
+  .highlight-box p { font-size: min(1.1rem, 4.6vw); }
 
   /* 3. Servicios: el nombre del complejo en su propio renglón, sin partirse */
   .serv-sub-nombre { display: block; white-space: nowrap; }
@@ -2045,13 +2038,11 @@ footer { background: var(--footer-bg); color: var(--footer-text); padding: 3.5re
   /* 2. Topbar: las dos direcciones centradas */
   .topbar-inner { justify-content: center; }
 
-  /* 3. Menú hamburguesa: divisorias en dorado muy tenue */
-  .nav-mobile-menu a { border-bottom-color: rgba(184,152,42,0.25); }
+  /* 3. Menú hamburguesa: divisorias en dorado muy tenue, al 80 % del ancho y centradas */
+  .nav-mobile-menu a { border-bottom: none; position: relative; }
+  .nav-mobile-menu a::after { content: ''; position: absolute; left: 10%; right: 10%; bottom: 0; height: 1px; background: rgba(184,152,42,0.25); }
 
-  /* 4. Información importante: títulos y contenido centrados, filas apiladas, sin justificado */
-  .acord-header { justify-content: center; position: relative; padding-left: 2.6rem; padding-right: 2.6rem; text-align: center; }
-  .acord-header > .acord-chevron { position: absolute; right: 1.1rem; top: 50%; margin-top: -8px; }
-  .acord-header > span { justify-content: center; }
+  /* 4. Información importante: contenido centrado, filas apiladas, sin justificado (títulos a la izquierda) */
   .acord-body { text-align: center; }
   /* Con texto centrado en una columna y letra grande, 600px no alcanzaba ("Formas de pago" se cortaba) */
   .acord-body.open { max-height: 1400px; }

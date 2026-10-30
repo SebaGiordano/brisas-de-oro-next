@@ -23,7 +23,7 @@ export default function Home() {
         'nosotros.badge1':'Atendido por sus dueños','nosotros.badge2':'María Celia, anfitriona',
         'nosotros.p1':'Somos un complejo familiar ubicado en Villa Carlos Paz, atendido directamente por sus dueños. Desde el primer contacto hasta el momento de la despedida, nos ocupamos personalmente de que tu estadía sea cómoda, tranquila y especial.',
         'nosotros.p2':'Cada detalle importa: el desayuno casero preparado con amor, el saludo al llegar, la charla de tarde. Son esas pequeñas cosas las que hacen que nuestros huéspedes se vayan con una sonrisa y quieran volver.',
-        'nosotros.quote':'"Más que una estadía, un recuerdo que se lleva en el corazón."',
+        'nosotros.quote':'<span class="cita-linea">"Más que una estadía, un recuerdo</span><span class="cita-linea">que se lleva en el corazón."</span>',
         'nosotros.c1':'Atención personalizada','nosotros.c2':'Ubicación estratégica','nosotros.c3':'Flexibilidad y comodidad','nosotros.c4':'16 unidades','nosotros.c5':'Atendido por la familia','nosotros.c6':'El Algarrobo','nosotros.p3':'En el corazón del complejo se encuentra El Algarrobo — nuestro espacio compartido bajo la sombra de un algarrobo bicentenario. Parrilleros, mesas y el sonido de la naturaleza, para que cada reunión sea un momento especial.',
         'galeria.vermas':'Ver más<br>fotos','galeria.cta':'Consultanos →',
         'aloj.label':'Nuestros alojamientos','aloj.title':'Encontrá tu espacio ideal','aloj.consultar':'Consultar',
@@ -43,7 +43,7 @@ export default function Home() {
         'serv.cochera':'Cochera','serv.cochera.d':'Techada y segura','serv.asadores':'Asadores','serv.asadores.d':'Privado en cada cabaña',
         'serv.desayuno':'Desayuno buffet','serv.desayuno.d':'Casero, de Celia','serv.wifi.d':'Todo el complejo',
         'serv.ac':'Aire acond.','serv.ac.d':'Frío y calor','serv.limpieza':'Limpieza','serv.limpieza.d':'Servicio de mucamas','serv.algarrobo':'El Algarrobo','serv.algarrobo.d':'Espacio compartido bicentenario','serv.juegos':'Juegos para niños','serv.juegos.d':'Para jugar y divertirse en familia','serv.seguridad':'Seguridad','serv.seguridad.d':'Rejas, alarma y cámaras','serv.ropa':'Ropa blanca','serv.ropa.d':'Sábanas, toallas y toallones',
-        'test.label':'Reseñas','test.title':'Lo que dicen quienes nos visitaron',
+        'test.label':'Reseñas','test.title':'Lo que dicen quienes <span class="titulo-corte">nos visitaron</span>',
         'test.rating':'Reseñas verificadas · Google y Alquiler Argentina',
         'test.r1':'"Las cabañas son cómodas, el predio es grande. Es atendida por sus dueños, super amables."',
         'test.r2':'"Un lugar hermoso, para ir caminando a Playas de Oro. Las cabañas con vista a la pileta, muy cómodas. El desayuno casero de Celia: 10 puntos. Volveríamos sin dudas."',
@@ -60,12 +60,12 @@ export default function Home() {
         'ubic.d1a':'1 cuadra','ubic.d1b':'Balneario Playas de Oro','ubic.d2a':'Al lado','ubic.d2b':'Río San Antonio',
         'ubic.d3a':'25 cuadras · 2,5 km','ubic.d3b':'Centro de Villa Carlos Paz','ubic.d4a':'45 minutos','ubic.d4b':'Aeropuerto Internacional de Córdoba',
         'ubic.mapa':'Google Maps — próximamente',
-        'cta.title':'¿Listo para reservar tus vacaciones?','cta.sub':'Escribinos directo por WhatsApp y te respondemos al instante.','cta.btn':'Consultar por WhatsApp',
+        'cta.title':'¿Listo para reservar tus vacaciones?','cta.sub':'Escribinos directo por WhatsApp <span class="cta-linea">y te respondemos al instante.</span>','cta.btn':'Consultar por WhatsApp',
         'footer.desc':'Complejo familiar atendido por sus dueños, donde el trato personalizado y el clima hogareño hacen que cada huésped se sienta en casa. Rodeados de las sierras cordobesas y a orillas del río San Antonio.',
         'footer.aloj':'Alojamientos','footer.a1':'Cabaña chica (hasta 3 pers.)','footer.a2':'Cabaña mediana (hasta 6 pers.)','footer.a3':'Cabaña grande (hasta 8 pers.)','footer.a4':'Habitaciones de hotel',
         'footer.info':'Información','footer.checkin':'Check-in: 13:00 hs','footer.checkout':'Check-out: 10:00 hs','footer.host':'Brisas de Oro · Villa Carlos Paz',
         'fam.label':'Nuestras familias','fam.title':'<span class="fam-title-line">Cada despedida</span> <span class="fam-title-line">es un hasta pronto</span>','fam.desc':'Las familias que nos eligieron son parte de nuestra historia. Cada visita deja una huella que nos hace querer seguir dando lo mejor.',
-        'casa.label':'Nuestra casa','casa.title':'También es tu casa',
+        'casa.label':'Nuestra casa','casa.title':'También es tu casa','casa.desc':'Cada rincón fue pensado para que te sientas cómodo, libre y en familia.<br>Bienvenido a Brisas de Oro.',
         'test.plat':'También nos encontrás en','footer.tambien':'También en',
         'aloj.franja':'¿Te interesa algún alojamiento? Antes de consultar, te recomendamos leer la <span style="color:var(--oro);font-weight:700;">información importante</span>',
         'info.cta.btn':'Consultar por WhatsApp',
@@ -145,7 +145,7 @@ export default function Home() {
         'nosotros.badge1':'Owner-managed','nosotros.badge2':'María Celia, host',
         'nosotros.p1':'We are a family-run resort in Villa Carlos Paz, managed directly by its owners. From the first contact to the moment of farewell, we personally make sure your stay is comfortable, peaceful and special.',
         'nosotros.p2':'Every detail matters: the homemade breakfast prepared with love, the warm welcome, the afternoon conversations. It\'s those small things that make our guests leave with a smile and want to come back.',
-        'nosotros.quote':'"More than a stay, a memory you carry in your heart."',
+        'nosotros.quote':'<span class="cita-linea">"More than a stay, a memory</span><span class="cita-linea">you carry in your heart."</span>',
         'nosotros.c1':'Personalized attention','nosotros.c2':'Strategic location','nosotros.c3':'Flexibility & comfort','nosotros.c4':'16 units','nosotros.c5':'Family-run','nosotros.c6':'El Algarrobo','nosotros.p3':'At the heart of the complex stands El Algarrobo — our shared space beneath the shade of a 200-year-old algarrobo tree. Grills, tables and the sounds of nature, for gatherings that become special moments.',
         'galeria.vermas':'See more<br>photos','galeria.cta':'Contact us →',
         'aloj.label':'Our accommodations','aloj.title':'Find your ideal space','aloj.consultar':'Inquire',
@@ -165,7 +165,7 @@ export default function Home() {
         'serv.cochera':'Parking','serv.cochera.d':'Covered and secure','serv.asadores':'BBQ grills','serv.asadores.d':'Private BBQ per cabin',
         'serv.desayuno':'Buffet breakfast','serv.desayuno.d':'Homemade, by Celia','serv.wifi.d':'Throughout the resort',
         'serv.ac':'Air cond.','serv.ac.d':'Hot & cold','serv.limpieza':'Housekeeping','serv.limpieza.d':'Daily maid service','serv.algarrobo':'El Algarrobo','serv.algarrobo.d':'Shared bicentennial space','serv.juegos':'Kids playground','serv.juegos.d':'Play and fun for everyone','serv.seguridad':'Security','serv.seguridad.d':'Fences, alarm & cameras','serv.ropa':'Bed & bath linen','serv.ropa.d':'Sheets, towels and bath towels',
-        'test.label':'What our guests say','test.title':'Real reviews from the resort',
+        'test.label':'What our guests say','test.title':'Real reviews <span class="titulo-corte">from the resort</span>',
         'test.rating':'Verified reviews · Google & Alquiler Argentina',
         'test.r1':'"The cabins are comfortable, the grounds are spacious. Owner-run, super friendly."',
         'test.r2':'"A beautiful place, walking distance to the beach. Cabins with pool views, very comfortable. Celia\'s homemade breakfast: 10/10. We\'d definitely come back."',
@@ -182,7 +182,7 @@ export default function Home() {
         'ubic.d1a':'1 block','ubic.d1b':'Playas de Oro beach','ubic.d2a':'Next door','ubic.d2b':'San Antonio River',
         'ubic.d3a':'25 blocks · 2.5 km','ubic.d3b':'Villa Carlos Paz city center','ubic.d4a':'45 minutes','ubic.d4b':'Córdoba International Airport',
         'ubic.mapa':'Google Maps — coming soon',
-        'cta.title':'Ready to book your vacation?','cta.sub':'Write us directly on WhatsApp and we\'ll reply instantly.','cta.btn':'Contact us on WhatsApp',
+        'cta.title':'Ready to book your vacation?','cta.sub':'Write us directly on WhatsApp <span class="cta-linea">and we\'ll reply instantly.</span>','cta.btn':'Contact us on WhatsApp',
         'footer.desc':'Family resort run by its owners, one block from Playas de Oro beach. The warmth you always wanted, in the heart of the Córdoba mountains.',
         'footer.aloj':'Accommodations','footer.a1':'Small cabin (up to 3 guests)','footer.a2':'Medium cabin (up to 6 guests)','footer.a3':'Large cabin (up to 8 guests)','footer.a4':'Hotel rooms',
         'footer.info':'Information','footer.checkin':'Check-in: 1:00 PM','footer.checkout':'Check-out: 10:00 AM','footer.host':'Brisas de Oro · Villa Carlos Paz',
@@ -218,7 +218,7 @@ export default function Home() {
         'clima.desc':'Check the forecast before packing. Real-time data, updated automatically.',
         'clima.note':'Data provided by Tomorrow.io · Updated automatically',
         'fam.label':'Our families','fam.title':'<span class="fam-title-line">Every goodbye</span> <span class="fam-title-line">is a see you soon</span>','fam.desc':'The families who chose us are part of our story. Every visit leaves a mark that makes us want to keep giving our best.',
-        'casa.label':'Our place','casa.title':'It is your home too',
+        'casa.label':'Our place','casa.title':'It is your home too','casa.desc':'Every corner was designed for you to feel comfortable, free and with your family.<br>Welcome to Brisas de Oro.',
         'test.plat':'Also find us on','footer.tambien':'Also on',
         'aloj.franja':'Interested in an accommodation? Before inquiring, we recommend reading the <span style="color:var(--oro);font-weight:700;">important information</span>',
         'info.cta.btn':'Contact us on WhatsApp',
@@ -267,7 +267,7 @@ export default function Home() {
         'nosotros.badge1':'Gerenciado pelos proprietários','nosotros.badge2':'María Celia, anfitriã',
         'nosotros.p1':'Somos um complexo familiar localizado em Villa Carlos Paz, gerenciado diretamente pelos proprietários. Desde o primeiro contato até o momento da despedida, cuidamos pessoalmente para que sua estadia seja confortável, tranquila e especial.',
         'nosotros.p2':'Cada detalhe importa: o café da manhã caseiro preparado com amor, a recepção calorosa, as conversas de fim de tarde. São essas pequenas coisas que fazem nossos hóspedes partirem com um sorriso e quererem voltar.',
-        'nosotros.quote':'"Mais do que uma estadia, uma lembrança que fica no coração."',
+        'nosotros.quote':'<span class="cita-linea">"Mais do que uma estadia,</span><span class="cita-linea">uma lembrança que fica no coração."</span>',
         'nosotros.c1':'Atenção personalizada','nosotros.c2':'Localização estratégica','nosotros.c3':'Flexibilidade e conforto','nosotros.c4':'16 unidades','nosotros.c5':'Atendido pela família','nosotros.c6':'El Algarrobo','nosotros.p3':'No coração do complexo está El Algarrobo — nosso espaço compartilhado sob a sombra de um algarrobo bicentenário. Churrasqueiras, mesas e os sons da natureza, para que cada reunião seja um momento especial.',
         'galeria.vermas':'Ver mais<br>fotos','galeria.cta':'Fale conosco →',
         'aloj.label':'Nossa hospedagem','aloj.title':'Encontre seu espaço ideal','aloj.consultar':'Consultar',
@@ -287,7 +287,7 @@ export default function Home() {
         'serv.cochera':'Estacionamento','serv.cochera.d':'Coberto e seguro','serv.asadores':'Churrasqueiras','serv.asadores.d':'Privativo em cada chalé',
         'serv.desayuno':'Café buffet','serv.desayuno.d':'Caseiro, da Celia','serv.wifi.d':'Em todo o complexo',
         'serv.ac':'Ar-cond.','serv.ac.d':'Frio e calor','serv.limpieza':'Limpeza','serv.limpieza.d':'Serviço de camareira','serv.algarrobo':'El Algarrobo','serv.algarrobo.d':'Espaço compartilhado bicentenário','serv.juegos':'Brinquedos','serv.juegos.d':'Diversão para toda a família','serv.seguridad':'Segurança','serv.seguridad.d':'Grades, alarme e câmeras','serv.ropa':'Roupa de cama e banho','serv.ropa.d':'Lençóis, toalhas e toalhões',
-        'test.label':'O que dizem nossos hóspedes','test.title':'O que dizem os nossos hóspedes',
+        'test.label':'O que dizem nossos hóspedes','test.title':'O que dizem <span class="titulo-corte">os nossos hóspedes</span>',
         'test.rating':'Avaliações verificadas · Google e Alquiler Argentina',
         'test.r1':'"Os chalés são confortáveis, o terreno é grande. É gerenciado pelos proprietários, super simpáticos."',
         'test.r2':'"Um lugar lindo, para ir caminhando até a praia. Chalés com vista para a piscina, muito confortáveis. O café da manhã da Celia: nota 10. Voltaríamos com certeza."',
@@ -304,7 +304,7 @@ export default function Home() {
         'ubic.d1a':'1 quarteirão','ubic.d1b':'Praia Playas de Oro','ubic.d2a':'Ao lado','ubic.d2b':'Rio San Antonio',
         'ubic.d3a':'25 quarteirões · 2,5 km','ubic.d3b':'Centro de Villa Carlos Paz','ubic.d4a':'45 minutos','ubic.d4b':'Aeroporto Internacional de Córdoba',
         'ubic.mapa':'Google Maps — em breve',
-        'cta.title':'Pronto para reservar suas férias?','cta.sub':'Escreva para nós pelo WhatsApp e respondemos na hora.','cta.btn':'Consultar pelo WhatsApp',
+        'cta.title':'Pronto para reservar suas férias?','cta.sub':'Escreva para nós pelo WhatsApp <span class="cta-linea">e respondemos na hora.</span>','cta.btn':'Consultar pelo WhatsApp',
         'footer.desc':'Complexo familiar gerenciado pelos proprietários, onde o atendimento personalizado e o clima acolhedor fazem cada hóspede se sentir em casa. Rodeados pelas serras cordobesas e às margens do Rio San Antonio.',
         'footer.aloj':'Hospedagem','footer.a1':'Chalé pequeno (até 3 pessoas)','footer.a2':'Chalé médio (até 6 pessoas)','footer.a3':'Chalé grande (até 8 pessoas)','footer.a4':'Quartos de hotel',
         'footer.info':'Informações','footer.checkin':'Check-in: 13:00 hs','footer.checkout':'Check-out: 10:00 hs','footer.host':'Brisas de Oro · Villa Carlos Paz',
@@ -340,7 +340,7 @@ export default function Home() {
         'clima.desc':'Confira a previsão antes de fazer as malas. Dados em tempo real, atualizados automaticamente.',
         'clima.note':'Dados fornecidos por Tomorrow.io · Atualizado automaticamente',
         'fam.label':'Nossas famílias','fam.title':'<span class="fam-title-line">Cada despedida</span> <span class="fam-title-line">é um até logo</span>','fam.desc':'As famílias que nos escolheram fazem parte da nossa história. Cada visita deixa uma marca que nos faz querer continuar dando o nosso melhor.',
-        'casa.label':'Nossa casa','casa.title':'É a sua casa também',
+        'casa.label':'Nossa casa','casa.title':'É a sua casa também','casa.desc':'Cada canto foi pensado para que você se sinta confortável, livre e em família.<br>Bem-vindo ao Brisas de Oro.',
         'test.plat':'Também nos encontre em','footer.tambien':'Também em',
         'aloj.franja':'Tem interesse em alguma acomodação? Antes de consultar, recomendamos ler as <span style="color:var(--oro);font-weight:700;">informações importantes</span>',
         'info.cta.btn':'Consultar pelo WhatsApp',
@@ -1739,7 +1739,7 @@ export default function Home() {
         <p data-i18n="nosotros.p2">Cada detalle importa: el desayuno casero preparado con amor, el saludo al llegar, la charla de tarde. Son esas pequeñas cosas las que hacen que nuestros huéspedes se vayan con una sonrisa y quieran volver.</p>
           <p data-i18n="nosotros.p3">En el corazón del complejo se encuentra El Algarrobo — nuestro espacio compartido bajo la sombra de un algarrobo bicentenario. Parrilleros, mesas y el sonido de la naturaleza, para que cada reunión sea un momento especial.</p>
         <div class="highlight-box">
-          <p data-i18n="nosotros.quote">"Más que una estadía, un recuerdo que se lleva en el corazón."</p>
+          <p data-i18n="nosotros.quote"><span class="cita-linea">"Más que una estadía, un recuerdo</span><span class="cita-linea">que se lleva en el corazón."</span></p>
         </div>
         <div class="info-chips">
           <span class="chip" data-i18n="nosotros.c1">Atención personalizada</span>
@@ -1861,16 +1861,7 @@ export default function Home() {
       <p class="section-label" data-i18n="casa.label">Nuestra casa</p>
       <h2 class="section-title" data-i18n="casa.title">También es tu casa</h2>
       <div class="divider" style="margin:0.9rem auto 0;"></div>
-      <p style="font-size:0.9rem;color:var(--texto-suave);max-width:520px;margin:1rem auto 0;line-height:1.75;">
-        <!-- Desktop -->
-<p class="solo-desktop" style="color:var(--texto-medio);font-size:0.9rem;line-height:1.75;margin:1rem auto 0;max-width:520px;text-align:center;">
-  Cada rincón fue pensado para que te sientas cómodo, libre y en familia.<br>Bienvenido a Brisas de Oro.
-</p>
-<!-- Mobile -->
-<p class="solo-mobile" style="color:var(--texto-medio);font-size:0.9rem;line-height:1.75;margin:1rem auto 0;max-width:520px;text-align:center;">
-  Cada rincón fue pensado para que te sientas<br>cómodo, libre y en familia.<br>Bienvenido a Brisas de Oro.
-</p>
-      </p>
+      <p class="casa-desc" data-i18n="casa.desc">Cada rincón fue pensado para que te sientas cómodo, libre y en familia.<br>Bienvenido a Brisas de Oro.</p>
     </div>
 
     <div class="familias-wrap" style="position:relative;" id="gal-wrap">
@@ -2424,7 +2415,7 @@ export default function Home() {
     <div class="test-header">
       <div class="test-header-left">
         <p class="section-label" data-i18n="test.label">Reseñas</p>
-        <h2 class="section-title" data-i18n="test.title">Lo que dicen quienes nos visitaron</h2>
+        <h2 class="section-title" data-i18n="test.title">Lo que dicen quienes <span class="titulo-corte">nos visitaron</span></h2>
         <div class="divider" style="margin-bottom:0"></div>
       </div>
       <div style="display:flex;align-items:center;gap:1.25rem;flex-wrap:wrap">
@@ -2721,7 +2712,7 @@ export default function Home() {
 </section>
 <div class="cta-banner">
   <h2 data-i18n="cta.title">¿Listo para reservar tus vacaciones?</h2>
-  <p data-i18n="cta.sub">Escribinos directo por WhatsApp <span class="mobile-break">y te respondemos al instante.</span></p>
+  <p data-i18n="cta.sub">Escribinos directo por WhatsApp <span class="cta-linea">y te respondemos al instante.</span></p>
   <a href="javascript:void(0)" onclick="abrirWsp(getMsgWsp('general'))" class="btn-cta-wsp" data-i18n="cta.btn">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
           Consultar por WhatsApp
