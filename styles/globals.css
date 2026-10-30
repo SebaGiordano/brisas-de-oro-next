@@ -1767,6 +1767,7 @@ footer { background: var(--footer-bg); color: var(--footer-text); padding: 3.5re
 .disp-avail-badge--si   { background: var(--oro); color: var(--blanco); }
 .disp-avail-badge--otro { background: rgba(20,16,10,0.65); color: rgba(245,242,236,0.92); }
 .disp-avail-badge--no   { background: rgba(60,60,60,0.72); color: rgba(245,242,236,0.8); }
+.disp-avail-badge--neutro { background: var(--blanco); color: var(--texto-medio); border: 1px solid var(--borde); }
 
 /* Unidades disponibles (dentro de card-body) */
 .disp-unidades {
@@ -1800,7 +1801,7 @@ footer { background: var(--footer-bg); color: var(--footer-text); padding: 3.5re
 /* ── Responsive ── */
 @media (max-width: 768px) {
   .disp-main   { padding-top: 96px; }
-  .disp-banner { top: 96px; padding: 12px 16px; }
+  .disp-banner { position: static; padding: 12px 16px; }
   .disp-banner-inner  { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
   .disp-banner-datos  { width: 100%; box-sizing: border-box; }
   /* Grilla 2 × 2 de columnas iguales: Ingreso | Egreso, Estadía | Huéspedes.
@@ -2026,3 +2027,32 @@ footer { background: var(--footer-bg); color: var(--footer-text); padding: 3.5re
 .combo-texto { font-size: 0.88rem; font-weight: 600; color: var(--texto); line-height: 1.5; }
 .combo-nota { font-size: 0.78rem; color: var(--texto-suave); line-height: 1.6; margin-top: 0.9rem; text-align: center; text-wrap: balance; }
 .combo-wsp { display: flex; width: fit-content; margin: 0.9rem auto 0; padding-left: 1.75rem; padding-right: 1.75rem; }
+
+/* Título del bloque de combinaciones: como los títulos de sección del sitio */
+.combo-header { text-align: center; margin-bottom: 1.5rem; }
+.combo-header .section-title { margin-bottom: 0; }
+.combo-header .divider { margin: 0.9rem auto 1.1rem; }
+.combo-header .disp-aviso-texto { margin: 0 auto; font-weight: 500; color: var(--texto-medio); }
+.combo-capacidad { font-size: 0.74rem; color: var(--texto-suave); line-height: 1.5; margin-top: 0.15rem; }
+
+/* Barra compacta de la búsqueda: solo mobile, reemplaza al banner al hacer scroll */
+.disp-compacta { display: none; }
+@media (max-width: 768px) {
+  .disp-compacta {
+    display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+    position: fixed; top: 96px; left: 0; right: 0; z-index: 100;
+    width: 100%; padding: 0.5rem 16px; box-sizing: border-box;
+    background: var(--blanco); color: var(--texto);
+    border: none; border-top: 3px solid var(--oro); border-bottom: 1px solid var(--borde);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    font-family: 'Nunito', sans-serif; font-size: 0.78rem; font-weight: 700; cursor: pointer;
+    /* Se desliza por debajo del nav: al ser fija no mueve el contenido */
+    transform: translateY(-100%); opacity: 0; visibility: hidden;
+    transition: transform 0.25s ease, opacity 0.2s ease, visibility 0.25s;
+  }
+  .disp-compacta.visible { transform: translateY(0); opacity: 1; visibility: visible; }
+  /* Aquí la topbar queda siempre visible y el contenido pasa por debajo: fondo opaco para que no se transparente */
+  .topbar:has(~ .disp-main) { background: rgb(22, 20, 17); }
+  .disp-compacta-texto { min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .disp-compacta svg { flex-shrink: 0; color: var(--oro); }
+}

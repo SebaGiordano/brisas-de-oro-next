@@ -27,10 +27,11 @@ const I18N = {
     grupoMax:'Para grupos de más de 30 personas coordinamos la estadía de forma personalizada.',
     grupoAviso:'Nuestra unidad más grande recibe hasta 10 personas. Para tu grupo de {n} te proponemos estas combinaciones:',
     grupoInsuficiente:'Para esas fechas no tenemos disponibilidad suficiente para tu grupo. Escribinos y buscamos alternativas.',
-    grupoTitulo:'Para grupos: combiná unidades',
+    grupoTitulo:'Combinaciones para tu grupo',
     grupoNota:'Sugerencias orientativas, sujetas a confirmación. Escribinos y armamos la mejor opción para tu grupo.',
     grupoHotel:'Hotel', grupoMixta:'Cabaña + Hotel', grupoCabanas:'Cabañas', grupoTodas:'Cabañas + Hotel',
-    grupoHasta:'hasta {n} personas',
+    grupoCapacidad:'Capacidad total: {n} personas', grupoCapacidadWsp:'capacidad total {n}',
+    compactaHuespedes:'huésp.', compactaEditar:'Volver arriba para modificar la búsqueda',
     grupoHab:['Habitación','Habitaciones'], grupoCc:['Cabaña chica','Cabañas chicas'], grupoCm:['Cabaña mediana','Cabañas medianas'], grupoCg:['Cabaña grande','Cabañas grandes'],
     notaMediana6:'Para 6 personas el espacio es más ajustado. Consultanos.',
     unidadLibre:'unidad libre', unidadesLibres:'unidades libres',
@@ -40,9 +41,9 @@ const I18N = {
     sinDispSub:'Conocé nuestros alojamientos y escribinos por WhatsApp para consultar disponibilidad futura',
     // Resultados
     dispDisponibles:'Disponibles', dispTuSeleccion:'Tu selección',
-    dispOtrasOpciones:'Otras opciones disponibles', dispNoDisponibles:'No disponibles',
+    dispOtrasOpciones:'Otras opciones disponibles', dispNoDisponibles:'No disponibles', dispOtrasUnidades:'Otras unidades',
     // Badges / card
-    badgeSi:'Disponible', badgeNo:'No disponible',
+    badgeSi:'Disponible', badgeNo:'No disponible', badgeNoAlcanza:'No alcanza para tu grupo',
     btnWsp:'Consultar por WhatsApp',
     unidad:'unidad disponible', unidades:'unidades disponibles',
     // Tipo labels
@@ -159,10 +160,11 @@ const I18N = {
     grupoMax:'For groups of more than 30 people, we arrange the stay personally.',
     grupoAviso:'Our largest unit sleeps up to 10 guests. For your group of {n}, we suggest these combinations:',
     grupoInsuficiente:"We don't have enough availability for your group on those dates. Write to us and we'll look for alternatives.",
-    grupoTitulo:'For groups: combine units',
+    grupoTitulo:'Combinations for your group',
     grupoNota:"Approximate suggestions, subject to confirmation. Write to us and we'll put together the best option for your group.",
     grupoHotel:'Hotel', grupoMixta:'Cabin + Hotel', grupoCabanas:'Cabins', grupoTodas:'Cabins + Hotel',
-    grupoHasta:'up to {n} guests',
+    grupoCapacidad:'Total capacity: {n} guests', grupoCapacidadWsp:'total capacity {n}',
+    compactaHuespedes:'guests', compactaEditar:'Back to top to modify the search',
     grupoHab:['Room','Rooms'], grupoCc:['Small cabin','Small cabins'], grupoCm:['Medium cabin','Medium cabins'], grupoCg:['Large cabin','Large cabins'],
     notaMediana6:'For 6 guests the space is tighter. Ask us.',
     unidadLibre:'unit free', unidadesLibres:'units free',
@@ -171,8 +173,8 @@ const I18N = {
     sinDispTitulo:'We didn\'t find availability for the selected dates',
     sinDispSub:'You can still contact us for other dates or future availability',
     dispDisponibles:'Available', dispTuSeleccion:'Your selection',
-    dispOtrasOpciones:'Other available options', dispNoDisponibles:'Unavailable',
-    badgeSi:'Available', badgeNo:'Not available',
+    dispOtrasOpciones:'Other available options', dispNoDisponibles:'Unavailable', dispOtrasUnidades:'Other units',
+    badgeSi:'Available', badgeNo:'Not available', badgeNoAlcanza:'Not enough capacity',
     btnWsp:'Inquire on WhatsApp',
     unidad:'unit available', unidades:'units available',
     tipoCualquiera:'Any type', tipoHabitacion:'Hotel room',
@@ -284,10 +286,11 @@ const I18N = {
     grupoMax:'Para grupos de mais de 30 pessoas, organizamos a estadia de forma personalizada.',
     grupoAviso:'Nossa maior unidade recebe até 10 pessoas. Para o seu grupo de {n}, propomos estas combinações:',
     grupoInsuficiente:'Para essas datas não temos disponibilidade suficiente para o seu grupo. Escreva-nos e buscamos alternativas.',
-    grupoTitulo:'Para grupos: combine unidades',
+    grupoTitulo:'Combinações para o seu grupo',
     grupoNota:'Sugestões orientativas, sujeitas a confirmação. Escreva-nos e montamos a melhor opção para o seu grupo.',
     grupoHotel:'Hotel', grupoMixta:'Chalé + Hotel', grupoCabanas:'Chalés', grupoTodas:'Chalés + Hotel',
-    grupoHasta:'até {n} pessoas',
+    grupoCapacidad:'Capacidade total: {n} pessoas', grupoCapacidadWsp:'capacidade total {n}',
+    compactaHuespedes:'hósp.', compactaEditar:'Voltar ao topo para modificar a busca',
     grupoHab:['Quarto','Quartos'], grupoCc:['Chalé pequeno','Chalés pequenos'], grupoCm:['Chalé médio','Chalés médios'], grupoCg:['Chalé grande','Chalés grandes'],
     notaMediana6:'Para 6 pessoas o espaço é mais apertado. Consulte-nos.',
     unidadLibre:'unidade livre', unidadesLibres:'unidades livres',
@@ -296,8 +299,8 @@ const I18N = {
     sinDispTitulo:'Não encontramos disponibilidade para as datas selecionadas',
     sinDispSub:'Mesmo assim, pode nos consultar por outras datas ou disponibilidade futura',
     dispDisponibles:'Disponíveis', dispTuSeleccion:'Sua seleção',
-    dispOtrasOpciones:'Outras opções disponíveis', dispNoDisponibles:'Indisponíveis',
-    badgeSi:'Disponível', badgeNo:'Indisponível',
+    dispOtrasOpciones:'Outras opções disponíveis', dispNoDisponibles:'Indisponíveis', dispOtrasUnidades:'Outras unidades',
+    badgeSi:'Disponível', badgeNo:'Indisponível', badgeNoAlcanza:'Capacidade insuficiente',
     btnWsp:'Consultar pelo WhatsApp',
     unidad:'unidade disponível', unidades:'unidades disponíveis',
     tipoCualquiera:'Qualquer tipo', tipoHabitacion:'Quarto de hotel',
@@ -417,7 +420,10 @@ function parsearRespuesta(data, t) {
   }
   return Object.entries(ALOJ_BASE).map(([clave, base]) => {
     const info = data[clave] || {}
-    return { ...base, ...tradMeta[clave], disponible: info.disponible ?? false, unidadesDisponibles: info.unidadesDisponibles ?? 0 }
+    const disponible = info.disponible ?? false
+    // Hay unidades libres en las fechas, pero el grupo no entra en una
+    const sinCapacidad = !disponible && (data.libres?.[clave]?.length ?? 0) > 0
+    return { ...base, ...tradMeta[clave], disponible, sinCapacidad, unidadesDisponibles: info.unidadesDisponibles ?? 0 }
   })
 }
 
@@ -450,6 +456,11 @@ function formatFecha(s) {
   return d && m && y ? `${d}/${m}/${y}` : s
 }
 
+function fechaCorta(s) {
+  const [, m, d] = (s || '').split('-')
+  return d && m ? `${d}/${m}` : '—'
+}
+
 function etiquetaTipo(tipo, t) {
   if (!tipo || normalizarTipo(tipo) === 'cualquiera') return t.tipoCualquiera
   const c = tipoCanonico(tipo)
@@ -466,15 +477,29 @@ const GRUPO_UNIDAD_MAX = 10 // capacidad de la unidad más grande
 const GRUPO_MAX = 30       // por encima se coordina por WhatsApp, sin consultar la API
 const CAP_MEDIANA = 5      // la cabaña mediana cuenta como máximo 5 en las combinaciones
 
-function tomarHasta(unidades, n) {
-  const usadas = []
-  let total = 0
-  for (const u of [...unidades].sort((a, b) => b.cap - a.cap)) {
-    if (total >= n) break
-    usadas.push(u)
-    total += u.cap
+/* a es mejor que b: menos unidades y, a igualdad, menos lugares de sobra */
+function comboMejor(a, b) {
+  return !b || a.unidades.length < b.unidades.length || (a.unidades.length === b.unidades.length && a.total < b.total)
+}
+
+/* Combinación exacta que cubre n: para cada capacidad total posible guarda la que usa menos unidades */
+function mejorCombo(unidades, n) {
+  let porTotal = new Map([[0, []]])
+  for (const u of [...unidades].sort((x, y) => y.cap - x.cap)) {
+    const siguiente = new Map(porTotal)
+    for (const [total, usadas] of porTotal) {
+      const nuevoTotal = total + u.cap
+      const actual = siguiente.get(nuevoTotal)
+      if (!actual || usadas.length + 1 < actual.length) siguiente.set(nuevoTotal, [...usadas, u])
+    }
+    porTotal = siguiente
   }
-  return { unidades: usadas, total }
+  let mejor = null
+  for (const [total, usadas] of porTotal) {
+    const combo = { unidades: usadas, total }
+    if (total >= n && comboMejor(combo, mejor)) mejor = combo
+  }
+  return mejor
 }
 
 /* Solo con `libres`: nunca la Casa, ni aparts (comparten habitaciones con el hotel y la API no informa cuáles) */
@@ -487,25 +512,31 @@ function calcularCombos(libres, n) {
     ...(libres.cabanaChica || []).map(c => a('cabanaChica', c)),
   ].sort((x, y) => y.cap - x.cap)
 
-  const opciones = []
-  if (habitaciones.length) opciones.push({ clave: 'hotel', ...tomarHasta(habitaciones, n) })
-  if (cabanas.length) {
-    const mayor = cabanas[0]
-    if (mayor.cap < n) {
-      const resto = tomarHasta(habitaciones, n - mayor.cap)
-      opciones.push({ clave: 'mixta', unidades: [mayor, ...resto.unidades], total: mayor.cap + resto.total })
-    }
-    opciones.push({ clave: 'cabanas', ...tomarHasta(cabanas, n) })
-  }
+  // Las cabañas que cubren N solas ya se ofrecen como opción individual: no entran en las combinaciones
+  const cabanasParciales = cabanas.filter(u => u.cap < n)
 
-  const cubren = opciones.filter(o => o.total >= n)
-  if (!cubren.length) {
-    const todas = [...cabanas, ...tomarHasta(habitaciones, Infinity).unidades]
-    const total = todas.reduce((suma, u) => suma + u.cap, 0)
-    return total >= n ? { sugerencias: [{ clave: 'todas', unidades: todas, total }], insuficiente: false } : { sugerencias: [], insuficiente: true }
+  const opciones = []
+  const hotel = mejorCombo(habitaciones, n)
+  if (hotel) opciones.push({ clave: 'hotel', ...hotel })
+  // Una sola cabaña que no cubre N, más habitaciones
+  let mixta = null
+  for (const cabana of cabanasParciales) {
+    const resto = mejorCombo(habitaciones, n - cabana.cap)
+    if (!resto) continue
+    const combo = { unidades: [cabana, ...resto.unidades], total: cabana.cap + resto.total }
+    if (comboMejor(combo, mixta)) mixta = combo
+  }
+  if (mixta) opciones.push({ clave: 'mixta', ...mixta })
+  const soloCabanas = mejorCombo(cabanasParciales, n)
+  if (soloCabanas) opciones.push({ clave: 'cabanas', ...soloCabanas })
+
+  if (!opciones.length) {
+    if (cabanas.some(u => u.cap >= n)) return { sugerencias: [], insuficiente: false }
+    const todas = mejorCombo([...cabanas, ...habitaciones], n)
+    return todas ? { sugerencias: [{ clave: 'todas', ...todas }], insuficiente: false } : { sugerencias: [], insuficiente: true }
   }
   const vistas = new Set()
-  const sugerencias = cubren.filter(o => {
+  const sugerencias = opciones.filter(o => {
     const firma = o.unidades.map(u => u.tipo).sort().join()
     if (o.unidades.length < 2 || vistas.has(firma)) return false
     vistas.add(firma)
@@ -522,8 +553,19 @@ function resumenCombo(combo, t) {
   return [...cantidades].map(([tipo, c]) => `${c} ${nombres[tipo][c === 1 ? 0 : 1]}`).join(' + ')
 }
 
-function textoCombo(combo, t) {
-  return `${resumenCombo(combo, t)} · ${t.grupoHasta.replace('{n}', combo.total)}`
+/* Lo que queda fijo arriba además del nav: la topbar y el banner (en mobile, la barra compacta) */
+function alturaBannerFijo() {
+  const topbar = document.getElementById('main-topbar')?.offsetHeight ?? 0
+  const compacta = document.querySelector('.disp-compacta')
+  if (compacta && getComputedStyle(compacta).display !== 'none') return topbar + compacta.offsetHeight
+  return topbar + (document.querySelector('.disp-banner')?.offsetHeight ?? 0)
+}
+
+/* Salto a una sección de esta página, sin que quede tapada por lo que está fijo arriba */
+function saltarA(id) {
+  const nav = document.getElementById('main-nav')
+  const offset = (nav?.offsetHeight ?? 84) + alturaBannerFijo() + 8
+  window.scrollTo({ top: document.getElementById(id).getBoundingClientRect().top + window.scrollY - offset, behavior: 'smooth' })
 }
 
 /* ── Clima helpers ── */
@@ -844,17 +886,22 @@ function IconoWsp() {
 }
 
 /* ── Bloque "Para grupos: combiná unidades" ── */
-function BloqueCombos({ combos, wspUrl, t }) {
+function BloqueCombos({ combos, aviso, wspUrl, t }) {
   if (!combos.sugerencias.length) return null
   const titulos = { hotel: t.grupoHotel, mixta: t.grupoMixta, cabanas: t.grupoCabanas, todas: t.grupoTodas }
   return (
     <section className="disp-seccion">
-      <h2 className="disp-seccion-titulo">{t.grupoTitulo}</h2>
+      <div className="combo-header">
+        <h2 className="section-title">{t.grupoTitulo}</h2>
+        <div className="divider" />
+        {aviso && <p className="disp-aviso-texto">{aviso}</p>}
+      </div>
       <div className="combo-lista">
         {combos.sugerencias.map(c => (
           <div key={c.clave} className="combo-card">
             <p className="combo-etiqueta">{titulos[c.clave]}</p>
-            <p className="combo-texto">{textoCombo(c, t)}</p>
+            <p className="combo-texto">{resumenCombo(c, t)}</p>
+            <p className="combo-capacidad">{t.grupoCapacidad.replace('{n}', c.total)}</p>
           </div>
         ))}
       </div>
@@ -877,12 +924,12 @@ function AvisoGrupo({ texto, wspUrl, t }) {
 /* ── Card ── */
 function CardAlojamiento({ item, destacado, noDisponible, sinBadge, unidadesLibres, nota, wspUrl, t }) {
   return (
-    <div className={`aloj-card disp-aloj-card${destacado?' disp-aloj-card--dest':''}${noDisponible?' disp-aloj-card--no':''}`}>
+    <div className={`aloj-card disp-aloj-card${destacado?' disp-aloj-card--dest':''}${noDisponible&&!item.sinCapacidad?' disp-aloj-card--no':''}`}>
       <div className="card-img">
         <Carrusel fotos={item.fotos} id={`car-disp-${item.id}`} disabled={noDisponible} />
         {!sinBadge && (
-          <span className={`disp-avail-badge${noDisponible?' disp-avail-badge--no':destacado?' disp-avail-badge--si':' disp-avail-badge--otro'}`}>
-            {noDisponible ? t.badgeNo : t.badgeSi}
+          <span className={`disp-avail-badge${noDisponible?(item.sinCapacidad?' disp-avail-badge--neutro':' disp-avail-badge--no'):destacado?' disp-avail-badge--si':' disp-avail-badge--otro'}`}>
+            {noDisponible ? (item.sinCapacidad ? t.badgeNoAlcanza : t.badgeNo) : t.badgeSi}
           </span>
         )}
         {!noDisponible && (
@@ -935,6 +982,9 @@ export default function Disponibilidad() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [lang, setLang] = useState('es')
   const [langOpen, setLangOpen] = useState(false)
+  const [barraCompacta, setBarraCompacta] = useState(false)
+  const irA = id => e => { e.preventDefault(); setMenuOpen(false); saltarA(id) }
+  const bannerRef = useRef(null)
   const langRef = useRef(null)
 
   const t = I18N[lang] || I18N.es
@@ -945,6 +995,14 @@ export default function Disponibilidad() {
     function handler(e) { if (langRef.current && !langRef.current.contains(e.target)) setLangOpen(false) }
     document.addEventListener('click', handler)
     return () => document.removeEventListener('click', handler)
+  }, [])
+
+  // Mobile: la barra compacta aparece cuando el banner completo salió de la vista (debajo del nav)
+  useEffect(() => {
+    if (!bannerRef.current) return
+    const observer = new IntersectionObserver(([e]) => setBarraCompacta(!e.isIntersecting), { rootMargin: '-96px 0px 0px 0px' })
+    observer.observe(bannerRef.current)
+    return () => observer.disconnect()
   }, [])
 
   useEffect(() => {
@@ -986,9 +1044,10 @@ export default function Disponibilidad() {
   const idsCombo = new Set((combos?.sugerencias || []).flatMap(c => c.unidades.map(u => u.tipo)))
   const categoriasCombo = grupoGrande ? (resultados||[]).filter(r => idsCombo.has(r.id)) : []
   const noDisponibles = (resultados||[]).filter(r => !r.disponible && !categoriasCombo.includes(r))
+  const tituloInferior = noDisponibles.some(r => r.sinCapacidad) ? t.dispOtrasUnidades : t.dispNoDisponibles
   const grupoWspUrl = urlWsp([
     t.wspGrupo.replace('{n}', personasTexto), ...lineasWsp,
-    ...(combos?.sugerencias.length ? ['', t.wspSugerencias, ...combos.sugerencias.map(c => `- ${textoCombo(c, t)}`)] : []),
+    ...(combos?.sugerencias.length ? ['', t.wspSugerencias, ...combos.sugerencias.map(c => `- ${resumenCombo(c, t)} (${t.grupoCapacidadWsp.replace('{n}', c.total)})`)] : []),
   ])
   const hayResultados  = resultados && resultados.length > 0
   const hayDisponibles = disponiblesCoincidentes.length > 0 || disponiblesOtros.length > 0
@@ -1030,10 +1089,10 @@ export default function Disponibilidad() {
           <ul className="nav-links">
             <li><a href="/#nosotros">{t.navNosotros}</a></li>
             <li><a href="/#alojamientos">{t.navAlojamientos}</a></li>
-            <li><a href="/#antes-de-reservar">{t.navInfo}</a></li>
-            <li><a href="/#servicios">{t.navServicios}</a></li>
+            <li><a href="#antes-de-reservar" onClick={irA('antes-de-reservar')}>{t.navInfo}</a></li>
+            <li><a href="#servicios" onClick={irA('servicios')}>{t.navServicios}</a></li>
             <li><a href="/#testimonios">{t.navTestimonios}</a></li>
-            <li><a href="#clima" onClick={e => { e.preventDefault(); const el = document.getElementById('clima'); const nav = document.getElementById('main-nav'); const banner = document.querySelector('.disp-banner'); const offset = (nav?.offsetHeight ?? 84) + (banner?.offsetHeight ?? 0) + 8; window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - offset, behavior: 'smooth' }); }}>{t.navClima}</a></li>
+            <li><a href="#clima" onClick={irA('clima')}>{t.navClima}</a></li>
             <li><a href="/#ubicacion">{t.navUbicacion}</a></li>
           </ul>
           <div className="nav-right">
@@ -1059,10 +1118,10 @@ export default function Disponibilidad() {
       <nav className={`nav-mobile-menu${menuOpen?' open':''}`}>
         <a href="/#nosotros" onClick={() => setMenuOpen(false)}>{t.navNosotros}</a>
         <a href="/#alojamientos" onClick={() => setMenuOpen(false)}>{t.navAlojamientos}</a>
-        <a href="/#antes-de-reservar" onClick={() => setMenuOpen(false)}>{t.navInfo}</a>
-        <a href="/#servicios" onClick={() => setMenuOpen(false)}>{t.navServicios}</a>
+        <a href="#antes-de-reservar" onClick={irA('antes-de-reservar')}>{t.navInfo}</a>
+        <a href="#servicios" onClick={irA('servicios')}>{t.navServicios}</a>
         <a href="/#testimonios" onClick={() => setMenuOpen(false)}>{t.navTestimonios}</a>
-        <a href="#clima" onClick={e => { e.preventDefault(); setMenuOpen(false); const el = document.getElementById('clima'); const nav = document.getElementById('main-nav'); const banner = document.querySelector('.disp-banner'); const offset = (nav?.offsetHeight ?? 84) + (banner?.offsetHeight ?? 0) + 8; window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - offset, behavior: 'smooth' }); }}>{t.navClima}</a>
+        <a href="#clima" onClick={irA('clima')}>{t.navClima}</a>
         <a href="/#ubicacion" onClick={() => setMenuOpen(false)}>{t.navUbicacion}</a>
       </nav>
 
@@ -1070,7 +1129,16 @@ export default function Disponibilidad() {
       <main className="disp-main">
 
         {/* BANNER */}
-        <div className="disp-banner">
+        <button type="button" className={`disp-compacta${barraCompacta ? ' visible' : ''}`} tabIndex={barraCompacta ? 0 : -1} aria-label={t.compactaEditar} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+          <span className="disp-compacta-texto">
+            {fechaCorta(fechaIngreso)} → {fechaCorta(fechaEgreso)}
+            {cantNoches > 0 && ` · ${cantNoches} ${cantNoches === 1 ? t.bannerNoche : t.bannerNoches}`}
+            {` · ${personasTexto} ${t.compactaHuespedes}`}
+          </span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+        </button>
+
+        <div className="disp-banner" ref={bannerRef}>
           <div className="disp-banner-inner">
             <div className="disp-banner-datos">
               <div className="disp-banner-item">
@@ -1150,8 +1218,7 @@ export default function Disponibilidad() {
             /* Más personas que la unidad más grande: las combinaciones van primero */
             <>
               {combos?.insuficiente && <AvisoGrupo texto={t.grupoInsuficiente} wspUrl={grupoWspUrl} t={t} />}
-              {combos?.sugerencias.length > 0 && <p className="disp-aviso-texto">{t.grupoAviso.replace('{n}', personas)}</p>}
-              {combos && <BloqueCombos combos={combos} wspUrl={grupoWspUrl} t={t} />}
+              {combos && <BloqueCombos combos={combos} aviso={t.grupoAviso.replace('{n}', personas)} wspUrl={grupoWspUrl} t={t} />}
               {categoriasCombo.length > 0 && (
                 <section className="disp-seccion">
                   <div className="disp-grid">
@@ -1162,7 +1229,7 @@ export default function Disponibilidad() {
               {noDisponibles.length > 0 && (
                 <section className="disp-seccion disp-seccion--no">
                   <h2 className="disp-seccion-titulo disp-seccion-titulo--no">
-                    {t.dispNoDisponibles}
+                    {tituloInferior}
                     <span className="disp-seccion-count">{noDisponibles.length}</span>
                   </h2>
                   <div className="disp-grid">
@@ -1212,12 +1279,11 @@ export default function Disponibilidad() {
                   </div>
                 </section>
               )}
-              {combos?.insuficiente && <AvisoGrupo texto={t.grupoInsuficiente} wspUrl={grupoWspUrl} t={t} />}
               {combos && <BloqueCombos combos={combos} wspUrl={grupoWspUrl} t={t} />}
               {noDisponibles.length > 0 && (
                 <section className="disp-seccion disp-seccion--no">
                   <h2 className="disp-seccion-titulo disp-seccion-titulo--no">
-                    {t.dispNoDisponibles}
+                    {tituloInferior}
                     <span className="disp-seccion-count">{noDisponibles.length}</span>
                   </h2>
                   <div className="disp-grid">
@@ -1232,14 +1298,7 @@ export default function Disponibilidad() {
         {/* FRANJA — transición hacia información importante */}
         <div style={{ background:'var(--crema-b)', borderTop:'1px solid var(--borde)', borderBottom:'1px solid var(--borde)', padding:'1.25rem 5%', textAlign:'center' }}>
           <div
-            onClick={() => {
-              const target = document.getElementById('antes-de-reservar')
-              const nav    = document.getElementById('main-nav')
-              const banner = document.querySelector('.disp-banner')
-              const offset = (nav?.offsetHeight ?? 84) + (banner?.offsetHeight ?? 0) + 12
-              const top    = target.getBoundingClientRect().top + window.scrollY - offset
-              window.scrollTo({ top, behavior: 'smooth' })
-            }}
+            onClick={() => saltarA('antes-de-reservar')}
             style={{ display:'inline-flex', flexDirection:'column', alignItems:'center', gap:'0.5rem', color:'var(--texto-medio)', cursor:'pointer' }}
           >
             <span
