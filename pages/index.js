@@ -102,7 +102,7 @@ export default function Home() {
         'clima.note':'Datos provistos por Tomorrow.io · Actualizado automáticamente',
         'footer.a5':'Apart Hotel',
         'topbar.dir.short':'Av. Ramón J. Cárcano 2590','topbar.casa':'Casa con Pileta · Icho Cruz','topbar.casa.short':'Casa · Icho Cruz',
-        'widget.casa':'Casa','widget.mas10':'Más de 10',
+        'widget.casa':'Casa','widget.menos':'Menos huéspedes','widget.mas':'Más huéspedes',
         'aloj.tipo6':'Casa · Icho Cruz',
         'aloj.card6.name':'Casa con Pileta · Icho Cruz','aloj.card6.meta1':'Hasta 10 personas','aloj.card6.meta2':'3 dormitorios',
         'aloj.card6.noincluye.a':'Sin desayuno ni toallas','aloj.card6.noincluye.b':'Ropa de cama opcional (con cargo adicional)','aloj.card6.ubic':'Icho Cruz — a 15 min de Brisas de Oro',
@@ -224,7 +224,7 @@ export default function Home() {
         'info.cta.btn':'Contact us on WhatsApp',
         'footer.a5':'Apart Hotel',
         'topbar.dir.short':'Av. Ramón J. Cárcano 2590','topbar.casa':'House with Pool · Icho Cruz','topbar.casa.short':'House · Icho Cruz',
-        'widget.casa':'House','widget.mas10':'More than 10',
+        'widget.casa':'House','widget.menos':'Fewer guests','widget.mas':'More guests',
         'aloj.tipo6':'House · Icho Cruz',
         'aloj.card6.name':'House with Pool · Icho Cruz','aloj.card6.meta1':'Up to 10 guests','aloj.card6.meta2':'3 bedrooms',
         'aloj.card6.noincluye.a':'No breakfast or towels','aloj.card6.noincluye.b':'Bed linen optional (extra charge)','aloj.card6.ubic':'Icho Cruz — 15 min from Brisas de Oro',
@@ -346,7 +346,7 @@ export default function Home() {
         'info.cta.btn':'Consultar pelo WhatsApp',
         'footer.a5':'Apart Hotel',
         'topbar.dir.short':'Av. Ramón J. Cárcano 2590','topbar.casa':'Casa com Piscina · Icho Cruz','topbar.casa.short':'Casa · Icho Cruz',
-        'widget.casa':'Casa','widget.mas10':'Mais de 10',
+        'widget.casa':'Casa','widget.menos':'Menos hóspedes','widget.mas':'Mais hóspedes',
         'aloj.tipo6':'Casa · Icho Cruz',
         'aloj.card6.name':'Casa com Piscina · Icho Cruz','aloj.card6.meta1':'Até 10 pessoas','aloj.card6.meta2':'3 quartos',
         'aloj.card6.noincluye.a':'Sem café da manhã nem toalhas','aloj.card6.noincluye.b':'Roupa de cama opcional (com custo adicional)','aloj.card6.ubic':'Icho Cruz — a 15 min do Brisas de Oro',
@@ -395,10 +395,9 @@ export default function Home() {
       const _sTipoLabel = document.getElementById('s-tipo-label');
       const _sTipoActive = document.querySelector('#s-tipo-opts .custom-tipo-opt.active');
       if (_sTipoLabel && _sTipoActive) _sTipoLabel.textContent = _sTipoActive.textContent;
-      ['huespedes','s-huespedes'].forEach(function(id) {
-        const _hLabel = document.getElementById(id + '-label');
-        const _hActive = document.querySelector('#' + id + '-opts .custom-huesp-opt.active');
-        if (_hLabel && _hActive) _hLabel.textContent = (id === 's-huespedes' && _hActive.dataset.abbr) ? _hActive.dataset.abbr : _hActive.textContent;
+      document.querySelectorAll('[data-i18n-aria]').forEach(el => {
+        const key = el.getAttribute('data-i18n-aria');
+        if (t[key] !== undefined) el.setAttribute('aria-label', t[key]);
       });
       const _badges = document.querySelector('.hero-badges');
       if (_badges) _badges.classList.toggle('hero-badges--es', lang === 'es');
@@ -1041,7 +1040,7 @@ export default function Home() {
         String(ahora.getDate()).padStart(2,'0');
       const llegadaH   = document.getElementById('fecha-llegada').value;
       const salidaH    = document.getElementById('fecha-salida').value;
-      const huespedesH = document.getElementById('huespedes').value;
+      const huespedesH = String(normalizarHuespedes('huespedes'));
       const tipoH      = document.getElementById('tipo-aloj').value;
       // Validar campos obligatorios
       if (!llegadaH || !salidaH || !huespedesH || huespedesH === '0') {
@@ -1069,7 +1068,6 @@ export default function Home() {
         mostrarErrorHero(); return;
       }
       ocultarErrorHero();
-      if (huespedesH === 'mas10') { abrirWsp(buildMsgGrupoGrande(llegadaH, salidaH, tipoH)); return; }
       const params = new URLSearchParams({
         fechaIngreso:     llegadaH,
         fechaEgreso:      salidaH,
@@ -1094,7 +1092,7 @@ export default function Home() {
         String(ahora.getDate()).padStart(2,'0');
       const llegadaS   = document.getElementById('s-llegada').value;
       const salidaS    = document.getElementById('s-salida').value;
-      const huespedesS = document.getElementById('s-huespedes').value;
+      const huespedesS = String(normalizarHuespedes('s-huespedes'));
       const tipoS      = document.getElementById('s-tipo').value;
       // Validar campos obligatorios
       if (!llegadaS || !salidaS || !huespedesS || huespedesS === '0') {
@@ -1122,7 +1120,6 @@ export default function Home() {
         return;
       }
       ocultarErrorSticky();
-      if (huespedesS === 'mas10') { abrirWsp(buildMsgGrupoGrande(llegadaS, salidaS, tipoS)); return; }
       const params = new URLSearchParams({
         fechaIngreso:     llegadaS,
         fechaEgreso:      salidaS,
@@ -1210,17 +1207,30 @@ export default function Home() {
       if (txt) txt.textContent = input.value ? fmtFecha(input.value) : 'dd/mm/aaaa';
     }
     window.actualizarFechaPh = actualizarFechaPh;
-    // Grupos de más de 10 personas: no hay alojamiento que los cubra en /disponibilidad, se consulta por WhatsApp
-    function buildMsgGrupoGrande(llegada, salida, tipo) {
-      const txt = {
-        es: { saludo: 'Hola! Quiero consultar disponibilidad para un grupo de más de 10 personas.', llegada: 'Ingreso', salida: 'Egreso', tipo: 'Tipo de alojamiento' },
-        en: { saludo: 'Hello! I would like to check availability for a group of more than 10 people.', llegada: 'Check-in', salida: 'Check-out', tipo: 'Accommodation type' },
-        pt: { saludo: 'Olá! Gostaria de consultar disponibilidade para um grupo de mais de 10 pessoas.', llegada: 'Chegada', salida: 'Saída', tipo: 'Tipo de acomodação' }
-      };
-      const t = txt[getLang()] || txt.es;
-      let msg = `${t.saludo} ${t.llegada}: ${fmtFecha(llegada)} · ${t.salida}: ${fmtFecha(salida)}.`;
-      if (tipo) msg += ` ${t.tipo}: ${tipo}.`;
-      return msg;
+    // Contador de huéspedes: con los botones va de 1 a 30; a mano se acepta más (/disponibilidad deriva a WhatsApp)
+    const HUESPEDES_MAX_BOTONES = 30;
+    function actualizarContador(id) {
+      const input = document.getElementById(id);
+      const n = parseInt(input.value, 10) || 0;
+      const wrap = input.closest('.contador');
+      wrap.querySelector('.contador-menos').disabled = n <= 1;
+      wrap.querySelector('.contador-mas').disabled = n >= HUESPEDES_MAX_BOTONES;
+    }
+    function normalizarHuespedes(id) {
+      const input = document.getElementById(id);
+      const n = Math.max(parseInt(input.value, 10) || 1, 1);
+      input.value = n;
+      actualizarContador(id);
+      return n;
+    }
+    function escribirHuespedes(input) {
+      input.value = input.value.replace(/\D/g, '').replace(/^0+/, '').slice(0, 3);
+      actualizarContador(input.id);
+    }
+    function cambiarHuespedes(id, delta) {
+      const n = normalizarHuespedes(id);
+      document.getElementById(id).value = delta < 0 ? Math.max(n - 1, 1) : Math.min(n + 1, HUESPEDES_MAX_BOTONES);
+      actualizarContador(id);
     }
     // ===== MODAL FECHA MOBILE =====
     var _modalCampo = null;
@@ -1345,13 +1355,13 @@ export default function Home() {
 
     // Cierra todos los dropdowns custom y devuelve el hero a overflow:hidden
     function cerrarDropdowns() {
-      document.querySelectorAll('.custom-tipo-wrap, .custom-huesp-wrap').forEach(function(w) { w.classList.remove('open'); });
+      document.querySelectorAll('.custom-tipo-wrap').forEach(function(w) { w.classList.remove('open'); });
       var hero = document.querySelector('.hero');
       if (hero) hero.classList.remove('dd-abierto');
     }
     // Ubica la lista abierta: hacia abajo si entra en pantalla, si no hacia arriba; con alto máximo y scroll interno
     function posicionarDropdown(wrap) {
-      var opts = wrap.querySelector('.custom-tipo-opts, .custom-huesp-opts');
+      var opts = wrap.querySelector('.custom-tipo-opts');
       if (!opts) return;
       var hero = wrap.closest('.hero');
       if (hero) hero.classList.add('dd-abierto'); // el hero recorta con overflow:hidden
@@ -1400,36 +1410,10 @@ export default function Home() {
       cerrarDropdowns();
     }
     document.addEventListener('click', function(e) {
-      if (!e.target.closest('.custom-tipo-wrap') && !e.target.closest('.custom-huesp-wrap')) {
+      if (!e.target.closest('.custom-tipo-wrap')) {
         cerrarDropdowns();
       }
     });
-
-    // Custom huéspedes dropdown (mobile only)
-    function toggleCustomHuesp(wrapId) {
-      var wrap = document.getElementById(wrapId);
-      if (!wrap) return;
-      var isOpen = wrap.classList.contains('open');
-      cerrarDropdowns();
-      if (!isOpen) { wrap.classList.add('open'); posicionarDropdown(wrap); }
-    }
-    function preTouchCustomHuesp(btn) {
-      var opts = btn.closest('.custom-huesp-opts');
-      if (!opts) return;
-      opts.querySelectorAll('.custom-huesp-opt').forEach(function(b) { b.classList.remove('active'); });
-      btn.classList.add('active');
-    }
-    function selectCustomHuesp(selectId, wrapId, btn) {
-      var select = document.getElementById(selectId);
-      var wrap = document.getElementById(wrapId);
-      if (!select || !wrap) return;
-      select.selectedIndex = parseInt(btn.dataset.index);
-      var label = document.getElementById(selectId + '-label');
-      if (label) label.textContent = (selectId === 's-huespedes' && btn.dataset.abbr) ? btn.dataset.abbr : btn.textContent;
-      wrap.querySelectorAll('.custom-huesp-opt').forEach(function(b) { b.classList.remove('active'); });
-      btn.classList.add('active');
-      cerrarDropdowns();
-    }
 
     // Expose functions to window so HTML inline onclick handlers can call them
     window.toggleLang         = toggleLang
@@ -1449,9 +1433,9 @@ export default function Home() {
     window.toggleCustomTipo   = toggleCustomTipo
     window.selectCustomTipo   = selectCustomTipo
     window.preTouchCustomTipo = preTouchCustomTipo
-    window.toggleCustomHuesp  = toggleCustomHuesp
-    window.preTouchCustomHuesp = preTouchCustomHuesp
-    window.selectCustomHuesp  = selectCustomHuesp
+    window.cambiarHuespedes   = cambiarHuespedes
+    window.escribirHuespedes  = escribirHuespedes
+    window.normalizarHuespedes = normalizarHuespedes
   }, [])
 
   return (
@@ -1555,32 +1539,12 @@ export default function Home() {
       <span class="sticky-label" data-i18n="widget.salida">Salida</span>
       <input type="date" id="s-salida" onclick="if(window.innerWidth<=768){event.preventDefault();event.stopPropagation();abrirFechaModal('salida')}">
     </div>
-    <div class="sticky-field">
-      <select id="s-huespedes">
-        <option value="" disabled selected data-i18n-opt="widget.huespedes">Huéspedes</option>
-        <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option>
-        <option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option>
-        <option value="9">9</option><option value="10">10</option>
-        <option value="mas10" data-i18n-opt="widget.mas10">Más de 10</option>
-      </select>
-      <div class="custom-huesp-wrap" id="s-huespedes-wrap">
-        <button type="button" class="custom-tipo-trigger" onclick="toggleCustomHuesp('s-huespedes-wrap')">
-          <span id="s-huespedes-label">Huésp.</span>
-          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-        </button>
-        <div class="custom-huesp-opts" id="s-huespedes-opts">
-          <button type="button" class="custom-huesp-opt" data-index="1" ontouchstart="preTouchCustomHuesp(this)" onclick="selectCustomHuesp('s-huespedes','s-huespedes-wrap',this)">1</button>
-          <button type="button" class="custom-huesp-opt" data-index="2" ontouchstart="preTouchCustomHuesp(this)" onclick="selectCustomHuesp('s-huespedes','s-huespedes-wrap',this)">2</button>
-          <button type="button" class="custom-huesp-opt" data-index="3" ontouchstart="preTouchCustomHuesp(this)" onclick="selectCustomHuesp('s-huespedes','s-huespedes-wrap',this)">3</button>
-          <button type="button" class="custom-huesp-opt" data-index="4" ontouchstart="preTouchCustomHuesp(this)" onclick="selectCustomHuesp('s-huespedes','s-huespedes-wrap',this)">4</button>
-          <button type="button" class="custom-huesp-opt" data-index="5" ontouchstart="preTouchCustomHuesp(this)" onclick="selectCustomHuesp('s-huespedes','s-huespedes-wrap',this)">5</button>
-          <button type="button" class="custom-huesp-opt" data-index="6" ontouchstart="preTouchCustomHuesp(this)" onclick="selectCustomHuesp('s-huespedes','s-huespedes-wrap',this)">6</button>
-          <button type="button" class="custom-huesp-opt" data-index="7" ontouchstart="preTouchCustomHuesp(this)" onclick="selectCustomHuesp('s-huespedes','s-huespedes-wrap',this)">7</button>
-          <button type="button" class="custom-huesp-opt" data-index="8" ontouchstart="preTouchCustomHuesp(this)" onclick="selectCustomHuesp('s-huespedes','s-huespedes-wrap',this)">8</button>
-          <button type="button" class="custom-huesp-opt" data-index="9" ontouchstart="preTouchCustomHuesp(this)" onclick="selectCustomHuesp('s-huespedes','s-huespedes-wrap',this)">9</button>
-          <button type="button" class="custom-huesp-opt" data-index="10" ontouchstart="preTouchCustomHuesp(this)" onclick="selectCustomHuesp('s-huespedes','s-huespedes-wrap',this)">10</button>
-          <button type="button" class="custom-huesp-opt custom-huesp-opt--ancha" data-index="11" data-abbr="+10" data-i18n="widget.mas10" ontouchstart="preTouchCustomHuesp(this)" onclick="selectCustomHuesp('s-huespedes','s-huespedes-wrap',this)">Más de 10</button>
-        </div>
+    <div class="sticky-field sticky-field--contador">
+      <span class="sticky-label solo-desktop" data-i18n="widget.huespedes">Huéspedes</span>
+      <div class="contador">
+        <button type="button" class="contador-btn contador-menos" data-i18n-aria="widget.menos" aria-label="Menos huéspedes" onclick="cambiarHuespedes('s-huespedes',-1)" disabled>−</button>
+        <input type="text" inputmode="numeric" pattern="[0-9]*" autocomplete="off" id="s-huespedes" class="contador-num" value="1" data-i18n-aria="widget.huespedes" aria-label="Huéspedes" oninput="escribirHuespedes(this)" onblur="normalizarHuespedes('s-huespedes')">
+        <button type="button" class="contador-btn contador-mas" data-i18n-aria="widget.mas" aria-label="Más huéspedes" onclick="cambiarHuespedes('s-huespedes',1)">+</button>
       </div>
     </div>
     <div class="sticky-field">
@@ -1655,30 +1619,10 @@ export default function Home() {
         </div>
         <div class="widget-field">
           <label for="huespedes" data-i18n="widget.huespedes">Huéspedes</label>
-          <select id="huespedes">
-            <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option>
-            <option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option>
-            <option value="9">9</option><option value="10">10</option>
-            <option value="mas10" data-i18n-opt="widget.mas10">Más de 10</option>
-          </select>
-          <div class="custom-huesp-wrap" id="huespedes-wrap">
-            <button type="button" class="custom-tipo-trigger" onclick="toggleCustomHuesp('huespedes-wrap')">
-              <span id="huespedes-label">1</span>
-              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-            </button>
-            <div class="custom-huesp-opts" id="huespedes-opts">
-              <button type="button" class="custom-huesp-opt active" data-index="0" ontouchstart="preTouchCustomHuesp(this)" onclick="selectCustomHuesp('huespedes','huespedes-wrap',this)">1</button>
-              <button type="button" class="custom-huesp-opt" data-index="1" ontouchstart="preTouchCustomHuesp(this)" onclick="selectCustomHuesp('huespedes','huespedes-wrap',this)">2</button>
-              <button type="button" class="custom-huesp-opt" data-index="2" ontouchstart="preTouchCustomHuesp(this)" onclick="selectCustomHuesp('huespedes','huespedes-wrap',this)">3</button>
-              <button type="button" class="custom-huesp-opt" data-index="3" ontouchstart="preTouchCustomHuesp(this)" onclick="selectCustomHuesp('huespedes','huespedes-wrap',this)">4</button>
-              <button type="button" class="custom-huesp-opt" data-index="4" ontouchstart="preTouchCustomHuesp(this)" onclick="selectCustomHuesp('huespedes','huespedes-wrap',this)">5</button>
-              <button type="button" class="custom-huesp-opt" data-index="5" ontouchstart="preTouchCustomHuesp(this)" onclick="selectCustomHuesp('huespedes','huespedes-wrap',this)">6</button>
-              <button type="button" class="custom-huesp-opt" data-index="6" ontouchstart="preTouchCustomHuesp(this)" onclick="selectCustomHuesp('huespedes','huespedes-wrap',this)">7</button>
-              <button type="button" class="custom-huesp-opt" data-index="7" ontouchstart="preTouchCustomHuesp(this)" onclick="selectCustomHuesp('huespedes','huespedes-wrap',this)">8</button>
-              <button type="button" class="custom-huesp-opt" data-index="8" ontouchstart="preTouchCustomHuesp(this)" onclick="selectCustomHuesp('huespedes','huespedes-wrap',this)">9</button>
-              <button type="button" class="custom-huesp-opt" data-index="9" ontouchstart="preTouchCustomHuesp(this)" onclick="selectCustomHuesp('huespedes','huespedes-wrap',this)">10</button>
-              <button type="button" class="custom-huesp-opt custom-huesp-opt--ancha" data-index="10" data-i18n="widget.mas10" ontouchstart="preTouchCustomHuesp(this)" onclick="selectCustomHuesp('huespedes','huespedes-wrap',this)">Más de 10</button>
-            </div>
+          <div class="contador">
+            <button type="button" class="contador-btn contador-menos" data-i18n-aria="widget.menos" aria-label="Menos huéspedes" onclick="cambiarHuespedes('huespedes',-1)" disabled>−</button>
+            <input type="text" inputmode="numeric" pattern="[0-9]*" autocomplete="off" id="huespedes" class="contador-num" value="1" data-i18n-aria="widget.huespedes" aria-label="Huéspedes" oninput="escribirHuespedes(this)" onblur="normalizarHuespedes('huespedes')">
+            <button type="button" class="contador-btn contador-mas" data-i18n-aria="widget.mas" aria-label="Más huéspedes" onclick="cambiarHuespedes('huespedes',1)">+</button>
           </div>
         </div>
         <div class="widget-field">

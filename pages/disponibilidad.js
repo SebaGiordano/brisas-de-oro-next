@@ -24,6 +24,18 @@ const I18N = {
     sinResultados:'No se encontraron alojamientos para las fechas seleccionadas.',
     volverIntentar:'← Volver e intentar de nuevo',
     errorHuespedes:'La cantidad de huéspedes no es válida.',
+    grupoMax:'Para grupos de más de 30 personas coordinamos la estadía de forma personalizada.',
+    grupoAviso:'Nuestra unidad más grande recibe hasta 10 personas. Para tu grupo de {n} te proponemos estas combinaciones:',
+    grupoInsuficiente:'Para esas fechas no tenemos disponibilidad suficiente para tu grupo. Escribinos y buscamos alternativas.',
+    grupoTitulo:'Para grupos: combiná unidades',
+    grupoNota:'Sugerencias orientativas, sujetas a confirmación. Escribinos y armamos la mejor opción para tu grupo.',
+    grupoHotel:'Hotel', grupoMixta:'Cabaña + Hotel', grupoCabanas:'Cabañas', grupoTodas:'Cabañas + Hotel',
+    grupoHasta:'hasta {n} personas',
+    grupoHab:['Habitación','Habitaciones'], grupoCc:['Cabaña chica','Cabañas chicas'], grupoCm:['Cabaña mediana','Cabañas medianas'], grupoCg:['Cabaña grande','Cabañas grandes'],
+    notaMediana6:'Para 6 personas el espacio es más ajustado. Consultanos.',
+    unidadLibre:'unidad libre', unidadesLibres:'unidades libres',
+    wspCard:'Hola! Me interesa consultar disponibilidad para:', wspIngreso:'Ingreso', wspEgreso:'Egreso', wspHuespedes:'Huéspedes', wspMasInfo:'¿Podría darme más información?',
+    wspGrupo:'Hola! Quisiera consultar por un grupo de {n} personas.', wspSugerencias:'Sugerencias:',
     sinDispTitulo:'No hay disponibilidad para el rango de fechas seleccionadas',
     sinDispSub:'Conocé nuestros alojamientos y escribinos por WhatsApp para consultar disponibilidad futura',
     // Resultados
@@ -144,6 +156,18 @@ const I18N = {
     sinResultados:'No accommodations found for the selected dates.',
     volverIntentar:'← Go back and try again',
     errorHuespedes:'The number of guests is not valid.',
+    grupoMax:'For groups of more than 30 people, we arrange the stay personally.',
+    grupoAviso:'Our largest unit sleeps up to 10 guests. For your group of {n}, we suggest these combinations:',
+    grupoInsuficiente:"We don't have enough availability for your group on those dates. Write to us and we'll look for alternatives.",
+    grupoTitulo:'For groups: combine units',
+    grupoNota:"Approximate suggestions, subject to confirmation. Write to us and we'll put together the best option for your group.",
+    grupoHotel:'Hotel', grupoMixta:'Cabin + Hotel', grupoCabanas:'Cabins', grupoTodas:'Cabins + Hotel',
+    grupoHasta:'up to {n} guests',
+    grupoHab:['Room','Rooms'], grupoCc:['Small cabin','Small cabins'], grupoCm:['Medium cabin','Medium cabins'], grupoCg:['Large cabin','Large cabins'],
+    notaMediana6:'For 6 guests the space is tighter. Ask us.',
+    unidadLibre:'unit free', unidadesLibres:'units free',
+    wspCard:'Hello! I would like to check availability for:', wspIngreso:'Check-in', wspEgreso:'Check-out', wspHuespedes:'Guests', wspMasInfo:'Could you give me more information?',
+    wspGrupo:'Hello! I would like to inquire for a group of {n} guests.', wspSugerencias:'Suggestions:',
     sinDispTitulo:'We didn\'t find availability for the selected dates',
     sinDispSub:'You can still contact us for other dates or future availability',
     dispDisponibles:'Available', dispTuSeleccion:'Your selection',
@@ -257,6 +281,18 @@ const I18N = {
     sinResultados:'Nenhuma hospedagem encontrada para as datas selecionadas.',
     volverIntentar:'← Voltar e tentar novamente',
     errorHuespedes:'O número de hóspedes não é válido.',
+    grupoMax:'Para grupos de mais de 30 pessoas, organizamos a estadia de forma personalizada.',
+    grupoAviso:'Nossa maior unidade recebe até 10 pessoas. Para o seu grupo de {n}, propomos estas combinações:',
+    grupoInsuficiente:'Para essas datas não temos disponibilidade suficiente para o seu grupo. Escreva-nos e buscamos alternativas.',
+    grupoTitulo:'Para grupos: combine unidades',
+    grupoNota:'Sugestões orientativas, sujeitas a confirmação. Escreva-nos e montamos a melhor opção para o seu grupo.',
+    grupoHotel:'Hotel', grupoMixta:'Chalé + Hotel', grupoCabanas:'Chalés', grupoTodas:'Chalés + Hotel',
+    grupoHasta:'até {n} pessoas',
+    grupoHab:['Quarto','Quartos'], grupoCc:['Chalé pequeno','Chalés pequenos'], grupoCm:['Chalé médio','Chalés médios'], grupoCg:['Chalé grande','Chalés grandes'],
+    notaMediana6:'Para 6 pessoas o espaço é mais apertado. Consulte-nos.',
+    unidadLibre:'unidade livre', unidadesLibres:'unidades livres',
+    wspCard:'Olá! Gostaria de consultar disponibilidade para:', wspIngreso:'Chegada', wspEgreso:'Saída', wspHuespedes:'Hóspedes', wspMasInfo:'Poderia me dar mais informações?',
+    wspGrupo:'Olá! Gostaria de consultar para um grupo de {n} pessoas.', wspSugerencias:'Sugestões:',
     sinDispTitulo:'Não encontramos disponibilidade para as datas selecionadas',
     sinDispSub:'Mesmo assim, pode nos consultar por outras datas ou disponibilidade futura',
     dispDisponibles:'Disponíveis', dispTuSeleccion:'Sua seleção',
@@ -422,6 +458,72 @@ function etiquetaTipo(tipo, t) {
   if (c === 'apart') return t.tipoApart
   if (c === 'casa') return t.tipoCasa
   return tipo
+}
+
+/* ── Grupos: combinaciones de unidades ── */
+const GRUPO_MIN = 6        // desde esta cantidad se sugieren combinaciones
+const GRUPO_UNIDAD_MAX = 10 // capacidad de la unidad más grande
+const GRUPO_MAX = 30       // por encima se coordina por WhatsApp, sin consultar la API
+const CAP_MEDIANA = 5      // la cabaña mediana cuenta como máximo 5 en las combinaciones
+
+function tomarHasta(unidades, n) {
+  const usadas = []
+  let total = 0
+  for (const u of [...unidades].sort((a, b) => b.cap - a.cap)) {
+    if (total >= n) break
+    usadas.push(u)
+    total += u.cap
+  }
+  return { unidades: usadas, total }
+}
+
+/* Solo con `libres`: nunca la Casa, ni aparts (comparten habitaciones con el hotel y la API no informa cuáles) */
+function calcularCombos(libres, n) {
+  const a = (clave, cap) => ({ tipo: clave, cap })
+  const habitaciones = (libres.habitaciones || []).map(c => a('habitaciones', c))
+  const cabanas = [
+    ...(libres.cabanaGrande || []).map(c => a('cabanaGrande', c)),
+    ...(libres.cabanaMediana || []).map(c => a('cabanaMediana', Math.min(c, CAP_MEDIANA))),
+    ...(libres.cabanaChica || []).map(c => a('cabanaChica', c)),
+  ].sort((x, y) => y.cap - x.cap)
+
+  const opciones = []
+  if (habitaciones.length) opciones.push({ clave: 'hotel', ...tomarHasta(habitaciones, n) })
+  if (cabanas.length) {
+    const mayor = cabanas[0]
+    if (mayor.cap < n) {
+      const resto = tomarHasta(habitaciones, n - mayor.cap)
+      opciones.push({ clave: 'mixta', unidades: [mayor, ...resto.unidades], total: mayor.cap + resto.total })
+    }
+    opciones.push({ clave: 'cabanas', ...tomarHasta(cabanas, n) })
+  }
+
+  const cubren = opciones.filter(o => o.total >= n)
+  if (!cubren.length) {
+    const todas = [...cabanas, ...tomarHasta(habitaciones, Infinity).unidades]
+    const total = todas.reduce((suma, u) => suma + u.cap, 0)
+    return total >= n ? { sugerencias: [{ clave: 'todas', unidades: todas, total }], insuficiente: false } : { sugerencias: [], insuficiente: true }
+  }
+  const vistas = new Set()
+  const sugerencias = cubren.filter(o => {
+    const firma = o.unidades.map(u => u.tipo).sort().join()
+    if (o.unidades.length < 2 || vistas.has(firma)) return false
+    vistas.add(firma)
+    return true
+  })
+  return { sugerencias, insuficiente: false }
+}
+
+/* "1 Cabaña mediana + 2 Habitaciones" */
+function resumenCombo(combo, t) {
+  const nombres = { habitaciones: t.grupoHab, cabanaChica: t.grupoCc, cabanaMediana: t.grupoCm, cabanaGrande: t.grupoCg }
+  const cantidades = new Map()
+  combo.unidades.forEach(u => cantidades.set(u.tipo, (cantidades.get(u.tipo) || 0) + 1))
+  return [...cantidades].map(([tipo, c]) => `${c} ${nombres[tipo][c === 1 ? 0 : 1]}`).join(' + ')
+}
+
+function textoCombo(combo, t) {
+  return `${resumenCombo(combo, t)} · ${t.grupoHasta.replace('{n}', combo.total)}`
 }
 
 /* ── Clima helpers ── */
@@ -741,8 +843,39 @@ function IconoWsp() {
   )
 }
 
+/* ── Bloque "Para grupos: combiná unidades" ── */
+function BloqueCombos({ combos, wspUrl, t }) {
+  if (!combos.sugerencias.length) return null
+  const titulos = { hotel: t.grupoHotel, mixta: t.grupoMixta, cabanas: t.grupoCabanas, todas: t.grupoTodas }
+  return (
+    <section className="disp-seccion">
+      <h2 className="disp-seccion-titulo">{t.grupoTitulo}</h2>
+      <div className="combo-lista">
+        {combos.sugerencias.map(c => (
+          <div key={c.clave} className="combo-card">
+            <p className="combo-etiqueta">{titulos[c.clave]}</p>
+            <p className="combo-texto">{textoCombo(c, t)}</p>
+          </div>
+        ))}
+      </div>
+      <p className="combo-nota">{t.grupoNota}</p>
+      <a className="disp-wsp-btn combo-wsp" href={wspUrl} target="_blank" rel="noopener noreferrer"><IconoWsp />{t.btnWsp}</a>
+    </section>
+  )
+}
+
+/* Recuadro con mensaje + WhatsApp (grupos de más de 30 o sin disponibilidad suficiente) */
+function AvisoGrupo({ texto, wspUrl, t }) {
+  return (
+    <div className="disp-estado disp-aviso-grupo">
+      <p>{texto}</p>
+      <a className="disp-wsp-btn combo-wsp" href={wspUrl} target="_blank" rel="noopener noreferrer"><IconoWsp />{t.btnWsp}</a>
+    </div>
+  )
+}
+
 /* ── Card ── */
-function CardAlojamiento({ item, destacado, noDisponible, sinBadge, wspUrl, t }) {
+function CardAlojamiento({ item, destacado, noDisponible, sinBadge, unidadesLibres, nota, wspUrl, t }) {
   return (
     <div className={`aloj-card disp-aloj-card${destacado?' disp-aloj-card--dest':''}${noDisponible?' disp-aloj-card--no':''}`}>
       <div className="card-img">
@@ -772,7 +905,10 @@ function CardAlojamiento({ item, destacado, noDisponible, sinBadge, wspUrl, t })
             <p className="card-nota"><span className="card-nota-linea">{t.casaNoIncluyeA}</span><span className="card-nota-linea">{t.casaNoIncluyeB}</span></p>
           </>
         )}
-        {!noDisponible && item.unidadesDisponibles > 0 && (
+        {nota && <p className="card-nota">{nota}</p>}
+        {unidadesLibres > 0 ? (
+          <p className="disp-unidades">{unidadesLibres === 1 ? `1 ${t.unidadLibre}` : `${unidadesLibres} ${t.unidadesLibres}`}</p>
+        ) : !noDisponible && item.unidadesDisponibles > 0 && (
           <p className="disp-unidades">{item.unidadesDisponibles === 1 ? `1 ${t.unidad}` : `${item.unidadesDisponibles} ${t.unidades}`}</p>
         )}
         <div style={{ flex: 1 }} />
@@ -791,6 +927,7 @@ export default function Disponibilidad() {
   // Links viejos pueden traer "8+": la API espera un entero
   const personas = parseInt(cantidadPersonas, 10)
   const personasValidas = Number.isInteger(personas) && personas >= 1
+  const excedeMax = personasValidas && personas > GRUPO_MAX
 
   const [rawData, setRawData] = useState(null)
   const [cargando, setCargando] = useState(true)
@@ -813,6 +950,7 @@ export default function Disponibilidad() {
   useEffect(() => {
     if (!router.isReady) return
     if (!personasValidas) { setError('huespedes'); setCargando(false); return }
+    if (excedeMax) { setCargando(false); return }
     const params = new URLSearchParams()
     if (fechaIngreso) params.set('fechaIngreso', fechaIngreso)
     if (fechaEgreso) params.set('fechaEgreso', fechaEgreso)
@@ -825,10 +963,10 @@ export default function Disponibilidad() {
       .finally(() => setCargando(false))
   }, [router.isReady])
 
-  const buildWspUrl = item => {
-    const msg = ['Hola! Me interesa consultar disponibilidad para:',`*${item.nombre}*`,`Ingreso: ${formatFecha(fechaIngreso)}`,`Egreso: ${formatFecha(fechaEgreso)}`,`Huéspedes: ${personasValidas ? personas : '—'}`,'','¿Podría darme más información?'].join('\n')
-    return `https://wa.me/${WSP}?text=${encodeURIComponent(msg)}`
-  }
+  const personasTexto = personasValidas ? personas : '—'
+  const lineasWsp = [`${t.wspIngreso}: ${formatFecha(fechaIngreso)}`, `${t.wspEgreso}: ${formatFecha(fechaEgreso)}`]
+  const urlWsp = lineas => `https://wa.me/${WSP}?text=${encodeURIComponent(lineas.join('\n'))}`
+  const buildWspUrl = item => urlWsp([t.wspCard, `*${item.nombre}*`, ...lineasWsp, `${t.wspHuespedes}: ${personasTexto}`, '', t.wspMasInfo])
 
   const cantNoches = (fechaIngreso && fechaEgreso)
     ? Math.max(0, Math.round((new Date(fechaEgreso) - new Date(fechaIngreso)) / 86400000))
@@ -836,9 +974,22 @@ export default function Disponibilidad() {
 
   const esCualquiera = !tipo || normalizarTipo(tipo) === 'cualquiera'
   const esCasa = !esCualquiera && tipoCanonico(tipo) === 'casa'
-  const disponiblesCoincidentes = (resultados||[]).filter(r => r.disponible && tipoCoincide(tipo, r.tipo))
-  const disponiblesOtros        = (resultados||[]).filter(r => r.disponible && !esCualquiera && !tipoCoincide(tipo, r.tipo))
-  const noDisponibles           = (resultados||[]).filter(r => !r.disponible)
+  // Cabaña mediana con 6 personas: entra justa, va siempre en "Otras opciones" con una nota
+  const esMedianaAjustada = r => r.id === 'cabanaMediana' && personas === 6
+  const coincide = r => tipoCoincide(tipo, r.tipo) && !esMedianaAjustada(r)
+  const disponiblesCoincidentes = (resultados||[]).filter(r => r.disponible && coincide(r))
+  const disponiblesOtros        = (resultados||[]).filter(r => r.disponible && !coincide(r))
+
+  // Grupos: combinaciones de unidades (6 a 30 personas). Con más de 10 no entra nadie en una sola unidad
+  const grupoGrande = personasValidas && personas > GRUPO_UNIDAD_MAX && !excedeMax
+  const combos = personasValidas && personas >= GRUPO_MIN && !excedeMax && rawData?.libres ? calcularCombos(rawData.libres, personas) : null
+  const idsCombo = new Set((combos?.sugerencias || []).flatMap(c => c.unidades.map(u => u.tipo)))
+  const categoriasCombo = grupoGrande ? (resultados||[]).filter(r => idsCombo.has(r.id)) : []
+  const noDisponibles = (resultados||[]).filter(r => !r.disponible && !categoriasCombo.includes(r))
+  const grupoWspUrl = urlWsp([
+    t.wspGrupo.replace('{n}', personasTexto), ...lineasWsp,
+    ...(combos?.sugerencias.length ? ['', t.wspSugerencias, ...combos.sugerencias.map(c => `- ${textoCombo(c, t)}`)] : []),
+  ])
   const hayResultados  = resultados && resultados.length > 0
   const hayDisponibles = disponiblesCoincidentes.length > 0 || disponiblesOtros.length > 0
 
@@ -992,13 +1143,44 @@ export default function Disponibilidad() {
               <a href="/" className="disp-btn-volver">{t.bannerModificar}</a>
             </div>
           )}
-          {!cargando && !error && hayResultados && !hayDisponibles && (
+          {!cargando && !error && excedeMax && (
+            <AvisoGrupo texto={t.grupoMax} wspUrl={grupoWspUrl} t={t} />
+          )}
+          {!cargando && !error && hayResultados && grupoGrande && (
+            /* Más personas que la unidad más grande: las combinaciones van primero */
+            <>
+              {combos?.insuficiente && <AvisoGrupo texto={t.grupoInsuficiente} wspUrl={grupoWspUrl} t={t} />}
+              {combos?.sugerencias.length > 0 && <p className="disp-aviso-texto">{t.grupoAviso.replace('{n}', personas)}</p>}
+              {combos && <BloqueCombos combos={combos} wspUrl={grupoWspUrl} t={t} />}
+              {categoriasCombo.length > 0 && (
+                <section className="disp-seccion">
+                  <div className="disp-grid">
+                    {categoriasCombo.map(r => <CardAlojamiento key={r.id} item={r} sinBadge unidadesLibres={rawData.libres[r.id].length} wspUrl={buildWspUrl(r)} t={t} />)}
+                  </div>
+                </section>
+              )}
+              {noDisponibles.length > 0 && (
+                <section className="disp-seccion disp-seccion--no">
+                  <h2 className="disp-seccion-titulo disp-seccion-titulo--no">
+                    {t.dispNoDisponibles}
+                    <span className="disp-seccion-count">{noDisponibles.length}</span>
+                  </h2>
+                  <div className="disp-grid">
+                    {noDisponibles.map(r => <CardAlojamiento key={r.id} item={r} noDisponible wspUrl="" t={t} />)}
+                  </div>
+                </section>
+              )}
+            </>
+          )}
+          {!cargando && !error && hayResultados && !grupoGrande && !hayDisponibles && (
             /* Ningún alojamiento disponible: mensaje + todas las cards funcionales */
             <section className="disp-seccion">
               <div style={{ textAlign:'center', padding:'1.5rem 0 2rem', borderBottom:'1px solid var(--borde)', marginBottom:'2rem' }}>
                 <p style={{ fontSize:'1.26rem', fontWeight:700, color:'var(--texto)', marginBottom:'0.4rem' }}>{t.sinDispTitulo}</p>
                 <p style={{ fontSize:'0.85rem', color:'var(--texto-suave)' }}>{t.sinDispSub}</p>
               </div>
+              {combos?.insuficiente && <AvisoGrupo texto={t.grupoInsuficiente} wspUrl={grupoWspUrl} t={t} />}
+              {combos && <BloqueCombos combos={combos} wspUrl={grupoWspUrl} t={t} />}
               <div className="disp-grid">
                 {(resultados||[]).map(r => (
                   <CardAlojamiento key={r.id} item={r} sinBadge wspUrl={buildWspUrl(r)} t={t} />
@@ -1006,7 +1188,7 @@ export default function Disponibilidad() {
               </div>
             </section>
           )}
-          {!cargando && !error && hayResultados && hayDisponibles && (
+          {!cargando && !error && hayResultados && !grupoGrande && hayDisponibles && (
             <>
               {disponiblesCoincidentes.length > 0 && (
                 <section className="disp-seccion">
@@ -1019,17 +1201,19 @@ export default function Disponibilidad() {
                   </div>
                 </section>
               )}
-              {!esCualquiera && disponiblesOtros.length > 0 && (
+              {disponiblesOtros.length > 0 && (
                 <section className="disp-seccion disp-seccion--sugerencias">
                   <h2 className="disp-seccion-titulo disp-seccion-titulo--gris">
                     {t.dispOtrasOpciones}
                     <span className="disp-seccion-count">{disponiblesOtros.length}</span>
                   </h2>
                   <div className="disp-grid">
-                    {disponiblesOtros.map(r => <CardAlojamiento key={r.id} item={r} wspUrl={buildWspUrl(r)} t={t} />)}
+                    {disponiblesOtros.map(r => <CardAlojamiento key={r.id} item={r} nota={esMedianaAjustada(r) ? t.notaMediana6 : null} wspUrl={buildWspUrl(r)} t={t} />)}
                   </div>
                 </section>
               )}
+              {combos?.insuficiente && <AvisoGrupo texto={t.grupoInsuficiente} wspUrl={grupoWspUrl} t={t} />}
+              {combos && <BloqueCombos combos={combos} wspUrl={grupoWspUrl} t={t} />}
               {noDisponibles.length > 0 && (
                 <section className="disp-seccion disp-seccion--no">
                   <h2 className="disp-seccion-titulo disp-seccion-titulo--no">
