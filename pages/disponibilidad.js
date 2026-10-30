@@ -12,7 +12,7 @@ const I18N = {
     // Nav
     navNosotros:'Nosotros', navAlojamientos:'Alojamientos', navInfo:'Info importante',
     navServicios:'Servicios', navClima:'Clima', navTestimonios:'Reseñas',
-    navUbicacion:'Ubicación', navCta:'Consultar →',
+    navUbicacion:'Ubicación', navCta:'Consultar',
     // Banner
     bannerIngreso:'Ingreso', bannerEgreso:'Egreso', bannerHuespedes:'Huéspedes',
     bannerTipo:'Tipo', bannerModificar:'← Modificar búsqueda',
@@ -23,6 +23,7 @@ const I18N = {
     cargando:'Consultando disponibilidad…',
     sinResultados:'No se encontraron alojamientos para las fechas seleccionadas.',
     volverIntentar:'← Volver e intentar de nuevo',
+    errorHuespedes:'La cantidad de huéspedes no es válida.',
     sinDispTitulo:'No hay disponibilidad para el rango de fechas seleccionadas',
     sinDispSub:'Conocé nuestros alojamientos y escribinos por WhatsApp para consultar disponibilidad futura',
     // Resultados
@@ -44,18 +45,18 @@ const I18N = {
     apFeatures:['Cocina equipada','Aire acond. 24hs','Calefacción','Baño privado','Limpieza c/3 días'],
     ccNombre:'Cabaña chica',
     ccMeta1:'Hasta 3 personas', ccMeta2:'1 dormitorio',
-    ccFeatures:['Aire frío/calor','Cocina equipada','Asador privado','Limpieza c/3 días'],
+    ccFeatures:['Aire frío/calor','Cocina equipada','Asador privado','Limpieza c/3 días','Pet friendly'],
     cmNombre:'Cabaña mediana',
     cmMeta1:'Hasta 5/6 personas', cmMeta2:'1 dormitorio',
-    cmFeatures:['Aire frío/calor','Cocina equipada','Asador privado','Limpieza c/3 días'],
+    cmFeatures:['Aire frío/calor','Cocina equipada','Asador privado','Limpieza c/3 días','Pet friendly'],
     cgNombre:'Cabaña grande',
     cgMeta1:'Hasta 7/8 personas', cgMeta2:'2 dormitorios',
-    cgFeatures:['Aire frío/calor','Cocina equipada','Asador privado','Limpieza c/3 días'],
+    cgFeatures:['Aire frío/calor','Cocina equipada','Asador privado','Limpieza c/3 días','Pet friendly'],
     casaNombre:'Casa con Pileta · Icho Cruz',
     casaMeta1:'Hasta 10 personas', casaMeta2:'3 dormitorios',
-    casaFeatures:['Pileta privada','Parque','Parrillero','Cocina equipada','Wi-Fi y DirecTV','Pet friendly'],
-    casaUbic:'📍 Icho Cruz · a 15 min del complejo', casaHorario:'Check-in 14:00 · Check-out 10:00',
-    casaNoIncluye:'No incluye desayuno ni blancos (opcionales)',
+    casaFeatures:['Pileta privada','Parque privado','Asador privado','Cocina equipada','Wi-Fi y DirecTV','Pet friendly'],
+    casaUbic:'Icho Cruz — a 15 min de Brisas de Oro', casaHorario:'Check-in 14:00 · Check-out 10:00',
+    casaNoIncluyeA:'Sin desayuno ni toallas', casaNoIncluyeB:'Ropa de cama opcional (con cargo adicional)',
     // Clima
     climaLabel:'Villa Carlos Paz · Sierras de Córdoba', climaTitle:'Clima para tu viaje',
     climaDesc:'Consultá el pronóstico antes de preparar tu equipaje. Datos en tiempo real, actualizados automáticamente.',
@@ -94,6 +95,16 @@ const I18N = {
     acordPagoL1:'Transferencia', acordPagoV1:'CBU, CVU o Alias disponible al confirmar la reserva (bancos y billeteras virtuales)',
     acordPagoL2:'Tarjeta de crédito / débito', acordPagoV2:'Aceptamos tarjetas. Las tarjetas de crédito tienen recargo según la cantidad de cuotas. Consultar al reservar.',
     acordPagoL3:'Efectivo', acordPagoV3:'Pesos argentinos y dólares',
+    acordHoraCasa:'Casa con Pileta · Icho Cruz: check-in 14:00 hs · check-out 10:00 hs',
+    acordCasa:'Casa con Pileta · Icho Cruz',
+    acordCasaIntro:'Rigen las mismas condiciones de reserva, cancelación, formas de pago y normas que en Brisas de Oro. Lo propio de la casa:',
+    acordCasaL1:'Horarios', acordCasaV1:'Check-in 14:00 hs · Check-out 10:00 hs',
+    acordCasaL2:'Incluye', acordCasaV2:'Pileta privada, parque privado, asador privado bajo alero, cocina equipada, Wi-Fi y DirecTV, ventiladores. Pet friendly.',
+    acordCasaL3:'No incluye', acordCasaV3:'Desayuno ni toallas. Ropa de cama opcional, con cargo adicional.',
+    acordCasaL4:'Capacidad', acordCasaV4:'Hasta 10 personas · 3 dormitorios · 2 baños',
+    acordCasaL5:'Dirección', acordCasaV5:'Calle Uruguay esq. Lombardo, Icho Cruz', acordCasaBtn:'Cómo llegar',
+    servSub:'Servicios disponibles en', servSubNombre:'Brisas de Oro Hotel y Cabañas.',
+    footerCasaResenas:'Reseñas de la Casa en Google',
     // Servicios
     servLabel:'Lo que ofrecemos', servTitle:'Nuestros servicios',
     servPileta:'Pileta', servPiletaD:'Compartida para todos los huéspedes',
@@ -123,7 +134,7 @@ const I18N = {
   en: {
     navNosotros:'About us', navAlojamientos:'Accommodations', navInfo:'Important info',
     navServicios:'Services', navClima:'Weather', navTestimonios:'Reviews',
-    navUbicacion:'Location', navCta:'Inquire →',
+    navUbicacion:'Location', navCta:'Inquire',
     bannerIngreso:'Check-in', bannerEgreso:'Check-out', bannerHuespedes:'Guests',
     bannerTipo:'Type', bannerModificar:'← Modify search',
     bannerNochesLabel:'Stay', bannerNoche:'night', bannerNoches:'nights',
@@ -132,6 +143,7 @@ const I18N = {
     cargando:'Checking availability…',
     sinResultados:'No accommodations found for the selected dates.',
     volverIntentar:'← Go back and try again',
+    errorHuespedes:'The number of guests is not valid.',
     sinDispTitulo:'We didn\'t find availability for the selected dates',
     sinDispSub:'You can still contact us for other dates or future availability',
     dispDisponibles:'Available', dispTuSeleccion:'Your selection',
@@ -149,18 +161,18 @@ const I18N = {
     apFeatures:['Full kitchen','A/C 24hs','Heating','Private bathroom','Cleaning every 3 days'],
     ccNombre:'Small cabin',
     ccMeta1:'Up to 3 guests', ccMeta2:'1 bedroom',
-    ccFeatures:['Hot & cold A/C','Full kitchen','Private BBQ','Cleaning every 3 days'],
+    ccFeatures:['Hot & cold A/C','Full kitchen','Private BBQ','Cleaning every 3 days','Pet friendly'],
     cmNombre:'Medium cabin',
     cmMeta1:'Up to 5/6 guests', cmMeta2:'1 bedroom',
-    cmFeatures:['Hot & cold A/C','Full kitchen','Private BBQ','Cleaning every 3 days'],
+    cmFeatures:['Hot & cold A/C','Full kitchen','Private BBQ','Cleaning every 3 days','Pet friendly'],
     cgNombre:'Large cabin',
     cgMeta1:'Up to 7/8 guests', cgMeta2:'2 bedrooms',
-    cgFeatures:['Hot & cold A/C','Full kitchen','Private BBQ','Cleaning every 3 days'],
+    cgFeatures:['Hot & cold A/C','Full kitchen','Private BBQ','Cleaning every 3 days','Pet friendly'],
     casaNombre:'House with Pool · Icho Cruz',
     casaMeta1:'Up to 10 guests', casaMeta2:'3 bedrooms',
-    casaFeatures:['Private pool','Garden','BBQ area','Full kitchen','Wi-Fi & DirecTV','Pet friendly'],
-    casaUbic:'📍 Icho Cruz · 15 min from the resort', casaHorario:'Check-in 2:00 pm · Check-out 10:00 am',
-    casaNoIncluye:'Breakfast and linens not included (linens available)',
+    casaFeatures:['Private pool','Private garden','Private BBQ','Full kitchen','Wi-Fi & DirecTV','Pet friendly'],
+    casaUbic:'Icho Cruz — 15 min from Brisas de Oro', casaHorario:'Check-in 2:00 pm · Check-out 10:00 am',
+    casaNoIncluyeA:'No breakfast or towels', casaNoIncluyeB:'Bed linen optional (extra charge)',
     climaLabel:'Villa Carlos Paz · Córdoba Hills', climaTitle:'Weather for your trip',
     climaDesc:'Check the forecast before packing. Real-time data, updated automatically.',
     climaNote:'Data provided by Tomorrow.io · Updated automatically',
@@ -197,6 +209,16 @@ const I18N = {
     acordPagoL1:'Bank transfer', acordPagoV1:'CBU, CVU or Alias provided upon booking confirmation (banks and digital wallets)',
     acordPagoL2:'Credit / debit card', acordPagoV2:'We accept cards. Credit cards carry a surcharge depending on the number of installments. Ask when booking.',
     acordPagoL3:'Cash', acordPagoV3:'Argentine pesos and US dollars',
+    acordHoraCasa:'House with Pool · Icho Cruz: check-in 14:00 hs · check-out 10:00 hs',
+    acordCasa:'House with Pool · Icho Cruz',
+    acordCasaIntro:'The same booking, cancellation, payment and house rules as at Brisas de Oro apply. Specific to the house:',
+    acordCasaL1:'Times', acordCasaV1:'Check-in 14:00 hs · Check-out 10:00 hs',
+    acordCasaL2:'Includes', acordCasaV2:'Private pool, private garden, private covered BBQ, full kitchen, Wi-Fi & DirecTV, fans. Pet friendly.',
+    acordCasaL3:'Not included', acordCasaV3:'Breakfast or towels. Bed linen optional, at an extra charge.',
+    acordCasaL4:'Capacity', acordCasaV4:'Up to 10 guests · 3 bedrooms · 2 bathrooms',
+    acordCasaL5:'Address', acordCasaV5:'Calle Uruguay & Lombardo, Icho Cruz', acordCasaBtn:'Get directions',
+    servSub:'Services available at', servSubNombre:'Brisas de Oro Hotel y Cabañas.',
+    footerCasaResenas:'House reviews on Google',
     servLabel:'What we offer', servTitle:'Our services',
     servPileta:'Pool', servPiletaD:'Shared by all guests',
     servParque:'Grounds', servParqueD:'Spacious and green',
@@ -225,7 +247,7 @@ const I18N = {
   pt: {
     navNosotros:'Sobre nós', navAlojamientos:'Hospedagem', navInfo:'Info importante',
     navServicios:'Serviços', navClima:'Clima', navTestimonios:'Avaliações',
-    navUbicacion:'Localização', navCta:'Consultar →',
+    navUbicacion:'Localização', navCta:'Consultar',
     bannerIngreso:'Chegada', bannerEgreso:'Saída', bannerHuespedes:'Hóspedes',
     bannerTipo:'Tipo', bannerModificar:'← Modificar busca',
     bannerNochesLabel:'Estadia', bannerNoche:'noite', bannerNoches:'noites',
@@ -234,6 +256,7 @@ const I18N = {
     cargando:'Consultando disponibilidade…',
     sinResultados:'Nenhuma hospedagem encontrada para as datas selecionadas.',
     volverIntentar:'← Voltar e tentar novamente',
+    errorHuespedes:'O número de hóspedes não é válido.',
     sinDispTitulo:'Não encontramos disponibilidade para as datas selecionadas',
     sinDispSub:'Mesmo assim, pode nos consultar por outras datas ou disponibilidade futura',
     dispDisponibles:'Disponíveis', dispTuSeleccion:'Sua seleção',
@@ -251,18 +274,18 @@ const I18N = {
     apFeatures:['Cozinha equipada','A/C 24hs','Aquecimento','Banheiro privativo','Limpeza a cada 3 dias'],
     ccNombre:'Chalé pequeno',
     ccMeta1:'Até 3 pessoas', ccMeta2:'1 quarto',
-    ccFeatures:['A/C frio e calor','Cozinha equipada','Churrasqueira privativa','Limpeza a cada 3 dias'],
+    ccFeatures:['A/C frio e calor','Cozinha equipada','Churrasqueira privativa','Limpeza a cada 3 dias','Pet friendly'],
     cmNombre:'Chalé médio',
     cmMeta1:'Até 5/6 pessoas', cmMeta2:'1 quarto',
-    cmFeatures:['A/C frio e calor','Cozinha equipada','Churrasqueira privativa','Limpeza a cada 3 dias'],
+    cmFeatures:['A/C frio e calor','Cozinha equipada','Churrasqueira privativa','Limpeza a cada 3 dias','Pet friendly'],
     cgNombre:'Chalé grande',
     cgMeta1:'Até 7/8 pessoas', cgMeta2:'2 quartos',
-    cgFeatures:['A/C frio e calor','Cozinha equipada','Churrasqueira privativa','Limpeza a cada 3 dias'],
+    cgFeatures:['A/C frio e calor','Cozinha equipada','Churrasqueira privativa','Limpeza a cada 3 dias','Pet friendly'],
     casaNombre:'Casa com Piscina · Icho Cruz',
     casaMeta1:'Até 10 pessoas', casaMeta2:'3 quartos',
-    casaFeatures:['Piscina privativa','Jardim','Churrasqueira','Cozinha equipada','Wi-Fi e DirecTV','Pet friendly'],
-    casaUbic:'📍 Icho Cruz · a 15 min do complexo', casaHorario:'Check-in 14:00 · Check-out 10:00',
-    casaNoIncluye:'Não inclui café da manhã nem roupa de cama e banho (opcional)',
+    casaFeatures:['Piscina privativa','Jardim privativo','Churrasqueira privativa','Cozinha equipada','Wi-Fi e DirecTV','Pet friendly'],
+    casaUbic:'Icho Cruz — a 15 min do Brisas de Oro', casaHorario:'Check-in 14:00 · Check-out 10:00',
+    casaNoIncluyeA:'Sem café da manhã nem toalhas', casaNoIncluyeB:'Roupa de cama opcional (com custo adicional)',
     climaLabel:'Villa Carlos Paz · Serras de Córdoba', climaTitle:'Clima para a sua viagem',
     climaDesc:'Confira a previsão antes de fazer as malas. Dados em tempo real, atualizados automaticamente.',
     climaNote:'Dados fornecidos por Tomorrow.io · Atualizado automaticamente',
@@ -299,6 +322,16 @@ const I18N = {
     acordPagoL1:'Transferência', acordPagoV1:'CBU, CVU ou Alias disponível ao confirmar a reserva (bancos e carteiras digitais)',
     acordPagoL2:'Cartão de crédito / débito', acordPagoV2:'Aceitamos cartões. Cartões de crédito têm acréscimo conforme o número de parcelas. Consulte ao reservar.',
     acordPagoL3:'Dinheiro', acordPagoV3:'Pesos argentinos e dólares americanos',
+    acordHoraCasa:'Casa com Piscina · Icho Cruz: check-in 14:00 hs · check-out 10:00 hs',
+    acordCasa:'Casa com Piscina · Icho Cruz',
+    acordCasaIntro:'Valem as mesmas condições de reserva, cancelamento, formas de pagamento e regras do Brisas de Oro. O que é próprio da casa:',
+    acordCasaL1:'Horários', acordCasaV1:'Check-in 14:00 hs · Check-out 10:00 hs',
+    acordCasaL2:'Inclui', acordCasaV2:'Piscina privativa, jardim privativo, churrasqueira privativa coberta, cozinha equipada, Wi-Fi e DirecTV, ventiladores. Pet friendly.',
+    acordCasaL3:'Não inclui', acordCasaV3:'Café da manhã nem toalhas. Roupa de cama opcional, com custo adicional.',
+    acordCasaL4:'Capacidade', acordCasaV4:'Até 10 pessoas · 3 quartos · 2 banheiros',
+    acordCasaL5:'Endereço', acordCasaV5:'Calle Uruguay esq. Lombardo, Icho Cruz', acordCasaBtn:'Como chegar',
+    servSub:'Serviços disponíveis no', servSubNombre:'Brisas de Oro Hotel y Cabañas.',
+    footerCasaResenas:'Avaliações da Casa no Google',
     servLabel:'O que oferecemos', servTitle:'Nossos serviços',
     servPileta:'Piscina', servPiletaD:'Compartilhada por todos os hóspedes',
     servParque:'Jardim', servParqueD:'Amplo e verde',
@@ -474,7 +507,7 @@ function SeccionClima({ lang }) {
           <p className="section-label">{t.climaLabel}</p>
           <h2 className="section-title">{t.climaTitle}</h2>
           <div className="divider" style={{ margin:'0.9rem auto 1.8rem' }} />
-          <p style={{ fontSize:'0.9rem', color:'var(--texto-suave)', maxWidth:700, margin:'0 auto', lineHeight:1.7 }}>{t.climaDesc}</p>
+          <p className="clima-desc" style={{ fontSize:'0.9rem', color:'var(--texto-suave)', maxWidth:700, margin:'0 auto', lineHeight:1.7 }}>{t.climaDesc}</p>
         </div>
         {!datos && !climaErr && <div className="clima-loading"><span style={{ fontSize:'1.5rem', display:'block', marginBottom:'0.5rem' }}>⛅</span>{t.climaCargando}</div>}
         {climaErr && <div className="clima-error"><span style={{ fontSize:'1.5rem', display:'block', marginBottom:'0.5rem' }}>🌡️</span>{t.climaError}</div>}
@@ -495,7 +528,7 @@ function SeccionClima({ lang }) {
                     Villa Carlos Paz, Córdoba, Argentina
                   </div>
                   <div className="clima-actual-desc">{getDesc(c.weatherCode, lang)}</div>
-                  <div className="clima-actual-sub">{t.sensacion}: {Math.round(c.temperatureApparent)}°&nbsp;·&nbsp;{t.humedad}: {Math.round(c.humidity)}%&nbsp;·&nbsp;{t.viento}: {Math.round(c.windSpeed)} km/h</div>
+                  <div className="clima-actual-sub"><span className="clima-dato">{t.sensacion}: {Math.round(c.temperatureApparent)}°</span><span className="clima-sep">&nbsp;·&nbsp;</span><span className="clima-dato">{t.humedad}: {Math.round(c.humidity)}%</span><span className="clima-sep">&nbsp;·&nbsp;</span><span className="clima-dato">{t.viento}: {Math.round(c.windSpeed)} km/h</span></div>
                 </div>
               </div>
               <div className="clima-grid">
@@ -550,7 +583,7 @@ function getAcordItems(t) {
     {
       titulo: t.acordHora, destacado: false,
       icono: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>,
-      contenido: <><div className="acord-grid"><div className="acord-dato"><span className="acord-label">{t.acordHoraL1}</span><span>{t.acordHoraV1}</span></div><div className="acord-dato"><span className="acord-label">{t.acordHoraL2}</span><span>{t.acordHoraV2}</span></div></div><p style={{ marginTop:'0.75rem', fontSize:'0.85rem', color:'var(--texto-suave)' }}>{t.acordHoraNote}</p></>,
+      contenido: <><div className="acord-grid"><div className="acord-dato"><span className="acord-label">{t.acordHoraL1}</span><span>{t.acordHoraV1}</span></div><div className="acord-dato"><span className="acord-label">{t.acordHoraL2}</span><span>{t.acordHoraV2}</span></div></div><p style={{ marginTop:'0.75rem', fontSize:'0.85rem', color:'var(--texto-medio)' }}>{t.acordHoraCasa}</p><p style={{ marginTop:'0.75rem', fontSize:'0.85rem', color:'var(--texto-suave)' }}>{t.acordHoraNote}</p></>,
     },
     {
       titulo: t.acordNormas, destacado: false,
@@ -566,6 +599,21 @@ function getAcordItems(t) {
       titulo: t.acordPago, destacado: false,
       icono: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>,
       contenido: <div className="acord-grid" style={{ gridTemplateColumns:'repeat(auto-fit, minmax(180px, 1fr))' }}><div className="acord-dato"><span className="acord-label" style={{ whiteSpace:'nowrap' }}>{t.acordPagoL1}</span><span>{t.acordPagoV1}</span></div><div className="acord-dato"><span className="acord-label">{t.acordPagoL2}</span><span>{t.acordPagoV2}</span></div><div className="acord-dato"><span className="acord-label">{t.acordPagoL3}</span><span>{t.acordPagoV3}</span></div></div>,
+    },
+    {
+      titulo: t.acordCasa, destacado: false, largo: true,
+      icono: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>,
+      contenido: <>
+        <p style={{ marginBottom:'0.75rem' }}>{t.acordCasaIntro}</p>
+        <div className="acord-grid">
+          <div className="acord-dato"><span className="acord-label">{t.acordCasaL1}</span><span>{t.acordCasaV1}</span></div>
+          <div className="acord-dato"><span className="acord-label">{t.acordCasaL4}</span><span>{t.acordCasaV4}</span></div>
+          <div className="acord-dato"><span className="acord-label">{t.acordCasaL2}</span><span>{t.acordCasaV2}</span></div>
+          <div className="acord-dato"><span className="acord-label">{t.acordCasaL3}</span><span>{t.acordCasaV3}</span></div>
+          <div className="acord-dato"><span className="acord-label">{t.acordCasaL5}</span><span>{t.acordCasaV5}</span>
+            <a className="acord-link" href={MAPS_CASA} target="_blank" rel="noopener noreferrer"><IcoMeta tipo="ubicacion" /><span>{t.acordCasaBtn}</span></a></div>
+        </div>
+      </>,
     },
   ]
 }
@@ -590,7 +638,7 @@ function SeccionInfo({ t }) {
                 <span>{item.icono}<span>{item.titulo}</span></span>
                 <svg className="acord-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><polyline points="6 9 12 15 18 9"/></svg>
               </button>
-              <div className={`acord-body${acordOpen === i ? ' open' : ''}`}>{item.contenido}</div>
+              <div className={`acord-body${item.largo ? ' acord-body--larga' : ''}${acordOpen === i ? ' open' : ''}`}>{item.contenido}</div>
             </div>
           ))}
         </div>
@@ -628,6 +676,7 @@ function SeccionServicios({ t }) {
         <p className="section-label">{t.servLabel}</p>
         <h2 className="section-title">{t.servTitle}</h2>
         <div className="divider" />
+        <p className="serv-sub">{t.servSub} <span className="serv-sub-nombre">{t.servSubNombre}</span></p>
         <div className="servicios-grid">
           {S.map((s, i) => (
             <div key={i} className="servicio-item">
@@ -666,15 +715,17 @@ function Carrusel({ fotos, id, disabled }) {
 }
 
 function IcoMeta({ tipo }) {
-  const st = { display:'inline-block', verticalAlign:'middle', flexShrink:0 }
+  const props = { className:'ico', width:13, height:13, viewBox:'0 0 24 24', fill:'none', stroke:'currentColor', strokeWidth:1.8, strokeLinecap:'round', strokeLinejoin:'round', 'aria-hidden':true }
   if (tipo === 'personas')
-    return <svg style={st} width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#555" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+    return <svg {...props}><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
   if (tipo === 'desayuno')
-    return <svg style={st} width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#555" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/></svg>
+    return <svg {...props}><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg>
   if (tipo === 'habitaciones')
-    return <svg style={st} width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#555" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    return <svg {...props}><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
   if (tipo === 'cama' || tipo === 'camas')
-    return <svg style={st} width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#555" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="17"/><line x1="9.5" y1="14.5" x2="14.5" y2="14.5"/></svg>
+    return <svg {...props}><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg>
+  if (tipo === 'ubicacion')
+    return <svg {...props}><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
   return null
 }
 
@@ -716,9 +767,9 @@ function CardAlojamiento({ item, destacado, noDisponible, sinBadge, wspUrl, t })
         <div className="card-features">{item.features.map(f => <span key={f} className="feature-tag">{f}</span>)}</div>
         {item.id === 'casa' && (
           <>
-            <p className="card-nota">{t.casaUbic}</p>
+            <p className="card-nota ico-txt"><IcoMeta tipo="ubicacion" /><span>{t.casaUbic}</span></p>
             <p className="card-nota">{t.casaHorario}</p>
-            <p className="card-nota">{t.casaNoIncluye}</p>
+            <p className="card-nota"><span className="card-nota-linea">{t.casaNoIncluyeA}</span><span className="card-nota-linea">{t.casaNoIncluyeB}</span></p>
           </>
         )}
         {!noDisponible && item.unidadesDisponibles > 0 && (
@@ -737,6 +788,9 @@ function CardAlojamiento({ item, destacado, noDisponible, sinBadge, wspUrl, t })
 export default function Disponibilidad() {
   const router = useRouter()
   const { fechaIngreso, fechaEgreso, cantidadPersonas, tipo } = router.query
+  // Links viejos pueden traer "8+": la API espera un entero
+  const personas = parseInt(cantidadPersonas, 10)
+  const personasValidas = Number.isInteger(personas) && personas >= 1
 
   const [rawData, setRawData] = useState(null)
   const [cargando, setCargando] = useState(true)
@@ -758,10 +812,11 @@ export default function Disponibilidad() {
 
   useEffect(() => {
     if (!router.isReady) return
+    if (!personasValidas) { setError('huespedes'); setCargando(false); return }
     const params = new URLSearchParams()
     if (fechaIngreso) params.set('fechaIngreso', fechaIngreso)
     if (fechaEgreso) params.set('fechaEgreso', fechaEgreso)
-    if (cantidadPersonas) params.set('cantidadPersonas', cantidadPersonas)
+    params.set('cantidadPersonas', String(personas))
     if (tipo) params.set('tipo', tipo)
     fetch(`${API_URL}?${params}`)
       .then(r => { if (!r.ok) throw new Error(`Error ${r.status}`); return r.json() })
@@ -771,7 +826,7 @@ export default function Disponibilidad() {
   }, [router.isReady])
 
   const buildWspUrl = item => {
-    const msg = ['Hola! Me interesa consultar disponibilidad para:',`*${item.nombre}*`,`Ingreso: ${formatFecha(fechaIngreso)}`,`Egreso: ${formatFecha(fechaEgreso)}`,`Huéspedes: ${cantidadPersonas||'—'}`,'','¿Podría darme más información?'].join('\n')
+    const msg = ['Hola! Me interesa consultar disponibilidad para:',`*${item.nombre}*`,`Ingreso: ${formatFecha(fechaIngreso)}`,`Egreso: ${formatFecha(fechaEgreso)}`,`Huéspedes: ${personasValidas ? personas : '—'}`,'','¿Podría darme más información?'].join('\n')
     return `https://wa.me/${WSP}?text=${encodeURIComponent(msg)}`
   }
 
@@ -917,7 +972,7 @@ export default function Disponibilidad() {
                     </svg>
                     {t.bannerHuespedes}
                   </span>
-                  <span className="disp-banner-valor">{cantidadPersonas || '—'}</span>
+                  <span className="disp-banner-valor">{personasValidas ? personas : '—'}</span>
                 </div>
                 {!esCualquiera && tipo && (
                   <>
@@ -943,7 +998,7 @@ export default function Disponibilidad() {
           {!cargando && error && (
             <div className="disp-estado disp-estado--error">
               <p className="disp-estado-icono">⚠</p>
-              <p>{error}</p>
+              <p>{error === 'huespedes' ? t.errorHuespedes : error}</p>
               <a href="/" className="disp-btn-volver">{t.volverIntentar}</a>
             </div>
           )}
@@ -1068,6 +1123,7 @@ export default function Disponibilidad() {
                 <a className="platform-link dark" href="https://www.google.com/maps/search/Brisas+de+Oro+Hotel+y+Caba%C3%B1as+Villa+Carlos+Paz" target="_blank" rel="noopener noreferrer">Google Maps</a>
                 <a className="platform-link dark" href="https://www.alquilerargentina.com/alojamientos/aw75-Caba%C3%B1a-Hotel-y-Caba%C3%B1as-Brisas-de-Oro-Villa-Carlos-Paz.html" target="_blank" rel="noopener noreferrer">Alquiler Argentina</a>
                 <a className="platform-link dark" href="https://www.welcomeargentina.com/villacarlospaz/cabanas-brisas-de-oro.html" target="_blank" rel="noopener noreferrer">Welcome Argentina</a>
+                <a className="platform-link dark" href={MAPS_CASA} target="_blank" rel="noopener noreferrer"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>{t.footerCasaResenas}</a>
               </div>
             </div>
           </div>

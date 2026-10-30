@@ -9,16 +9,16 @@ export default function Home() {
         'sticky.btn':'Buscar',
         'topbar.dir':'Av. Ramón J. Cárcano 2590 · Villa Carlos Paz, Córdoba',
         'topbar.mail':'Escribinos','nav.nosotros':'Nosotros','nav.alojamientos':'Alojamientos','nav.servicios':'Servicios',
-        'nav.testimonios':'Reseñas','nav.ubicacion':'Ubicación','nav.info':'Info importante','nav.clima':'Clima','nav.info':'Info importante','nav.clima':'Clima','nav.cta':'Consultar →',
+        'nav.testimonios':'Reseñas','nav.ubicacion':'Ubicación','nav.info':'Info importante','nav.clima':'Clima','nav.info':'Info importante','nav.clima':'Clima','nav.cta':'Consultar',
         'hero.eyebrow':'Bienvenidos a Hotel y Cabañas Brisas de Oro',
         'hero.title':'Viví <em>momentos inolvidables</em>',
-        'hero.desc':'Complejo familiar atendido por sus dueños, donde el trato personalizado y el clima hogareño hacen que cada huésped se sienta en casa. Rodeados de las sierras cordobesas y a orillas del río San Antonio, en Villa Carlos Paz.',
-        'hero.descMobile':'Complejo familiar atendido por sus dueños,<br />donde el trato personalizado y el clima hogareño<br />hacen que cada huésped se sienta en casa.<br />Rodeados de las sierras cordobesas<br />y a orillas del río San Antonio, en Villa Carlos Paz.',
+        'hero.desc':'Complejo familiar atendido por sus dueños, donde el trato personalizado y el clima hogareño hacen que cada huésped se sienta en casa. Rodeados de las sierras cordobesas y a orillas del río San Antonio, en Villa&nbsp;Carlos&nbsp;Paz.',
+        'hero.descMobile':'Complejo familiar atendido por sus dueños, donde el trato personalizado y el clima hogareño hacen que cada huésped se sienta en casa. Rodeados de las sierras cordobesas y a orillas del río San Antonio, en Villa&nbsp;Carlos&nbsp;Paz.',
         'hero.b1':'Ambiente familiar','hero.b2':'Desayuno buffet','hero.b3':'Pileta','hero.b4':'Pet friendly',
         'widget.title':'Consultar disponibilidad','widget.sub':'Encontrá tu espacio ideal y contactanos para confirmar',
         'widget.llegada':'Llegada','widget.salida':'Salida','widget.huespedes':'Huéspedes','widget.tipo':'Tipo de alojamiento',
         'widget.cualquiera':'Todos los alojamientos','widget.cabana':'Cabaña','widget.habitacion':'Habitación','widget.apart':'Apart Hotel',
-        'widget.btn':'Ver disponibilidad','widget.note':'Sin pagos online · Confirmamos directamente por WhatsApp',
+        'widget.btn':'Ver disponibilidad','widget.note.a':'Sin pagos online','widget.note.b':'Confirmamos directamente por WhatsApp',
         'nosotros.label':'Quiénes somos','nosotros.title':'Un lugar donde cada huésped es parte de la familia',
         'nosotros.badge1':'Atendido por sus dueños','nosotros.badge2':'María Celia, anfitriona',
         'nosotros.p1':'Somos un complejo familiar ubicado en Villa Carlos Paz, atendido directamente por sus dueños. Desde el primer contacto hasta el momento de la despedida, nos ocupamos personalmente de que tu estadía sea cómoda, tranquila y especial.',
@@ -28,23 +28,23 @@ export default function Home() {
         'galeria.vermas':'Ver más<br>fotos','galeria.cta':'Consultanos →',
         'aloj.label':'Nuestros alojamientos','aloj.title':'Encontrá tu espacio ideal','aloj.consultar':'Consultar',
         'aloj.tipo1':'Cabaña chica','aloj.tipo2':'Cabaña mediana','aloj.tipo3':'Cabaña grande','aloj.tipo4':'Hotel','aloj.tipo5':'Apart Hotel',
-        'aloj.card1.name':'Cabaña chica','aloj.card1.meta':'👥 Hasta 3 personas · 🛏 1 dormitorio','aloj.card1.meta1':'👥 Hasta 3 personas','aloj.card1.meta2':'🛏 1 dormitorio',
-        'aloj.card2.name':'Cabaña mediana','aloj.card2.meta':'👥 Hasta 5/6 personas · 🛏 1 dormitorio','aloj.card2.meta1':'👥 Hasta 5/6 personas','aloj.card2.meta2':'🛏 1 dormitorio',
-        'aloj.card3.name':'Cabaña grande','aloj.card3.meta':'👥 Hasta 7/8 personas · 🛏 2 dormitorios','aloj.card3.meta1':'👥 Hasta 7/8 personas','aloj.card3.meta2':'🛏 2 dormitorios',
-        'aloj.card4.name':'Habitaciones de hotel','aloj.card4.meta':'👥 1–4 personas · 🍳 Desayuno incluido','aloj.card4.meta1':'👥 1–4 personas','aloj.card4.meta2':'🍳 Desayuno incluido',
-        'aloj.card4.v1':'Doble','aloj.card4.v2':'Triple','aloj.card4.v3':'Cuádruple','aloj.card4.body2':'🛏 Baño privado',
-        'aloj.card5.name':'Apart Hotel','aloj.card5.meta':'👥 Hasta 4/5 personas · 🏠 2 hab. combinadas','aloj.card5.meta1':'👥 Hasta 4/5 personas','aloj.card5.meta2':'🏠 2 hab. combinadas','aloj.card5.body2':'🏠 2 hab. con baño privado',
+        'aloj.card1.name':'Cabaña chica','aloj.card1.meta1':'Hasta 3 personas','aloj.card1.meta2':'1 dormitorio',
+        'aloj.card2.name':'Cabaña mediana','aloj.card2.meta1':'Hasta 5/6 personas','aloj.card2.meta2':'1 dormitorio',
+        'aloj.card3.name':'Cabaña grande','aloj.card3.meta1':'Hasta 7/8 personas','aloj.card3.meta2':'2 dormitorios',
+        'aloj.card4.name':'Habitaciones de hotel','aloj.card4.meta1':'1–4 personas','aloj.card4.meta2':'Desayuno incluido',
+        'aloj.card4.v1':'Doble','aloj.card4.v2':'Triple','aloj.card4.v3':'Cuádruple','aloj.card4.body2':'Baño privado',
+        'aloj.card5.name':'Apart Hotel','aloj.card5.meta1':'Hasta 4/5 personas','aloj.card5.meta2':'2 hab. combinadas','aloj.card5.body2':'2 hab. con baño privado',
         'feat.cocina':'Cocina equipada','feat.ac':'Aire acondicionado','feat.asador':'Asador','feat.limp3':'Limpieza c/3 días',
         'feat.parque':'Parque','feat.banio':'Baño privado','feat.ac24':'Aire acond. 24hs','feat.calef':'Calefacción','feat.limp1':'Limpieza diaria',
-        'feat.asador.priv':'Asador privado','feat.salamandra':'🔥 Salamandra','feat.heladera':'Heladera privada','feat.asador.comp':'Asador compartido','feat.cocina.semi':'Cocina semi equipada',
-        'widget.tipo.ph':'Seleccioná un tipo','widget.tipo.short':'Tipo','hero.b1.abbr':'Familiar',
+        'feat.asador.priv':'Asador privado','feat.salamandra':'Salamandra','feat.heladera':'Heladera privada','feat.asador.comp':'Asador compartido','feat.cocina.semi':'Cocina semi equipada',
+        'widget.tipo.abbr':'Alojamiento','widget.cualquiera.short':'Todos','widget.tipo.short':'Tipo','hero.b1.abbr':'Familiar',
         'serv.label':'Lo que ofrecemos','serv.title':'Nuestros servicios',
         'serv.pileta':'Pileta','serv.pileta.d':'Compartida para todos los huéspedes','serv.parque':'Parque','serv.parque.d':'Amplio y verde',
         'serv.cochera':'Cochera','serv.cochera.d':'Techada y segura','serv.asadores':'Asadores','serv.asadores.d':'Privado en cada cabaña',
         'serv.desayuno':'Desayuno buffet','serv.desayuno.d':'Casero, de Celia','serv.wifi.d':'Todo el complejo',
         'serv.ac':'Aire acond.','serv.ac.d':'Frío y calor','serv.limpieza':'Limpieza','serv.limpieza.d':'Servicio de mucamas','serv.algarrobo':'El Algarrobo','serv.algarrobo.d':'Espacio compartido bicentenario','serv.juegos':'Juegos para niños','serv.juegos.d':'Para jugar y divertirse en familia','serv.seguridad':'Seguridad','serv.seguridad.d':'Rejas, alarma y cámaras','serv.ropa':'Ropa blanca','serv.ropa.d':'Sábanas, toallas y toallones',
         'test.label':'Reseñas','test.title':'Lo que dicen quienes nos visitaron',
-        'test.rating':'Reseñas verificadas · Alquiler Argentina',
+        'test.rating':'Reseñas verificadas · Google y Alquiler Argentina',
         'test.r1':'"Las cabañas son cómodas, el predio es grande. Es atendida por sus dueños, super amables."',
         'test.r2':'"Un lugar hermoso, para ir caminando a Playas de Oro. Las cabañas con vista a la pileta, muy cómodas. El desayuno casero de Celia: 10 puntos. Volveríamos sin dudas."',
         'test.r3':'"Excelente atención del personal, siempre dispuesto a ayudar. El complejo está muy bien cuidado y la ubicación es ideal para disfrutar las sierras."',
@@ -56,7 +56,7 @@ export default function Home() {
         'test.r9':'"El desayuno de Celia no tiene comparación. Rico, abundante y con mucho cariño. El resto del complejo está a la misma altura: impecable."',
         'test.r10':'"Lugar tranquilo, verde y bien ubicado. La cabaña tenía todo lo necesario y el trato fue siempre excelente. Volvemos seguro."',
         'ubic.label':'Dónde estamos','ubic.title':'En plena avenida, rodeados de naturaleza',
-        'ubic.desc':'Ubicados sobre una de las avenidas principales de Villa Carlos Paz, con las sierras como horizonte y el río a pocos pasos.',
+        'ubic.desc':'Ubicados sobre una de las avenidas principales de Villa Carlos Paz, con las sierras como horizonte y&nbsp;el&nbsp;río a pocos pasos.',
         'ubic.d1a':'1 cuadra','ubic.d1b':'Balneario Playas de Oro','ubic.d2a':'Al lado','ubic.d2b':'Río San Antonio',
         'ubic.d3a':'25 cuadras · 2,5 km','ubic.d3b':'Centro de Villa Carlos Paz','ubic.d4a':'45 minutos','ubic.d4b':'Aeropuerto Internacional de Córdoba',
         'ubic.mapa':'Google Maps — próximamente',
@@ -66,7 +66,7 @@ export default function Home() {
         'footer.info':'Información','footer.checkin':'Check-in: 13:00 hs','footer.checkout':'Check-out: 10:00 hs','footer.host':'Brisas de Oro · Villa Carlos Paz',
         'fam.label':'Nuestras familias','fam.title':'<span class="fam-title-line">Cada despedida</span> <span class="fam-title-line">es un hasta pronto</span>','fam.desc':'Las familias que nos eligieron son parte de nuestra historia. Cada visita deja una huella que nos hace querer seguir dando lo mejor.',
         'casa.label':'Nuestra casa','casa.title':'También es tu casa',
-        'test.plat':'También nos encontrás en',
+        'test.plat':'También nos encontrás en','footer.tambien':'También en',
         'aloj.franja':'¿Te interesa algún alojamiento? Antes de consultar, te recomendamos leer la <span style="color:var(--oro);font-weight:700;">información importante</span>',
         'info.cta.btn':'Consultar por WhatsApp',
         'info.label':'Información importante','info.title':'Antes de reservar, leé esto',
@@ -102,32 +102,45 @@ export default function Home() {
         'clima.note':'Datos provistos por Tomorrow.io · Actualizado automáticamente',
         'footer.a5':'Apart Hotel',
         'topbar.dir.short':'Av. Ramón J. Cárcano 2590','topbar.casa':'Casa con Pileta · Icho Cruz','topbar.casa.short':'Casa · Icho Cruz',
-        'widget.casa':'Casa',
+        'widget.casa':'Casa','widget.mas10':'Más de 10',
         'aloj.tipo6':'Casa · Icho Cruz',
-        'aloj.card6.name':'Casa con Pileta · Icho Cruz','aloj.card6.meta':'👥 Hasta 10 personas · 🛏 3 dormitorios','aloj.card6.meta1':'👥 Hasta 10 personas','aloj.card6.meta2':'🛏 3 dormitorios',
-        'aloj.card6.noincluye':'No incluye desayuno ni blancos (opcionales)','aloj.card6.ubic':'📍 Icho Cruz · a 15 min del complejo',
-        'feat.pileta.priv':'Pileta privada','feat.parrillero':'Parrillero','feat.wifi.tv':'Wi-Fi y DirecTV','feat.pet':'Pet friendly',
+        'aloj.card6.name':'Casa con Pileta · Icho Cruz','aloj.card6.meta1':'Hasta 10 personas','aloj.card6.meta2':'3 dormitorios',
+        'aloj.card6.noincluye.a':'Sin desayuno ni toallas','aloj.card6.noincluye.b':'Ropa de cama opcional (con cargo adicional)','aloj.card6.ubic':'Icho Cruz — a 15 min de Brisas de Oro',
+        'feat.pileta.priv':'Pileta privada','feat.parque.priv':'Parque privado','feat.wifi.tv':'Wi-Fi y DirecTV','feat.pet':'Pet friendly',
         'ubic.casa.title':'Casa con Pileta · Icho Cruz','ubic.casa.sub':'Alojamiento independiente, fuera del complejo Brisas de Oro.',
         'ubic.casa.dir':'Calle Uruguay esq. Lombardo, Icho Cruz',
         'ubic.casa.d1a':'15 min (9 km)','ubic.casa.d1b':'Brisas de Oro','ubic.casa.d2a':'20 min (13 km)','ubic.casa.d2b':'Centro de Villa Carlos Paz',
         'ubic.casa.d3a':'22 min (13,5 km)','ubic.casa.d3b':'Terminal de ómnibus de Carlos Paz','ubic.casa.d4a':'1 h (57 km)','ubic.casa.d4b':'Aeropuerto de Córdoba',
         'ubic.casa.btn':'Cómo llegar',
         'footer.a6':'Casa con Pileta · Icho Cruz (hasta 10 pers.)','footer.casa.dir':'Uruguay esq. Lombardo, Icho Cruz',
+        'acord.hora.casa':'Casa con Pileta · Icho Cruz: check-in 14:00 hs · check-out 10:00 hs',
+        'acord.casa.title':'Casa con Pileta · Icho Cruz',
+        'acord.casa.intro':'Rigen las mismas condiciones de reserva, cancelación, formas de pago y normas que en Brisas de Oro. Lo propio de la casa:',
+        'acord.casa.l1':'Horarios','acord.casa.v1':'Check-in 14:00 hs · Check-out 10:00 hs',
+        'acord.casa.l2':'Incluye','acord.casa.v2':'Pileta privada, parque privado, asador privado bajo alero, cocina equipada, Wi-Fi y DirecTV, ventiladores. Pet friendly.',
+        'acord.casa.l3':'No incluye','acord.casa.v3':'Desayuno ni toallas. Ropa de cama opcional, con cargo adicional.',
+        'acord.casa.l4':'Capacidad','acord.casa.v4':'Hasta 10 personas · 3 dormitorios · 2 baños',
+        'acord.casa.l5':'Dirección','acord.casa.v5':'Calle Uruguay esq. Lombardo, Icho Cruz',
+        'serv.sub':'Servicios disponibles en <span class="serv-sub-nombre">Brisas de Oro Hotel y Cabañas.</span>',
+        'test.casa.tag':'Casa · Icho Cruz','test.plat.casa':'Reseñas de la Casa en Google',
+        'test.r11':'"Un lugar fantástico, para disfrutar en familia!!! Ubicación muy cómoda para salir para cualquier lado!! Río cerca, y barrio súper tranquilo!!"',
+        'test.r12':'"Muy lindo lugar, tranquilo, mucha paz, muy cerca del río y de calle principal donde se puede comprar todo lo necesario. Excelente atención de los dueños."',
+        'test.r13':'"Excelente lugar tranquilo para disfrutar en familia. El río, el centro, la gente, lo recomiendo."',
       },
       en: {
         'sticky.btn':'Search',
         'topbar.dir':'Av. Ramón J. Cárcano 2590 · Villa Carlos Paz, Córdoba',
         'topbar.mail':'Email us','nav.nosotros':'About us','nav.alojamientos':'Accommodations','nav.servicios':'Services',
-        'nav.testimonios':'Reviews','nav.ubicacion':'Location','nav.info':'Important info','nav.clima':'Weather','nav.cta':'Inquire →',
+        'nav.testimonios':'Reviews','nav.ubicacion':'Location','nav.info':'Important info','nav.clima':'Weather','nav.cta':'Inquire',
         'hero.eyebrow':'Welcome to Hotel y Cabañas Brisas de Oro',
         'hero.title':'Live <em>unforgettable moments</em>',
-        'hero.desc':'A family-run resort managed by its owners, where personalized attention and a homely atmosphere make every guest feel at home. Surrounded by the Córdoba mountains and on the banks of the San Antonio River, in Villa Carlos Paz.',
-        'hero.descMobile':'A family-run resort managed by its owners, where personalized attention and a homely atmosphere make every guest feel at home. Surrounded by the Córdoba mountains and on the banks of the San Antonio River, in Villa Carlos Paz.',
+        'hero.desc':'A family-run resort managed by its owners, where personalized attention and a homely atmosphere make every guest feel at home. Surrounded by the Córdoba mountains and on the banks of the San Antonio River, in Villa&nbsp;Carlos&nbsp;Paz.',
+        'hero.descMobile':'A family-run resort managed by its owners, where personalized attention and a homely atmosphere make every guest feel at home. Surrounded by the Córdoba mountains and on the banks of the San Antonio River, in Villa&nbsp;Carlos&nbsp;Paz.',
         'hero.b1':'Family atmosphere','hero.b2':'Buffet breakfast','hero.b3':'Pool','hero.b4':'Pet friendly',
         'widget.title':'Check availability','widget.sub':'Fill in the details and we\'ll reply on WhatsApp',
         'widget.llegada':'Check-in','widget.salida':'Check-out','widget.huespedes':'Guests','widget.tipo':'Lodging type',
         'widget.cualquiera':'All accommodations','widget.cabana':'Cabin','widget.habitacion':'Room','widget.apart':'Apart Hotel',
-        'widget.btn':'Check availability','widget.note':'No online payments · Direct confirmation via WhatsApp',
+        'widget.btn':'Check availability','widget.note.a':'No online payments','widget.note.b':'Direct confirmation via WhatsApp',
         'nosotros.label':'About us','nosotros.title':'A place where every guest becomes part of the family',
         'nosotros.badge1':'Owner-managed','nosotros.badge2':'María Celia, host',
         'nosotros.p1':'We are a family-run resort in Villa Carlos Paz, managed directly by its owners. From the first contact to the moment of farewell, we personally make sure your stay is comfortable, peaceful and special.',
@@ -137,23 +150,23 @@ export default function Home() {
         'galeria.vermas':'See more<br>photos','galeria.cta':'Contact us →',
         'aloj.label':'Our accommodations','aloj.title':'Find your ideal space','aloj.consultar':'Inquire',
         'aloj.tipo1':'Small cabin','aloj.tipo2':'Medium cabin','aloj.tipo3':'Large cabin','aloj.tipo4':'Hotel','aloj.tipo5':'Apart Hotel',
-        'aloj.card1.name':'Small cabin','aloj.card1.meta':'👥 Up to 3 guests · 🛏 1 bedroom','aloj.card1.meta1':'👥 Up to 3 guests','aloj.card1.meta2':'🛏 1 bedroom',
-        'aloj.card2.name':'Medium cabin','aloj.card2.meta':'👥 Up to 5/6 guests · 🛏 1 bedroom','aloj.card2.meta1':'👥 Up to 5/6 guests','aloj.card2.meta2':'🛏 1 bedroom',
-        'aloj.card3.name':'Large cabin','aloj.card3.meta':'👥 Up to 7/8 guests · 🛏 2 bedrooms','aloj.card3.meta1':'👥 Up to 7/8 guests','aloj.card3.meta2':'🛏 2 bedrooms',
-        'aloj.card4.name':'Hotel rooms','aloj.card4.meta':'👥 1–4 guests · 🍳 Breakfast included','aloj.card4.meta1':'👥 1–4 guests','aloj.card4.meta2':'🍳 Breakfast included',
-        'aloj.card4.v1':'Double','aloj.card4.v2':'Triple','aloj.card4.v3':'Quadruple','aloj.card4.body2':'🛏 Private bathroom',
-        'aloj.card5.name':'Apart Hotel','aloj.card5.meta':'👥 Up to 4/5 guests · 🏠 2 combined rooms','aloj.card5.meta1':'👥 Up to 4/5 guests','aloj.card5.meta2':'🏠 2 combined rooms','aloj.card5.body2':'🏠 2 rooms with private bathroom',
+        'aloj.card1.name':'Small cabin','aloj.card1.meta1':'Up to 3 guests','aloj.card1.meta2':'1 bedroom',
+        'aloj.card2.name':'Medium cabin','aloj.card2.meta1':'Up to 5/6 guests','aloj.card2.meta2':'1 bedroom',
+        'aloj.card3.name':'Large cabin','aloj.card3.meta1':'Up to 7/8 guests','aloj.card3.meta2':'2 bedrooms',
+        'aloj.card4.name':'Hotel rooms','aloj.card4.meta1':'1–4 guests','aloj.card4.meta2':'Breakfast included',
+        'aloj.card4.v1':'Double','aloj.card4.v2':'Triple','aloj.card4.v3':'Quadruple','aloj.card4.body2':'Private bathroom',
+        'aloj.card5.name':'Apart Hotel','aloj.card5.meta1':'Up to 4/5 guests','aloj.card5.meta2':'2 combined rooms','aloj.card5.body2':'2 rooms with private bathroom',
         'feat.cocina':'Full kitchen','feat.ac':'Air conditioning','feat.asador':'BBQ grill','feat.limp3':'Cleaning every 3 days',
         'feat.parque':'Garden','feat.banio':'Private bathroom','feat.ac24':'A/C 24hs','feat.calef':'Heating','feat.limp1':'Daily cleaning',
-        'feat.asador.priv':'Private BBQ','feat.salamandra':'🔥 Wood stove','feat.heladera':'Private fridge','feat.asador.comp':'Shared BBQ','feat.cocina.semi':'Semi-equipped kitchen',
-        'widget.tipo.ph':'Select a type','widget.tipo.short':'Type','hero.b1.abbr':'Family',
+        'feat.asador.priv':'Private BBQ','feat.salamandra':'Wood stove','feat.heladera':'Private fridge','feat.asador.comp':'Shared BBQ','feat.cocina.semi':'Semi-equipped kitchen',
+        'widget.tipo.abbr':'Lodging','widget.cualquiera.short':'All','widget.tipo.short':'Type','hero.b1.abbr':'Family',
         'serv.label':'What we offer','serv.title':'Our services',
         'serv.pileta':'Pool','serv.pileta.d':'Shared by all guests','serv.parque':'Grounds','serv.parque.d':'Spacious and green',
         'serv.cochera':'Parking','serv.cochera.d':'Covered and secure','serv.asadores':'BBQ grills','serv.asadores.d':'Private BBQ per cabin',
         'serv.desayuno':'Buffet breakfast','serv.desayuno.d':'Homemade, by Celia','serv.wifi.d':'Throughout the resort',
         'serv.ac':'Air cond.','serv.ac.d':'Hot & cold','serv.limpieza':'Housekeeping','serv.limpieza.d':'Daily maid service','serv.algarrobo':'El Algarrobo','serv.algarrobo.d':'Shared bicentennial space','serv.juegos':'Kids playground','serv.juegos.d':'Play and fun for everyone','serv.seguridad':'Security','serv.seguridad.d':'Fences, alarm & cameras','serv.ropa':'Bed & bath linen','serv.ropa.d':'Sheets, towels and bath towels',
         'test.label':'What our guests say','test.title':'Real reviews from the resort',
-        'test.rating':'Verified reviews · Alquiler Argentina',
+        'test.rating':'Verified reviews · Google & Alquiler Argentina',
         'test.r1':'"The cabins are comfortable, the grounds are spacious. Owner-run, super friendly."',
         'test.r2':'"A beautiful place, walking distance to the beach. Cabins with pool views, very comfortable. Celia\'s homemade breakfast: 10/10. We\'d definitely come back."',
         'test.r3':'"Excellent service from the staff, always ready to help. The resort is very well kept and the location is perfect for enjoying the mountains."',
@@ -165,7 +178,7 @@ export default function Home() {
         'test.r9':'"Celia\'s breakfast is unmatched. Delicious, generous and made with love. The rest of the resort is at the same level: spotless."',
         'test.r10':'"Peaceful, green and well-located. The cabin had everything we needed and the service was always excellent. We\'ll definitely be back."',
         'ubic.label':'Where we are','ubic.title':'On the main avenue, surrounded by nature',
-        'ubic.desc':'Located on one of the main avenues of Villa Carlos Paz, with the mountains on the horizon and the river just steps away.',
+        'ubic.desc':'Located on one of the main avenues of Villa Carlos Paz, with the mountains on the horizon and&nbsp;the&nbsp;river just steps away.',
         'ubic.d1a':'1 block','ubic.d1b':'Playas de Oro beach','ubic.d2a':'Next door','ubic.d2b':'San Antonio River',
         'ubic.d3a':'25 blocks · 2.5 km','ubic.d3b':'Villa Carlos Paz city center','ubic.d4a':'45 minutes','ubic.d4b':'Córdoba International Airport',
         'ubic.mapa':'Google Maps — coming soon',
@@ -206,37 +219,50 @@ export default function Home() {
         'clima.note':'Data provided by Tomorrow.io · Updated automatically',
         'fam.label':'Our families','fam.title':'<span class="fam-title-line">Every goodbye</span> <span class="fam-title-line">is a see you soon</span>','fam.desc':'The families who chose us are part of our story. Every visit leaves a mark that makes us want to keep giving our best.',
         'casa.label':'Our place','casa.title':'It is your home too',
-        'test.plat':'Also find us on',
+        'test.plat':'Also find us on','footer.tambien':'Also on',
         'aloj.franja':'Interested in an accommodation? Before inquiring, we recommend reading the <span style="color:var(--oro);font-weight:700;">important information</span>',
         'info.cta.btn':'Contact us on WhatsApp',
         'footer.a5':'Apart Hotel',
         'topbar.dir.short':'Av. Ramón J. Cárcano 2590','topbar.casa':'House with Pool · Icho Cruz','topbar.casa.short':'House · Icho Cruz',
-        'widget.casa':'House',
+        'widget.casa':'House','widget.mas10':'More than 10',
         'aloj.tipo6':'House · Icho Cruz',
-        'aloj.card6.name':'House with Pool · Icho Cruz','aloj.card6.meta':'👥 Up to 10 guests · 🛏 3 bedrooms','aloj.card6.meta1':'👥 Up to 10 guests','aloj.card6.meta2':'🛏 3 bedrooms',
-        'aloj.card6.noincluye':'Breakfast and linens not included (linens available)','aloj.card6.ubic':'📍 Icho Cruz · 15 min from the resort',
-        'feat.pileta.priv':'Private pool','feat.parrillero':'BBQ area','feat.wifi.tv':'Wi-Fi & DirecTV','feat.pet':'Pet friendly',
+        'aloj.card6.name':'House with Pool · Icho Cruz','aloj.card6.meta1':'Up to 10 guests','aloj.card6.meta2':'3 bedrooms',
+        'aloj.card6.noincluye.a':'No breakfast or towels','aloj.card6.noincluye.b':'Bed linen optional (extra charge)','aloj.card6.ubic':'Icho Cruz — 15 min from Brisas de Oro',
+        'feat.pileta.priv':'Private pool','feat.parque.priv':'Private garden','feat.wifi.tv':'Wi-Fi & DirecTV','feat.pet':'Pet friendly',
         'ubic.casa.title':'House with Pool · Icho Cruz','ubic.casa.sub':'Independent accommodation, outside the Brisas de Oro resort.',
         'ubic.casa.dir':'Calle Uruguay & Lombardo, Icho Cruz',
         'ubic.casa.d1a':'15 min (9 km)','ubic.casa.d1b':'Brisas de Oro','ubic.casa.d2a':'20 min (13 km)','ubic.casa.d2b':'Villa Carlos Paz city center',
         'ubic.casa.d3a':'22 min (13.5 km)','ubic.casa.d3b':'Carlos Paz bus terminal','ubic.casa.d4a':'1 h (57 km)','ubic.casa.d4b':'Córdoba Airport',
         'ubic.casa.btn':'Get directions',
         'footer.a6':'House with Pool · Icho Cruz (up to 10 guests)','footer.casa.dir':'Uruguay & Lombardo, Icho Cruz',
+        'acord.hora.casa':'House with Pool · Icho Cruz: check-in 14:00 hs · check-out 10:00 hs',
+        'acord.casa.title':'House with Pool · Icho Cruz',
+        'acord.casa.intro':'The same booking, cancellation, payment and house rules as at Brisas de Oro apply. Specific to the house:',
+        'acord.casa.l1':'Times','acord.casa.v1':'Check-in 14:00 hs · Check-out 10:00 hs',
+        'acord.casa.l2':'Includes','acord.casa.v2':'Private pool, private garden, private covered BBQ, full kitchen, Wi-Fi & DirecTV, fans. Pet friendly.',
+        'acord.casa.l3':'Not included','acord.casa.v3':'Breakfast or towels. Bed linen optional, at an extra charge.',
+        'acord.casa.l4':'Capacity','acord.casa.v4':'Up to 10 guests · 3 bedrooms · 2 bathrooms',
+        'acord.casa.l5':'Address','acord.casa.v5':'Calle Uruguay & Lombardo, Icho Cruz',
+        'serv.sub':'Services available at <span class="serv-sub-nombre">Brisas de Oro Hotel y Cabañas.</span>',
+        'test.casa.tag':'House · Icho Cruz','test.plat.casa':'House reviews on Google',
+        'test.r11':'"A fantastic place to enjoy with the family!!! Very convenient location to head out anywhere!! River nearby, and a super quiet neighborhood!!"',
+        'test.r12':'"Very nice place, quiet, very peaceful, very close to the river and to the main street where you can buy everything you need. Excellent service from the owners."',
+        'test.r13':'"Excellent quiet place to enjoy with the family. The river, the town center, the people — I recommend it."',
       },
       pt: {
         'sticky.btn':'Buscar',
         'topbar.dir':'Av. Ramón J. Cárcano 2590 · Villa Carlos Paz, Córdoba',
         'topbar.mail':'Escreva-nos','nav.nosotros':'Sobre nós','nav.alojamientos':'Hospedagem','nav.servicios':'Serviços',
-        'nav.testimonios':'Avaliações','nav.ubicacion':'Localização','nav.info':'Info importante','nav.clima':'Clima','nav.info':'Info importante','nav.clima':'Clima','nav.cta':'Consultar →',
+        'nav.testimonios':'Avaliações','nav.ubicacion':'Localização','nav.info':'Info importante','nav.clima':'Clima','nav.info':'Info importante','nav.clima':'Clima','nav.cta':'Consultar',
         'hero.eyebrow':'Bem-vindos ao Hotel e Cabanas<br class="br-mobile"> Brisas de Oro',
         'hero.title':'Viva <em>momentos inesquecíveis</em>',
-        'hero.desc':'Complexo familiar gerenciado pelos proprietários, onde o atendimento personalizado e o clima acolhedor fazem cada hóspede se sentir em casa. Rodeados pelas serras cordobesas e às margens do Rio San Antonio, em Villa Carlos Paz.',
-        'hero.descMobile':'Complexo familiar gerenciado pelos proprietários, onde o atendimento personalizado e o clima acolhedor fazem cada hóspede se sentir em casa. Rodeados pelas serras cordobesas e às margens do Rio San Antonio, em Villa Carlos Paz.',
+        'hero.desc':'Complexo familiar gerenciado pelos proprietários, onde o atendimento personalizado e o clima acolhedor fazem cada hóspede se sentir em casa. Rodeados pelas serras cordobesas e às margens do Rio San Antonio, em Villa&nbsp;Carlos&nbsp;Paz.',
+        'hero.descMobile':'Complexo familiar gerenciado pelos proprietários, onde o atendimento personalizado e o clima acolhedor fazem cada hóspede se sentir em casa. Rodeados pelas serras cordobesas e às margens do Rio San Antonio, em Villa&nbsp;Carlos&nbsp;Paz.',
         'hero.b1':'Ambiente familiar','hero.b2':'Café da manhã buffet','hero.b3':'Piscina','hero.b4':'Pet friendly',
         'widget.title':'Consultar disponibilidade','widget.sub':'Preencha os dados e respondemos pelo WhatsApp',
         'widget.llegada':'Chegada','widget.salida':'Saída','widget.huespedes':'Hóspedes','widget.tipo':'Tipo de acomodação',
         'widget.cualquiera':'Todos os alojamentos','widget.cabana':'Chalé','widget.habitacion':'Quarto','widget.apart':'Apart Hotel',
-        'widget.btn':'Ver disponibilidade','widget.note':'Sem pagamentos online · Confirmação direta via WhatsApp',
+        'widget.btn':'Ver disponibilidade','widget.note.a':'Sem pagamentos online','widget.note.b':'Confirmação direta via WhatsApp',
         'nosotros.label':'Quem somos','nosotros.title':'Um lugar onde cada hóspede faz parte da família',
         'nosotros.badge1':'Gerenciado pelos proprietários','nosotros.badge2':'María Celia, anfitriã',
         'nosotros.p1':'Somos um complexo familiar localizado em Villa Carlos Paz, gerenciado diretamente pelos proprietários. Desde o primeiro contato até o momento da despedida, cuidamos pessoalmente para que sua estadia seja confortável, tranquila e especial.',
@@ -246,23 +272,23 @@ export default function Home() {
         'galeria.vermas':'Ver mais<br>fotos','galeria.cta':'Fale conosco →',
         'aloj.label':'Nossa hospedagem','aloj.title':'Encontre seu espaço ideal','aloj.consultar':'Consultar',
         'aloj.tipo1':'Chalé pequeno','aloj.tipo2':'Chalé médio','aloj.tipo3':'Chalé grande','aloj.tipo4':'Hotel','aloj.tipo5':'Apart Hotel',
-        'aloj.card1.name':'Chalé pequeno','aloj.card1.meta':'👥 Até 3 pessoas · 🛏 1 quarto','aloj.card1.meta1':'👥 Até 3 pessoas','aloj.card1.meta2':'🛏 1 quarto',
-        'aloj.card2.name':'Chalé médio','aloj.card2.meta':'👥 Até 5/6 pessoas · 🛏 1 quarto','aloj.card2.meta1':'👥 Até 5/6 pessoas','aloj.card2.meta2':'🛏 1 quarto',
-        'aloj.card3.name':'Chalé grande','aloj.card3.meta':'👥 Até 7/8 pessoas · 🛏 2 quartos','aloj.card3.meta1':'👥 Até 7/8 pessoas','aloj.card3.meta2':'🛏 2 quartos',
-        'aloj.card4.name':'Quartos de hotel','aloj.card4.meta':'👥 1–4 pessoas · 🍳 Café incluído','aloj.card4.meta1':'👥 1–4 pessoas','aloj.card4.meta2':'🍳 Café incluído',
-        'aloj.card4.v1':'Duplo','aloj.card4.v2':'Triplo','aloj.card4.v3':'Quádruplo','aloj.card4.body2':'🛏 Banheiro privativo',
-        'aloj.card5.name':'Apart Hotel','aloj.card5.meta':'👥 Até 4/5 pessoas · 🏠 2 quartos combinados','aloj.card5.meta1':'👥 Até 4/5 pessoas','aloj.card5.meta2':'🏠 2 quartos combinados','aloj.card5.body2':'🏠 2 quartos c/ banheiro privado',
+        'aloj.card1.name':'Chalé pequeno','aloj.card1.meta1':'Até 3 pessoas','aloj.card1.meta2':'1 quarto',
+        'aloj.card2.name':'Chalé médio','aloj.card2.meta1':'Até 5/6 pessoas','aloj.card2.meta2':'1 quarto',
+        'aloj.card3.name':'Chalé grande','aloj.card3.meta1':'Até 7/8 pessoas','aloj.card3.meta2':'2 quartos',
+        'aloj.card4.name':'Quartos de hotel','aloj.card4.meta1':'1–4 pessoas','aloj.card4.meta2':'Café incluído',
+        'aloj.card4.v1':'Duplo','aloj.card4.v2':'Triplo','aloj.card4.v3':'Quádruplo','aloj.card4.body2':'Banheiro privativo',
+        'aloj.card5.name':'Apart Hotel','aloj.card5.meta1':'Até 4/5 pessoas','aloj.card5.meta2':'2 quartos combinados','aloj.card5.body2':'2 quartos c/ banheiro privado',
         'feat.cocina':'Cozinha equipada','feat.ac':'Ar-condicionado','feat.asador':'Churrasqueira','feat.limp3':'Limpeza a cada 3 dias',
         'feat.parque':'Jardim','feat.banio':'Banheiro privativo','feat.ac24':'A/C 24hs','feat.calef':'Aquecimento','feat.limp1':'Limpeza diária',
-        'feat.asador.priv':'Churrasqueira privada','feat.salamandra':'🔥 Salamandra','feat.heladera':'Geladeira privada','feat.asador.comp':'Churrasqueira compartilhada','feat.cocina.semi':'Cozinha semi equipada',
-        'widget.tipo.ph':'Selecione um tipo','widget.tipo.short':'Tipo','hero.b1.abbr':'Familiar',
+        'feat.asador.priv':'Churrasqueira privada','feat.salamandra':'Salamandra','feat.heladera':'Geladeira privada','feat.asador.comp':'Churrasqueira compartilhada','feat.cocina.semi':'Cozinha semi equipada',
+        'widget.tipo.abbr':'Alojamento','widget.cualquiera.short':'Todos','widget.tipo.short':'Tipo','hero.b1.abbr':'Familiar',
         'serv.label':'O que oferecemos','serv.title':'Nossos serviços',
         'serv.pileta':'Piscina','serv.pileta.d':'Compartilhada por todos os hóspedes','serv.parque':'Jardim','serv.parque.d':'Amplo e verde',
         'serv.cochera':'Estacionamento','serv.cochera.d':'Coberto e seguro','serv.asadores':'Churrasqueiras','serv.asadores.d':'Privativo em cada chalé',
         'serv.desayuno':'Café buffet','serv.desayuno.d':'Caseiro, da Celia','serv.wifi.d':'Em todo o complexo',
         'serv.ac':'Ar-cond.','serv.ac.d':'Frio e calor','serv.limpieza':'Limpeza','serv.limpieza.d':'Serviço de camareira','serv.algarrobo':'El Algarrobo','serv.algarrobo.d':'Espaço compartilhado bicentenário','serv.juegos':'Brinquedos','serv.juegos.d':'Diversão para toda a família','serv.seguridad':'Segurança','serv.seguridad.d':'Grades, alarme e câmeras','serv.ropa':'Roupa de cama e banho','serv.ropa.d':'Lençóis, toalhas e toalhões',
         'test.label':'O que dizem nossos hóspedes','test.title':'O que dizem os nossos hóspedes',
-        'test.rating':'Avaliações verificadas · Alquiler Argentina',
+        'test.rating':'Avaliações verificadas · Google e Alquiler Argentina',
         'test.r1':'"Os chalés são confortáveis, o terreno é grande. É gerenciado pelos proprietários, super simpáticos."',
         'test.r2':'"Um lugar lindo, para ir caminhando até a praia. Chalés com vista para a piscina, muito confortáveis. O café da manhã da Celia: nota 10. Voltaríamos com certeza."',
         'test.r3':'"Atendimento excelente da equipe, sempre disposta a ajudar. O complexo é muito bem cuidado e a localização é ideal para aproveitar as serras."',
@@ -274,7 +300,7 @@ export default function Home() {
         'test.r9':'"O café da manhã da Celia não tem comparação. Gostoso, abundante e feito com muito carinho. O resto do complexo está na mesma altura: impecável."',
         'test.r10':'"Lugar tranquilo, verde e bem localizado. O chalé tinha tudo o que precisávamos e o atendimento foi sempre excelente. Voltamos com certeza."',
         'ubic.label':'Onde estamos','ubic.title':'Na avenida principal, rodeados de natureza',
-        'ubic.desc':'Localizados em uma das avenidas principais de Villa Carlos Paz, com as serras no horizonte e o rio a poucos passos.',
+        'ubic.desc':'Localizados em uma das avenidas principais de Villa Carlos Paz, com as serras no horizonte e&nbsp;o&nbsp;rio a poucos passos.',
         'ubic.d1a':'1 quarteirão','ubic.d1b':'Praia Playas de Oro','ubic.d2a':'Ao lado','ubic.d2b':'Rio San Antonio',
         'ubic.d3a':'25 quarteirões · 2,5 km','ubic.d3b':'Centro de Villa Carlos Paz','ubic.d4a':'45 minutos','ubic.d4b':'Aeroporto Internacional de Córdoba',
         'ubic.mapa':'Google Maps — em breve',
@@ -315,22 +341,35 @@ export default function Home() {
         'clima.note':'Dados fornecidos por Tomorrow.io · Atualizado automaticamente',
         'fam.label':'Nossas famílias','fam.title':'<span class="fam-title-line">Cada despedida</span> <span class="fam-title-line">é um até logo</span>','fam.desc':'As famílias que nos escolheram fazem parte da nossa história. Cada visita deixa uma marca que nos faz querer continuar dando o nosso melhor.',
         'casa.label':'Nossa casa','casa.title':'É a sua casa também',
-        'test.plat':'Também nos encontre em',
+        'test.plat':'Também nos encontre em','footer.tambien':'Também em',
         'aloj.franja':'Tem interesse em alguma acomodação? Antes de consultar, recomendamos ler as <span style="color:var(--oro);font-weight:700;">informações importantes</span>',
         'info.cta.btn':'Consultar pelo WhatsApp',
         'footer.a5':'Apart Hotel',
         'topbar.dir.short':'Av. Ramón J. Cárcano 2590','topbar.casa':'Casa com Piscina · Icho Cruz','topbar.casa.short':'Casa · Icho Cruz',
-        'widget.casa':'Casa',
+        'widget.casa':'Casa','widget.mas10':'Mais de 10',
         'aloj.tipo6':'Casa · Icho Cruz',
-        'aloj.card6.name':'Casa com Piscina · Icho Cruz','aloj.card6.meta':'👥 Até 10 pessoas · 🛏 3 quartos','aloj.card6.meta1':'👥 Até 10 pessoas','aloj.card6.meta2':'🛏 3 quartos',
-        'aloj.card6.noincluye':'Não inclui café da manhã nem roupa de cama e banho (opcional)','aloj.card6.ubic':'📍 Icho Cruz · a 15 min do complexo',
-        'feat.pileta.priv':'Piscina privativa','feat.parrillero':'Churrasqueira','feat.wifi.tv':'Wi-Fi e DirecTV','feat.pet':'Pet friendly',
+        'aloj.card6.name':'Casa com Piscina · Icho Cruz','aloj.card6.meta1':'Até 10 pessoas','aloj.card6.meta2':'3 quartos',
+        'aloj.card6.noincluye.a':'Sem café da manhã nem toalhas','aloj.card6.noincluye.b':'Roupa de cama opcional (com custo adicional)','aloj.card6.ubic':'Icho Cruz — a 15 min do Brisas de Oro',
+        'feat.pileta.priv':'Piscina privativa','feat.parque.priv':'Jardim privativo','feat.wifi.tv':'Wi-Fi e DirecTV','feat.pet':'Pet friendly',
         'ubic.casa.title':'Casa com Piscina · Icho Cruz','ubic.casa.sub':'Hospedagem independente, fora do complexo Brisas de Oro.',
         'ubic.casa.dir':'Calle Uruguay esq. Lombardo, Icho Cruz',
         'ubic.casa.d1a':'15 min (9 km)','ubic.casa.d1b':'Brisas de Oro','ubic.casa.d2a':'20 min (13 km)','ubic.casa.d2b':'Centro de Villa Carlos Paz',
         'ubic.casa.d3a':'22 min (13,5 km)','ubic.casa.d3b':'Rodoviária de Carlos Paz','ubic.casa.d4a':'1 h (57 km)','ubic.casa.d4b':'Aeroporto de Córdoba',
         'ubic.casa.btn':'Como chegar',
         'footer.a6':'Casa com Piscina · Icho Cruz (até 10 pessoas)','footer.casa.dir':'Uruguay esq. Lombardo, Icho Cruz',
+        'acord.hora.casa':'Casa com Piscina · Icho Cruz: check-in 14:00 hs · check-out 10:00 hs',
+        'acord.casa.title':'Casa com Piscina · Icho Cruz',
+        'acord.casa.intro':'Valem as mesmas condições de reserva, cancelamento, formas de pagamento e regras do Brisas de Oro. O que é próprio da casa:',
+        'acord.casa.l1':'Horários','acord.casa.v1':'Check-in 14:00 hs · Check-out 10:00 hs',
+        'acord.casa.l2':'Inclui','acord.casa.v2':'Piscina privativa, jardim privativo, churrasqueira privativa coberta, cozinha equipada, Wi-Fi e DirecTV, ventiladores. Pet friendly.',
+        'acord.casa.l3':'Não inclui','acord.casa.v3':'Café da manhã nem toalhas. Roupa de cama opcional, com custo adicional.',
+        'acord.casa.l4':'Capacidade','acord.casa.v4':'Até 10 pessoas · 3 quartos · 2 banheiros',
+        'acord.casa.l5':'Endereço','acord.casa.v5':'Calle Uruguay esq. Lombardo, Icho Cruz',
+        'serv.sub':'Serviços disponíveis no <span class="serv-sub-nombre">Brisas de Oro Hotel y Cabañas.</span>',
+        'test.casa.tag':'Casa · Icho Cruz','test.plat.casa':'Avaliações da Casa no Google',
+        'test.r11':'"Um lugar fantástico para curtir em família!!! Localização muito prática para sair para qualquer lado!! Rio perto e bairro super tranquilo!!"',
+        'test.r12':'"Lugar muito bonito, tranquilo, muita paz, muito perto do rio e da rua principal onde dá para comprar tudo o que precisa. Excelente atendimento dos donos."',
+        'test.r13':'"Excelente lugar tranquilo para curtir em família. O rio, o centro, as pessoas, eu recomendo."',
       }
     };
     
@@ -356,6 +395,11 @@ export default function Home() {
       const _sTipoLabel = document.getElementById('s-tipo-label');
       const _sTipoActive = document.querySelector('#s-tipo-opts .custom-tipo-opt.active');
       if (_sTipoLabel && _sTipoActive) _sTipoLabel.textContent = _sTipoActive.textContent;
+      ['huespedes','s-huespedes'].forEach(function(id) {
+        const _hLabel = document.getElementById(id + '-label');
+        const _hActive = document.querySelector('#' + id + '-opts .custom-huesp-opt.active');
+        if (_hLabel && _hActive) _hLabel.textContent = (id === 's-huespedes' && _hActive.dataset.abbr) ? _hActive.dataset.abbr : _hActive.textContent;
+      });
       const _badges = document.querySelector('.hero-badges');
       if (_badges) _badges.classList.toggle('hero-badges--es', lang === 'es');
       document.body.classList.toggle('lang-pt', lang === 'pt');
@@ -415,7 +459,8 @@ export default function Home() {
         cols.forEach(col => col.querySelectorAll('.test-card').forEach(c => c.style.height = ''));
         const filas = 2;
         for (let f = 0; f < filas; f++) {
-          const cardsEnFila = cols.map(col => col.querySelectorAll('.test-card')[f]).filter(Boolean);
+          // La columna de una sola reseña no entra en la igualación por filas: su tarjeta ocupa toda la columna
+          const cardsEnFila = cols.filter(col => !col.classList.contains('test-col--una')).map(col => col.querySelectorAll('.test-card')[f]).filter(Boolean);
           const maxH = Math.max(...cardsEnFila.map(c => c.getBoundingClientRect().height));
           cardsEnFila.forEach(c => c.style.height = maxH + 'px');
         }
@@ -822,7 +867,7 @@ export default function Home() {
                 Villa Carlos Paz, Córdoba, Argentina
               </div>
               <div class="clima-actual-desc">${getDesc(c.weatherCode, lang)}</div>
-              <div class="clima-actual-sub">${sensL}: ${Math.round(c.temperatureApparent)}° &nbsp;·&nbsp; ${humL}: ${Math.round(c.humidity)}% &nbsp;·&nbsp; ${vienL}: ${Math.round(c.windSpeed)} km/h</div>
+              <div class="clima-actual-sub"><span class="clima-dato">${sensL}: ${Math.round(c.temperatureApparent)}°</span><span class="clima-sep"> &nbsp;·&nbsp; </span><span class="clima-dato">${humL}: ${Math.round(c.humidity)}%</span><span class="clima-sep"> &nbsp;·&nbsp; </span><span class="clima-dato">${vienL}: ${Math.round(c.windSpeed)} km/h</span></div>
             </div>
           </div>
           <div class="clima-grid">`;
@@ -1024,6 +1069,7 @@ export default function Home() {
         mostrarErrorHero(); return;
       }
       ocultarErrorHero();
+      if (huespedesH === 'mas10') { abrirWsp(buildMsgGrupoGrande(llegadaH, salidaH, tipoH)); return; }
       const params = new URLSearchParams({
         fechaIngreso:     llegadaH,
         fechaEgreso:      salidaH,
@@ -1076,6 +1122,7 @@ export default function Home() {
         return;
       }
       ocultarErrorSticky();
+      if (huespedesS === 'mas10') { abrirWsp(buildMsgGrupoGrande(llegadaS, salidaS, tipoS)); return; }
       const params = new URLSearchParams({
         fechaIngreso:     llegadaS,
         fechaEgreso:      salidaS,
@@ -1154,6 +1201,27 @@ export default function Home() {
         msg += `%0A${t.tipo}: ${tipo}`;
       return decodeURIComponent(msg);
     }
+    // Fechas del buscador principal (mobile): el valor se muestra en el placeholder con la letra de los selects
+    function actualizarFechaPh(input) {
+      const wrap = input.closest('.date-wrap');
+      if (!wrap) return;
+      wrap.classList.toggle('has-value', input.value !== '');
+      const txt = wrap.querySelector('.date-ph-txt');
+      if (txt) txt.textContent = input.value ? fmtFecha(input.value) : 'dd/mm/aaaa';
+    }
+    window.actualizarFechaPh = actualizarFechaPh;
+    // Grupos de más de 10 personas: no hay alojamiento que los cubra en /disponibilidad, se consulta por WhatsApp
+    function buildMsgGrupoGrande(llegada, salida, tipo) {
+      const txt = {
+        es: { saludo: 'Hola! Quiero consultar disponibilidad para un grupo de más de 10 personas.', llegada: 'Ingreso', salida: 'Egreso', tipo: 'Tipo de alojamiento' },
+        en: { saludo: 'Hello! I would like to check availability for a group of more than 10 people.', llegada: 'Check-in', salida: 'Check-out', tipo: 'Accommodation type' },
+        pt: { saludo: 'Olá! Gostaria de consultar disponibilidade para um grupo de mais de 10 pessoas.', llegada: 'Chegada', salida: 'Saída', tipo: 'Tipo de acomodação' }
+      };
+      const t = txt[getLang()] || txt.es;
+      let msg = `${t.saludo} ${t.llegada}: ${fmtFecha(llegada)} · ${t.salida}: ${fmtFecha(salida)}.`;
+      if (tipo) msg += ` ${t.tipo}: ${tipo}.`;
+      return msg;
+    }
     // ===== MODAL FECHA MOBILE =====
     var _modalCampo = null;
     function abrirFechaModal(campo) {
@@ -1214,7 +1282,6 @@ export default function Home() {
           if (input && input.id === 's-' + campo && label) {
             label.textContent = fechaLegible;
             label.style.color = 'rgba(245,242,236,0.9)';
-            label.style.fontWeight = '700';
           }
         });
       }
@@ -1276,13 +1343,42 @@ export default function Home() {
     actualizarDescMobile();
     window.addEventListener('resize', actualizarDescMobile);
 
+    // Cierra todos los dropdowns custom y devuelve el hero a overflow:hidden
+    function cerrarDropdowns() {
+      document.querySelectorAll('.custom-tipo-wrap, .custom-huesp-wrap').forEach(function(w) { w.classList.remove('open'); });
+      var hero = document.querySelector('.hero');
+      if (hero) hero.classList.remove('dd-abierto');
+    }
+    // Ubica la lista abierta: hacia abajo si entra en pantalla, si no hacia arriba; con alto máximo y scroll interno
+    function posicionarDropdown(wrap) {
+      var opts = wrap.querySelector('.custom-tipo-opts, .custom-huesp-opts');
+      if (!opts) return;
+      var hero = wrap.closest('.hero');
+      if (hero) hero.classList.add('dd-abierto'); // el hero recorta con overflow:hidden
+      opts.classList.remove('dd-arriba');
+      opts.style.maxHeight = '';
+      var MAX = 280, MARGEN = 8;
+      var trig = wrap.getBoundingClientRect();
+      // Lo que tapa la parte de arriba de la pantalla: nav fijo y (si está visible y no es la propia) la barra flotante
+      var techo = 0;
+      var nav = document.getElementById('main-nav');
+      if (nav) techo = Math.max(techo, nav.getBoundingClientRect().bottom);
+      var sticky = document.getElementById('stickyBar');
+      if (sticky && sticky.classList.contains('visible') && !sticky.contains(wrap)) techo = Math.max(techo, sticky.getBoundingClientRect().bottom);
+      var abajo  = window.innerHeight - trig.bottom - MARGEN;
+      var arriba = trig.top - techo - MARGEN;
+      var alto   = Math.min(opts.scrollHeight, MAX);
+      var haciaArriba = alto > abajo && arriba > abajo;
+      if (haciaArriba) opts.classList.add('dd-arriba');
+      opts.style.maxHeight = Math.max(120, Math.min(MAX, haciaArriba ? arriba : abajo)) + 'px';
+    }
     // Custom tipo dropdown (mobile only)
     function toggleCustomTipo(wrapId) {
       var wrap = document.getElementById(wrapId);
       if (!wrap) return;
       var isOpen = wrap.classList.contains('open');
-      document.querySelectorAll('.custom-tipo-wrap, .custom-huesp-wrap').forEach(function(w) { w.classList.remove('open'); });
-      if (!isOpen) wrap.classList.add('open');
+      cerrarDropdowns();
+      if (!isOpen) { wrap.classList.add('open'); posicionarDropdown(wrap); }
     }
     function preTouchCustomTipo(btn) {
       var opts = btn.closest('.custom-tipo-opts');
@@ -1301,11 +1397,11 @@ export default function Home() {
       }
       wrap.querySelectorAll('.custom-tipo-opt').forEach(function(b) { b.classList.remove('active'); });
       btn.classList.add('active');
-      wrap.classList.remove('open');
+      cerrarDropdowns();
     }
     document.addEventListener('click', function(e) {
       if (!e.target.closest('.custom-tipo-wrap') && !e.target.closest('.custom-huesp-wrap')) {
-        document.querySelectorAll('.custom-tipo-wrap, .custom-huesp-wrap').forEach(function(w) { w.classList.remove('open'); });
+        cerrarDropdowns();
       }
     });
 
@@ -1314,8 +1410,8 @@ export default function Home() {
       var wrap = document.getElementById(wrapId);
       if (!wrap) return;
       var isOpen = wrap.classList.contains('open');
-      document.querySelectorAll('.custom-tipo-wrap, .custom-huesp-wrap').forEach(function(w) { w.classList.remove('open'); });
-      if (!isOpen) wrap.classList.add('open');
+      cerrarDropdowns();
+      if (!isOpen) { wrap.classList.add('open'); posicionarDropdown(wrap); }
     }
     function preTouchCustomHuesp(btn) {
       var opts = btn.closest('.custom-huesp-opts');
@@ -1329,10 +1425,10 @@ export default function Home() {
       if (!select || !wrap) return;
       select.selectedIndex = parseInt(btn.dataset.index);
       var label = document.getElementById(selectId + '-label');
-      if (label) label.textContent = btn.textContent;
+      if (label) label.textContent = (selectId === 's-huespedes' && btn.dataset.abbr) ? btn.dataset.abbr : btn.textContent;
       wrap.querySelectorAll('.custom-huesp-opt').forEach(function(b) { b.classList.remove('active'); });
       btn.classList.add('active');
-      wrap.classList.remove('open');
+      cerrarDropdowns();
     }
 
     // Expose functions to window so HTML inline onclick handlers can call them
@@ -1417,7 +1513,7 @@ export default function Home() {
           <div class="lang-option" onclick="setLang('pt')"><span class="flag">PT</span> Português</div>
         </div>
       </div>
-      <a href="javascript:void(0)" onclick="abrirWsp(getMsgWsp('general'))" class="nav-cta" data-i18n="nav.cta">Consultar →</a>
+      <a href="javascript:void(0)" onclick="abrirWsp(getMsgWsp('general'))" class="nav-cta" data-i18n="nav.cta">Consultar</a>
       <!-- Hamburguesa (solo mobile) -->
       <button class="nav-hamburger" id="nav-hamburger" onclick="toggleMenu()" aria-label="Menú" style="display:none">
         <span></span><span></span><span></span>
@@ -1462,9 +1558,10 @@ export default function Home() {
     <div class="sticky-field">
       <select id="s-huespedes">
         <option value="" disabled selected data-i18n-opt="widget.huespedes">Huéspedes</option>
-        <option>1</option><option>2</option><option>3</option>
-        <option>4</option><option>5</option><option>6</option>
-        <option>7</option><option>8+</option>
+        <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option>
+        <option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option>
+        <option value="9">9</option><option value="10">10</option>
+        <option value="mas10" data-i18n-opt="widget.mas10">Más de 10</option>
       </select>
       <div class="custom-huesp-wrap" id="s-huespedes-wrap">
         <button type="button" class="custom-tipo-trigger" onclick="toggleCustomHuesp('s-huespedes-wrap')">
@@ -1479,7 +1576,10 @@ export default function Home() {
           <button type="button" class="custom-huesp-opt" data-index="5" ontouchstart="preTouchCustomHuesp(this)" onclick="selectCustomHuesp('s-huespedes','s-huespedes-wrap',this)">5</button>
           <button type="button" class="custom-huesp-opt" data-index="6" ontouchstart="preTouchCustomHuesp(this)" onclick="selectCustomHuesp('s-huespedes','s-huespedes-wrap',this)">6</button>
           <button type="button" class="custom-huesp-opt" data-index="7" ontouchstart="preTouchCustomHuesp(this)" onclick="selectCustomHuesp('s-huespedes','s-huespedes-wrap',this)">7</button>
-          <button type="button" class="custom-huesp-opt" data-index="8" ontouchstart="preTouchCustomHuesp(this)" onclick="selectCustomHuesp('s-huespedes','s-huespedes-wrap',this)">8+</button>
+          <button type="button" class="custom-huesp-opt" data-index="8" ontouchstart="preTouchCustomHuesp(this)" onclick="selectCustomHuesp('s-huespedes','s-huespedes-wrap',this)">8</button>
+          <button type="button" class="custom-huesp-opt" data-index="9" ontouchstart="preTouchCustomHuesp(this)" onclick="selectCustomHuesp('s-huespedes','s-huespedes-wrap',this)">9</button>
+          <button type="button" class="custom-huesp-opt" data-index="10" ontouchstart="preTouchCustomHuesp(this)" onclick="selectCustomHuesp('s-huespedes','s-huespedes-wrap',this)">10</button>
+          <button type="button" class="custom-huesp-opt custom-huesp-opt--ancha" data-index="11" data-abbr="+10" data-i18n="widget.mas10" ontouchstart="preTouchCustomHuesp(this)" onclick="selectCustomHuesp('s-huespedes','s-huespedes-wrap',this)">Más de 10</button>
         </div>
       </div>
     </div>
@@ -1498,7 +1598,7 @@ export default function Home() {
           <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
         <div class="custom-tipo-opts" id="s-tipo-opts">
-          <button type="button" class="custom-tipo-opt" data-index="1" data-abbr="Todos" data-i18n="widget.cualquiera" ontouchstart="preTouchCustomTipo(this)" onclick="selectCustomTipo('s-tipo','s-tipo-wrap',this)">Todos los alojamientos</button>
+          <button type="button" class="custom-tipo-opt" data-index="1" data-abbr="Todos" data-i18n="widget.cualquiera.short" ontouchstart="preTouchCustomTipo(this)" onclick="selectCustomTipo('s-tipo','s-tipo-wrap',this)">Todos</button>
           <button type="button" class="custom-tipo-opt" data-index="2" data-abbr="Cab." data-i18n="widget.cabana" ontouchstart="preTouchCustomTipo(this)" onclick="selectCustomTipo('s-tipo','s-tipo-wrap',this)">Cabaña</button>
           <button type="button" class="custom-tipo-opt" data-index="3" data-abbr="Hab." data-i18n="widget.habitacion" ontouchstart="preTouchCustomTipo(this)" onclick="selectCustomTipo('s-tipo','s-tipo-wrap',this)">Habitación</button>
           <button type="button" class="custom-tipo-opt" data-index="4" data-abbr="Apart" data-i18n="widget.apart" ontouchstart="preTouchCustomTipo(this)" onclick="selectCustomTipo('s-tipo','s-tipo-wrap',this)">Apart Hotel</button>
@@ -1526,8 +1626,8 @@ export default function Home() {
     <div class="hero-text">
       <p class="hero-eyebrow" data-i18n="hero.eyebrow">Bienvenidos a Hotel y Cabañas Brisas de Oro</p>
       <h1 class="hero-title" data-i18n="hero.title">Viví <em>momentos inolvidables</em></h1>
-      <p id="hero-desc-desktop" class="hero-desc solo-desktop" data-i18n="hero.desc">Complejo familiar atendido por sus dueños, donde el trato personalizado y el clima hogareño hacen que cada huésped se sienta en casa. Rodeados de las sierras cordobesas y a orillas del río San Antonio, en Villa Carlos Paz.</p>
-      <p id="hero-desc-mobile" class="hero-desc solo-mobile" style="display:none" data-i18n="hero.descMobile">Complejo familiar atendido por sus dueños,<br />donde el trato personalizado y el clima hogareño<br />hacen que cada huésped se sienta en casa.<br />Rodeados de las sierras cordobesas<br />y a orillas del río San Antonio, en Villa Carlos Paz.</p>
+      <p id="hero-desc-desktop" class="hero-desc solo-desktop" data-i18n="hero.desc">Complejo familiar atendido por sus dueños, donde el trato personalizado y el clima hogareño hacen que cada huésped se sienta en casa. Rodeados de las sierras cordobesas y a orillas del río San Antonio, en Villa&nbsp;Carlos&nbsp;Paz.</p>
+      <p id="hero-desc-mobile" class="hero-desc solo-mobile" style="display:none" data-i18n="hero.descMobile">Complejo familiar atendido por sus dueños, donde el trato personalizado y el clima hogareño hacen que cada huésped se sienta en casa. Rodeados de las sierras cordobesas y a orillas del río San Antonio, en Villa&nbsp;Carlos&nbsp;Paz.</p>
       <div class="hero-badges hero-badges--es">
         <span class="badge" data-i18n="hero.b1" data-abbr-mobile="Familiar" data-abbr-mobile-i18n="hero.b1.abbr">Ambiente familiar</span>
         <span class="badge" data-i18n="hero.b2">Desayuno buffet</span>
@@ -1542,23 +1642,24 @@ export default function Home() {
         <div class="widget-field">
           <label for="fecha-llegada" data-i18n="widget.llegada">Llegada</label>
           <div class="date-wrap" id="wrap-llegada">
-            <span class="date-ph" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>dd/mm/aaaa</span>
-            <input type="date" id="fecha-llegada" onchange="document.getElementById('wrap-llegada').classList.toggle('has-value',this.value!='')">
+            <span class="date-ph" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg><span class="date-ph-txt">dd/mm/aaaa</span></span>
+            <input type="date" id="fecha-llegada" onchange="actualizarFechaPh(this)">
           </div>
         </div>
         <div class="widget-field">
           <label for="fecha-salida" data-i18n="widget.salida">Salida</label>
           <div class="date-wrap" id="wrap-salida">
-            <span class="date-ph" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>dd/mm/aaaa</span>
-            <input type="date" id="fecha-salida" onchange="document.getElementById('wrap-salida').classList.toggle('has-value',this.value!='')">
+            <span class="date-ph" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg><span class="date-ph-txt">dd/mm/aaaa</span></span>
+            <input type="date" id="fecha-salida" onchange="actualizarFechaPh(this)">
           </div>
         </div>
         <div class="widget-field">
           <label for="huespedes" data-i18n="widget.huespedes">Huéspedes</label>
           <select id="huespedes">
-            <option>1</option><option>2</option><option>3</option>
-            <option>4</option><option>5</option><option>6</option>
-            <option>7</option><option>8+</option>
+            <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option>
+            <option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option>
+            <option value="9">9</option><option value="10">10</option>
+            <option value="mas10" data-i18n-opt="widget.mas10">Más de 10</option>
           </select>
           <div class="custom-huesp-wrap" id="huespedes-wrap">
             <button type="button" class="custom-tipo-trigger" onclick="toggleCustomHuesp('huespedes-wrap')">
@@ -1573,12 +1674,15 @@ export default function Home() {
               <button type="button" class="custom-huesp-opt" data-index="4" ontouchstart="preTouchCustomHuesp(this)" onclick="selectCustomHuesp('huespedes','huespedes-wrap',this)">5</button>
               <button type="button" class="custom-huesp-opt" data-index="5" ontouchstart="preTouchCustomHuesp(this)" onclick="selectCustomHuesp('huespedes','huespedes-wrap',this)">6</button>
               <button type="button" class="custom-huesp-opt" data-index="6" ontouchstart="preTouchCustomHuesp(this)" onclick="selectCustomHuesp('huespedes','huespedes-wrap',this)">7</button>
-              <button type="button" class="custom-huesp-opt" data-index="7" ontouchstart="preTouchCustomHuesp(this)" onclick="selectCustomHuesp('huespedes','huespedes-wrap',this)">8+</button>
+              <button type="button" class="custom-huesp-opt" data-index="7" ontouchstart="preTouchCustomHuesp(this)" onclick="selectCustomHuesp('huespedes','huespedes-wrap',this)">8</button>
+              <button type="button" class="custom-huesp-opt" data-index="8" ontouchstart="preTouchCustomHuesp(this)" onclick="selectCustomHuesp('huespedes','huespedes-wrap',this)">9</button>
+              <button type="button" class="custom-huesp-opt" data-index="9" ontouchstart="preTouchCustomHuesp(this)" onclick="selectCustomHuesp('huespedes','huespedes-wrap',this)">10</button>
+              <button type="button" class="custom-huesp-opt custom-huesp-opt--ancha" data-index="10" data-i18n="widget.mas10" ontouchstart="preTouchCustomHuesp(this)" onclick="selectCustomHuesp('huespedes','huespedes-wrap',this)">Más de 10</button>
             </div>
           </div>
         </div>
         <div class="widget-field">
-          <label for="tipo-aloj" data-i18n="widget.tipo">Tipo de alojamiento</label>
+          <label for="tipo-aloj" class="label-abbr" data-i18n="widget.tipo" data-abbr-mobile="Alojamiento" data-abbr-mobile-i18n="widget.tipo.abbr">Tipo de alojamiento</label>
           <select id="tipo-aloj">
             <option value="" data-i18n-opt="widget.cualquiera">Todos los alojamientos</option>
             <option data-i18n-opt="widget.cabana">Cabaña</option>
@@ -1588,11 +1692,11 @@ export default function Home() {
           </select>
           <div class="custom-tipo-wrap" id="tipo-aloj-wrap">
             <button type="button" class="custom-tipo-trigger" onclick="toggleCustomTipo('tipo-aloj-wrap')">
-              <span id="tipo-aloj-label" data-i18n="widget.tipo.ph">Seleccioná un tipo</span>
+              <span id="tipo-aloj-label">Todos</span>
               <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
             </button>
             <div class="custom-tipo-opts" id="tipo-aloj-opts">
-              <button type="button" class="custom-tipo-opt" data-index="0" data-i18n="widget.cualquiera" ontouchstart="preTouchCustomTipo(this)" onclick="selectCustomTipo('tipo-aloj','tipo-aloj-wrap',this)">Todos los alojamientos</button>
+              <button type="button" class="custom-tipo-opt active" data-index="0" data-i18n="widget.cualquiera.short" ontouchstart="preTouchCustomTipo(this)" onclick="selectCustomTipo('tipo-aloj','tipo-aloj-wrap',this)">Todos</button>
               <button type="button" class="custom-tipo-opt" data-index="1" data-i18n="widget.cabana" ontouchstart="preTouchCustomTipo(this)" onclick="selectCustomTipo('tipo-aloj','tipo-aloj-wrap',this)">Cabaña</button>
               <button type="button" class="custom-tipo-opt" data-index="2" data-i18n="widget.habitacion" ontouchstart="preTouchCustomTipo(this)" onclick="selectCustomTipo('tipo-aloj','tipo-aloj-wrap',this)">Habitación</button>
               <button type="button" class="custom-tipo-opt" data-index="3" data-i18n="widget.apart" ontouchstart="preTouchCustomTipo(this)" onclick="selectCustomTipo('tipo-aloj','tipo-aloj-wrap',this)">Apart Hotel</button>
@@ -1603,7 +1707,7 @@ export default function Home() {
       </div>
       <p id="hero-fecha-error">⚠ Fecha no válida. Por favor seleccioná una fecha a partir del día de hoy.</p>
       <button class="btn-consultar" onclick="consultarWhatsApp()" data-i18n="widget.btn">Ver disponibilidad</button>
-      <p class="widget-note" data-i18n="widget.note">Sin pagos online · Confirmamos directamente por WhatsApp</p>
+      <p class="widget-note"><span data-i18n="widget.note.a">Sin pagos online</span><span class="widget-note-sep"> · </span><span data-i18n="widget.note.b">Confirmamos directamente por WhatsApp</span></p>
     </div>
   </div>
 
@@ -1824,18 +1928,19 @@ export default function Home() {
           <span class="card-type-badge" data-i18n="aloj.tipo1">Cabaña chica</span>
           <div class="card-hover-panel">
             <p class="card-hover-name" data-i18n="aloj.card1.name">Cabaña chica</p>
-            <p class="card-hover-meta" data-i18n="aloj.card1.meta">👥 Hasta 3 personas · 🛏 1 dormitorio</p>
+            <p class="card-hover-meta"><span class="ico-txt"><svg class="ico" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span data-i18n="aloj.card1.meta1">Hasta 3 personas</span></span> · <span class="ico-txt"><svg class="ico" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg><span data-i18n="aloj.card1.meta2">1 dormitorio</span></span></p>
             <a class="btn-consultar-card" href="javascript:void(0)" onclick="abrirWsp(getMsgWsp('cabChica'))" data-i18n="aloj.consultar">Consultar</a>
           </div>
         </div>
         <div class="card-body">
           <p class="card-name" data-i18n="aloj.card1.name">Cabaña chica</p>
-          <div class="card-meta"><span data-i18n="aloj.card1.meta1">👥 Hasta 3 personas</span><span data-i18n="aloj.card1.meta2">🛏 1 dormitorio</span></div>
+          <div class="card-meta"><span class="ico-txt"><svg class="ico" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span data-i18n="aloj.card1.meta1">Hasta 3 personas</span></span><span class="ico-txt"><svg class="ico" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg><span data-i18n="aloj.card1.meta2">1 dormitorio</span></span></div>
           <div class="card-features">
             <span class="feature-tag" data-i18n="feat.ac">Aire acondicionado</span>
             <span class="feature-tag" data-i18n="feat.cocina">Cocina equipada</span>
             <span class="feature-tag" data-i18n="feat.asador.priv">Asador privado</span>
             <span class="feature-tag" data-i18n="feat.limp3">Limpieza c/3 días</span>
+            <span class="feature-tag" data-i18n="feat.pet">Pet friendly</span>
           </div>
         </div>
       </div>
@@ -1861,19 +1966,20 @@ export default function Home() {
           <span class="card-type-badge" data-i18n="aloj.tipo2">Cabaña mediana</span>
           <div class="card-hover-panel">
             <p class="card-hover-name" data-i18n="aloj.card2.name">Cabaña mediana</p>
-            <p class="card-hover-meta" data-i18n="aloj.card2.meta">👥 Hasta 5/6 personas · 🛏 1 dormitorio</p>
+            <p class="card-hover-meta"><span class="ico-txt"><svg class="ico" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span data-i18n="aloj.card2.meta1">Hasta 5/6 personas</span></span> · <span class="ico-txt"><svg class="ico" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg><span data-i18n="aloj.card2.meta2">1 dormitorio</span></span></p>
             <a class="btn-consultar-card" href="javascript:void(0)" onclick="abrirWsp(getMsgWsp('cabMed'))" data-i18n="aloj.consultar">Consultar</a>
           </div>
         </div>
         <div class="card-body">
           <p class="card-name" data-i18n="aloj.card2.name">Cabaña mediana</p>
-          <div class="card-meta"><span data-i18n="aloj.card2.meta1">👥 Hasta 5/6 personas</span><span data-i18n="aloj.card2.meta2">🛏 1 dormitorio</span></div>
+          <div class="card-meta"><span class="ico-txt"><svg class="ico" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span data-i18n="aloj.card2.meta1">Hasta 5/6 personas</span></span><span class="ico-txt"><svg class="ico" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg><span data-i18n="aloj.card2.meta2">1 dormitorio</span></span></div>
           <div class="card-features">
             <span class="feature-tag" data-i18n="feat.ac">Aire acondicionado</span>
-            <span class="feature-tag" data-i18n="feat.salamandra">🔥 Salamandra</span>
+            <span class="feature-tag ico-txt"><svg class="ico" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg><span data-i18n="feat.salamandra">Salamandra</span></span>
             <span class="feature-tag" data-i18n="feat.cocina">Cocina equipada</span>
             <span class="feature-tag" data-i18n="feat.asador.priv">Asador privado</span>
             <span class="feature-tag" data-i18n="feat.limp3">Limpieza c/3 días</span>
+            <span class="feature-tag" data-i18n="feat.pet">Pet friendly</span>
           </div>
         </div>
       </div>
@@ -1899,18 +2005,19 @@ export default function Home() {
           <span class="card-type-badge" data-i18n="aloj.tipo3">Cabaña grande</span>
           <div class="card-hover-panel">
             <p class="card-hover-name" data-i18n="aloj.card3.name">Cabaña grande</p>
-            <p class="card-hover-meta" data-i18n="aloj.card3.meta">👥 Hasta 7/8 personas · 🛏 2 dormitorios</p>
+            <p class="card-hover-meta"><span class="ico-txt"><svg class="ico" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span data-i18n="aloj.card3.meta1">Hasta 7/8 personas</span></span> · <span class="ico-txt"><svg class="ico" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg><span data-i18n="aloj.card3.meta2">2 dormitorios</span></span></p>
             <a class="btn-consultar-card" href="javascript:void(0)" onclick="abrirWsp(getMsgWsp('cabGrande'))" data-i18n="aloj.consultar">Consultar</a>
           </div>
         </div>
         <div class="card-body">
           <p class="card-name" data-i18n="aloj.card3.name">Cabaña grande</p>
-          <div class="card-meta"><span data-i18n="aloj.card3.meta1">👥 Hasta 7/8 personas</span><span data-i18n="aloj.card3.meta2">🛏 2 dormitorios</span></div>
+          <div class="card-meta"><span class="ico-txt"><svg class="ico" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span data-i18n="aloj.card3.meta1">Hasta 7/8 personas</span></span><span class="ico-txt"><svg class="ico" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg><span data-i18n="aloj.card3.meta2">2 dormitorios</span></span></div>
           <div class="card-features">
             <span class="feature-tag" data-i18n="feat.ac">Aire acondicionado</span>
             <span class="feature-tag" data-i18n="feat.cocina">Cocina equipada</span>
             <span class="feature-tag" data-i18n="feat.asador.priv">Asador privado</span>
             <span class="feature-tag" data-i18n="feat.limp3">Limpieza c/3 días</span>
+            <span class="feature-tag" data-i18n="feat.pet">Pet friendly</span>
           </div>
         </div>
       </div>
@@ -1937,14 +2044,14 @@ export default function Home() {
           <span class="card-type-badge" data-i18n="aloj.tipo4">Hotel</span>
           <div class="card-hover-panel">
             <p class="card-hover-name" data-i18n="aloj.card4.name">Habitaciones de hotel</p>
-            <p class="card-hover-meta" data-i18n="aloj.card4.meta">👥 1–4 personas · 🍳 Desayuno incluido</p>
+            <p class="card-hover-meta"><span class="ico-txt"><svg class="ico" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span data-i18n="aloj.card4.meta1">1–4 personas</span></span> · <span class="ico-txt"><svg class="ico" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg><span data-i18n="aloj.card4.meta2">Desayuno incluido</span></span></p>
             <a class="btn-consultar-card" href="javascript:void(0)" onclick="abrirWsp(getMsgWsp('habit'))" data-i18n="aloj.consultar">Consultar</a>
           </div>
         </div>
         <div class="card-body">
           <p class="card-name" data-i18n="aloj.card4.name">Habitaciones de hotel</p>
-          <div class="card-meta"><span data-i18n="aloj.card4.meta1">👥 1–4 personas</span><span data-i18n="aloj.card4.body2">🛏 Baño privado</span></div>
-          <div style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:0.7rem">
+          <div class="card-meta"><span class="ico-txt"><svg class="ico" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span data-i18n="aloj.card4.meta1">1–4 personas</span></span><span class="ico-txt"><svg class="ico" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6 6.5 3.5a1.5 1.5 0 0 0-1-.5C4.683 3 4 3.683 4 4.5V17a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-5"/><line x1="10" y1="5" x2="8" y2="7"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="7" y1="19" x2="7" y2="21"/><line x1="17" y1="19" x2="17" y2="21"/></svg><span data-i18n="aloj.card4.body2">Baño privado</span></span></div>
+          <div class="variant-chips" style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:0.7rem">
             <span class="variant-chip" data-i18n="aloj.card4.v1">Doble</span>
             <span class="variant-chip" data-i18n="aloj.card4.v2">Triple</span>
             <span class="variant-chip" data-i18n="aloj.card4.v3">Cuádruple</span>
@@ -1977,13 +2084,13 @@ export default function Home() {
           <span class="card-type-badge" data-i18n="aloj.tipo5">Apart Hotel</span>
           <div class="card-hover-panel">
             <p class="card-hover-name" data-i18n="aloj.card5.name">Apart Hotel</p>
-            <p class="card-hover-meta" data-i18n="aloj.card5.meta">👥 Hasta 4/5 personas · 🏠 2 hab. combinadas</p>
+            <p class="card-hover-meta"><span class="ico-txt"><svg class="ico" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span data-i18n="aloj.card5.meta1">Hasta 4/5 personas</span></span> · <span class="ico-txt"><svg class="ico" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span data-i18n="aloj.card5.meta2">2 hab. combinadas</span></span></p>
             <a class="btn-consultar-card" href="javascript:void(0)" onclick="abrirWsp(getMsgWsp('apart'))" data-i18n="aloj.consultar">Consultar</a>
           </div>
         </div>
         <div class="card-body">
           <p class="card-name" data-i18n="aloj.card5.name">Apart Hotel</p>
-          <div class="card-meta"><span data-i18n="aloj.card5.meta1">👥 Hasta 4/5 personas</span><span data-i18n="aloj.card5.body2">🏠 2 hab. con baño privado</span></div>
+          <div class="card-meta"><span class="ico-txt"><svg class="ico" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span data-i18n="aloj.card5.meta1">Hasta 4/5 personas</span></span><span class="ico-txt"><svg class="ico" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span data-i18n="aloj.card5.body2">2 hab. con baño privado</span></span></div>
           <div class="card-features">
             <span class="feature-tag" data-i18n="feat.ac24">Aire acond. 24hs</span>
             <span class="feature-tag" data-i18n="feat.cocina.semi">Cocina semi equipada</span>
@@ -2014,23 +2121,23 @@ export default function Home() {
           <span class="card-type-badge" data-i18n="aloj.tipo6">Casa · Icho Cruz</span>
           <div class="card-hover-panel">
             <p class="card-hover-name" data-i18n="aloj.card6.name">Casa con Pileta · Icho Cruz</p>
-            <p class="card-hover-meta" data-i18n="aloj.card6.meta">👥 Hasta 10 personas · 🛏 3 dormitorios</p>
+            <p class="card-hover-meta"><span class="ico-txt"><svg class="ico" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span data-i18n="aloj.card6.meta1">Hasta 10 personas</span></span> · <span class="ico-txt"><svg class="ico" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg><span data-i18n="aloj.card6.meta2">3 dormitorios</span></span></p>
             <a class="btn-consultar-card" href="javascript:void(0)" onclick="abrirWsp(getMsgWsp('casa'))" data-i18n="aloj.consultar">Consultar</a>
           </div>
         </div>
         <div class="card-body">
           <p class="card-name" data-i18n="aloj.card6.name">Casa con Pileta · Icho Cruz</p>
-          <div class="card-meta"><span data-i18n="aloj.card6.meta1">👥 Hasta 10 personas</span><span data-i18n="aloj.card6.meta2">🛏 3 dormitorios</span></div>
+          <div class="card-meta"><span class="ico-txt"><svg class="ico" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span data-i18n="aloj.card6.meta1">Hasta 10 personas</span></span><span class="ico-txt"><svg class="ico" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg><span data-i18n="aloj.card6.meta2">3 dormitorios</span></span></div>
           <div class="card-features">
             <span class="feature-tag" data-i18n="feat.pileta.priv">Pileta privada</span>
-            <span class="feature-tag" data-i18n="feat.parque">Parque</span>
-            <span class="feature-tag" data-i18n="feat.parrillero">Parrillero</span>
+            <span class="feature-tag" data-i18n="feat.parque.priv">Parque privado</span>
+            <span class="feature-tag" data-i18n="feat.asador.priv">Asador privado</span>
             <span class="feature-tag" data-i18n="feat.cocina">Cocina equipada</span>
             <span class="feature-tag" data-i18n="feat.wifi.tv">Wi-Fi y DirecTV</span>
             <span class="feature-tag" data-i18n="feat.pet">Pet friendly</span>
           </div>
-          <p class="card-nota" data-i18n="aloj.card6.noincluye">No incluye desayuno ni blancos (opcionales)</p>
-          <p class="card-nota" data-i18n="aloj.card6.ubic">📍 Icho Cruz · a 15 min del complejo</p>
+          <p class="card-nota"><span class="card-nota-linea" data-i18n="aloj.card6.noincluye.a">Sin desayuno ni toallas</span><span class="card-nota-linea" data-i18n="aloj.card6.noincluye.b">Ropa de cama opcional (con cargo adicional)</span></p>
+          <p class="card-nota ico-txt"><svg class="ico" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span data-i18n="aloj.card6.ubic">Icho Cruz — a 15 min de Brisas de Oro</span></p>
         </div>
       </div>
     </div>
@@ -2120,6 +2227,7 @@ export default function Home() {
             <div class="acord-dato"><span class="acord-label" data-i18n="acord.hora.l1">Check-in</span><span data-i18n="acord.hora.v1">A partir de las 13:00 hs</span></div>
             <div class="acord-dato"><span class="acord-label" data-i18n="acord.hora.l2">Check-out</span><span data-i18n="acord.hora.v2">Hasta las 10:00 hs</span></div>
           </div>
+          <p style="margin-top:0.75rem;font-size:0.85rem;color:var(--texto-medio)" data-i18n="acord.hora.casa">Casa con Pileta · Icho Cruz: check-in 14:00 hs · check-out 10:00 hs</p>
           <p style="margin-top:0.75rem;font-size:0.85rem;color:var(--texto-suave)" data-i18n="acord.hora.note">Los horarios son flexibles según disponibilidad. Consultanos si necesitás un horario especial.</p>
         </div>
       </div>
@@ -2184,6 +2292,30 @@ export default function Home() {
         </div>
       </div>
 
+
+
+      <!-- 8. Casa con Pileta · Icho Cruz -->
+      <div class="acord-item">
+        <button class="acord-header" onclick="toggleAcord(this)">
+          <span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <span data-i18n="acord.casa.title">Casa con Pileta · Icho Cruz</span>
+          </span>
+          <svg class="acord-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="acord-body acord-body--larga">
+          <p style="margin-bottom:0.75rem" data-i18n="acord.casa.intro">Rigen las mismas condiciones de reserva, cancelación, formas de pago y normas que en Brisas de Oro. Lo propio de la casa:</p>
+          <div class="acord-grid">
+            <div class="acord-dato"><span class="acord-label" data-i18n="acord.casa.l1">Horarios</span><span data-i18n="acord.casa.v1">Check-in 14:00 hs · Check-out 10:00 hs</span></div>
+            <div class="acord-dato"><span class="acord-label" data-i18n="acord.casa.l4">Capacidad</span><span data-i18n="acord.casa.v4">Hasta 10 personas · 3 dormitorios · 2 baños</span></div>
+            <div class="acord-dato"><span class="acord-label" data-i18n="acord.casa.l2">Incluye</span><span data-i18n="acord.casa.v2">Pileta privada, parque privado, asador privado bajo alero, cocina equipada, Wi-Fi y DirecTV, ventiladores. Pet friendly.</span></div>
+            <div class="acord-dato"><span class="acord-label" data-i18n="acord.casa.l3">No incluye</span><span data-i18n="acord.casa.v3">Desayuno ni toallas. Ropa de cama opcional, con cargo adicional.</span></div>
+            <div class="acord-dato"><span class="acord-label" data-i18n="acord.casa.l5">Dirección</span><span data-i18n="acord.casa.v5">Calle Uruguay esq. Lombardo, Icho Cruz</span>
+              <a class="acord-link" href="https://maps.app.goo.gl/LNTt8TeZjFvNtwUY9" target="_blank" rel="noopener"><svg class="ico" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span data-i18n="ubic.casa.btn">Cómo llegar</span></a></div>
+          </div>
+        </div>
+      </div>
+
     </div><!-- /acordeon -->
 
     <!-- Botón consultar al final -->
@@ -2206,6 +2338,7 @@ export default function Home() {
     <p class="section-label" data-i18n="serv.label">Lo que ofrecemos</p>
     <h2 class="section-title" data-i18n="serv.title">Nuestros servicios</h2>
     <div class="divider"></div>
+    <p class="serv-sub" data-i18n="serv.sub">Servicios disponibles en <span class="serv-sub-nombre">Brisas de Oro Hotel y Cabañas.</span></p>
     <div class="servicios-grid">
       <!-- Pileta -->
       <div class="servicio-item">
@@ -2299,7 +2432,7 @@ export default function Home() {
           <div class="rating-num">5.0</div>
           <div>
             <span class="rating-stars">★★★★★</span>
-            <span class="rating-label" data-i18n="test.rating">Reseñas verificadas · Alquiler Argentina</span>
+            <span class="rating-label" data-i18n="test.rating">Reseñas verificadas · Google y Alquiler Argentina</span>
           </div>
         </div>
         <div class="test-nav">
@@ -2383,6 +2516,30 @@ export default function Home() {
           </div>
         </div>
 
+
+        <!-- Columna 6 — Casa con Pileta · Icho Cruz -->
+        <div class="test-col">
+          <div class="test-card">
+            <div class="test-card-top"><div class="stars">★★★★★</div><span class="feature-tag test-tag" data-i18n="test.casa.tag">Casa · Icho Cruz</span></div>
+            <p class="test-texto" data-i18n="test.r11">"Un lugar fantástico, para disfrutar en familia!!! Ubicación muy cómoda para salir para cualquier lado!! Río cerca, y barrio súper tranquilo!!"</p>
+            <div class="test-autor"><div class="test-avatar">DA</div><div><p class="test-nombre">Diego Marcelo Acosta</p></div></div>
+          </div>
+          <div class="test-card">
+            <div class="test-card-top"><div class="stars">★★★★★</div><span class="feature-tag test-tag" data-i18n="test.casa.tag">Casa · Icho Cruz</span></div>
+            <p class="test-texto" data-i18n="test.r13">"Excelente lugar tranquilo para disfrutar en familia. El río, el centro, la gente, lo recomiendo."</p>
+            <div class="test-autor"><div class="test-avatar">N</div><div><p class="test-nombre">N.</p></div></div>
+          </div>
+        </div>
+
+        <!-- Columna 7 — una sola reseña: la tarjeta ocupa el alto de la columna para no dejar hueco -->
+        <div class="test-col test-col--una">
+          <div class="test-card">
+            <div class="test-card-top"><div class="stars">★★★★★</div><span class="feature-tag test-tag" data-i18n="test.casa.tag">Casa · Icho Cruz</span></div>
+            <p class="test-texto" data-i18n="test.r12">"Muy lindo lugar, tranquilo, mucha paz, muy cerca del río y de calle principal donde se puede comprar todo lo necesario. Excelente atención de los dueños."</p>
+            <div class="test-autor"><div class="test-avatar">YG</div><div><p class="test-nombre">Yanina Gallegos</p></div></div>
+          </div>
+        </div>
+
       </div><!-- /test-track -->
     </div><!-- /test-viewport -->
 
@@ -2408,6 +2565,12 @@ export default function Home() {
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
           Welcome Argentina
         </a>
+        <a class="platform-link"
+           href="https://maps.app.goo.gl/LNTt8TeZjFvNtwUY9"
+           target="_blank" rel="noopener">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
+          <span data-i18n="test.plat.casa">Reseñas de la Casa en Google</span>
+        </a>
       </div>
     </div>
 
@@ -2421,7 +2584,7 @@ export default function Home() {
       <p class="section-label" data-i18n="clima.label">Villa Carlos Paz · Sierras de Córdoba</p>
       <h2 class="section-title" data-i18n="clima.title">Clima para tu viaje</h2>
       <div class="divider" style="margin:0.9rem auto 1.8rem"></div>
-      <p style="font-size:0.9rem;color:var(--texto-suave);max-width:700px;margin:0 auto;line-height:1.7;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">
+      <p class="clima-desc" style="font-size:0.9rem;color:var(--texto-suave);max-width:700px;margin:0 auto;line-height:1.7;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">
         <span data-i18n="clima.desc">Consultá el pronóstico antes de preparar tu equipaje. Datos en tiempo real, actualizados automáticamente.</span>
       </p>
     </div>
@@ -2445,7 +2608,7 @@ export default function Home() {
       <p class="section-label" data-i18n="ubic.label">Dónde estamos</p>
       <h2 class="section-title" data-i18n="ubic.title">En plena avenida,<br>rodeados de naturaleza</h2>
       <div class="divider"></div>
-      <p style="color:var(--texto-medio);font-size:0.91rem;line-height:1.85;margin-bottom:1rem;margin-top:-0.6rem;" data-i18n="ubic.desc">Ubicados sobre una de las avenidas principales de Villa Carlos Paz, con las sierras como horizonte y el río a pocos pasos.</p>
+      <p style="color:var(--texto-medio);font-size:0.91rem;line-height:1.85;margin-bottom:1rem;margin-top:-0.6rem;" data-i18n="ubic.desc">Ubicados sobre una de las avenidas principales de Villa Carlos Paz, con las sierras como horizonte y&nbsp;el&nbsp;río a pocos pasos.</p>
       <p style="display:flex;align-items:center;gap:0.5rem;font-size:0.82rem;font-weight:600;margin-bottom:1.4rem;">
         <svg width="11" height="14" viewBox="0 0 11 14" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0">
           <path d="M5.5 0C2.46 0 0 2.46 0 5.5C0 9.625 5.5 14 5.5 14C5.5 14 11 9.625 11 5.5C11 2.46 8.54 0 5.5 0ZM5.5 7.5C4.395 7.5 3.5 6.605 3.5 5.5C3.5 4.395 4.395 3.5 5.5 3.5C6.605 3.5 7.5 4.395 7.5 5.5C7.5 6.605 6.605 7.5 5.5 7.5Z" fill="var(--oro)"/>
@@ -2504,6 +2667,7 @@ export default function Home() {
   <!-- Casa con Pileta · Icho Cruz — alojamiento independiente, fuera del complejo (sin mapa embebido) -->
   <div class="ubic-casa">
     <h3 class="ubic-casa-title" data-i18n="ubic.casa.title">Casa con Pileta · Icho Cruz</h3>
+    <div class="divider ubic-casa-divider"></div>
     <p class="ubic-casa-sub" data-i18n="ubic.casa.sub">Alojamiento independiente, fuera del complejo Brisas de Oro.</p>
     <p class="ubic-casa-dir">
       <svg width="11" height="14" viewBox="0 0 11 14" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0">
@@ -2639,7 +2803,7 @@ export default function Home() {
         </ul>
       </div>
       <div class="footer-col">
-        <h4>También en</h4>
+        <h4 data-i18n="footer.tambien">También en</h4>
         <div style="display:flex;flex-direction:column;gap:0.45rem;">
           <a class="platform-link dark"
              href="https://www.google.com/maps/search/Brisas+de+Oro+Hotel+y+Caba%C3%B1as+Villa+Carlos+Paz"
@@ -2658,6 +2822,12 @@ export default function Home() {
              target="_blank" rel="noopener">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
             Welcome Argentina
+          </a>
+          <a class="platform-link dark"
+             href="https://maps.app.goo.gl/LNTt8TeZjFvNtwUY9"
+             target="_blank" rel="noopener">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
+            <span data-i18n="test.plat.casa">Reseñas de la Casa en Google</span>
           </a>
         </div>
       </div>

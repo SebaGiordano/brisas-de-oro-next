@@ -160,16 +160,18 @@ nav.top-hidden { top: 0; }
 .lang-option.active { color: var(--oro); }
 .lang-option .flag { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em; background: rgba(255,255,255,0.12); border-radius: 4px; padding: 1px 5px; }
 
+/* Mismo estilo que los botones de "También nos encontrás en": fondo blanco, borde y texto dorados, brillo dorado */
 .nav-cta {
-  background: var(--oro); color: var(--blanco);
-  border: none; padding: 0.5rem 1.3rem; border-radius: 7px;
+  background: var(--blanco); color: var(--oro);
+  border: 1.5px solid var(--oro); padding: 0.5rem 1.3rem; border-radius: 7px;
   font-family: 'Nunito', sans-serif; font-size: 0.74rem;
   font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
   cursor: pointer; text-decoration: none;
-  transition: background 0.25s, transform 0.15s;
+  box-shadow: 0 4px 16px rgba(184,152,42,0.35);
+  transition: transform 0.28s, box-shadow 0.28s;
   white-space: nowrap;
 }
-.nav-cta:hover { background: var(--oro-hover); transform: translateY(-1px); filter: brightness(1.12); }
+.nav-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 22px rgba(184,152,42,0.5); }
 
 /* ===================== STICKY BOOKING BAR =====================
    Aparece justo debajo del nav cuando el widget del hero sale de la vista.
@@ -768,9 +770,16 @@ section { padding: 5.5rem 5%; }
 .card-meta { font-size: 0.78rem; color: var(--texto-suave); margin-bottom: 0.8rem; display: flex; gap: 0.85rem; flex-wrap: wrap; }
 .card-features { display: flex; flex-wrap: wrap; gap: 0.3rem; }
 .feature-tag { background: var(--crema-a); font-size: 0.68rem; color: var(--texto-suave); padding: 0.2rem 0.6rem; border-radius: 5px; border: 1.5px solid rgba(184,152,42,0.4); }
+/* Íconos de línea monocromáticos en las cards (reemplazan a los emojis) */
+.ico-txt { display: inline-flex; align-items: center; gap: 0.3rem; }
+.ico { flex-shrink: 0; display: block; }
+.card-body .ico { color: var(--texto); }
+.card-hover-panel .ico { color: #fff; }
 /* Línea chica debajo de los feature-tags (ej.: "No incluye…", ubicación de la Casa) */
 .card-nota { font-size: 0.72rem; color: var(--texto-suave); line-height: 1.5; margin-top: 0.6rem; }
 .card-nota + .card-nota { margin-top: 0.2rem; }
+/* Nota de la Casa en dos renglones fijos */
+.card-nota-linea { display: block; }
 /* Chips de variante habitación (Doble/Triple/Cuádruple) con hover */
 .variant-chip {
   display: inline-block; background: var(--oro); color: #fff;
@@ -812,6 +821,8 @@ section { padding: 5.5rem 5%; }
 .servicio-icon { width: 40px; height: 40px; margin: 0 auto 0.75rem; display: flex; align-items: center; justify-content: center; color: var(--oro); }
 .servicio-nombre { font-size: 0.77rem; font-weight: 700; color: var(--texto); letter-spacing: 0.05em; text-transform: uppercase; }
 .servicio-desc { font-size: 0.72rem; color: var(--texto-suave); margin-top: 0.25rem; }
+/* Subtítulo de Servicios (mismo estilo que las descripciones de Clima / Nuestras familias) */
+.serv-sub { font-size: 0.9rem; color: var(--texto-suave); line-height: 1.7; margin: -0.8rem 0 1.8rem; }
 
 /* ===================== TESTIMONIOS — carrusel de columnas ===================== */
 .test-header {
@@ -908,6 +919,14 @@ section { padding: 5.5rem 5%; }
   font-size: 0.7rem; font-weight: 700; color: var(--texto-medio); flex-shrink: 0;
 }
 .test-nombre { font-weight: 700; font-size: 0.8rem; color: var(--texto); }
+/* Reseñas de la Casa: estrellas + etiqueta "Casa · Icho Cruz" */
+.test-card-top { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.7rem; flex-shrink: 0; }
+.test-card-top .stars { margin-bottom: 0; }
+.test-tag { white-space: nowrap; }
+/* Columna con una sola reseña: la tarjeta ocupa todo el alto y su contenido queda centrado (sin hueco) */
+.test-col--una .test-card { flex: 1; justify-content: center; }
+.test-col--una .test-texto { flex: 0 0 auto; }
+.test-col--una .test-autor { margin-top: 0; }
 
 .rating-total {
   display: inline-flex; align-items: center; gap: 0.8rem;
@@ -930,12 +949,18 @@ section { padding: 5.5rem 5%; }
 .dist-text strong { display: block; color: var(--texto); font-size: 0.82rem; font-weight: 700; }
 /* Bloque compacto de la Casa en Icho Cruz, debajo del complejo */
 .ubic-casa { max-width: 1200px; margin: 3rem auto 0; padding-top: 2.5rem; border-top: 1px solid var(--borde); }
-.ubic-casa-title { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 600; color: var(--texto); margin-bottom: 0.3rem; }
-.ubic-casa-sub { font-size: 0.85rem; color: var(--texto-suave); margin-bottom: 0.8rem; }
+.ubic-casa-title { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 600; color: var(--texto); margin-bottom: 0.3rem; text-align: center; }
+/* Línea dorada bajo el título del bloque de la Casa (como la del título de la sección), centrada */
+.ubic-casa-divider { margin: 0.6rem auto 1rem; }
+.ubic-casa-sub { font-size: 0.85rem; color: var(--texto-suave); margin-bottom: 0.8rem; text-align: center; text-wrap: balance; }
 .ubic-casa-dir { display: flex; align-items: center; gap: 0.5rem; font-size: 0.82rem; font-weight: 600; color: var(--texto-medio); }
 .ubic-casa-dist { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.85rem 1.5rem; margin-bottom: 1.6rem; }
-.ubic-casa-btn { display: inline-flex; align-items: center; gap: 0.45rem; border: 1.5px solid var(--oro); color: var(--oro); padding: 0.6rem 1.4rem; border-radius: 8px; text-decoration: none; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.04em; transition: background 0.25s, color 0.25s; }
-.ubic-casa-btn:hover { background: var(--oro); color: #fff; }
+/* Botón "Cómo llegar": mismo estilo que el botón principal dorado ("Ver disponibilidad"), centrado */
+.ubic-casa-btn { display: flex; width: fit-content; margin: 0 auto; align-items: center; justify-content: center; gap: 0.55rem; background: var(--oro); color: var(--blanco); padding: 0.95rem 2.6rem; border-radius: 7px; text-decoration: none; font-family: 'Nunito', sans-serif; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; transition: background 0.25s; }
+.ubic-casa-btn:hover { background: var(--oro-hover); filter: brightness(1.12); }
+/* Link "Cómo llegar" dentro del acordeón de la Casa */
+.acord-link { display: inline-flex; align-items: center; gap: 0.35rem; margin-top: 0.35rem; width: fit-content; color: var(--oro); font-size: 0.82rem; font-weight: 700; text-decoration: none; border-bottom: 1px solid rgba(184,152,42,0.3); }
+.acord-link:hover { color: var(--oro-hover); }
 
 /* ===================== CTA BANNER ===================== */
 .cta-banner { background: var(--texto); padding: 5rem 5%; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; }
@@ -992,6 +1017,8 @@ footer { background: var(--footer-bg); color: var(--footer-text); padding: 3.5re
   text-align: justify;
 }
 .acord-body.open { max-height: 600px; padding: 1.25rem 1.75rem; }
+/* Ítem de la Casa: más contenido, necesita más alto al abrirse (sobre todo en mobile) */
+.acord-body.acord-body--larga.open { max-height: 1600px; }
 .acord-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; }
 @media (max-width: 768px) {
   .acord-grid { grid-template-columns: 1fr !important; }
@@ -1384,6 +1411,18 @@ footer { background: var(--footer-bg); color: var(--footer-text); padding: 3.5re
     background: rgba(245,242,236,0.1);
     border-color: rgba(245,242,236,0.3);
   }
+  /* Listas largas: alto máximo con scroll interno (JS lo ajusta al espacio disponible) */
+  .custom-tipo-opts,
+  .custom-huesp-opts { max-height: 280px; overflow-y: auto; overscroll-behavior: contain; }
+  .custom-tipo-opt { flex-shrink: 0; }
+  /* Sin espacio debajo en pantalla: la lista se abre hacia arriba */
+  .custom-tipo-opts.dd-arriba,
+  .custom-huesp-opts.dd-arriba { top: auto; bottom: calc(100% + 4px); }
+  /* "Más de 10" ocupa dos columnas en la grilla de huéspedes */
+  .custom-huesp-opt--ancha { grid-column: span 2; white-space: nowrap; }
+  .sticky-bar .custom-huesp-opt--ancha { grid-column: auto; }
+  /* El hero recorta con overflow:hidden: mientras hay un dropdown abierto deja que la lista sobresalga */
+  .hero.dd-abierto { overflow: visible; }
   /* Wrapper del placeholder de fecha */
   .date-wrap {
     position: relative;
@@ -1858,4 +1897,165 @@ footer { background: var(--footer-bg); color: var(--footer-text); padding: 3.5re
   .disp-content       { padding: 16px 16px 3rem; }
   .disp-seccion-titulo { font-size: 1.35rem; }
   .disp-grid { grid-template-columns: 1fr; }
+}
+
+/* ===================== AJUSTES MOBILE — landing y /disponibilidad ===================== */
+@media (max-width: 768px) {
+  /* Nav: el selector de idioma queda centrado entre el logo y "Consultar" */
+  .nav-right { flex: 1; justify-content: flex-end; }
+  .nav-right .lang-selector { margin: 0 auto; left: 0.5rem; } /* compensa el gap con "Consultar" para quedar al medio */
+  /* Menú hamburguesa: ítems centrados */
+  .nav-mobile-menu a { text-align: center; }
+
+  /* Hero: renglones equilibrados, sin palabras sueltas al final */
+  .hero-title { text-wrap: balance; }
+  .hero-desc  { text-wrap: pretty; }
+
+  /* Buscador principal: la fecha elegida se ve con la misma letra que los selects
+     (el input conserva 16px para que iOS no haga zoom, pero su texto queda oculto) */
+  .date-wrap #fecha-llegada,
+  .date-wrap #fecha-salida { color: transparent !important; }
+  .date-wrap.has-value .date-ph { display: flex; color: var(--texto); }
+  /* El ícono nativo del calendario se superponía al texto con letra grande: queda invisible pero cubre
+     todo el campo, así cualquier toque abre el selector (el ícono visible es el del placeholder) */
+  #fecha-llegada::-webkit-calendar-picker-indicator,
+  #fecha-salida::-webkit-calendar-picker-indicator { position: absolute; inset: 0; width: auto; height: auto; opacity: 0; cursor: pointer; }
+  /* Etiquetas en un solo renglón, filas alineadas; "Tipo de alojamiento" → "Alojamiento" */
+  .widget-field label { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .label-abbr[data-abbr-mobile] { font-size: 0 !important; letter-spacing: 0; }
+  .label-abbr[data-abbr-mobile]::after { content: attr(data-abbr-mobile); font-size: 0.65rem; letter-spacing: 0.1em; }
+  /* Nota bajo el botón: dos renglones, sin el punto separador */
+  .widget-note > span { display: block; }
+  .widget-note .widget-note-sep { display: none; }
+  /* Buscador flotante: fechas con la misma letra que los dropdowns de huéspedes y tipo */
+  .sticky-bar .sticky-field .sticky-label {
+    font-size: 0.78rem; font-weight: 400; letter-spacing: 0; text-transform: none;
+    color: rgba(245,242,236,0.9);
+  }
+
+  /* Quiénes somos: chips centrados, ordenados para que los renglones queden parejos */
+  .info-chips { justify-content: center; }
+  .info-chips .chip:nth-child(1) { order: 1; }
+  .info-chips .chip:nth-child(4) { order: 2; }
+  .info-chips .chip:nth-child(2) { order: 3; }
+  .info-chips .chip:nth-child(6) { order: 4; }
+  .info-chips .chip:nth-child(3) { order: 5; }
+  .info-chips .chip:nth-child(5) { order: 6; }
+
+  /* Títulos de todas las secciones centrados (label, título y línea dorada) */
+  .section-label, .section-title { text-align: center; }
+  .divider { margin-left: auto !important; margin-right: auto !important; }
+  .serv-sub { text-align: center; }
+  /* Reseñas: título, rating y flechas centrados */
+  .test-header { flex-direction: column; align-items: center; }
+  .test-header > div:last-child { justify-content: center; }
+  /* En mobile se ve una columna por vez: la tarjeta sola conserva su alto natural, como las demás */
+  .test-col--una .test-card { flex: none; justify-content: flex-start; }
+  .test-col--una .test-autor { margin-top: auto; }
+
+  /* Footer: ícono + texto centrados en los botones de ancho completo */
+  .footer-col .platform-link { justify-content: center; }
+}
+
+/* ===================== AJUSTES MOBILE (3ª tanda) ===================== */
+@media (max-width: 768px) {
+  /* 1. Hero: recuadro de bienvenida más ancho (alineado con "Consultar disponibilidad") y con más aire */
+  .hero { padding-left: 0; padding-right: 0; } /* el hero es un <section> y heredaba el 5% lateral */
+  .hero-content { padding-left: 12px; padding-right: 12px; }
+  .hero-text { padding: 1.1rem 1.25rem; }
+  .hero-badges.hero-badges--es { flex-wrap: wrap; }
+  .hero-badges { justify-content: center; row-gap: 0.35rem; }
+
+  /* 2. Quiénes somos: párrafos centrados; la cita lleva líneas doradas cortas arriba y abajo */
+  .nosotros-text p { text-align: center; }
+  .highlight-box { border-left: none; position: relative; padding: 1.35rem 1.25rem; }
+  .highlight-box::before,
+  .highlight-box::after {
+    content: ''; position: absolute; left: 50%; transform: translateX(-50%);
+    width: 48px; height: 2px; background: var(--oro);
+  }
+  .highlight-box::before { top: 0; }
+  .highlight-box::after  { bottom: 0; }
+
+  /* 3. Servicios: el nombre del complejo en su propio renglón, sin partirse */
+  .serv-sub-nombre { display: block; white-space: nowrap; }
+
+  /* 4. Clima: subtítulo completo, sin puntos suspensivos */
+  .clima-desc { white-space: normal !important; overflow: visible !important; text-overflow: clip !important; text-align: center; text-wrap: balance; }
+
+  /* 5. Clima: tarjeta principal en una columna centrada (ubicación · ícono + temperatura · descripción · datos) */
+  .clima-actual {
+    display: grid; grid-template-columns: auto auto; justify-content: center; justify-items: center;
+    align-items: center; column-gap: 0.9rem; row-gap: 0.45rem; text-align: center; padding: 1.25rem 1rem;
+  }
+  .clima-actual-info { display: contents; }
+  /* ícono y temperatura juntos al centro (la ubicación, que ocupa las dos columnas, las ensancha) */
+  .clima-actual > .clima-icon-wrap { justify-self: end; margin: 0; }
+  .clima-actual-temp { justify-self: start; }
+  .clima-actual-loc { order: -1; grid-column: 1 / -1; display: block; text-wrap: balance; margin-bottom: 0.2rem; }
+  .clima-actual-loc svg { display: inline-block; vertical-align: -1px; margin-right: 0.35rem; }
+  .clima-actual-desc,
+  .clima-actual-sub { order: 1; grid-column: 1 / -1; margin-bottom: 0; }
+  .clima-dato { display: block; white-space: nowrap; }
+  /* Tooltips de los íconos: invisibles hasta el hover pero ocupaban lugar y desbordaban la pantalla en la tarjeta del borde;
+     en mobile quedan contenidos dentro de su tarjeta y pueden ocupar dos renglones */
+  .clima-dia .clima-tooltip { left: 0; right: 0; transform: none; white-space: normal; text-align: center; padding: 0.3rem 0.2rem; font-size: 0.62rem; letter-spacing: 0; }
+  .clima-sep { display: none; }
+
+  /* 6. Ubicación: párrafo y dirección centrados; listas de distancias centradas como bloque */
+  #ubicacion .ubicacion-grid > div:first-child > p { text-align: center; justify-content: center; }
+  .ubic-casa-dir { justify-content: center; }
+  .dist-list { width: fit-content; max-width: 100%; margin-left: auto; margin-right: auto; }
+  .ubic-casa-dist { display: flex; flex-direction: column; }
+
+  /* Letra del sistema aumentada (115–130 %): que nada empuje el ancho de la página */
+  /* Servicios: palabras largas en mayúsculas ("CHURRASQUEIRAS") ensanchaban las columnas */
+  .servicios-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .servicio-item { padding-left: 0.6rem; padding-right: 0.6rem; }
+  .servicio-nombre, .servicio-desc { overflow-wrap: break-word; hyphens: auto; }
+  /* Topbar y nav: menos separación y, como último recurso, recorte con "…" en lugar de salirse de la pantalla */
+  .topbar { padding: 0 12px; }
+  .topbar-dir { letter-spacing: 0; gap: 0.35rem; }
+  .topbar-dirs { gap: 0.5rem; max-width: 100%; overflow: hidden; }
+  .topbar-dir { min-width: 0; }
+  .topbar-dir span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .nav-inner { gap: 0.5rem; }
+  .nav-right { gap: 0.45rem; min-width: 0; }
+  .nav-cta { padding: 0.45rem 0.65rem; letter-spacing: 0.03em; }
+  .lang-btn { padding: 0.38rem 0.45rem; gap: 0.25rem; }
+  .nav-right .lang-selector { left: 0; } /* con los gaps reducidos ya queda al medio sin compensación */
+
+  /* 8. Cards de alojamientos: contenido del cuerpo centrado (los carruseles no cambian) */
+  .aloj-card .card-body { text-align: center; }
+  .aloj-card .card-meta,
+  .aloj-card .card-features,
+  .aloj-card .variant-chips { justify-content: center; }
+  .aloj-card .card-nota.ico-txt { display: flex; justify-content: center; }
+}
+
+/* ===================== AJUSTES MOBILE (4ª tanda) ===================== */
+@media (max-width: 768px) {
+  /* 1. Nav: logo a la izquierda, hamburguesa a la derecha, idioma + Consultar como grupo en el medio.
+        Los márgenes automáticos reparten el espacio libre por igual: logo↔idioma = Consultar↔hamburguesa
+        (el gap del nav y el del grupo son iguales, así también coinciden cuando no sobra espacio) */
+  .nav-inner { gap: 0.45rem; }
+  .nav-right .lang-selector { margin: 0 0 0 auto; left: 0; }
+  .nav-right .nav-hamburger { margin-left: auto; }
+
+  /* 2. Topbar: las dos direcciones centradas */
+  .topbar-inner { justify-content: center; }
+
+  /* 3. Menú hamburguesa: divisorias en dorado muy tenue */
+  .nav-mobile-menu a { border-bottom-color: rgba(184,152,42,0.25); }
+
+  /* 4. Información importante: títulos y contenido centrados, filas apiladas, sin justificado */
+  .acord-header { justify-content: center; position: relative; padding-left: 2.6rem; padding-right: 2.6rem; text-align: center; }
+  .acord-header > .acord-chevron { position: absolute; right: 1.1rem; top: 50%; margin-top: -8px; }
+  .acord-header > span { justify-content: center; }
+  .acord-body { text-align: center; }
+  /* Con texto centrado en una columna y letra grande, 600px no alcanzaba ("Formas de pago" se cortaba) */
+  .acord-body.open { max-height: 1400px; }
+  .acord-dato { align-items: center; text-align: center; }
+  .acord-body ul { list-style: none; padding-left: 0 !important; }
+  .acord-body ul li + li { border-top: 1px solid rgba(184,152,42,0.2); }
 }
