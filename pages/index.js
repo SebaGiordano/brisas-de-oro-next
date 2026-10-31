@@ -1072,7 +1072,7 @@ export default function Home() {
           : '⚠ Fecha no válida. Por favor seleccioná una fecha a partir del día de hoy.';
         mostrarErrorHero(); return;
       }
-      if (esFechasMovil() && salidaH <= llegadaH) {
+      if (reglaFechas() && salidaH <= llegadaH) {
         document.getElementById('hero-fecha-error').textContent = '⚠ ' + textoAviso(AVISO_SALIDA_INVALIDA);
         mostrarErrorHero(); return;
       }
@@ -1128,7 +1128,7 @@ export default function Home() {
           : '⚠ Fecha no válida. Por favor seleccioná una fecha a partir del día de hoy.');
         return;
       }
-      if (esFechasMovil() && salidaS <= llegadaS) {
+      if (reglaFechas() && salidaS <= llegadaS) {
         mostrarErrorSticky('⚠ ' + textoAviso(AVISO_SALIDA_INVALIDA));
         return;
       }
@@ -1266,7 +1266,7 @@ export default function Home() {
       document.getElementById('s-huespedes-trigger').setAttribute('aria-expanded', 'true');
       posicionarDropdown(wrap);
     }
-    // ===== FECHAS EN CELULARES (≤767 px): Salida recién con Llegada, desde el día siguiente =====
+    // ===== FECHAS: Salida recién con Llegada, desde el día siguiente (celular y computadora; 768 px queda como antes) =====
     var AVISO_LLEGADA_PRIMERO = { es: 'Primero elegí la fecha de llegada.', en: 'Choose the check-in date first.', pt: 'Escolha primeiro a data de chegada.' };
     var AVISO_SALIDA_INVALIDA = {
       es: 'La salida tiene que ser al día siguiente de la llegada o después.',
@@ -1274,7 +1274,7 @@ export default function Home() {
       pt: 'A saída precisa ser no dia seguinte à chegada ou depois.'
     };
     var PARES_FECHA = [['fecha-llegada', 'fecha-salida', false], ['s-llegada', 's-salida', true]];
-    function esFechasMovil() { return window.matchMedia('(max-width: 767px)').matches; }
+    function reglaFechas() { return true; }
     function textoAviso(textos) { return textos[getLang()] || textos.es; }
     function avisoFechas(sticky, textos) {
       if (sticky) { mostrarErrorSticky(textoAviso(textos)); return; }
@@ -1287,12 +1287,12 @@ export default function Home() {
       const s = new Date(y, m - 1, d + 1);
       return s.getFullYear() + '-' + String(s.getMonth() + 1).padStart(2,'0') + '-' + String(s.getDate()).padStart(2,'0');
     }
-    // Celulares: Salida deshabilitada sin Llegada y con mínimo Llegada + 1. Computadora: como siempre (mínimo = Llegada)
+    // Salida deshabilitada sin Llegada y con mínimo Llegada + 1. En 768 px, como antes (mínimo = Llegada)
     function actualizarSalida(idLlegada, idSalida) {
       const llegada = document.getElementById(idLlegada).value;
       const salida = document.getElementById(idSalida);
       if (!salida) return;
-      if (esFechasMovil()) {
+      if (reglaFechas()) {
         salida.disabled = !llegada;
         if (llegada) salida.min = diaSiguiente(llegada);
       } else {
@@ -1311,7 +1311,7 @@ export default function Home() {
     }
     function alCambiarLlegada(idLlegada, idSalida, sticky) {
       actualizarSalida(idLlegada, idSalida);
-      if (!esFechasMovil()) return;
+      if (!reglaFechas()) return;
       if (sticky) ocultarErrorSticky();
       const llegada = document.getElementById(idLlegada).value;
       const salida = document.getElementById(idSalida).value;
@@ -1345,7 +1345,7 @@ export default function Home() {
         String(ahora.getDate()).padStart(2,'0');
       const llegadaModal = document.getElementById('s-llegada').value;
       input.min = campo === 'salida' && llegadaModal
-        ? (esFechasMovil() ? diaSiguiente(llegadaModal) : llegadaModal) : hoy;
+        ? (reglaFechas() ? diaSiguiente(llegadaModal) : llegadaModal) : hoy;
       input.value = document.getElementById('s-' + campo).value || '';
       document.getElementById('date-modal-overlay').classList.add('open');
       document.getElementById('date-modal-overlay').style.display = 'flex';
@@ -1435,19 +1435,24 @@ export default function Home() {
           if (this.value >= hoyCheck) ocultarErrorHero();
         });
       });
-      // Celulares: Salida deshabilitada hasta elegir Llegada, y desde Llegada + 1
+      // Salida deshabilitada hasta elegir Llegada, y desde Llegada + 1
       PARES_FECHA.forEach(function(par) {
         actualizarSalida(par[0], par[1]);
         var llegada = document.getElementById(par[0]);
         if (llegada) llegada.addEventListener('change', function() { alCambiarLlegada(par[0], par[1], par[2]); });
       });
-      window.matchMedia('(max-width: 767px)').addEventListener('change', function() {
+      window.matchMedia('(max-width: 767px), (min-width: 769px)').addEventListener('change', function() {
         PARES_FECHA.forEach(function(par) { actualizarSalida(par[0], par[1]); });
       });
       // Tocar la Salida deshabilitada del hero (no recibe toques: llegan al contenedor)
       var wrapSalida = document.getElementById('wrap-salida');
       if (wrapSalida) wrapSalida.addEventListener('click', function() {
         if (document.getElementById('fecha-salida').disabled) avisoFechas(false, AVISO_LLEGADA_PRIMERO);
+      });
+      // Lo mismo en la barra en computadora (en celular avisa abrirFechaModal)
+      var campoSalida = document.getElementById('s-salida');
+      if (campoSalida) campoSalida.closest('.sticky-field').addEventListener('click', function() {
+        if (window.innerWidth > 768 && campoSalida.disabled) avisoFechas(true, AVISO_LLEGADA_PRIMERO);
       });
 
     // Visibilidad JS de los párrafos del hero (respaldo al CSS solo-mobile/solo-desktop)
