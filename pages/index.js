@@ -1072,6 +1072,10 @@ export default function Home() {
           : '⚠ Fecha no válida. Por favor seleccioná una fecha a partir del día de hoy.';
         mostrarErrorHero(); return;
       }
+      if (esFechasMovil() && salidaH <= llegadaH) {
+        document.getElementById('hero-fecha-error').textContent = '⚠ ' + textoAviso(AVISO_SALIDA_INVALIDA);
+        mostrarErrorHero(); return;
+      }
       ocultarErrorHero();
       const params = new URLSearchParams({
         fechaIngreso:     llegadaH,
@@ -1122,6 +1126,10 @@ export default function Home() {
           : getLang() === 'pt'
           ? '⚠ Data inválida. Por favor selecione uma data a partir de hoje.'
           : '⚠ Fecha no válida. Por favor seleccioná una fecha a partir del día de hoy.');
+        return;
+      }
+      if (esFechasMovil() && salidaS <= llegadaS) {
+        mostrarErrorSticky('⚠ ' + textoAviso(AVISO_SALIDA_INVALIDA));
         return;
       }
       ocultarErrorSticky();
@@ -1258,10 +1266,68 @@ export default function Home() {
       document.getElementById('s-huespedes-trigger').setAttribute('aria-expanded', 'true');
       posicionarDropdown(wrap);
     }
+    // ===== FECHAS EN CELULARES (≤767 px): Salida recién con Llegada, desde el día siguiente =====
+    var AVISO_LLEGADA_PRIMERO = { es: 'Primero elegí la fecha de llegada.', en: 'Choose the check-in date first.', pt: 'Escolha primeiro a data de chegada.' };
+    var AVISO_SALIDA_INVALIDA = {
+      es: 'La salida tiene que ser al día siguiente de la llegada o después.',
+      en: 'Check-out must be the day after check-in or later.',
+      pt: 'A saída precisa ser no dia seguinte à chegada ou depois.'
+    };
+    var PARES_FECHA = [['fecha-llegada', 'fecha-salida', false], ['s-llegada', 's-salida', true]];
+    function esFechasMovil() { return window.matchMedia('(max-width: 767px)').matches; }
+    function textoAviso(textos) { return textos[getLang()] || textos.es; }
+    function avisoFechas(sticky, textos) {
+      if (sticky) { mostrarErrorSticky(textoAviso(textos)); return; }
+      document.getElementById('hero-fecha-error').textContent = textoAviso(textos);
+      mostrarErrorHero();
+    }
+    // "2026-11-10" → "2026-11-11"
+    function diaSiguiente(fecha) {
+      const [y, m, d] = fecha.split('-').map(Number);
+      const s = new Date(y, m - 1, d + 1);
+      return s.getFullYear() + '-' + String(s.getMonth() + 1).padStart(2,'0') + '-' + String(s.getDate()).padStart(2,'0');
+    }
+    // Celulares: Salida deshabilitada sin Llegada y con mínimo Llegada + 1. Computadora: como siempre (mínimo = Llegada)
+    function actualizarSalida(idLlegada, idSalida) {
+      const llegada = document.getElementById(idLlegada).value;
+      const salida = document.getElementById(idSalida);
+      if (!salida) return;
+      if (esFechasMovil()) {
+        salida.disabled = !llegada;
+        if (llegada) salida.min = diaSiguiente(llegada);
+      } else {
+        salida.disabled = false;
+        if (llegada) salida.min = llegada;
+      }
+    }
+    // Vacía Salida (valor y lo que muestra el campo)
+    function limpiarSalida(idSalida) {
+      const salida = document.getElementById(idSalida);
+      salida.value = '';
+      if (idSalida === 'fecha-salida') { actualizarFechaPh(salida); return; }
+      const label = salida.closest('.sticky-field').querySelector('.sticky-label');
+      label.innerHTML = i18n[getLang()]['widget.salida'];
+      label.style.color = '';
+    }
+    function alCambiarLlegada(idLlegada, idSalida, sticky) {
+      actualizarSalida(idLlegada, idSalida);
+      if (!esFechasMovil()) return;
+      if (sticky) ocultarErrorSticky();
+      const llegada = document.getElementById(idLlegada).value;
+      const salida = document.getElementById(idSalida).value;
+      if (llegada && salida && salida <= llegada) {
+        limpiarSalida(idSalida);
+        avisoFechas(sticky, AVISO_SALIDA_INVALIDA);
+      }
+    }
+
     // ===== MODAL FECHA MOBILE =====
     var _modalCampo = null;
     function abrirFechaModal(campo) {
       if (window.innerWidth > 768) return; // solo mobile
+      if (campo === 'salida' && document.getElementById('s-salida').disabled) {
+        avisoFechas(true, AVISO_LLEGADA_PRIMERO); return;
+      }
       _modalCampo = campo;
       const lang2 = getLang();
       const tituloMap = {
@@ -1277,8 +1343,9 @@ export default function Home() {
       const hoy = ahora.getFullYear() + '-' +
         String(ahora.getMonth() + 1).padStart(2,'0') + '-' +
         String(ahora.getDate()).padStart(2,'0');
-      input.min = campo === 'salida' && document.getElementById('s-llegada').value
-        ? document.getElementById('s-llegada').value : hoy;
+      const llegadaModal = document.getElementById('s-llegada').value;
+      input.min = campo === 'salida' && llegadaModal
+        ? (esFechasMovil() ? diaSiguiente(llegadaModal) : llegadaModal) : hoy;
       input.value = document.getElementById('s-' + campo).value || '';
       document.getElementById('date-modal-overlay').classList.add('open');
       document.getElementById('date-modal-overlay').style.display = 'flex';
@@ -1320,6 +1387,7 @@ export default function Home() {
             label.style.color = 'rgba(245,242,236,0.9)';
           }
         });
+        if (campo === 'llegada') alCambiarLlegada('s-llegada', 's-salida', true);
       }
       cerrarFechaModal();
     }
@@ -1366,6 +1434,20 @@ export default function Home() {
             String(ahora2.getDate()).padStart(2,'0');
           if (this.value >= hoyCheck) ocultarErrorHero();
         });
+      });
+      // Celulares: Salida deshabilitada hasta elegir Llegada, y desde Llegada + 1
+      PARES_FECHA.forEach(function(par) {
+        actualizarSalida(par[0], par[1]);
+        var llegada = document.getElementById(par[0]);
+        if (llegada) llegada.addEventListener('change', function() { alCambiarLlegada(par[0], par[1], par[2]); });
+      });
+      window.matchMedia('(max-width: 767px)').addEventListener('change', function() {
+        PARES_FECHA.forEach(function(par) { actualizarSalida(par[0], par[1]); });
+      });
+      // Tocar la Salida deshabilitada del hero (no recibe toques: llegan al contenedor)
+      var wrapSalida = document.getElementById('wrap-salida');
+      if (wrapSalida) wrapSalida.addEventListener('click', function() {
+        if (document.getElementById('fecha-salida').disabled) avisoFechas(false, AVISO_LLEGADA_PRIMERO);
       });
 
     // Visibilidad JS de los párrafos del hero (respaldo al CSS solo-mobile/solo-desktop)

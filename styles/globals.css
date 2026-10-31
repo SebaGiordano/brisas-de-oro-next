@@ -2137,4 +2137,11 @@ footer { background: var(--footer-bg); color: var(--footer-text); padding: 3.5re
   /* 3. Tipo con el ancho justo para su texto más largo ("Todos": 2.1rem + padding de ambos lados + borde),
      nunca más del 46 % para que Huéspedes siempre sea más ancho */
   .sticky-selects { grid-template-columns: minmax(0, 1fr) min(calc(2.7rem + 26px), 46%); }
+
+  /* Salida deshabilitada hasta elegir Llegada: más tenue y sin puntero. El campo no recibe toques
+     para que lleguen a su contenedor, que muestra el aviso */
+  .date-wrap:has(input:disabled), .sticky-field:has(input:disabled) { opacity: 0.45; }
+  .date-wrap:has(input:disabled), .date-wrap:has(input:disabled) *,
+  .sticky-field:has(input:disabled), .sticky-field:has(input:disabled) * { cursor: default; }
+  .date-wrap input:disabled, .sticky-field input:disabled { pointer-events: none; }
 }
