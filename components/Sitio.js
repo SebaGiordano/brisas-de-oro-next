@@ -618,8 +618,11 @@ export default function Sitio({ pagina = 'inicio' }) {
         if (rect.bottom < limite) stickyBar.classList.add('visible');
         else stickyBar.classList.remove('visible');
       } else {
-        // Fuera de la portada no hay buscador en el hero: la barra de consulta queda siempre visible
+        // Fuera de la portada no hay buscador en el hero: la barra de consulta queda siempre visible,
+        // justo debajo del menú. En celular el CSS la fija a 60px (pensado para cuando la barra superior
+        // ya se ocultó); acá se calcula según lo que está visible, para que el menú no la tape.
         stickyBar.classList.add('visible');
+        stickyBar.style.setProperty('top', ((topbarVisible ? TOPBAR_H : 0) + nav.offsetHeight) + 'px', 'important');
       }
     }
     
