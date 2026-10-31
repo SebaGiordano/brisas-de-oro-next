@@ -1,10 +1,10 @@
-﻿'use client'
 import { useEffect } from 'react'
+import Head from 'next/head'
+import { useRouter } from 'next/router'
+import { SITE_URL, LOCALES, SEO, HOTEL_SCHEMA, localePath, translateHtml } from '../lib/seo'
 
-export default function Home() {
-  useEffect(() => {
-    /* ===== TRADUCCIONES ===== */
-    const i18n = {
+/* ===== TRADUCCIONES (también se usan en el servidor para renderizar /en y /pt) ===== */
+const I18N = {
       es: {
         'sticky.btn':'Buscar',
         'topbar.dir':'Av. Ramón J. Cárcano 2590 · Villa Carlos Paz, Córdoba',
@@ -371,9 +371,18 @@ export default function Home() {
         'test.r12':'"Lugar muito bonito, tranquilo, muita paz, muito perto do rio e da rua principal onde dá para comprar tudo o que precisa. Excelente atendimento dos donos."',
         'test.r13':'"Excelente lugar tranquilo para curtir em família. O rio, o centro, as pessoas, eu recomendo."',
       }
-    };
+};
+
+export default function Home() {
+  const { locale } = useRouter()
+  const lang = LOCALES.includes(locale) ? locale : 'es'
+  const seo = SEO[lang]
+  const pageLang = lang
+
+  useEffect(() => {
+    const i18n = I18N;
     
-    let currentLang = 'es';
+    let currentLang = pageLang;
     
     function applyTranslations(lang) {
       const t = i18n[lang];
@@ -421,6 +430,12 @@ export default function Home() {
     function setLang(lang) {
       applyTranslations(lang);
       document.getElementById('langSelector').classList.remove('open');
+      // Reflejar el idioma en la URL (/, /en, /pt) y en <html lang>, sin recargar
+      document.documentElement.lang = lang;
+      document.title = SEO[lang].title;
+      try {
+        window.history.replaceState(window.history.state, '', localePath(lang) + window.location.search + window.location.hash);
+      } catch (e) {}
       // Refrescar clima en el idioma nuevo
       if (window.fetchClima) window.fetchClima();
     }
@@ -1083,7 +1098,7 @@ export default function Home() {
         cantidadPersonas: huespedesH,
         tipo:             tipoH || 'Cualquiera',
       });
-      window.location.href = '/disponibilidad?' + params.toString();
+      window.location.href = (currentLang === 'es' ? '' : '/' + currentLang) + '/disponibilidad?' + params.toString();
     }
     
     function mostrarErrorSticky(msg) {
@@ -1139,7 +1154,7 @@ export default function Home() {
         cantidadPersonas: huespedesS,
         tipo:             tipoS || 'Cualquiera',
       });
-      window.location.href = '/disponibilidad?' + params.toString();
+      window.location.href = (currentLang === 'es' ? '' : '/' + currentLang) + '/disponibilidad?' + params.toString();
     }
     
     // Construir el texto del mensaje
@@ -1537,6 +1552,12 @@ export default function Home() {
     // Expose functions to window so HTML inline onclick handlers can call them
     window.toggleLang         = toggleLang
     window.setLang            = setLang
+
+    // Páginas /en y /pt: el HTML ya llega traducido del servidor; esto ajusta selector, clases y textos dinámicos
+    if (pageLang !== 'es') {
+      applyTranslations(pageLang);
+      if (window.fetchClima) window.fetchClima();
+    }
     window.abrirWsp           = abrirWsp
     window.getMsgWsp          = getMsgWsp
     window.scrollToId         = scrollToId
@@ -1560,7 +1581,49 @@ export default function Home() {
   }, [])
 
   return (
-    <div dangerouslySetInnerHTML={{__html: `
+    <>
+      <Head>
+        <title>{seo.title}</title>
+        <meta name="description" content={seo.description} />
+        {lang === 'es' && <meta name="keywords" content={seo.keywords} />}
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href={SITE_URL + localePath(lang)} />
+        {LOCALES.map(l => <link key={"hreflang-" + l} rel="alternate" hrefLang={l} href={SITE_URL + localePath(l)} />)}
+        <link rel="alternate" hrefLang="x-default" href={SITE_URL + '/'} />
+
+        {/* ===== OPEN GRAPH (WhatsApp, Facebook, etc.) ===== */}
+        <meta property="og:type" content="business.business" />
+        <meta property="og:title" content={seo.ogTitle} />
+        <meta property="og:description" content={seo.ogDescription} />
+        <meta property="og:image" content="https://img.alqastatic.com/_propiedades_/aw75/o_aw75_Cabana_8YKDOJVE.jpg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:url" content={SITE_URL + localePath(lang)} />
+        <meta property="og:locale" content={seo.ogLocale} />
+        {LOCALES.filter(l => l !== lang).map(l => <meta key={"og-locale-" + l} property="og:locale:alternate" content={SEO[l].ogLocale} />)}
+        <meta property="og:site_name" content="Brisas de Oro Hotel y Cabañas" />
+        <meta property="business:contact_data:street_address" content="Av. Ramón J. Cárcano 2590" />
+        <meta property="business:contact_data:locality" content="Villa Carlos Paz" />
+        <meta property="business:contact_data:region" content="Córdoba" />
+        <meta property="business:contact_data:country_name" content="Argentina" />
+        <meta property="business:contact_data:phone_number" content="+54 9 3541 548053" />
+
+        {/* ===== TWITTER / X CARD ===== */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={seo.ogTitle} />
+        <meta name="twitter:description" content={seo.twitterDescription} />
+        <meta name="twitter:image" content="https://img.alqastatic.com/_propiedades_/aw75/o_aw75_Cabana_8YKDOJVE.jpg" />
+
+        {/* ===== SCHEMA.ORG — Hotel + LocalBusiness ===== */}
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(HOTEL_SCHEMA) }} />
+      </Head>
+      <div dangerouslySetInnerHTML={{__html: translateHtml(HTML, I18N[lang], lang)}} />
+    </>
+  )
+}
+
+/* ===== MARKUP (en español; translateHtml lo traduce en el servidor para /en y /pt) ===== */
+const HTML = `
 
 <!-- ============================================================ TOPBAR -->
 <div class="topbar" id="main-topbar">
@@ -2924,6 +2987,4 @@ export default function Home() {
 </a>
 
 <div id="fecha-toast">La fecha ingresada no es válida.<br>Seleccioná una fecha a partir del día de hoy.</div>
-    `}} />
-  )
-}
+`

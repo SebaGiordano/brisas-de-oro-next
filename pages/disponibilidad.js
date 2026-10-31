@@ -1067,7 +1067,7 @@ export default function Disponibilidad() {
   const [cargando, setCargando] = useState(true)
   const [error, setError] = useState(null)
   const [menuOpen, setMenuOpen] = useState(false)
-  const [lang, setLang] = useState('es')
+  const [lang, setLang] = useState(['es', 'en', 'pt'].includes(router.locale) ? router.locale : 'es')
   const [langOpen, setLangOpen] = useState(false)
   const [barraCompacta, setBarraCompacta] = useState(false)
   const [combosAbiertos, setCombosAbiertos] = useState(false)
@@ -1178,6 +1178,7 @@ export default function Disponibilidad() {
         <title>Disponibilidad | Hotel y Cabañas Brisas de Oro</title>
         <meta name="description" content="Consulta de disponibilidad — Hotel y Cabañas Brisas de Oro, Villa Carlos Paz" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="robots" content="noindex, follow" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Nunito:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
