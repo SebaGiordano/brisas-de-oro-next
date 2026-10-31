@@ -41,9 +41,10 @@ body {
   display: flex; align-items: center;
   padding: 0 4%;
 }
+/* Las dos direcciones centradas en todos los anchos */
 .topbar-inner {
   max-width: 1260px; margin: 0 auto; width: 100%;
-  display: flex; align-items: center; justify-content: space-between;
+  display: flex; align-items: center; justify-content: center;
 }
 .topbar-dir {
   display: flex; align-items: center; gap: 0.45rem;
@@ -781,6 +782,12 @@ section { padding: 5.5rem 5%; }
 .ico-txt { display: inline-flex; align-items: center; gap: 0.3rem; }
 .ico { flex-shrink: 0; display: block; }
 .card-body .ico { color: var(--texto); }
+/* Contenido del cuerpo centrado en todos los anchos (landing y disponibilidad; la foto y el carrusel no cambian) */
+.aloj-card .card-body { text-align: center; }
+.aloj-card .card-meta,
+.aloj-card .card-features,
+.aloj-card .variant-chips { justify-content: center; }
+.aloj-card .card-nota.ico-txt { display: flex; justify-content: center; }
 .card-hover-panel .ico { color: #fff; }
 /* Línea chica debajo de los feature-tags (ej.: "No incluye…", ubicación de la Casa) */
 .card-nota { font-size: 0.72rem; color: var(--texto-suave); line-height: 1.5; margin-top: 0.6rem; }
@@ -1727,6 +1734,15 @@ footer { background: var(--footer-bg); color: var(--footer-text); padding: 3.5re
 /* Flex column: card stretch + botón pinchado al fondo */
 .disp-aloj-card { display: flex; flex-direction: column; }
 .disp-aloj-card .card-body { flex: 1; display: flex; flex-direction: column; }
+/* Chips de características más legibles (mismo color y borde) y con espacio parejo */
+.disp-aloj-card .card-features { gap: 0.4rem; }
+.disp-aloj-card .feature-tag { font-size: 0.74rem; line-height: 1.35; padding: 0.28rem 0.7rem; }
+/* Más aire entre los datos y los chips, y entre los chips y las unidades disponibles */
+.disp-aloj-card .card-meta { margin-bottom: 1rem; }
+.disp-aloj-card .disp-unidades { margin-top: 16px; }
+/* Notas (Casa, cupo justo de la mediana): un bloque aparte, más chico y en texto suave */
+.disp-aloj-card .card-nota { font-size: 0.7rem; color: var(--texto-suave); }
+.disp-aloj-card .card-features + .card-nota { margin-top: 0.9rem; padding-top: 0.75rem; border-top: 1px solid var(--borde); }
 
 /* ── Modificadores sobre .aloj-card para la página de disponibilidad ── */
 
@@ -1947,12 +1963,7 @@ footer { background: var(--footer-bg); color: var(--footer-text); padding: 3.5re
   .lang-btn { padding: 0.38rem 0.45rem; gap: 0.25rem; }
   .nav-right .lang-selector { left: 0; } /* con los gaps reducidos ya queda al medio sin compensación */
 
-  /* 8. Cards de alojamientos: contenido del cuerpo centrado (los carruseles no cambian) */
-  .aloj-card .card-body { text-align: center; }
-  .aloj-card .card-meta,
-  .aloj-card .card-features,
-  .aloj-card .variant-chips { justify-content: center; }
-  .aloj-card .card-nota.ico-txt { display: flex; justify-content: center; }
+  /* 8. Cards de alojamientos: contenido del cuerpo centrado (ahora en la regla base de .aloj-card) */
 }
 
 /* ===================== AJUSTES MOBILE (4ª tanda) ===================== */
@@ -1964,8 +1975,7 @@ footer { background: var(--footer-bg); color: var(--footer-text); padding: 3.5re
   .nav-right .lang-selector { margin: 0 0 0 auto; left: 0; }
   .nav-right .nav-hamburger { margin-left: auto; }
 
-  /* 2. Topbar: las dos direcciones centradas */
-  .topbar-inner { justify-content: center; }
+  /* 2. Topbar: las dos direcciones centradas (ahora en la regla base de .topbar-inner) */
 
   /* 3. Menú hamburguesa: divisorias en dorado muy tenue, al 80 % del ancho y centradas */
   .nav-mobile-menu a { border-bottom: none; position: relative; }
