@@ -440,8 +440,13 @@ function parsearRespuesta(data, t) {
     const info = data[clave] || {}
     const disponible = info.disponible ?? false
     // Hay unidades libres en las fechas, pero el grupo no entra en una
-    const sinCapacidad = !disponible && (data.libres?.[clave]?.length ?? 0) > 0
-    return { ...base, ...tradMeta[clave], disponible, sinCapacidad, unidadesDisponibles: info.unidadesDisponibles ?? 0 }
+    const libre = !disponible && (data.libres?.[clave]?.length ?? 0) > 0
+    // El backend indica si la unidad se ofrece para esta cantidad de personas (sin el campo, se ofrece)
+    const ofrecible = info.ofrecible !== false
+    const sinCapacidad = libre && ofrecible
+    // Libre pero no ofrecida para este grupo: no se muestra sola (sí dentro de una combinación)
+    const noOfrecida = libre && !ofrecible
+    return { ...base, ...tradMeta[clave], disponible, sinCapacidad, noOfrecida, unidadesDisponibles: info.unidadesDisponibles ?? 0 }
   })
 }
 
@@ -1149,7 +1154,7 @@ export default function Disponibilidad() {
   // si no, "Disponibilidad actual". Mismas capacidades que calcularCombos, con la Casa y sin aparts
   const combinables = rawData?.libres ? Object.values(unidadesCombinables(rawData.libres)).flat() : []
   const alcanzaCombinando = combinables.length >= 2 && combinables.reduce((suma, u) => suma + u.cap, 0) >= personas
-  const noDisponibles = (resultados||[]).filter(r => !r.disponible && !r.sinCapacidad && !unidadesGrupo.includes(r))
+  const noDisponibles = (resultados||[]).filter(r => !r.disponible && !r.sinCapacidad && !r.noOfrecida && !unidadesGrupo.includes(r))
   const combosVisibles = combos ? (combosAbiertos ? combos.sugerencias : combos.sugerencias.slice(0, COMBOS_VISIBLES)) : []
   // Tildadas que siguen entre las combinaciones calculadas con la disponibilidad actual
   const combosTildados = (combos?.sugerencias || []).filter(c => combosElegidos.includes(c.clave))
@@ -1388,8 +1393,11 @@ export default function Disponibilidad() {
                     {alcanzaCombinando ? t.dispOtrasDisp : t.dispActual}
                     <span className="disp-seccion-count">{libresParciales.length}</span>
                   </h2>
-                  {/* Mismo estilo que el aviso del bloque de combinaciones (.combo-header .disp-aviso-texto), alineado con el título */}
-                  <p className="disp-aviso-texto" style={{ fontWeight:500, color:'var(--texto-medio)', textAlign:'left', maxWidth:'none', margin:'-0.8rem 0 1.4rem' }}>{alcanzaCombinando ? t.dispOtrasDispSub : t.dispActualSub}</p>
+                  {alcanzaCombinando
+                    /* Tipografía y color de los títulos de sección de la página, más chico, en cursiva y centrado */
+                    ? <p className="disp-seccion-titulo" style={{ display:'block', textAlign:'center', fontStyle:'italic', fontWeight:500, fontSize:'1.15rem', lineHeight:1.3, textWrap:'balance', margin:'-0.4rem 0 1.4rem' }}>{t.dispOtrasDispSub}</p>
+                    /* Mismo estilo que el aviso del bloque de combinaciones (.combo-header .disp-aviso-texto), alineado con el título */
+                    : <p className="disp-aviso-texto" style={{ fontWeight:500, color:'var(--texto-medio)', textAlign:'left', maxWidth:'none', margin:'-0.8rem 0 1.4rem' }}>{t.dispActualSub}</p>}
                   <div className="disp-grid">
                     {libresParciales.map(r => <CardAlojamiento key={r.id} item={r} noDisponible wspUrl="" t={t} />)}
                   </div>
