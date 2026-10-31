@@ -251,6 +251,8 @@ nav.top-hidden { top: 0; }
 .solo-mobile { display: none; }
 .solo-desktop { display: block; }
 .br-mobile { display: none; }
+.br-movil { display: none; }
+.nowrap { white-space: nowrap; }
 .fam-title-line { display: inline; }
 .custom-tipo-wrap { display: none; }
 .desktop-break { display: none; }
@@ -2066,6 +2068,18 @@ footer { background: var(--footer-bg); color: var(--footer-text); padding: 3.5re
 .combo-header .disp-aviso-texto { margin: 0 auto; font-weight: 500; color: var(--texto-medio); }
 .combo-capacidad { font-size: 0.74rem; color: var(--texto-suave); line-height: 1.5; margin-top: 0.15rem; }
 
+/* Combinaciones tildables: la tarjeta entera es la etiqueta de la casilla (área táctil de toda la tarjeta) */
+.combo-elegible { display: flex; align-items: flex-start; gap: 0.75rem; min-height: 44px; cursor: pointer; transition: border-color 0.2s, background 0.2s; }
+.combo-elegible:hover { border-color: rgba(184,152,42,0.5); }
+.combo-elegible:has(.combo-check:checked) { border-color: var(--oro); background: rgba(184,152,42,0.05); }
+.combo-elegible-texto { display: flex; flex-direction: column; flex: 1; min-width: 0; align-self: stretch; }
+/* Capacidad total al pie de la tarjeta, separada por una línea dorada */
+.combo-elegible-texto > :nth-last-child(2) { margin-bottom: 0.6rem; }
+.combo-elegible-texto > .combo-capacidad:last-child { margin-top: auto; padding-top: 0.5rem; border-top: 1px solid var(--oro); }
+.combo-elegible-texto .combo-capacidad.ico-txt { display: inline-flex; }
+.combo-check { flex-shrink: 0; width: 20px; height: 20px; margin: 0.1rem 0 0; accent-color: var(--oro); cursor: pointer; }
+.combo-check:focus-visible { outline: 2px solid var(--oro); outline-offset: 2px; }
+
 /* Barra compacta de la búsqueda: solo mobile, reemplaza al banner al hacer scroll */
 .disp-compacta { display: none; }
 @media (max-width: 768px) {
@@ -2090,18 +2104,17 @@ footer { background: var(--footer-bg); color: var(--footer-text); padding: 3.5re
 
 /* Barra flotante en celulares (hasta 767 px; en 768 px la barra queda como estaba): contenido centrado */
 @media (max-width: 767px) {
-  /* Tipo: texto centrado en el campo; la flecha va en absoluto a la derecha para no empujarlo.
-     El padding es simétrico (deja lugar a la flecha) para que el centro sea el del campo */
-  .sticky-bar .custom-tipo-trigger { position: relative; justify-content: center; text-align: center; padding-left: calc(0.3rem + 11px); padding-right: calc(0.3rem + 11px); }
+  /* Tipo: la flecha va en absoluto a la derecha; el padding derecho cubre la flecha (0.3rem + 10px) más 5px de aire,
+     así el texto queda centrado en el espacio libre a su izquierda */
+  .sticky-bar .custom-tipo-trigger { position: relative; justify-content: center; text-align: center; padding-left: 4px; padding-right: calc(0.3rem + 15px); }
   .sticky-bar .custom-tipo-trigger svg { position: absolute; right: 0.3rem; top: 50%; transform: translateY(-50%); margin-left: 0; }
   .sticky-bar .custom-tipo-wrap.open .custom-tipo-trigger svg { transform: translateY(-50%) rotate(180deg); }
   #s-tipo-label { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
-  /* Campo angosto (letra grande): menos padding a la izquierda, lugar justo para la flecha y la letra al tamaño
-     de la letra normal, para que el texto entre entero sin pisar la flecha */
+  /* Campo angosto (letra grande): la letra baja al tamaño de la letra normal para que el texto entre entero */
   .sticky-bar .sticky-field:has(#s-tipo-wrap) { container-type: inline-size; }
   .sticky-bar .sticky-field--huesp { container-type: inline-size; }
-  @container (max-width: calc(2.65rem + 22px)) { /* lo que ocupa "Todos" más el padding de ambos lados: crece con la letra */
-    .sticky-bar .custom-tipo-trigger { padding-left: 3px; padding-right: calc(0.3rem + 11px); font-size: 0.6rem; }
+  @container (max-width: calc(2.4rem + 19px)) { /* lo que ocupa "Todos" más los dos paddings: crece con la letra */
+    .sticky-bar .custom-tipo-trigger { font-size: 0.6rem; }
     .sticky-bar .huesp-trigger { font-size: 0.6rem; gap: 2px; }
   }
   /* Huéspedes: ícono + texto centrados en el campo */
@@ -2110,4 +2123,18 @@ footer { background: var(--footer-bg); color: var(--footer-text); padding: 3.5re
   .huesp-label:empty { display: none; } /* solo el ícono: queda en el centro exacto */
   /* El panel de huéspedes, centrado debajo del campo (alineado a la izquierda se salía de la pantalla en 360 px) */
   .sticky-bar .huesp-pop { left: 50%; transform: translateX(-50%); }
+
+  /* Saltos de línea solo en celulares (.br-mobile se activa también en 768 px) */
+  .br-movil { display: inline; }
+
+  /* 1. Fechas del hero: la fecha (o "dd/mm/aaaa") a la izquierda y el ícono de calendario a la derecha */
+  .date-ph { justify-content: space-between; }
+  .date-ph svg { order: 2; flex-shrink: 0; }
+
+  /* 2. Panel de huéspedes: el "0" de guía en gris */
+  .sticky-field .huesp-pop .contador-num::placeholder { color: rgba(245,242,236,0.35); opacity: 1; }
+
+  /* 3. Tipo con el ancho justo para su texto más largo ("Todos": 2.1rem + padding de ambos lados + borde),
+     nunca más del 46 % para que Huéspedes siempre sea más ancho */
+  .sticky-selects { grid-template-columns: minmax(0, 1fr) min(calc(2.7rem + 26px), 46%); }
 }

@@ -119,8 +119,8 @@ export default function Home() {
         'acord.casa.l1':'Horarios','acord.casa.v1':'Check-in 14:00 hs · Check-out 10:00 hs',
         'acord.casa.l2':'Incluye','acord.casa.v2':'Pileta privada, parque privado, asador privado bajo alero, cocina equipada, Wi-Fi y DirecTV, ventiladores. Pet friendly.',
         'acord.casa.l3':'No incluye','acord.casa.v3':'Desayuno ni toallas. Ropa de cama opcional, con cargo adicional.',
-        'acord.casa.l4':'Capacidad','acord.casa.v4':'Hasta 10 personas · 3 dormitorios · 2 baños',
-        'acord.casa.l5':'Dirección','acord.casa.v5':'Calle Uruguay esq. Lombardo, Icho Cruz',
+        'acord.casa.l4':'Capacidad','acord.casa.v4':'<span class="nowrap">Hasta 10 personas ·</span> <span class="nowrap">3 dormitorios ·</span><br class="br-movil"> <span class="nowrap">2 baños</span>',
+        'acord.casa.l5':'Dirección','acord.casa.v5':'<span class="nowrap">Calle Uruguay,</span> <span class="nowrap">esquina Lombardo,</span><br class="br-movil"> <span class="nowrap">Icho Cruz</span>',
         'serv.sub':'Servicios disponibles en <span class="serv-sub-nombre">Brisas de Oro Hotel y Cabañas.</span>',
         'test.casa.tag':'Casa · Icho Cruz','test.plat.casa':'Reseñas de la Casa en Google',
         'test.r11':'"Un lugar fantástico, para disfrutar en familia!!! Ubicación muy cómoda para salir para cualquier lado!! Río cerca, y barrio súper tranquilo!!"',
@@ -132,7 +132,7 @@ export default function Home() {
         'topbar.dir':'Av. Ramón J. Cárcano 2590 · Villa Carlos Paz, Córdoba',
         'topbar.mail':'Email us','nav.nosotros':'About us','nav.alojamientos':'Accommodations','nav.servicios':'Services',
         'nav.testimonios':'Reviews','nav.ubicacion':'Location','nav.info':'Important info','nav.clima':'Weather','nav.cta':'Inquire',
-        'hero.eyebrow':'Welcome to Hotel y Cabañas Brisas de Oro',
+        'hero.eyebrow':'Welcome to Hotel&nbsp;&amp;&nbsp;Cabins<br class="br-movil"> Brisas de Oro',
         'hero.title':'Live <em>unforgettable moments</em>',
         'hero.desc':'A family-run resort managed by its owners, where personalized attention and a homely atmosphere make every guest feel at home. Surrounded by the Córdoba mountains and on the banks of the San Antonio River, in Villa&nbsp;Carlos&nbsp;Paz.',
         'hero.descMobile':'A family-run resort managed by its owners, where personalized attention and a homely atmosphere make every guest feel at home. Surrounded by the Córdoba mountains and on the banks of the San Antonio River, in Villa&nbsp;Carlos&nbsp;Paz.',
@@ -241,8 +241,8 @@ export default function Home() {
         'acord.casa.l1':'Times','acord.casa.v1':'Check-in 14:00 hs · Check-out 10:00 hs',
         'acord.casa.l2':'Includes','acord.casa.v2':'Private pool, private garden, private covered BBQ, full kitchen, Wi-Fi & DirecTV, fans. Pet friendly.',
         'acord.casa.l3':'Not included','acord.casa.v3':'Breakfast or towels. Bed linen optional, at an extra charge.',
-        'acord.casa.l4':'Capacity','acord.casa.v4':'Up to 10 guests · 3 bedrooms · 2 bathrooms',
-        'acord.casa.l5':'Address','acord.casa.v5':'Calle Uruguay & Lombardo, Icho Cruz',
+        'acord.casa.l4':'Capacity','acord.casa.v4':'<span class="nowrap">Up to 10 guests ·</span> <span class="nowrap">3 bedrooms ·</span><br class="br-movil"> <span class="nowrap">2 bathrooms</span>',
+        'acord.casa.l5':'Address','acord.casa.v5':'<span class="nowrap">Calle Uruguay</span> <span class="nowrap">&amp; Lombardo,</span><br class="br-movil"> <span class="nowrap">Icho Cruz</span>',
         'serv.sub':'Services available at <span class="serv-sub-nombre">Brisas de Oro Hotel y Cabañas.</span>',
         'test.casa.tag':'House · Icho Cruz','test.plat.casa':'House reviews on Google',
         'test.r11':'"A fantastic place to enjoy with the family!!! Very convenient location to head out anywhere!! River nearby, and a super quiet neighborhood!!"',
@@ -363,8 +363,8 @@ export default function Home() {
         'acord.casa.l1':'Horários','acord.casa.v1':'Check-in 14:00 hs · Check-out 10:00 hs',
         'acord.casa.l2':'Inclui','acord.casa.v2':'Piscina privativa, jardim privativo, churrasqueira privativa coberta, cozinha equipada, Wi-Fi e DirecTV, ventiladores. Pet friendly.',
         'acord.casa.l3':'Não inclui','acord.casa.v3':'Café da manhã nem toalhas. Roupa de cama opcional, com custo adicional.',
-        'acord.casa.l4':'Capacidade','acord.casa.v4':'Até 10 pessoas · 3 quartos · 2 banheiros',
-        'acord.casa.l5':'Endereço','acord.casa.v5':'Calle Uruguay esq. Lombardo, Icho Cruz',
+        'acord.casa.l4':'Capacidade','acord.casa.v4':'<span class="nowrap">Até 10 pessoas ·</span> <span class="nowrap">3 quartos ·</span><br class="br-movil"> <span class="nowrap">2 banheiros</span>',
+        'acord.casa.l5':'Endereço','acord.casa.v5':'<span class="nowrap">Calle Uruguay,</span> <span class="nowrap">esquina Lombardo,</span><br class="br-movil"> <span class="nowrap">Icho Cruz</span>',
         'serv.sub':'Serviços disponíveis no <span class="serv-sub-nombre">Brisas de Oro Hotel y Cabañas.</span>',
         'test.casa.tag':'Casa · Icho Cruz','test.plat.casa':'Avaliações da Casa no Google',
         'test.r11':'"Um lugar fantástico para curtir em família!!! Localização muito prática para sair para qualquer lado!! Rio perto e bairro super tranquilo!!"',
@@ -1585,7 +1585,7 @@ export default function Home() {
         <div class="huesp-pop" role="dialog" data-i18n-aria="widget.huespedes" aria-label="Huéspedes">
           <div class="contador">
             <button type="button" class="contador-btn contador-menos" data-i18n-aria="widget.menos" aria-label="Menos huéspedes" onclick="cambiarHuespedes('s-huespedes',-1)" disabled>−</button>
-            <input type="text" inputmode="numeric" pattern="[0-9]*" autocomplete="off" id="s-huespedes" class="contador-num" data-i18n-aria="widget.huespedes" aria-label="Huéspedes" oninput="escribirHuespedes(this)" onblur="normalizarHuespedes('s-huespedes')">
+            <input type="text" inputmode="numeric" pattern="[0-9]*" autocomplete="off" id="s-huespedes" class="contador-num" placeholder="0" data-i18n-aria="widget.huespedes" aria-label="Huéspedes" oninput="escribirHuespedes(this)" onblur="normalizarHuespedes('s-huespedes')">
             <button type="button" class="contador-btn contador-mas" data-i18n-aria="widget.mas" aria-label="Más huéspedes" onclick="cambiarHuespedes('s-huespedes',1)">+</button>
           </div>
           <button type="button" class="huesp-listo" data-i18n="widget.listo" onclick="cerrarDropdowns()">Listo</button>
@@ -2293,10 +2293,10 @@ export default function Home() {
           <p style="margin-bottom:0.75rem" data-i18n="acord.casa.intro">Rigen las mismas condiciones de reserva, cancelación, formas de pago y normas que en Brisas de Oro. Lo propio de la casa:</p>
           <div class="acord-grid">
             <div class="acord-dato"><span class="acord-label" data-i18n="acord.casa.l1">Horarios</span><span data-i18n="acord.casa.v1">Check-in 14:00 hs · Check-out 10:00 hs</span></div>
-            <div class="acord-dato"><span class="acord-label" data-i18n="acord.casa.l4">Capacidad</span><span data-i18n="acord.casa.v4">Hasta 10 personas · 3 dormitorios · 2 baños</span></div>
+            <div class="acord-dato"><span class="acord-label" data-i18n="acord.casa.l4">Capacidad</span><span data-i18n="acord.casa.v4"><span class="nowrap">Hasta 10 personas ·</span> <span class="nowrap">3 dormitorios ·</span><br class="br-movil"> <span class="nowrap">2 baños</span></span></div>
             <div class="acord-dato"><span class="acord-label" data-i18n="acord.casa.l2">Incluye</span><span data-i18n="acord.casa.v2">Pileta privada, parque privado, asador privado bajo alero, cocina equipada, Wi-Fi y DirecTV, ventiladores. Pet friendly.</span></div>
             <div class="acord-dato"><span class="acord-label" data-i18n="acord.casa.l3">No incluye</span><span data-i18n="acord.casa.v3">Desayuno ni toallas. Ropa de cama opcional, con cargo adicional.</span></div>
-            <div class="acord-dato"><span class="acord-label" data-i18n="acord.casa.l5">Dirección</span><span data-i18n="acord.casa.v5">Calle Uruguay esq. Lombardo, Icho Cruz</span>
+            <div class="acord-dato"><span class="acord-label" data-i18n="acord.casa.l5">Dirección</span><span data-i18n="acord.casa.v5"><span class="nowrap">Calle Uruguay,</span> <span class="nowrap">esquina Lombardo,</span><br class="br-movil"> <span class="nowrap">Icho Cruz</span></span>
               <a class="acord-link" href="https://maps.app.goo.gl/LNTt8TeZjFvNtwUY9" target="_blank" rel="noopener"><svg class="ico" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span data-i18n="ubic.casa.btn">Cómo llegar</span></a></div>
           </div>
         </div>

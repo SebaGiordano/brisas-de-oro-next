@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { Fragment, useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 
@@ -27,21 +27,26 @@ const I18N = {
     grupoMax:'Para grupos de más de 30 personas coordinamos la estadía de forma personalizada.',
     grupoAviso:'Nuestra unidad más grande recibe hasta 10 personas. Para tu grupo de {n} te proponemos estas combinaciones:',
     grupoInsuficiente:'Para esas fechas no tenemos disponibilidad suficiente para tu grupo. Escribinos y buscamos alternativas.',
-    grupoTitulo:'Combinaciones para tu grupo', grupoUnidades:'Unidades disponibles para tu grupo', badgeCombinar:'Ideal para combinar',
+    grupoTitulo:'Combinaciones para tu grupo', grupoOpciones:'Opciones disponibles para combinar', grupoUnidades:'Unidades correspondientes a las opciones para combinar', badgeCombinar:'Ideal para combinar',
     grupoNota:'Sugerencias orientativas, sujetas a confirmación. Escribinos y armamos la mejor opción para tu grupo.',
-    grupoHotel:'Hotel', grupoMixta:'Cabaña + Hotel', grupoCabanas:'Cabañas', grupoTodas:'Cabañas + Hotel',
+    combosTodas:'Ver todas las combinaciones ({n})', combosMenos:'Ver menos', combosAyuda:'Tildá una o más opciones para consultarlas.',
+    combosUbicHotel:['Hotel y cabañas:', 'Brisas de Oro, Villa Carlos Paz.'], combosUbicCasa:['Casa con Pileta:', 'Icho Cruz, a 15 min de Brisas de Oro.'],
+    grupoHotel:'Hotel', grupoCabanas:'Cabañas',
     grupoCapacidad:'Capacidad total: {n} personas', grupoCapacidadWsp:'capacidad total {n}',
     compactaHuespedes:'huésp.', compactaEditar:'Volver arriba para modificar la búsqueda',
-    grupoHab:['Habitación de hotel','Habitaciones de hotel'], grupoCc:['Cabaña chica','Cabañas chicas'], grupoCm:['Cabaña mediana','Cabañas medianas'], grupoCg:['Cabaña grande','Cabañas grandes'],
+    grupoHab:['Habitación de hotel','Habitaciones de hotel'], grupoCc:['Cabaña chica','Cabañas chicas'], grupoCm:['Cabaña mediana','Cabañas medianas'], grupoCg:['Cabaña grande','Cabañas grandes'], grupoCasa:['Casa con Pileta','Casas con Pileta'],
     notaMediana6:'Para 6 personas el espacio es más ajustado. Consultanos.',
     unidadLibre:'unidad libre', unidadesLibres:'unidades libres',
     wspCard:'Hola! Me interesa consultar disponibilidad para:', wspIngreso:'Ingreso', wspEgreso:'Egreso', wspHuespedes:'Huéspedes', wspMasInfo:'¿Podría darme más información?',
     wspGrupo:'Hola! Quisiera consultar por un grupo de {n} personas.', wspSugerencias:'Sugerencias:',
+    wspCasaNota:'Solo la Casa con Pileta está en Icho Cruz; el resto de las unidades está en Brisas de Oro, Villa Carlos Paz.',
     sinDispTitulo:'No hay disponibilidad para el rango de fechas seleccionadas',
     sinDispSub:'Conocé nuestros alojamientos y escribinos por WhatsApp para consultar disponibilidad futura',
     // Resultados
     dispDisponibles:'Disponibles', dispTuSeleccion:'Tu selección',
-    dispOtrasOpciones:'Otras opciones disponibles', dispNoDisponibles:'No disponibles', dispOtrasUnidades:'Otras unidades',
+    dispOtrasOpciones:'Otras opciones disponibles', dispNoDisponibles:'No disponibles', dispOtrasDisp:'Otras unidades disponibles',
+    dispOtrasDispSub:'Unidades disponibles que no cubren el total de huéspedes por sí solas, pero pueden combinarse con otras.',
+    dispActual:'Disponibilidad actual', dispActualSub:'Es lo único libre en estas fechas y no alcanza para cubrir tu consulta.',
     // Badges / card
     badgeSi:'Disponible', badgeNo:'No disponible', badgeNoAlcanza:'No alcanza para tu grupo',
     btnWsp:'Consultar por WhatsApp',
@@ -52,6 +57,7 @@ const I18N = {
     // Alojamientos
     habNombre:'Habitaciones de hotel',
     habMeta1:'1–4 personas', habMeta2:'Baño privado', habVariantes:['Doble','Triple','Cuádruple'],
+    habHasta:['hasta {n} disponible, a confirmar','hasta {n} disponibles, a confirmar'], habLibres:['{n} disponible, a confirmar','{n} disponibles, a confirmar'],
     habFeatures:['Aire frío/calor 24 hs','Heladera privada','Asador compartido','Limpieza diaria','Desayuno opcional'],
     apNombre:'Apart Hotel',
     apMeta1:'Hasta 4/5 personas', apMeta2:'2 hab. con baño privado',
@@ -160,20 +166,25 @@ const I18N = {
     grupoMax:'For groups of more than 30 people, we arrange the stay personally.',
     grupoAviso:'Our largest unit sleeps up to 10 guests. For your group of {n}, we suggest these combinations:',
     grupoInsuficiente:"We don't have enough availability for your group on those dates. Write to us and we'll look for alternatives.",
-    grupoTitulo:'Combinations for your group', grupoUnidades:'Available units for your group', badgeCombinar:'Great for combining',
+    grupoTitulo:'Combinations for your group', grupoOpciones:'Options available to combine', grupoUnidades:'Units corresponding to the options to combine', badgeCombinar:'Great for combining',
     grupoNota:"Approximate suggestions, subject to confirmation. Write to us and we'll put together the best option for your group.",
-    grupoHotel:'Hotel', grupoMixta:'Cabin + Hotel', grupoCabanas:'Cabins', grupoTodas:'Cabins + Hotel',
+    combosTodas:'See all combinations ({n})', combosMenos:'See less', combosAyuda:'Tick one or more options to ask about them.',
+    combosUbicHotel:['Hotel and cabins:', 'Brisas de Oro, Villa Carlos Paz.'], combosUbicCasa:['House with Pool:', 'Icho Cruz, 15 min from Brisas de Oro.'],
+    grupoHotel:'Hotel', grupoCabanas:'Cabins',
     grupoCapacidad:'Total capacity: {n} guests', grupoCapacidadWsp:'total capacity {n}',
     compactaHuespedes:'guests', compactaEditar:'Back to top to modify the search',
-    grupoHab:['Hotel room','Hotel rooms'], grupoCc:['Small cabin','Small cabins'], grupoCm:['Medium cabin','Medium cabins'], grupoCg:['Large cabin','Large cabins'],
+    grupoHab:['Hotel room','Hotel rooms'], grupoCc:['Small cabin','Small cabins'], grupoCm:['Medium cabin','Medium cabins'], grupoCg:['Large cabin','Large cabins'], grupoCasa:['House with Pool','Houses with Pool'],
     notaMediana6:'For 6 guests the space is tighter. Ask us.',
     unidadLibre:'unit free', unidadesLibres:'units free',
     wspCard:'Hello! I would like to check availability for:', wspIngreso:'Check-in', wspEgreso:'Check-out', wspHuespedes:'Guests', wspMasInfo:'Could you give me more information?',
     wspGrupo:'Hello! I would like to inquire for a group of {n} guests.', wspSugerencias:'Suggestions:',
+    wspCasaNota:'Only the House with Pool is in Icho Cruz; all other units are at Brisas de Oro, Villa Carlos Paz.',
     sinDispTitulo:'We didn\'t find availability for the selected dates',
     sinDispSub:'You can still contact us for other dates or future availability',
     dispDisponibles:'Available', dispTuSeleccion:'Your selection',
-    dispOtrasOpciones:'Other available options', dispNoDisponibles:'Unavailable', dispOtrasUnidades:'Other units',
+    dispOtrasOpciones:'Other available options', dispNoDisponibles:'Unavailable', dispOtrasDisp:'Other available units',
+    dispOtrasDispSub:'Available units that don’t cover the full number of guests on their own, but can be combined with others.',
+    dispActual:'Current availability', dispActualSub:'These are the only units free on your dates, and they’re not enough to cover your request.',
     badgeSi:'Available', badgeNo:'Not available', badgeNoAlcanza:'Not enough capacity',
     btnWsp:'Inquire on WhatsApp',
     unidad:'unit available', unidades:'units available',
@@ -181,6 +192,7 @@ const I18N = {
     tipoCabana:'Cabin', tipoApart:'Apart Hotel', tipoCasa:'House',
     habNombre:'Hotel rooms',
     habMeta1:'1–4 guests', habMeta2:'Private bathroom', habVariantes:['Double','Triple','Quadruple'],
+    habHasta:['up to {n} available, to be confirmed','up to {n} available, to be confirmed'], habLibres:['{n} available, to be confirmed','{n} available, to be confirmed'],
     habFeatures:['Air conditioning (heat/cool) 24h','Private fridge','Shared BBQ','Daily cleaning','Optional breakfast'],
     apNombre:'Apart Hotel',
     apMeta1:'Up to 4/5 guests', apMeta2:'2 rooms with private bathroom',
@@ -286,20 +298,25 @@ const I18N = {
     grupoMax:'Para grupos de mais de 30 pessoas, organizamos a estadia de forma personalizada.',
     grupoAviso:'Nossa maior unidade recebe até 10 pessoas. Para o seu grupo de {n}, propomos estas combinações:',
     grupoInsuficiente:'Para essas datas não temos disponibilidade suficiente para o seu grupo. Escreva-nos e buscamos alternativas.',
-    grupoTitulo:'Combinações para o seu grupo', grupoUnidades:'Unidades disponíveis para o seu grupo', badgeCombinar:'Ideal para combinar',
+    grupoTitulo:'Combinações para o seu grupo', grupoOpciones:'Opções disponíveis para combinar', grupoUnidades:'Unidades correspondentes às opções para combinar', badgeCombinar:'Ideal para combinar',
     grupoNota:'Sugestões orientativas, sujeitas a confirmação. Escreva-nos e montamos a melhor opção para o seu grupo.',
-    grupoHotel:'Hotel', grupoMixta:'Chalé + Hotel', grupoCabanas:'Chalés', grupoTodas:'Chalés + Hotel',
+    combosTodas:'Ver todas as combinações ({n})', combosMenos:'Ver menos', combosAyuda:'Marque uma ou mais opções para consultá-las.',
+    combosUbicHotel:['Hotel e cabanas:', 'Brisas de Oro, Villa Carlos Paz.'], combosUbicCasa:['Casa com Piscina:', 'Icho Cruz, a 15 min do Brisas de Oro.'],
+    grupoHotel:'Hotel', grupoCabanas:'Chalés',
     grupoCapacidad:'Capacidade total: {n} pessoas', grupoCapacidadWsp:'capacidade total {n}',
     compactaHuespedes:'hósp.', compactaEditar:'Voltar ao topo para modificar a busca',
-    grupoHab:['Quarto de hotel','Quartos de hotel'], grupoCc:['Chalé pequeno','Chalés pequenos'], grupoCm:['Chalé médio','Chalés médios'], grupoCg:['Chalé grande','Chalés grandes'],
+    grupoHab:['Quarto de hotel','Quartos de hotel'], grupoCc:['Chalé pequeno','Chalés pequenos'], grupoCm:['Chalé médio','Chalés médios'], grupoCg:['Chalé grande','Chalés grandes'], grupoCasa:['Casa com Piscina','Casas com Piscina'],
     notaMediana6:'Para 6 pessoas o espaço é mais apertado. Consulte-nos.',
     unidadLibre:'unidade livre', unidadesLibres:'unidades livres',
     wspCard:'Olá! Gostaria de consultar disponibilidade para:', wspIngreso:'Chegada', wspEgreso:'Saída', wspHuespedes:'Hóspedes', wspMasInfo:'Poderia me dar mais informações?',
     wspGrupo:'Olá! Gostaria de consultar para um grupo de {n} pessoas.', wspSugerencias:'Sugestões:',
+    wspCasaNota:'Somente a Casa com Piscina fica em Icho Cruz; as demais unidades ficam no Brisas de Oro, Villa Carlos Paz.',
     sinDispTitulo:'Não encontramos disponibilidade para as datas selecionadas',
     sinDispSub:'Mesmo assim, pode nos consultar por outras datas ou disponibilidade futura',
     dispDisponibles:'Disponíveis', dispTuSeleccion:'Sua seleção',
-    dispOtrasOpciones:'Outras opções disponíveis', dispNoDisponibles:'Indisponíveis', dispOtrasUnidades:'Outras unidades',
+    dispOtrasOpciones:'Outras opções disponíveis', dispNoDisponibles:'Indisponíveis', dispOtrasDisp:'Outras unidades disponíveis',
+    dispOtrasDispSub:'Unidades disponíveis que não cobrem o total de hóspedes sozinhas, mas podem ser combinadas com outras.',
+    dispActual:'Disponibilidade atual', dispActualSub:'São as únicas unidades livres nestas datas e não são suficientes para cobrir sua consulta.',
     badgeSi:'Disponível', badgeNo:'Indisponível', badgeNoAlcanza:'Capacidade insuficiente',
     btnWsp:'Consultar pelo WhatsApp',
     unidad:'unidade disponível', unidades:'unidades disponíveis',
@@ -307,6 +324,7 @@ const I18N = {
     tipoCabana:'Chalé', tipoApart:'Apart Hotel', tipoCasa:'Casa',
     habNombre:'Quartos de hotel',
     habMeta1:'1–4 pessoas', habMeta2:'Banheiro privativo', habVariantes:['Duplo','Triplo','Quádruplo'],
+    habHasta:['até {n} disponível, a confirmar','até {n} disponíveis, a confirmar'], habLibres:['{n} disponível, a confirmar','{n} disponíveis, a confirmar'],
     habFeatures:['Ar-condicionado frio/calor 24h','Geladeira privada','Churrasqueira compartilhada','Limpeza diária','Café da manhã opcional'],
     apNombre:'Apart Hotel',
     apMeta1:'Até 4/5 pessoas', apMeta2:'2 quartos c/ banheiro privado',
@@ -472,85 +490,100 @@ function etiquetaTipo(tipo, t) {
 }
 
 /* ── Grupos: combinaciones de unidades ── */
-const GRUPO_MIN = 6        // desde esta cantidad se sugieren combinaciones
 const GRUPO_UNIDAD_MAX = 10 // capacidad de la unidad más grande
 const GRUPO_MAX = 30       // por encima se coordina por WhatsApp, sin consultar la API
 const CAP_MEDIANA = 5      // la cabaña mediana cuenta como máximo 5 en las combinaciones
+const COMBOS_VISIBLES = 4  // combinaciones a la vista antes de "Ver todas"
 
-/* a es mejor que b: menos unidades y, a igualdad, menos lugares de sobra */
-function comboMejor(a, b) {
-  return !b || a.unidades.length < b.unidades.length || (a.unidades.length === b.unidades.length && a.total < b.total)
+/* Unidades libres que pueden combinarse: nunca aparts (comparten habitaciones con el hotel y la API no informa cuáles) */
+function unidadesCombinables(libres) {
+  const a = clave => c => ({ tipo: clave, cap: clave === 'cabanaMediana' ? Math.min(c, CAP_MEDIANA) : c })
+  return Object.fromEntries(['casa', 'cabanaGrande', 'cabanaMediana', 'cabanaChica', 'habitaciones'].map(clave => [clave, (libres[clave] || []).map(a(clave))]))
 }
 
-/* Combinación exacta que cubre n: para cada capacidad total posible guarda la que usa menos unidades */
-function mejorCombo(unidades, n) {
-  let porTotal = new Map([[0, []]])
-  for (const u of [...unidades].sort((x, y) => y.cap - x.cap)) {
-    const siguiente = new Map(porTotal)
-    for (const [total, usadas] of porTotal) {
-      const nuevoTotal = total + u.cap
-      const actual = siguiente.get(nuevoTotal)
-      if (!actual || usadas.length + 1 < actual.length) siguiente.set(nuevoTotal, [...usadas, u])
+const ES_CABANA = tipo => tipo.startsWith('cabana')
+
+/* Tipo de mezcla: con la Casa, solo hotel, solo cabañas o cabaña(s) + hotel */
+function mezclaCombo(unidades) {
+  if (unidades.some(u => u.tipo === 'casa')) return 'casa'
+  const cabanas = unidades.filter(u => ES_CABANA(u.tipo)).length
+  return !cabanas ? 'hotel' : cabanas === unidades.length ? 'cabanas' : 'mixta'
+}
+
+/* Menos unidades, después menos lugares de sobra y, a igualdad, menos cabañas */
+function ordenCombo(a, b) {
+  return a.unidades.length - b.unidades.length || a.total - b.total
+    || a.unidades.filter(u => ES_CABANA(u.tipo)).length - b.unidades.filter(u => ES_CABANA(u.tipo)).length
+}
+
+/* Todas las combinaciones de dos o más unidades que cubren n sin unidades de sobra (sacando cualquiera ya no alcanza).
+   Una por composición (tipos y cantidades), con la que deja menos lugares de sobra */
+function combinacionesValidas(porTipo, n) {
+  // Por tipo y cantidad, las selecciones distintas según suma y capacidad mínima
+  const opciones = Object.values(porTipo).filter(us => us.length).map(us => {
+    const porCantidad = [new Map([['0', { suma: 0, min: Infinity, unidades: [] }]])]
+    for (const u of us) {
+      for (let k = porCantidad.length - 1; k >= 0; k--) {
+        for (const sel of porCantidad[k].values()) {
+          const nueva = { suma: sel.suma + u.cap, min: Math.min(sel.min, u.cap), unidades: [...sel.unidades, u] }
+          porCantidad[k + 1] ??= new Map()
+          porCantidad[k + 1].set(`${nueva.suma}|${nueva.min}`, nueva)
+        }
+      }
     }
-    porTotal = siguiente
+    return porCantidad
+  })
+  const mejores = new Map()
+  const recorrer = (i, unidades, suma, min) => {
+    if (suma - min >= n) return // ya sobra una unidad: agregar más no lo arregla
+    if (i === opciones.length) {
+      if (unidades.length < 2 || suma < n) return
+      const firma = unidades.map(u => u.tipo).join()
+      if (!mejores.has(firma) || suma < mejores.get(firma).total) mejores.set(firma, { clave: firma, unidades, total: suma })
+      return
+    }
+    for (const selecciones of opciones[i]) {
+      for (const sel of selecciones.values()) recorrer(i + 1, [...unidades, ...sel.unidades], suma + sel.suma, Math.min(min, sel.min))
+    }
   }
-  let mejor = null
-  for (const [total, usadas] of porTotal) {
-    const combo = { unidades: usadas, total }
-    if (total >= n && comboMejor(combo, mejor)) mejor = combo
-  }
-  return mejor
+  recorrer(0, [], 0, Infinity)
+  return [...mejores.values()].sort(ordenCombo)
 }
 
-/* Solo con `libres`: nunca la Casa, ni aparts (comparten habitaciones con el hotel y la API no informa cuáles) */
+/* Solo con `libres`. La Casa se combina solo con más de 10 personas (hasta 10 es opción individual) */
 function calcularCombos(libres, n) {
-  const a = (clave, cap) => ({ tipo: clave, cap })
-  const habitaciones = (libres.habitaciones || []).map(c => a('habitaciones', c))
-  const cabanas = [
-    ...(libres.cabanaGrande || []).map(c => a('cabanaGrande', c)),
-    ...(libres.cabanaMediana || []).map(c => a('cabanaMediana', Math.min(c, CAP_MEDIANA))),
-    ...(libres.cabanaChica || []).map(c => a('cabanaChica', c)),
-  ].sort((x, y) => y.cap - x.cap)
+  const porTipo = unidadesCombinables(libres)
+  if (n <= GRUPO_UNIDAD_MAX) porTipo.casa = []
+  const validas = combinacionesValidas(porTipo, n)
 
-  // Las cabañas que cubren N solas ya se ofrecen como opción individual: no entran en las combinaciones
-  const cabanasParciales = cabanas.filter(u => u.cap < n)
-
-  const opciones = []
-  const hotel = mejorCombo(habitaciones, n)
-  if (hotel) opciones.push({ clave: 'hotel', ...hotel })
-  // Una sola cabaña que no cubre N, más habitaciones
-  let mixta = null
-  for (const cabana of cabanasParciales) {
-    const resto = mejorCombo(habitaciones, n - cabana.cap)
-    if (!resto) continue
-    const combo = { unidades: [cabana, ...resto.unidades], total: cabana.cap + resto.total }
-    if (comboMejor(combo, mixta)) mixta = combo
+  // Primero la mejor de cada mezcla y cabaña + hotel con cada tipo de cabaña; después el resto, en orden
+  const preferidas = []
+  const agregar = c => { if (c && !preferidas.includes(c)) preferidas.push(c) }
+  for (const mezcla of ['mixta', 'casa', 'cabanas', 'hotel']) agregar(validas.find(c => mezclaCombo(c.unidades) === mezcla))
+  for (const tipo of ['cabanaGrande', 'cabanaMediana', 'cabanaChica']) {
+    agregar(validas.find(c => mezclaCombo(c.unidades) === 'mixta' && c.unidades.every(u => u.tipo === tipo || !ES_CABANA(u.tipo))))
   }
-  if (mixta) opciones.push({ clave: 'mixta', ...mixta })
-  const soloCabanas = mejorCombo(cabanasParciales, n)
-  if (soloCabanas) opciones.push({ clave: 'cabanas', ...soloCabanas })
+  preferidas.sort(ordenCombo)
+  const sugerencias = [...preferidas, ...validas.filter(c => !preferidas.includes(c))]
 
-  if (!opciones.length) {
-    if (cabanas.some(u => u.cap >= n)) return { sugerencias: [], insuficiente: false }
-    const todas = mejorCombo([...cabanas, ...habitaciones], n)
-    return todas ? { sugerencias: [{ clave: 'todas', ...todas }], insuficiente: false } : { sugerencias: [], insuficiente: true }
-  }
-  const vistas = new Set()
-  const sugerencias = opciones.filter(o => {
-    const firma = o.unidades.map(u => u.tipo).sort().join()
-    if (o.unidades.length < 2 || vistas.has(firma)) return false
-    vistas.add(firma)
-    return true
-  })
-  return { sugerencias, insuficiente: false }
+  const alcanzaUna = Object.values(unidadesCombinables(libres)).flat().some(u => u.cap >= n)
+  return { sugerencias, insuficiente: !sugerencias.length && !alcanzaUna }
 }
 
 /* "1 Cabaña mediana + 2 Habitaciones" */
-function resumenCombo(combo, t) {
-  const nombres = { habitaciones: t.grupoHab, cabanaChica: t.grupoCc, cabanaMediana: t.grupoCm, cabanaGrande: t.grupoCg }
+function partesCombo(combo, t) {
+  const nombres = { habitaciones: t.grupoHab, cabanaChica: t.grupoCc, cabanaMediana: t.grupoCm, cabanaGrande: t.grupoCg, casa: t.grupoCasa }
   const cantidades = new Map()
   combo.unidades.forEach(u => cantidades.set(u.tipo, (cantidades.get(u.tipo) || 0) + 1))
-  return [...cantidades].map(([tipo, c]) => `${c} ${nombres[tipo][c === 1 ? 0 : 1]}`).join(' + ')
+  return [...cantidades].map(([tipo, c]) => ({ tipo, texto: `${c} ${nombres[tipo][c === 1 ? 0 : 1]}` }))
+}
+function resumenCombo(combo, t) {
+  return partesCombo(combo, t).map(p => p.texto).join(' + ')
+}
+
+/* Para WhatsApp: "1 Casa con Pileta (Icho Cruz, a 15 min de Brisas de Oro) + 1 Habitación de hotel" */
+function resumenComboWsp(combo, t) {
+  return partesCombo(combo, t).map(p => p.tipo === 'casa' ? `${p.texto} (${t.casaUbic.replace(' — ', ', ')})` : p.texto).join(' + ')
 }
 
 /* Lo que queda fijo arriba además del nav: la topbar y el banner (en mobile, la barra compacta) */
@@ -888,25 +921,59 @@ function IconoWsp() {
 }
 
 /* ── Bloque "Combinaciones para tu grupo" ── */
-function BloqueCombos({ combos, aviso, wspUrl, t }) {
+function BloqueCombos({ combos, visibles, abiertos, onAlternar, elegidos, onElegir, titulo, aviso, wspUrl, t }) {
   if (!combos.sugerencias.length) return null
-  const titulos = { hotel: t.grupoHotel, mixta: t.grupoMixta, cabanas: t.grupoCabanas, todas: t.grupoTodas }
+  // "Cabaña + Hotel", "Casa + Cabañas", "Hotel"...
+  const etiqueta = c => {
+    const cabanas = c.unidades.filter(u => ES_CABANA(u.tipo)).length
+    return [
+      c.unidades.some(u => u.tipo === 'casa') && t.tipoCasa,
+      cabanas > 0 && (cabanas === 1 ? t.tipoCabana : t.grupoCabanas),
+      c.unidades.some(u => u.tipo === 'habitaciones') && t.grupoHotel,
+    ].filter(Boolean).join(' + ')
+  }
   return (
     <section className="disp-seccion">
       <div className="combo-header">
-        <h2 className="section-title">{t.grupoTitulo}</h2>
+        <h2 className="section-title">{titulo}</h2>
         <div className="divider" />
         {aviso && <p className="disp-aviso-texto">{aviso}</p>}
       </div>
-      <div className="combo-lista">
-        {combos.sugerencias.map(c => (
-          <div key={c.clave} className="combo-card">
-            <p className="combo-etiqueta">{titulos[c.clave]}</p>
-            <p className="combo-texto">{resumenCombo(c, t)}</p>
-            <p className="combo-capacidad">{t.grupoCapacidad.replace('{n}', c.total)}</p>
-          </div>
+      <p className="combo-nota" style={{ margin:'0 0 0.6rem' }}>{t.combosAyuda}</p>
+      {/* Dónde está cada alojamiento: una sola vez, arriba de la lista */}
+      <div style={{ textAlign:'center', textWrap:'balance', margin:'0 0 1rem' }}>
+        {[t.combosUbicHotel, t.combosUbicCasa].map(([nombre, lugar]) => (
+          <p key={nombre} className="combo-texto" style={{ fontWeight:400 }}><strong>{nombre}</strong> {lugar}</p>
         ))}
       </div>
+      <div className="combo-lista">
+        {/* Toda la tarjeta es la etiqueta de la casilla: se tilda tocando cualquier parte */}
+        {visibles.map(c => (
+          <label key={c.clave} className="combo-card combo-elegible">
+            <input type="checkbox" className="combo-check" checked={elegidos.includes(c.clave)} onChange={() => onElegir(c.clave)} aria-label={resumenCombo(c, t)} />
+            <span className="combo-elegible-texto">
+              <span className="combo-etiqueta">{etiqueta(c)}</span>
+              {/* Con la Casa, su ubicación va pegada a ella: "1 Casa con Pileta" / ubicación / "+ 1 Habitación de hotel" */}
+              {c.unidades.some(u => u.tipo === 'casa')
+                ? partesCombo(c, t).map((p, i) => (
+                    <Fragment key={p.tipo}>
+                      <span className="combo-texto">{i > 0 ? `+ ${p.texto}` : p.texto}</span>
+                      {p.tipo === 'casa' && <span className="combo-capacidad ico-txt"><IcoMeta tipo="ubicacion" /><span>{t.casaUbic}</span></span>}
+                    </Fragment>
+                  ))
+                : <span className="combo-texto">{resumenCombo(c, t)}</span>}
+              <span className="combo-capacidad">{t.grupoCapacidad.replace('{n}', c.total)}</span>
+            </span>
+          </label>
+        ))}
+      </div>
+      {combos.sugerencias.length > COMBOS_VISIBLES && (
+        <div style={{ textAlign:'center', marginTop:'1rem' }}>
+          <button type="button" className="disp-banner-btn" style={{ cursor:'pointer' }} aria-expanded={abiertos} onClick={onAlternar}>
+            {abiertos ? t.combosMenos : t.combosTodas.replace('{n}', combos.sugerencias.length)}
+          </button>
+        </div>
+      )}
       <p className="combo-nota">{t.grupoNota}</p>
       <a className="disp-wsp-btn combo-wsp" href={wspUrl} target="_blank" rel="noopener noreferrer"><IconoWsp />{t.btnWsp}</a>
     </section>
@@ -926,7 +993,7 @@ function AvisoGrupo({ texto, wspUrl, t }) {
 /* ── Card ── */
 const TAGS_LLAMA = ['Salamandra', 'Wood stove']
 
-function CardAlojamiento({ item, destacado, noDisponible, sinBadge, etiqueta, unidadesLibres, nota, wspUrl, t }) {
+function CardAlojamiento({ item, destacado, noDisponible, sinBadge, etiqueta, unidadesLibres, contador, variantes, nota, wspUrl, t }) {
   return (
     <div className={`aloj-card disp-aloj-card${destacado?' disp-aloj-card--dest':''}${noDisponible&&!item.sinCapacidad?' disp-aloj-card--no':''}`}>
       <div className="card-img">
@@ -951,7 +1018,8 @@ function CardAlojamiento({ item, destacado, noDisponible, sinBadge, etiqueta, un
         </div>
         {item.id === 'habitaciones' && (
           <div className="variant-chips" style={{ display:'flex', flexWrap:'wrap', gap:'0.4rem', marginBottom:'0.7rem' }}>
-            {t.habVariantes.map(v => <span key={v} className="variant-chip">{v}</span>)}
+            {/* Doble, Triple, Cuádruple = capacidad 2, 3, 4. Con `variantes`, las que no están se ven apagadas */}
+            {t.habVariantes.map((v, i) => <span key={v} className="variant-chip" style={variantes && !variantes.includes(i + 2) ? { opacity: 0.35 } : undefined}>{v}</span>)}
           </div>
         )}
         <div className="card-features">{item.features.map(f => TAGS_LLAMA.includes(f)
@@ -965,7 +1033,9 @@ function CardAlojamiento({ item, destacado, noDisponible, sinBadge, etiqueta, un
           </>
         )}
         {nota && <p className="card-nota">{nota}</p>}
-        {unidadesLibres > 0 ? (
+        {contador ? (
+          <p className="disp-unidades">{contador}</p>
+        ) : unidadesLibres > 0 ? (
           <p className="disp-unidades">{unidadesLibres === 1 ? `1 ${t.unidadLibre}` : `${unidadesLibres} ${t.unidadesLibres}`}</p>
         ) : !noDisponible && item.unidadesDisponibles > 0 && (
           <p className="disp-unidades">{item.unidadesDisponibles === 1 ? `1 ${t.unidad}` : `${item.unidadesDisponibles} ${t.unidades}`}</p>
@@ -995,6 +1065,8 @@ export default function Disponibilidad() {
   const [lang, setLang] = useState('es')
   const [langOpen, setLangOpen] = useState(false)
   const [barraCompacta, setBarraCompacta] = useState(false)
+  const [combosAbiertos, setCombosAbiertos] = useState(false)
+  const [combosElegidos, setCombosElegidos] = useState([])
   const irA = id => e => { e.preventDefault(); setMenuOpen(false); saltarA(id) }
   const bannerRef = useRef(null)
   const langRef = useRef(null)
@@ -1028,7 +1100,7 @@ export default function Disponibilidad() {
     if (tipo) params.set('tipo', tipo)
     fetch(`${API_URL}?${params}`)
       .then(r => { if (!r.ok) throw new Error(`Error ${r.status}`); return r.json() })
-      .then(data => setRawData(data))
+      .then(data => { setRawData(data); setCombosAbiertos(false); setCombosElegidos([]) })
       .catch(e => setError(e.message))
       .finally(() => setCargando(false))
   }, [router.isReady])
@@ -1050,23 +1122,50 @@ export default function Disponibilidad() {
   const disponiblesCoincidentes = (resultados||[]).filter(r => r.disponible && coincide(r))
   const disponiblesOtros        = (resultados||[]).filter(r => r.disponible && !coincide(r))
 
-  // Grupos: combinaciones de unidades (6 a 30 personas). Con más de 10 no entra nadie en una sola unidad
+  // Combinaciones de unidades (1 a 30 personas), aunque haya una unidad que cubra sola. Con más de 10 no entra nadie en una sola unidad
   const grupoGrande = personasValidas && personas > GRUPO_UNIDAD_MAX && !excedeMax
-  const combos = personasValidas && personas >= GRUPO_MIN && !excedeMax && rawData?.libres ? calcularCombos(rawData.libres, personas) : null
+  const combos = personasValidas && !excedeMax && rawData?.libres ? calcularCombos(rawData.libres, personas) : null
   const idsCombo = new Set((combos?.sugerencias || []).flatMap(c => c.unidades.map(u => u.tipo)))
   const mostrarCombos = (combos?.sugerencias.length ?? 0) > 0
   // Categorías sugeridas que no están arriba como opción que cubre al grupo, más el Apart si tiene unidades libres
+  // Habitaciones libres que cubren al grupo solas (van arriba) y las que no (van abajo, en las combinaciones)
+  const capsHab = rawData?.libres?.habitaciones || []
+  const tiposHab = cubren => [...new Set(capsHab.filter(c => (c >= personas) === cubren))]
+  const habParciales = capsHab.filter(c => c < personas).length
+  // Cada cabaña una sola vez (si cubre sola va arriba); Habitaciones se repite abajo con las que no cubren
   const unidadesGrupo = mostrarCombos
-    ? (resultados||[]).filter(r => !r.disponible && (idsCombo.has(r.id) || (r.id === 'aparts' && rawData.libres.aparts?.length > 0)))
+    ? (resultados||[]).filter(r => r.id === 'habitaciones'
+        ? idsCombo.has(r.id) && habParciales > 0
+        : !r.disponible && (idsCombo.has(r.id) || (r.id === 'aparts' && rawData.libres.aparts?.length > 0)))
     : []
-  const noDisponibles = (resultados||[]).filter(r => !r.disponible && !unidadesGrupo.includes(r))
-  const tituloInferior = noDisponibles.some(r => r.sinCapacidad) ? t.dispOtrasUnidades : t.dispNoDisponibles
+  const propsHabArriba = r => r.id === 'habitaciones' ? { variantes: tiposHab(true) } : {}
+  const propsHabAbajo = r => r.id !== 'habitaciones' ? {} : {
+    variantes: tiposHab(false),
+    contador: (r.disponible ? t.habHasta : t.habLibres)[habParciales === 1 ? 0 : 1].replace('{n}', habParciales),
+  }
+  // Con unidades libres que no cubren al grupo solas / sin unidades libres ("No disponibles")
+  const libresParciales = (resultados||[]).filter(r => r.sinCapacidad && !unidadesGrupo.includes(r))
+  // "Otras unidades disponibles" si todas las unidades libres combinables (al menos dos) suman lo que pide el grupo;
+  // si no, "Disponibilidad actual". Mismas capacidades que calcularCombos, con la Casa y sin aparts
+  const combinables = rawData?.libres ? Object.values(unidadesCombinables(rawData.libres)).flat() : []
+  const alcanzaCombinando = combinables.length >= 2 && combinables.reduce((suma, u) => suma + u.cap, 0) >= personas
+  const noDisponibles = (resultados||[]).filter(r => !r.disponible && !r.sinCapacidad && !unidadesGrupo.includes(r))
+  const combosVisibles = combos ? (combosAbiertos ? combos.sugerencias : combos.sugerencias.slice(0, COMBOS_VISIBLES)) : []
+  // Tildadas que siguen entre las combinaciones calculadas con la disponibilidad actual
+  const combosTildados = (combos?.sugerencias || []).filter(c => combosElegidos.includes(c.clave))
+  const alternarCombo = clave => setCombosElegidos(e => e.includes(clave) ? e.filter(x => x !== clave) : [...e, clave])
   const grupoWspUrl = urlWsp([
     t.wspGrupo.replace('{n}', personasTexto), ...lineasWsp,
-    ...(combos?.sugerencias.length ? ['', t.wspSugerencias, ...combos.sugerencias.map(c => `- ${resumenCombo(c, t)} (${t.grupoCapacidadWsp.replace('{n}', c.total)})`)] : []),
+    ...(combosTildados.length ? ['', t.wspSugerencias, ...combosTildados.map(c => `- ${resumenComboWsp(c, t)} (${t.grupoCapacidadWsp.replace('{n}', c.total)})`)] : []),
+    ...(combosTildados.some(c => c.unidades.some(u => u.tipo === 'casa')) ? [t.wspCasaNota] : []),
   ])
   const hayResultados  = resultados && resultados.length > 0
   const hayDisponibles = disponiblesCoincidentes.length > 0 || disponiblesOtros.length > 0
+  const haySinCapacidad = (resultados||[]).some(r => r.sinCapacidad)
+  // Aviso de disponibilidad insuficiente: ninguna unidad ni combinación libre cubre al grupo
+  const avisoInsuficiente = !!combos?.insuficiente && !hayDisponibles
+  // "No hay disponibilidad" solo cuando no queda ninguna unidad libre
+  const bloquePrincipal = hayDisponibles || haySinCapacidad || mostrarCombos
 
   return (
     <>
@@ -1230,24 +1329,24 @@ export default function Disponibilidad() {
           {!cargando && !error && excedeMax && (
             <AvisoGrupo texto={t.grupoMax} wspUrl={grupoWspUrl} t={t} />
           )}
-          {!cargando && !error && hayResultados && !hayDisponibles && !mostrarCombos && !grupoGrande && (
-            /* Ningún alojamiento disponible: mensaje + todas las cards funcionales */
+          {!cargando && !error && hayResultados && !bloquePrincipal && (
+            /* Ninguna unidad libre: mensaje + todas las cards como no disponibles */
             <section className="disp-seccion">
               <div style={{ textAlign:'center', padding:'1.5rem 0 2rem', borderBottom:'1px solid var(--borde)', marginBottom:'2rem' }}>
                 <p style={{ fontSize:'1.26rem', fontWeight:700, color:'var(--texto)', marginBottom:'0.4rem' }}>{t.sinDispTitulo}</p>
                 <p style={{ fontSize:'0.85rem', color:'var(--texto-suave)' }}>{t.sinDispSub}</p>
               </div>
-              {combos?.insuficiente && <AvisoGrupo texto={t.grupoInsuficiente} wspUrl={grupoWspUrl} t={t} />}
+              {avisoInsuficiente && <AvisoGrupo texto={t.grupoInsuficiente} wspUrl={grupoWspUrl} t={t} />}
               <div className="disp-grid">
                 {(resultados||[]).map(r => (
-                  <CardAlojamiento key={r.id} item={r} sinBadge wspUrl={buildWspUrl(r)} t={t} />
+                  <CardAlojamiento key={r.id} item={r} noDisponible wspUrl="" t={t} />
                 ))}
               </div>
             </section>
           )}
-          {!cargando && !error && hayResultados && (hayDisponibles || mostrarCombos || grupoGrande) && (
+          {!cargando && !error && hayResultados && bloquePrincipal && (
             <>
-              {grupoGrande && combos?.insuficiente && <AvisoGrupo texto={t.grupoInsuficiente} wspUrl={grupoWspUrl} t={t} />}
+              {avisoInsuficiente && <AvisoGrupo texto={t.grupoInsuficiente} wspUrl={grupoWspUrl} t={t} />}
               {disponiblesCoincidentes.length > 0 && (
                 <section className="disp-seccion">
                   <h2 className="disp-seccion-titulo">
@@ -1255,7 +1354,7 @@ export default function Disponibilidad() {
                     <span className="disp-seccion-count">{disponiblesCoincidentes.length}</span>
                   </h2>
                   <div className="disp-grid">
-                    {disponiblesCoincidentes.map(r => <CardAlojamiento key={r.id} item={r} destacado wspUrl={buildWspUrl(r)} t={t} />)}
+                    {disponiblesCoincidentes.map(r => <CardAlojamiento key={r.id} item={r} destacado {...propsHabArriba(r)} wspUrl={buildWspUrl(r)} t={t} />)}
                   </div>
                 </section>
               )}
@@ -1266,11 +1365,12 @@ export default function Disponibilidad() {
                     <span className="disp-seccion-count">{disponiblesOtros.length}</span>
                   </h2>
                   <div className="disp-grid">
-                    {disponiblesOtros.map(r => <CardAlojamiento key={r.id} item={r} nota={esMedianaAjustada(r) ? t.notaMediana6 : null} wspUrl={buildWspUrl(r)} t={t} />)}
+                    {disponiblesOtros.map(r => <CardAlojamiento key={r.id} item={r} {...propsHabArriba(r)} nota={esMedianaAjustada(r) ? t.notaMediana6 : null} wspUrl={buildWspUrl(r)} t={t} />)}
                   </div>
                 </section>
               )}
-              {mostrarCombos && <BloqueCombos combos={combos} aviso={grupoGrande ? t.grupoAviso.replace('{n}', personas) : null} wspUrl={grupoWspUrl} t={t} />}
+              {/* Con una unidad que cubre sola arriba, las combinaciones son una opción más */}
+              {mostrarCombos && <BloqueCombos combos={combos} visibles={combosVisibles} abiertos={combosAbiertos} onAlternar={() => setCombosAbiertos(a => !a)} elegidos={combosTildados.map(c => c.clave)} onElegir={alternarCombo} titulo={hayDisponibles ? t.grupoOpciones : t.grupoTitulo} aviso={grupoGrande ? t.grupoAviso.replace('{n}', personas) : null} wspUrl={grupoWspUrl} t={t} />}
               {unidadesGrupo.length > 0 && (
                 <section className="disp-seccion disp-seccion--grupo">
                   <h2 className="disp-seccion-titulo">
@@ -1278,14 +1378,27 @@ export default function Disponibilidad() {
                     <span className="disp-seccion-count">{unidadesGrupo.length}</span>
                   </h2>
                   <div className="disp-grid">
-                    {unidadesGrupo.map(r => <CardAlojamiento key={r.id} item={r} sinBadge etiqueta={r.id === 'aparts' ? t.badgeCombinar : null} unidadesLibres={rawData.libres[r.id].length} wspUrl={buildWspUrl(r)} t={t} />)}
+                    {unidadesGrupo.map(r => <CardAlojamiento key={r.id} item={r} sinBadge etiqueta={r.id === 'aparts' ? t.badgeCombinar : null} unidadesLibres={rawData.libres[r.id].length} {...propsHabAbajo(r)} wspUrl={buildWspUrl(r)} t={t} />)}
+                  </div>
+                </section>
+              )}
+              {libresParciales.length > 0 && (
+                <section className="disp-seccion disp-seccion--no">
+                  <h2 className="disp-seccion-titulo disp-seccion-titulo--no">
+                    {alcanzaCombinando ? t.dispOtrasDisp : t.dispActual}
+                    <span className="disp-seccion-count">{libresParciales.length}</span>
+                  </h2>
+                  {/* Mismo estilo que el aviso del bloque de combinaciones (.combo-header .disp-aviso-texto), alineado con el título */}
+                  <p className="disp-aviso-texto" style={{ fontWeight:500, color:'var(--texto-medio)', textAlign:'left', maxWidth:'none', margin:'-0.8rem 0 1.4rem' }}>{alcanzaCombinando ? t.dispOtrasDispSub : t.dispActualSub}</p>
+                  <div className="disp-grid">
+                    {libresParciales.map(r => <CardAlojamiento key={r.id} item={r} noDisponible wspUrl="" t={t} />)}
                   </div>
                 </section>
               )}
               {noDisponibles.length > 0 && (
                 <section className="disp-seccion disp-seccion--no">
                   <h2 className="disp-seccion-titulo disp-seccion-titulo--no">
-                    {tituloInferior}
+                    {t.dispNoDisponibles}
                     <span className="disp-seccion-count">{noDisponibles.length}</span>
                   </h2>
                   <div className="disp-grid">
