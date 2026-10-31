@@ -2204,6 +2204,5 @@ footer { background: var(--footer-bg); color: var(--footer-text); padding: 3.5re
   .ap-otros { grid-template-columns: repeat(2, 1fr); }
 }
 
-/* ===================== PÁGINAS DE SECCIÓN (/nosotros, /alojamientos, ...) ===================== */
-.sub-espaciador { height: 190px; }
+/* ===================== MENÚ: sección actual (cambia con el scroll y con la URL) ===================== */
 .nav-links a[aria-current="page"], .nav-mobile-menu a[aria-current="page"] { color: #E2C96A; }

@@ -75,7 +75,7 @@ export default function Sitio({ pagina = 'inicio' }) {
       document.getElementById('langSelector').classList.remove('open');
       // Reflejar el idioma en la URL (/, /en, /pt) y en <html lang>, sin recargar
       document.documentElement.lang = lang;
-      document.title = metaPagina(pagina, lang).title;
+      document.title = metaPagina(paginaDeRuta(rutaDeUrl()), lang).title;
       // Links internos (menú, tarjetas): al idioma elegido
       document.querySelectorAll('a[data-ruta]').forEach(a => {
         const r = a.getAttribute('data-ruta');
@@ -83,7 +83,7 @@ export default function Sitio({ pagina = 'inicio' }) {
         a.setAttribute('href', rutaDe(lang, ruta) + (ancla ? '#' + ancla : ''));
       });
       try {
-        window.history.replaceState(window.history.state, '', rutaDe(lang, path) + window.location.search + window.location.hash);
+        window.history.replaceState({ brisas: true }, '', rutaDe(lang, rutaDeUrl()) + window.location.search + window.location.hash);
       } catch (e) {}
       // Refrescar clima en el idioma nuevo
       if (window.fetchClima) window.fetchClima();
@@ -267,7 +267,7 @@ export default function Sitio({ pagina = 'inicio' }) {
     function cerrarMenu() {
       document.getElementById('nav-mobile-menu').classList.remove('open');
     }
-    function scrollToId(id) {
+    function scrollToId(id, suave) {
       var el = document.getElementById(id);
       if (!el) return;
       var topbar = document.getElementById('main-topbar');
@@ -276,18 +276,18 @@ export default function Sitio({ pagina = 'inicio' }) {
       var stickyH = (sticky && sticky.offsetHeight > 0) ? sticky.offsetHeight : 0;
       var offset = (topbar ? topbar.offsetHeight : 36) + (nav ? nav.offsetHeight : 84) + stickyH - 65;
       var top    = el.getBoundingClientRect().top + window.scrollY - offset;
-      window.scrollTo({ top: top, behavior: 'smooth' });
+      if (suave === false) saltarA(top);
+      else window.scrollTo({ top: top, behavior: 'smooth' });
     }
-    // Si la URL trae #seccion, compensar el menú fijo. Puede que el 'load' ya haya ocurrido cuando
-    // React ejecuta este script (pasa al llegar desde otra página), así que se cubren los dos casos.
-    function irAlHashInicial() {
-      if (window.location.hash) {
-        var id = window.location.hash.slice(1);
-        setTimeout(function() { scrollToId(id); }, 80);
-      }
+    // Salto instantáneo: el CSS tiene html { scroll-behavior: smooth }, que convertiría cualquier
+    // scrollTo en una animación; se desactiva solo durante el salto.
+    function saltarA(top) {
+      var html = document.documentElement;
+      var previo = html.style.scrollBehavior;
+      html.style.scrollBehavior = 'auto';
+      window.scrollTo(0, top);
+      html.style.scrollBehavior = previo;
     }
-    if (document.readyState === 'complete') irAlHashInicial();
-    else window.addEventListener('load', irAlHashInicial);
     
     function ajustarNav() {
       const ham   = document.getElementById('nav-hamburger');
@@ -612,7 +612,7 @@ export default function Sitio({ pagina = 'inicio' }) {
       }
     
       // Nav: se oscurece al bajar
-      if (scrollY > 50 || !heroWidget) nav.classList.add('scrolled');
+      if (scrollY > 50) nav.classList.add('scrolled');
       else nav.classList.remove('scrolled');
     
       // Sticky bar: aparece cuando el widget del hero sale de la vista
@@ -621,31 +621,12 @@ export default function Sitio({ pagina = 'inicio' }) {
         const limite = topbarVisible ? TOPBAR_H + NAV_H : NAV_H;
         if (rect.bottom < limite) stickyBar.classList.add('visible');
         else stickyBar.classList.remove('visible');
-      } else {
-        // Fuera de la portada no hay buscador en el hero: la barra de consulta queda siempre visible,
-        // justo debajo del menú. En celular el CSS la fija a 60px (pensado para cuando la barra superior
-        // ya se ocultó); acá se calcula según lo que está visible, para que el menú no la tape.
-        stickyBar.classList.add('visible');
-        stickyBar.style.setProperty('top', ((topbarVisible ? TOPBAR_H : 0) + nav.offsetHeight) + 'px', 'important');
       }
     }
     
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
 
-    // Fuera de la portada, el contenido arranca debajo de la barra superior, el menú y la barra de consulta
-    function ajustarEspaciador() {
-      const esp = document.getElementById('sub-espaciador');
-      if (!esp) return;
-      esp.style.height = (TOPBAR_H + nav.offsetHeight + (stickyBar ? stickyBar.offsetHeight : 0)) + 'px';
-    }
-    ajustarEspaciador();
-    window.addEventListener('resize', ajustarEspaciador);
-    window.addEventListener('load', ajustarEspaciador);
-    // Links a una sección de la misma página (ej. /alojamientos#antes-de-reservar)
-    window.addEventListener('hashchange', function() {
-      if (window.location.hash) scrollToId(window.location.hash.slice(1));
-    });
     
     /* ===== HERO foto ===== */
     // Solo existe en la portada: en las demás páginas se usa un elemento suelto para no romper el resto del script
@@ -1230,29 +1211,116 @@ export default function Sitio({ pagina = 'inicio' }) {
     window.toggleLang         = toggleLang
     window.setLang            = setLang
 
-    // Portada: el menú baja hasta cada sección (como siempre), aunque el link apunte a su página
-    // (/nosotros, /alojamientos, ...). Google sigue leyendo el href, así que las páginas siguen enlazadas.
-    // Ctrl/Cmd/Shift + clic o clic del medio respetan el link (abrir la página en otra pestaña).
-    if (esInicio) {
-      const SECCION_DE_RUTA = {
-        '': null, 'nosotros': 'nosotros', 'alojamientos': 'alojamientos',
-        'alojamientos#antes-de-reservar': 'antes-de-reservar', 'servicios': 'servicios',
-        'opiniones': 'testimonios', 'ubicacion#clima': 'clima', 'ubicacion': 'ubicacion',
-      };
-      document.querySelectorAll('#main-nav a[data-ruta], #nav-mobile-menu a[data-ruta]').forEach(function(a) {
-        a.addEventListener('click', function(e) {
-          if (e.button !== 0 || e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return;
-          const ruta = a.getAttribute('data-ruta');
-          if (!(ruta in SECCION_DE_RUTA)) return;
-          const id = SECCION_DE_RUTA[ruta];
-          if (id && !document.getElementById(id)) return;
-          e.preventDefault();
-          cerrarMenu();
-          if (id) scrollToId(id);
-          else window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
+    /* ===== UNA SOLA PÁGINA, UNA URL POR SECCIÓN =====
+       Todas las direcciones (/, /nosotros, /alojamientos, /servicios, /opiniones, /ubicacion) muestran el
+       sitio completo. El menú baja hasta la sección y cambia la URL; al hacer scroll la URL acompaña la
+       sección visible; al entrar directo a una dirección, la página arranca en esa sección.
+       Se usa un estado propio ({ brisas: true }) para que el router de Next no intente navegar. */
+    const SECCION_DE_RUTA = { '': null, 'nosotros': 'nosotros', 'alojamientos': 'alojamientos', 'servicios': 'servicios', 'opiniones': 'testimonios', 'ubicacion': 'ubicacion' };
+    // Orden en la página: [id de la sección, ruta]. Familias y galería quedan dentro de "nosotros";
+    // info importante dentro de "alojamientos"; el clima va con "ubicacion".
+    const SECCIONES_URL = [['nosotros', 'nosotros'], ['alojamientos', 'alojamientos'], ['servicios', 'servicios'], ['testimonios', 'opiniones'], ['clima', 'ubicacion'], ['ubicacion', 'ubicacion']];
+
+    function rutaDeUrl() {
+      return window.location.pathname.replace(/^\/(en|pt)(?=\/|$)/, '').replace(/^\/+|\/+$/g, '');
+    }
+    function paginaDeRuta(ruta) {
+      return Object.keys(PAGINAS).find(k => PAGINAS[k].path === ruta) || 'inicio';
+    }
+    function marcarMenu(ruta) {
+      document.querySelectorAll('#main-nav a[data-ruta], #nav-mobile-menu a[data-ruta]').forEach(a => {
+        if (ruta && a.getAttribute('data-ruta') === ruta) a.setAttribute('aria-current', 'page');
+        else a.removeAttribute('aria-current');
       });
     }
+    function ponerUrl(ruta, ancla, nuevaEntrada) {
+      const url = rutaDe(currentLang, ruta) + (ancla ? '#' + ancla : '');
+      if (url !== window.location.pathname + window.location.hash) {
+        try { window.history[nuevaEntrada ? 'pushState' : 'replaceState']({ brisas: true }, '', url); } catch (e) {}
+      }
+      marcarMenu(ruta);
+      document.title = metaPagina(paginaDeRuta(ruta), currentLang).title;
+    }
+
+    // Mientras la página se desplaza sola (clic en el menú, atrás/adelante) la URL no se recalcula
+    let pausaSeguimiento = 0;
+    window.addEventListener('scrollend', function() { pausaSeguimiento = 0; });
+    function irASeccion(id, suave) {
+      pausaSeguimiento = Date.now() + (suave ? 3000 : 600);
+      if (id) scrollToId(id, suave);
+      else if (suave) window.scrollTo({ top: 0, behavior: 'smooth' });
+      else saltarA(0);
+    }
+
+    // Clic en el menú (escritorio y celular) y en el logo.
+    // Ctrl/Cmd/Shift + clic o clic del medio respetan el link (abrir en otra pestaña).
+    document.querySelectorAll('#main-nav a[data-ruta], #nav-mobile-menu a[data-ruta]').forEach(function(a) {
+      a.addEventListener('click', function(e) {
+        if (e.button !== 0 || e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return;
+        const [ruta, ancla] = a.getAttribute('data-ruta').split('#');
+        if (!(ruta in SECCION_DE_RUTA)) return;
+        const id = ancla || SECCION_DE_RUTA[ruta];
+        if (id && !document.getElementById(id)) return;
+        e.preventDefault();
+        cerrarMenu();
+        ponerUrl(ruta, ancla, true);
+        irASeccion(id, true);
+      });
+    });
+
+    // Al hacer scroll, la URL acompaña la sección que se está viendo (sin llenar el historial)
+    function rutaVisible() {
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) return 'ubicacion';
+      const linea = window.innerHeight * 0.35;
+      let ruta = '';
+      SECCIONES_URL.forEach(function([id, r]) {
+        const el = document.getElementById(id);
+        if (el && el.getBoundingClientRect().top <= linea) ruta = r;
+      });
+      return ruta;
+    }
+    let cuadroSeguimiento = 0;
+    let seguimientoActivo = false; // se activa recién cuando la página terminó de cargar y quedó en su sección
+    window.addEventListener('scroll', function() {
+      if (!seguimientoActivo || Date.now() < pausaSeguimiento) return;
+      cancelAnimationFrame(cuadroSeguimiento);
+      cuadroSeguimiento = requestAnimationFrame(function() {
+        const ruta = rutaVisible();
+        if (ruta !== rutaDeUrl()) ponerUrl(ruta, '', false);
+      });
+    }, { passive: true });
+
+    // Atrás / adelante del navegador: volver a la sección de esa URL
+    window.addEventListener('popstate', function() {
+      const ruta = rutaDeUrl();
+      const id = window.location.hash.slice(1) || SECCION_DE_RUTA[ruta];
+      marcarMenu(ruta);
+      document.title = metaPagina(paginaDeRuta(ruta), currentLang).title;
+      irASeccion(id, true);
+    });
+
+    // Al entrar directo a /alojamientos, /ubicacion#clima, etc., arrancar en esa sección.
+    // La dirección se lee apenas arranca el script (antes de que nada pueda cambiarla). Se posiciona ya y
+    // otra vez al terminar de cargar, porque las imágenes pueden mover el contenido; recién ahí se activa
+    // el seguimiento por scroll. Si la persona ya empezó a moverse, no se la mueve de golpe.
+    const RUTA_INICIAL = rutaDeUrl();
+    const ANCLA_INICIAL = window.location.hash.slice(1);
+    const ID_INICIAL = ANCLA_INICIAL || SECCION_DE_RUTA[RUTA_INICIAL] || null;
+    let usuarioSeMovio = false;
+    ['wheel', 'touchstart', 'keydown', 'mousedown'].forEach(function(ev) {
+      window.addEventListener(ev, function() { usuarioSeMovio = true; }, { passive: true, once: true });
+    });
+    function posicionarInicio() {
+      if (ID_INICIAL && !usuarioSeMovio) irASeccion(ID_INICIAL, false);
+    }
+    marcarMenu(RUTA_INICIAL);
+    setTimeout(posicionarInicio, 80);
+    function terminarCarga() {
+      posicionarInicio();
+      setTimeout(function() { seguimientoActivo = true; }, 700);
+    }
+    if (document.readyState === 'complete') setTimeout(terminarCarga, 150);
+    else window.addEventListener('load', terminarCarga);
 
     // Páginas /en y /pt: el HTML ya llega traducido del servidor; esto ajusta selector, clases y textos dinámicos
     if (pageLang !== 'es') {
@@ -2723,29 +2791,15 @@ const BLOQUES = {
   post: HTML.slice(posMarca('FOOTER')),
 }
 
-const COMPOSICION = {
-  // La portada muestra el sitio completo, en el mismo orden de siempre; cada sección además tiene su propia URL
-  inicio: ['hero', 'nosotros', 'alojamientos', 'servicios', 'opiniones', 'clima', 'ubicacion', 'cta'],
-  nosotros: ['nosotros', 'cta'],
-  alojamientos: ['alojamientos', 'cta'],
-  servicios: ['servicios', 'cta'],
-  opiniones: ['opiniones', 'cta'],
-  ubicacion: ['ubicacion', 'clima', 'cta'],
-}
-
-const ESPACIADOR = '<div class="sub-espaciador" id="sub-espaciador" aria-hidden="true"></div>'
+// Todas las direcciones muestran el sitio completo, en el mismo orden de siempre.
+// Lo que cambia por dirección es la sección donde arranca, la URL y los textos del <head>.
+const SITIO_COMPLETO = ['hero', 'nosotros', 'alojamientos', 'servicios', 'opiniones', 'clima', 'ubicacion', 'cta']
 
 function armarHtml(pagina, lang) {
   // Menú: marca la página actual
   const pre = pagina === 'inicio' ? BLOQUES.pre
     : BLOQUES.pre.split('data-ruta="' + PAGINAS[pagina].path + '"').join('data-ruta="' + PAGINAS[pagina].path + '" aria-current="page"')
-  let html = [pre, pagina === 'inicio' ? '' : ESPACIADOR, ...COMPOSICION[pagina].map(b => BLOQUES[b]), BLOQUES.post].join('\n')
-  // Fuera de la portada, el primer título de sección es el H1 de la página (mismas clases, mismo diseño)
-  if (pagina !== 'inicio') {
-    const i = html.indexOf('<h2 class="section-title"')
-    const j = html.indexOf('</h2>', i)
-    if (i >= 0 && j > i) html = html.slice(0, i) + '<h1' + html.slice(i + 3, j) + '</h1>' + html.slice(j + 5)
-  }
+  let html = [pre, ...SITIO_COMPLETO.map(b => BLOQUES[b]), BLOQUES.post].join('\n')
   html = translateHtml(html, I18N[lang], lang)
   // Links internos con el prefijo del idioma (/en/nosotros, /pt/alojamientos/...)
   if (lang !== 'es') {
