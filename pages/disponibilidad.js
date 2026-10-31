@@ -1067,6 +1067,8 @@ export default function Disponibilidad() {
   const [cargando, setCargando] = useState(true)
   const [error, setError] = useState(null)
   const [menuOpen, setMenuOpen] = useState(false)
+  // Último ítem tocado del menú móvil (por href); se borra al recargar
+  const [menuActivo, setMenuActivo] = useState(null)
   const [lang, setLang] = useState(['es', 'en', 'pt'].includes(router.locale) ? router.locale : 'es')
   const [langOpen, setLangOpen] = useState(false)
   const [barraCompacta, setBarraCompacta] = useState(false)
@@ -1204,7 +1206,7 @@ export default function Disponibilidad() {
       {/* NAV */}
       <nav id="main-nav" className="scrolled">
         <div className="nav-inner">
-          <a href="/" className="logo"><img src="/logo.png" alt="Hotel y Cabañas Brisas de Oro" /></a>
+          <a href="/" className="logo" onClick={() => setMenuOpen(false)}><img src="/logo.png" alt="Hotel y Cabañas Brisas de Oro" /></a>
           <ul className="nav-links">
             <li><a href="/#nosotros">{t.navNosotros}</a></li>
             <li><a href="/#alojamientos">{t.navAlojamientos}</a></li>
@@ -1234,14 +1236,14 @@ export default function Disponibilidad() {
       </nav>
 
       {/* MENÚ MOBILE */}
-      <nav className={`nav-mobile-menu${menuOpen?' open':''}`}>
-        <a href="/#nosotros" onClick={() => setMenuOpen(false)}>{t.navNosotros}</a>
-        <a href="/#alojamientos" onClick={() => setMenuOpen(false)}>{t.navAlojamientos}</a>
-        <a href="#antes-de-reservar" onClick={irA('antes-de-reservar')}>{t.navInfo}</a>
-        <a href="#servicios" onClick={irA('servicios')}>{t.navServicios}</a>
-        <a href="/#testimonios" onClick={() => setMenuOpen(false)}>{t.navTestimonios}</a>
-        <a href="#clima" onClick={irA('clima')}>{t.navClima}</a>
-        <a href="/#ubicacion" onClick={() => setMenuOpen(false)}>{t.navUbicacion}</a>
+      <nav className={`nav-mobile-menu${menuOpen?' open':''}`} onClickCapture={e => { const a = e.target.closest('a'); if (a) setMenuActivo(a.getAttribute('href')) }}>
+        <a href="/#nosotros" className={menuActivo === '/#nosotros' ? 'activo' : undefined} onClick={() => setMenuOpen(false)}>{t.navNosotros}</a>
+        <a href="/#alojamientos" className={menuActivo === '/#alojamientos' ? 'activo' : undefined} onClick={() => setMenuOpen(false)}>{t.navAlojamientos}</a>
+        <a href="#antes-de-reservar" className={menuActivo === '#antes-de-reservar' ? 'activo' : undefined} onClick={irA('antes-de-reservar')}>{t.navInfo}</a>
+        <a href="#servicios" className={menuActivo === '#servicios' ? 'activo' : undefined} onClick={irA('servicios')}>{t.navServicios}</a>
+        <a href="/#testimonios" className={menuActivo === '/#testimonios' ? 'activo' : undefined} onClick={() => setMenuOpen(false)}>{t.navTestimonios}</a>
+        <a href="#clima" className={menuActivo === '#clima' ? 'activo' : undefined} onClick={irA('clima')}>{t.navClima}</a>
+        <a href="/#ubicacion" className={menuActivo === '/#ubicacion' ? 'activo' : undefined} onClick={() => setMenuOpen(false)}>{t.navUbicacion}</a>
       </nav>
 
       {/* MAIN */}

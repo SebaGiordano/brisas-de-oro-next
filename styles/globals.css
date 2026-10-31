@@ -1206,7 +1206,6 @@ footer { background: var(--footer-bg); color: var(--footer-text); padding: 3.5re
     text-decoration: none; font-size: 0.88rem; font-weight: 600;
     letter-spacing: 0.06em; text-transform: uppercase;
     border-bottom: 1px solid rgba(255,255,255,0.06);
-    transition: color 0.25s;
   }
   .nav-mobile-menu a:hover { color: var(--oro); }
   .nav-cta { padding: 0.45rem 1rem; font-size: 0.72rem; }
@@ -1495,9 +1494,10 @@ footer { background: var(--footer-bg); color: var(--footer-text); padding: 3.5re
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
   letter-spacing: 0.06em; text-transform: uppercase;
   border-bottom: 1px solid rgba(255,255,255,0.06);
-  transition: color 0.25s;
 }
 .nav-mobile-menu a:hover { color: var(--oro); }
+/* Último ítem tocado del menú móvil */
+.nav-mobile-menu a.activo { color: var(--oro); }
 
 
 /* ── Mensaje error fecha modal ── */
