@@ -76,7 +76,7 @@ export default function Sitio({ pagina = 'inicio' }) {
       // Reflejar el idioma en la URL (/, /en, /pt) y en <html lang>, sin recargar
       document.documentElement.lang = lang;
       document.title = metaPagina(pagina, lang).title;
-      // Links internos (menú, tarjetas, resumen): al idioma elegido
+      // Links internos (menú, tarjetas): al idioma elegido
       document.querySelectorAll('a[data-ruta]').forEach(a => {
         const r = a.getAttribute('data-ruta');
         const [ruta, ancla] = r.split('#');
@@ -2671,40 +2671,6 @@ const HTML = `
 <div id="fecha-toast">La fecha ingresada no es válida.<br>Seleccioná una fecha a partir del día de hoy.</div>
 `
 
-/* ===== RESUMEN de la portada: una tarjeta por página, con su link ===== */
-const RESUMEN = `
-<!-- ============================================================ RESUMEN -->
-<section id="explorar" class="sec-crema-a">
-  <div class="section-inner">
-    <p class="section-label" data-i18n="home.res.label">Explorá el complejo</p>
-    <h2 class="section-title" data-i18n="home.res.title">Conocé Brisas de Oro</h2>
-    <div class="divider"></div>
-    <div class="res-grid">
-      <a class="res-card" href="/nosotros" data-ruta="nosotros">
-        <img loading="lazy" decoding="async" src="/fotos/general/5.webp" alt="Vista del complejo Brisas de Oro en Villa Carlos Paz" data-i18n-alt="alt.complejo">
-        <span class="res-body"><span class="res-label" data-i18n="nosotros.label">Quiénes somos</span><span class="res-title" data-i18n="nosotros.title">Un lugar donde cada huésped es parte de la familia</span><span class="res-mas" data-i18n="home.vermas">Ver más →</span></span>
-      </a>
-      <a class="res-card" href="/alojamientos" data-ruta="alojamientos">
-        <img loading="lazy" decoding="async" src="/fotos/cabana-grande/portada.webp" alt="Cabaña grande para 7 a 8 personas en Brisas de Oro, Villa Carlos Paz" data-i18n-alt="alt.cgrande">
-        <span class="res-body"><span class="res-label" data-i18n="aloj.label">Nuestros alojamientos</span><span class="res-title" data-i18n="aloj.title">Encontrá tu espacio ideal</span><span class="res-mas" data-i18n="home.vermas">Ver más →</span></span>
-      </a>
-      <a class="res-card" href="/servicios" data-ruta="servicios">
-        <img loading="lazy" decoding="async" src="/fotos/general/2.webp" alt="Vista del complejo Brisas de Oro en Villa Carlos Paz" data-i18n-alt="alt.complejo">
-        <span class="res-body"><span class="res-label" data-i18n="serv.label">Lo que ofrecemos</span><span class="res-title" data-i18n="serv.title">Nuestros servicios</span><span class="res-mas" data-i18n="home.vermas">Ver más →</span></span>
-      </a>
-      <a class="res-card" href="/opiniones" data-ruta="opiniones">
-        <img loading="lazy" decoding="async" src="/fotos/familias/1.webp" alt="Familia de huéspedes durante su estadía en Brisas de Oro" data-i18n-alt="alt.familia">
-        <span class="res-body"><span class="res-label" data-i18n="test.label">Reseñas</span><span class="res-title" data-i18n="test.title">Lo que dicen quienes <span class="titulo-corte">nos visitaron</span></span><span class="res-mas" data-i18n="home.vermas">Ver más →</span></span>
-      </a>
-      <a class="res-card" href="/ubicacion" data-ruta="ubicacion">
-        <img loading="lazy" decoding="async" src="/fotos/general/3.webp" alt="Vista del complejo Brisas de Oro en Villa Carlos Paz" data-i18n-alt="alt.complejo">
-        <span class="res-body"><span class="res-label" data-i18n="ubic.label">Dónde estamos</span><span class="res-title" data-i18n="ubic.title">En plena avenida, rodeados de naturaleza</span><span class="res-mas" data-i18n="home.vermas">Ver más →</span></span>
-      </a>
-    </div>
-  </div>
-</section>
-`
-
 // Corta el markup en bloques usando los comentarios <!-- ===== NOMBRE --> que ya separan cada sección
 function posMarca(nombre) {
   const m = new RegExp('<!-- =+ ' + nombre + ' -->').exec(HTML)
@@ -2727,11 +2693,11 @@ const BLOQUES = {
   ubicacion: HTML.slice(posMarca('UBICACIÓN'), posTexto('<div class="cta-banner">')),
   cta: HTML.slice(posTexto('<div class="cta-banner">'), posMarca('FOOTER')),
   post: HTML.slice(posMarca('FOOTER')),
-  resumen: RESUMEN,
 }
 
 const COMPOSICION = {
-  inicio: ['hero', 'resumen', 'cta'],
+  // La portada muestra el sitio completo, en el mismo orden de siempre; cada sección además tiene su propia URL
+  inicio: ['hero', 'nosotros', 'alojamientos', 'servicios', 'opiniones', 'clima', 'ubicacion', 'cta'],
   nosotros: ['nosotros', 'cta'],
   alojamientos: ['alojamientos', 'cta'],
   servicios: ['servicios', 'cta'],
