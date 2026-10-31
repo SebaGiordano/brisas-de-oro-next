@@ -1996,26 +1996,57 @@ footer { background: var(--footer-bg); color: var(--footer-text); padding: 3.5re
 }
 .widget-field .contador:focus-within { border-color: var(--oro); background: var(--blanco); }
 .widget-field .contador .contador-num:focus { background: transparent; }
-.sticky-field--contador .contador-btn { width: 1.8rem; }
+.widget-field .contador .contador-num::placeholder { color: #aaa; opacity: 1; }
+/* Barra flotante: los grupos solo actúan en mobile */
+.sticky-fechas, .sticky-selects { display: contents; }
+.sticky-field--huesp { overflow: visible; }
+.huesp-wrap { position: relative; display: flex; width: 100%; min-width: 0; }
+.huesp-trigger {
+  display: flex; align-items: center; gap: 0.35rem; width: 100%; min-width: 0;
+  background: transparent; border: none; cursor: pointer;
+  color: #F5F2EC; font-family: 'Nunito', sans-serif; font-size: 0.82rem; font-weight: 500;
+  padding: 0.55rem 0.8rem; text-align: left;
+}
+.huesp-trigger .ico { color: rgba(245,242,236,0.7); }
+.huesp-label { flex: 1 1 auto; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+/* Popover: mismo aspecto que los dropdowns de la barra */
+.huesp-pop {
+  display: none; position: absolute; top: calc(100% + 4px); left: 0; z-index: 300;
+  width: 190px; box-sizing: border-box; padding: 0.5rem; overflow-y: auto;
+  background: #2a2826; border: 1px solid rgba(245,242,236,0.15); border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+}
+.huesp-wrap.open .huesp-pop { display: block; }
+.huesp-pop.dd-arriba { top: auto; bottom: calc(100% + 4px); }
+.huesp-pop .contador { align-items: center; }
+.huesp-pop .contador-btn { flex: 0 0 44px; width: 44px; height: 44px; font-size: 1.6rem; }
+.sticky-field .huesp-pop .contador-num { padding: 0; font-size: max(16px, 1.05rem); font-weight: 600; color: #F5F2EC; cursor: text; }
+.huesp-listo {
+  display: block; width: 100%; margin-top: 0.4rem; min-height: 44px; border: none; border-radius: 6px; cursor: pointer;
+  background: var(--oro); color: var(--blanco); font-family: 'Nunito', sans-serif; font-size: 0.82rem; font-weight: 700;
+}
+.huesp-listo:hover { background: var(--oro-hover); }
 
 @media (max-width: 768px) {
   .widget-field .contador { height: 2.2rem; background: #fff; border-radius: 6px; }
+  .widget-field .contador-btn { width: 32px; z-index: 1; }
   /* El input usa 1rem (nunca menos de 16px, así iOS no hace zoom); la escala lo lleva a los 0.78rem de los demás campos */
-  .widget-field .contador .contador-num { font-size: 1rem; transform: scale(0.78); padding-top: 0; padding-bottom: 0; }
+  .widget-field .contador .contador-num { font-size: 1rem; transform: scale(0.78); padding-top: 0; padding-bottom: 0; margin: 0 -14%; width: 128%; }
   /* Área táctil de 44 × 44 px sin agrandar el campo */
   .contador-btn::after { content: ''; position: absolute; left: 50%; top: 50%; width: 44px; height: 44px; transform: translate(-50%, -50%); }
-  /* Buscador flotante: los botones ceden ancho cuando no entran 44 px (letra grande) */
+  /* Barra flotante: las fechas, iguales entre sí, con al menos el ancho de la más larga;
+     Huéspedes y Tipo, iguales entre sí, con el resto */
   .sticky-bar { padding-left: 8px; padding-right: 8px; }
   .sticky-bar-inner { gap: 0.25rem; }
-  .sticky-bar .sticky-field { flex: 0 1 auto; }
+  .sticky-fechas { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 0.25rem; flex: 1 1 40%; min-width: max-content; }
+  .sticky-selects { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.25rem; flex: 1 1 60%; min-width: 0; }
   .sticky-bar .sticky-btn { padding-left: 8px !important; padding-right: 8px !important; }
-  .sticky-bar .sticky-field--contador { flex: 1 1 0; min-width: 64px; overflow: visible; }
-  .sticky-bar .custom-tipo-trigger { padding-left: 0.3rem; padding-right: 0.3rem; }
-  .sticky-field--contador .contador { border: 1px solid rgba(245,242,236,0.25); border-radius: 6px; height: 2.2rem; }
-  .sticky-field--contador .contador-btn { flex: 1 1 44px; width: auto; min-width: 21px; max-width: 44px; }
-  .sticky-field--contador .contador-btn::after { width: 100%; }
-  .sticky-field--contador .contador .contador-num { flex: 1 1 1.6em; width: 1.6em; font-size: 1rem; transform: scale(0.78); padding: 0; }
-  .sticky-bar .sticky-field .sticky-label { padding-left: 0.04rem; padding-right: 0.04rem; }
+  .sticky-bar .sticky-field .sticky-label { padding-left: 3px; padding-right: 3px; }
+  .sticky-field--huesp { overflow: visible; justify-content: flex-start; }
+  .huesp-trigger {
+    height: 2.2rem; padding: 0 3px; gap: 3px; font-size: 0.78rem; font-weight: 400;
+    border: 1px solid rgba(245,242,236,0.25); border-radius: 6px; color: rgba(245,242,236,0.9);
+  }
 }
 
 /* ===================== GRUPOS EN /disponibilidad ===================== */
@@ -2055,4 +2086,28 @@ footer { background: var(--footer-bg); color: var(--footer-text); padding: 3.5re
   .topbar:has(~ .disp-main) { background: rgb(22, 20, 17); }
   .disp-compacta-texto { min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .disp-compacta svg { flex-shrink: 0; color: var(--oro); }
+}
+
+/* Barra flotante en celulares (hasta 767 px; en 768 px la barra queda como estaba): contenido centrado */
+@media (max-width: 767px) {
+  /* Tipo: texto centrado en el campo; la flecha va en absoluto a la derecha para no empujarlo.
+     El padding es simétrico (deja lugar a la flecha) para que el centro sea el del campo */
+  .sticky-bar .custom-tipo-trigger { position: relative; justify-content: center; text-align: center; padding-left: calc(0.3rem + 11px); padding-right: calc(0.3rem + 11px); }
+  .sticky-bar .custom-tipo-trigger svg { position: absolute; right: 0.3rem; top: 50%; transform: translateY(-50%); margin-left: 0; }
+  .sticky-bar .custom-tipo-wrap.open .custom-tipo-trigger svg { transform: translateY(-50%) rotate(180deg); }
+  #s-tipo-label { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+  /* Campo angosto (letra grande): menos padding a la izquierda, lugar justo para la flecha y la letra al tamaño
+     de la letra normal, para que el texto entre entero sin pisar la flecha */
+  .sticky-bar .sticky-field:has(#s-tipo-wrap) { container-type: inline-size; }
+  .sticky-bar .sticky-field--huesp { container-type: inline-size; }
+  @container (max-width: calc(2.65rem + 22px)) { /* lo que ocupa "Todos" más el padding de ambos lados: crece con la letra */
+    .sticky-bar .custom-tipo-trigger { padding-left: 3px; padding-right: calc(0.3rem + 11px); font-size: 0.6rem; }
+    .sticky-bar .huesp-trigger { font-size: 0.6rem; gap: 2px; }
+  }
+  /* Huéspedes: ícono + texto centrados en el campo */
+  .huesp-trigger { justify-content: center; }
+  .huesp-label { flex: 0 1 auto; }
+  .huesp-label:empty { display: none; } /* solo el ícono: queda en el centro exacto */
+  /* El panel de huéspedes, centrado debajo del campo (alineado a la izquierda se salía de la pantalla en 360 px) */
+  .sticky-bar .huesp-pop { left: 50%; transform: translateX(-50%); }
 }

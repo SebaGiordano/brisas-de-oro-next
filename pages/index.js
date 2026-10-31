@@ -31,12 +31,12 @@ export default function Home() {
         'aloj.card1.name':'Cabaña chica','aloj.card1.meta1':'Hasta 3 personas','aloj.card1.meta2':'1 dormitorio',
         'aloj.card2.name':'Cabaña mediana','aloj.card2.meta1':'Hasta 5/6 personas','aloj.card2.meta2':'1 dormitorio',
         'aloj.card3.name':'Cabaña grande','aloj.card3.meta1':'Hasta 7/8 personas','aloj.card3.meta2':'2 dormitorios',
-        'aloj.card4.name':'Habitaciones de hotel','aloj.card4.meta1':'1–4 personas','aloj.card4.meta2':'Desayuno incluido',
+        'aloj.card4.name':'Habitaciones de hotel','aloj.card4.meta1':'1–4 personas',
         'aloj.card4.v1':'Doble','aloj.card4.v2':'Triple','aloj.card4.v3':'Cuádruple','aloj.card4.body2':'Baño privado',
-        'aloj.card5.name':'Apart Hotel','aloj.card5.meta1':'Hasta 4/5 personas','aloj.card5.meta2':'2 hab. combinadas','aloj.card5.body2':'2 hab. con baño privado',
-        'feat.cocina':'Cocina equipada','feat.ac':'Aire acondicionado','feat.asador':'Asador','feat.limp3':'Limpieza c/3 días',
-        'feat.parque':'Parque','feat.banio':'Baño privado','feat.ac24':'Aire acond. 24hs','feat.calef':'Calefacción','feat.limp1':'Limpieza diaria',
-        'feat.asador.priv':'Asador privado','feat.salamandra':'Salamandra','feat.heladera':'Heladera privada','feat.asador.comp':'Asador compartido','feat.cocina.semi':'Cocina semi equipada',
+        'aloj.card5.name':'Apart Hotel','aloj.card5.meta1':'Hasta 4/5 personas','aloj.card5.body2':'2 hab. con baño privado',
+        'feat.frio':'Aire frío/calor','feat.minicocina':'Mini cocina equipada','feat.desayuno.opc':'Desayuno opcional','feat.cocina':'Cocina equipada','feat.ac':'Aire acondicionado','feat.limp3':'Limpieza c/3 días',
+        'feat.ac24':'Aire frío/calor 24 hs','feat.limp1':'Limpieza diaria',
+        'feat.asador.priv':'Asador privado','feat.salamandra':'Salamandra','feat.heladera':'Heladera privada','feat.asador.comp':'Asador compartido',
         'widget.tipo.abbr':'Alojamiento','widget.cualquiera.short':'Todos','widget.tipo.short':'Tipo','hero.b1.abbr':'Familiar',
         'serv.label':'Lo que ofrecemos','serv.title':'Nuestros servicios',
         'serv.pileta':'Pileta','serv.pileta.d':'Compartida para todos los huéspedes','serv.parque':'Parque','serv.parque.d':'Amplio y verde',
@@ -102,7 +102,7 @@ export default function Home() {
         'clima.note':'Datos provistos por Tomorrow.io · Actualizado automáticamente',
         'footer.a5':'Apart Hotel',
         'topbar.dir.short':'Av. Ramón J. Cárcano 2590','topbar.casa':'Casa con Pileta · Icho Cruz','topbar.casa.short':'Casa · Icho Cruz',
-        'widget.casa':'Casa','widget.menos':'Menos huéspedes','widget.mas':'Más huéspedes',
+        'widget.casa':'Casa','widget.huesp.ph':'Huésp.','widget.huesp.val':'huésp.','widget.listo':'Listo','widget.menos':'Menos huéspedes','widget.mas':'Más huéspedes',
         'aloj.tipo6':'Casa · Icho Cruz',
         'aloj.card6.name':'Casa con Pileta · Icho Cruz','aloj.card6.meta1':'Hasta 10 personas','aloj.card6.meta2':'3 dormitorios',
         'aloj.card6.noincluye.a':'Sin desayuno ni toallas','aloj.card6.noincluye.b':'Ropa de cama opcional (con cargo adicional)','aloj.card6.ubic':'Icho Cruz — a 15 min de Brisas de Oro',
@@ -153,12 +153,12 @@ export default function Home() {
         'aloj.card1.name':'Small cabin','aloj.card1.meta1':'Up to 3 guests','aloj.card1.meta2':'1 bedroom',
         'aloj.card2.name':'Medium cabin','aloj.card2.meta1':'Up to 5/6 guests','aloj.card2.meta2':'1 bedroom',
         'aloj.card3.name':'Large cabin','aloj.card3.meta1':'Up to 7/8 guests','aloj.card3.meta2':'2 bedrooms',
-        'aloj.card4.name':'Hotel rooms','aloj.card4.meta1':'1–4 guests','aloj.card4.meta2':'Breakfast included',
+        'aloj.card4.name':'Hotel rooms','aloj.card4.meta1':'1–4 guests',
         'aloj.card4.v1':'Double','aloj.card4.v2':'Triple','aloj.card4.v3':'Quadruple','aloj.card4.body2':'Private bathroom',
-        'aloj.card5.name':'Apart Hotel','aloj.card5.meta1':'Up to 4/5 guests','aloj.card5.meta2':'2 combined rooms','aloj.card5.body2':'2 rooms with private bathroom',
-        'feat.cocina':'Full kitchen','feat.ac':'Air conditioning','feat.asador':'BBQ grill','feat.limp3':'Cleaning every 3 days',
-        'feat.parque':'Garden','feat.banio':'Private bathroom','feat.ac24':'A/C 24hs','feat.calef':'Heating','feat.limp1':'Daily cleaning',
-        'feat.asador.priv':'Private BBQ','feat.salamandra':'Wood stove','feat.heladera':'Private fridge','feat.asador.comp':'Shared BBQ','feat.cocina.semi':'Semi-equipped kitchen',
+        'aloj.card5.name':'Apart Hotel','aloj.card5.meta1':'Up to 4/5 guests','aloj.card5.body2':'2 rooms with private bathroom',
+        'feat.frio':'Heat/cool A/C','feat.minicocina':'Kitchenette','feat.desayuno.opc':'Optional breakfast','feat.cocina':'Full kitchen','feat.ac':'Air conditioning','feat.limp3':'Cleaning every 3 days',
+        'feat.ac24':'Air conditioning (heat/cool) 24h','feat.limp1':'Daily cleaning',
+        'feat.asador.priv':'Private BBQ','feat.salamandra':'Wood stove','feat.heladera':'Private fridge','feat.asador.comp':'Shared BBQ',
         'widget.tipo.abbr':'Lodging','widget.cualquiera.short':'All','widget.tipo.short':'Type','hero.b1.abbr':'Family',
         'serv.label':'What we offer','serv.title':'Our services',
         'serv.pileta':'Pool','serv.pileta.d':'Shared by all guests','serv.parque':'Grounds','serv.parque.d':'Spacious and green',
@@ -224,7 +224,7 @@ export default function Home() {
         'info.cta.btn':'Contact us on WhatsApp',
         'footer.a5':'Apart Hotel',
         'topbar.dir.short':'Av. Ramón J. Cárcano 2590','topbar.casa':'House with Pool · Icho Cruz','topbar.casa.short':'House · Icho Cruz',
-        'widget.casa':'House','widget.menos':'Fewer guests','widget.mas':'More guests',
+        'widget.casa':'House','widget.huesp.ph':'Guests','widget.huesp.val':'guests','widget.listo':'Done','widget.menos':'Fewer guests','widget.mas':'More guests',
         'aloj.tipo6':'House · Icho Cruz',
         'aloj.card6.name':'House with Pool · Icho Cruz','aloj.card6.meta1':'Up to 10 guests','aloj.card6.meta2':'3 bedrooms',
         'aloj.card6.noincluye.a':'No breakfast or towels','aloj.card6.noincluye.b':'Bed linen optional (extra charge)','aloj.card6.ubic':'Icho Cruz — 15 min from Brisas de Oro',
@@ -275,12 +275,12 @@ export default function Home() {
         'aloj.card1.name':'Chalé pequeno','aloj.card1.meta1':'Até 3 pessoas','aloj.card1.meta2':'1 quarto',
         'aloj.card2.name':'Chalé médio','aloj.card2.meta1':'Até 5/6 pessoas','aloj.card2.meta2':'1 quarto',
         'aloj.card3.name':'Chalé grande','aloj.card3.meta1':'Até 7/8 pessoas','aloj.card3.meta2':'2 quartos',
-        'aloj.card4.name':'Quartos de hotel','aloj.card4.meta1':'1–4 pessoas','aloj.card4.meta2':'Café incluído',
+        'aloj.card4.name':'Quartos de hotel','aloj.card4.meta1':'1–4 pessoas',
         'aloj.card4.v1':'Duplo','aloj.card4.v2':'Triplo','aloj.card4.v3':'Quádruplo','aloj.card4.body2':'Banheiro privativo',
-        'aloj.card5.name':'Apart Hotel','aloj.card5.meta1':'Até 4/5 pessoas','aloj.card5.meta2':'2 quartos combinados','aloj.card5.body2':'2 quartos c/ banheiro privado',
-        'feat.cocina':'Cozinha equipada','feat.ac':'Ar-condicionado','feat.asador':'Churrasqueira','feat.limp3':'Limpeza a cada 3 dias',
-        'feat.parque':'Jardim','feat.banio':'Banheiro privativo','feat.ac24':'A/C 24hs','feat.calef':'Aquecimento','feat.limp1':'Limpeza diária',
-        'feat.asador.priv':'Churrasqueira privada','feat.salamandra':'Salamandra','feat.heladera':'Geladeira privada','feat.asador.comp':'Churrasqueira compartilhada','feat.cocina.semi':'Cozinha semi equipada',
+        'aloj.card5.name':'Apart Hotel','aloj.card5.meta1':'Até 4/5 pessoas','aloj.card5.body2':'2 quartos c/ banheiro privado',
+        'feat.frio':'A/C frio e calor','feat.minicocina':'Minicozinha equipada','feat.desayuno.opc':'Café da manhã opcional','feat.cocina':'Cozinha equipada','feat.ac':'Ar-condicionado','feat.limp3':'Limpeza a cada 3 dias',
+        'feat.ac24':'Ar-condicionado frio/calor 24h','feat.limp1':'Limpeza diária',
+        'feat.asador.priv':'Churrasqueira privativa','feat.salamandra':'Salamandra','feat.heladera':'Geladeira privada','feat.asador.comp':'Churrasqueira compartilhada',
         'widget.tipo.abbr':'Alojamento','widget.cualquiera.short':'Todos','widget.tipo.short':'Tipo','hero.b1.abbr':'Familiar',
         'serv.label':'O que oferecemos','serv.title':'Nossos serviços',
         'serv.pileta':'Piscina','serv.pileta.d':'Compartilhada por todos os hóspedes','serv.parque':'Jardim','serv.parque.d':'Amplo e verde',
@@ -346,7 +346,7 @@ export default function Home() {
         'info.cta.btn':'Consultar pelo WhatsApp',
         'footer.a5':'Apart Hotel',
         'topbar.dir.short':'Av. Ramón J. Cárcano 2590','topbar.casa':'Casa com Piscina · Icho Cruz','topbar.casa.short':'Casa · Icho Cruz',
-        'widget.casa':'Casa','widget.menos':'Menos hóspedes','widget.mas':'Mais hóspedes',
+        'widget.casa':'Casa','widget.huesp.ph':'Hósp.','widget.huesp.val':'hósp.','widget.listo':'Pronto','widget.menos':'Menos hóspedes','widget.mas':'Mais hóspedes',
         'aloj.tipo6':'Casa · Icho Cruz',
         'aloj.card6.name':'Casa com Piscina · Icho Cruz','aloj.card6.meta1':'Até 10 pessoas','aloj.card6.meta2':'3 quartos',
         'aloj.card6.noincluye.a':'Sem café da manhã nem toalhas','aloj.card6.noincluye.b':'Roupa de cama opcional (com custo adicional)','aloj.card6.ubic':'Icho Cruz — a 15 min do Brisas de Oro',
@@ -395,6 +395,10 @@ export default function Home() {
       const _sTipoLabel = document.getElementById('s-tipo-label');
       const _sTipoActive = document.querySelector('#s-tipo-opts .custom-tipo-opt.active');
       if (_sTipoLabel && _sTipoActive) _sTipoLabel.textContent = _sTipoActive.textContent;
+      document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+        const key = el.getAttribute('data-i18n-ph');
+        if (t[key] !== undefined) el.placeholder = t[key];
+      });
       document.querySelectorAll('[data-i18n-aria]').forEach(el => {
         const key = el.getAttribute('data-i18n-aria');
         if (t[key] !== undefined) el.setAttribute('aria-label', t[key]);
@@ -411,6 +415,7 @@ export default function Home() {
         }
       });
       currentLang = lang;
+      actualizarEtiquetaHuespedes();
     }
     
     function setLang(lang) {
@@ -1040,7 +1045,7 @@ export default function Home() {
         String(ahora.getDate()).padStart(2,'0');
       const llegadaH   = document.getElementById('fecha-llegada').value;
       const salidaH    = document.getElementById('fecha-salida').value;
-      const huespedesH = String(normalizarHuespedes('huespedes'));
+      const huespedesH = String(normalizarHuespedes('huespedes') ?? '');
       const tipoH      = document.getElementById('tipo-aloj').value;
       // Validar campos obligatorios
       if (!llegadaH || !salidaH || !huespedesH || huespedesH === '0') {
@@ -1092,7 +1097,7 @@ export default function Home() {
         String(ahora.getDate()).padStart(2,'0');
       const llegadaS   = document.getElementById('s-llegada').value;
       const salidaS    = document.getElementById('s-salida').value;
-      const huespedesS = String(normalizarHuespedes('s-huespedes'));
+      const huespedesS = String(normalizarHuespedes('s-huespedes') ?? '');
       const tipoS      = document.getElementById('s-tipo').value;
       // Validar campos obligatorios
       if (!llegadaS || !salidaS || !huespedesS || huespedesS === '0') {
@@ -1215,13 +1220,24 @@ export default function Home() {
       const wrap = input.closest('.contador');
       wrap.querySelector('.contador-menos').disabled = n <= 1;
       wrap.querySelector('.contador-mas').disabled = n >= HUESPEDES_MAX_BOTONES;
+      if (id === 's-huespedes') actualizarEtiquetaHuespedes();
     }
+    // Etiqueta del campo de la barra flotante: si no entra (letra grande), solo el ícono con el número
+    function actualizarEtiquetaHuespedes() {
+      const label = document.getElementById('s-huespedes-label');
+      const valor = document.getElementById('s-huespedes').value;
+      const t = i18n[currentLang];
+      label.textContent = valor ? `${valor} ${t['widget.huesp.val']}` : t['widget.huesp.ph'];
+      if (label.scrollWidth > label.clientWidth) label.textContent = valor;
+    }
+    new ResizeObserver(actualizarEtiquetaHuespedes).observe(document.getElementById('s-huespedes-trigger'));
+    // Devuelve la cantidad, o null si todavía no se eligió
     function normalizarHuespedes(id) {
       const input = document.getElementById(id);
-      const n = Math.max(parseInt(input.value, 10) || 1, 1);
-      input.value = n;
+      const n = parseInt(input.value, 10);
+      input.value = n >= 1 ? n : '';
       actualizarContador(id);
-      return n;
+      return n >= 1 ? n : null;
     }
     function escribirHuespedes(input) {
       input.value = input.value.replace(/\D/g, '').replace(/^0+/, '').slice(0, 3);
@@ -1229,8 +1245,18 @@ export default function Home() {
     }
     function cambiarHuespedes(id, delta) {
       const n = normalizarHuespedes(id);
-      document.getElementById(id).value = delta < 0 ? Math.max(n - 1, 1) : Math.min(n + 1, HUESPEDES_MAX_BOTONES);
+      if (n === null && delta < 0) return;
+      document.getElementById(id).value = n === null ? 1 : delta < 0 ? Math.max(n - 1, 1) : Math.min(n + 1, HUESPEDES_MAX_BOTONES);
       actualizarContador(id);
+    }
+    function toggleHuespedes() {
+      const wrap = document.getElementById('s-huespedes-wrap');
+      const abrir = !wrap.classList.contains('open');
+      cerrarDropdowns();
+      if (!abrir) return;
+      wrap.classList.add('open');
+      document.getElementById('s-huespedes-trigger').setAttribute('aria-expanded', 'true');
+      posicionarDropdown(wrap);
     }
     // ===== MODAL FECHA MOBILE =====
     var _modalCampo = null;
@@ -1355,13 +1381,14 @@ export default function Home() {
 
     // Cierra todos los dropdowns custom y devuelve el hero a overflow:hidden
     function cerrarDropdowns() {
-      document.querySelectorAll('.custom-tipo-wrap').forEach(function(w) { w.classList.remove('open'); });
+      document.querySelectorAll('.custom-tipo-wrap, .huesp-wrap').forEach(function(w) { w.classList.remove('open'); });
+      document.getElementById('s-huespedes-trigger').setAttribute('aria-expanded', 'false');
       var hero = document.querySelector('.hero');
       if (hero) hero.classList.remove('dd-abierto');
     }
     // Ubica la lista abierta: hacia abajo si entra en pantalla, si no hacia arriba; con alto máximo y scroll interno
     function posicionarDropdown(wrap) {
-      var opts = wrap.querySelector('.custom-tipo-opts');
+      var opts = wrap.querySelector('.custom-tipo-opts, .huesp-pop');
       if (!opts) return;
       var hero = wrap.closest('.hero');
       if (hero) hero.classList.add('dd-abierto'); // el hero recorta con overflow:hidden
@@ -1410,9 +1437,14 @@ export default function Home() {
       cerrarDropdowns();
     }
     document.addEventListener('click', function(e) {
-      if (!e.target.closest('.custom-tipo-wrap')) {
+      if (!e.target.closest('.custom-tipo-wrap') && !e.target.closest('.huesp-wrap')) {
         cerrarDropdowns();
       }
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key !== 'Escape' || !document.getElementById('s-huespedes-wrap').classList.contains('open')) return;
+      cerrarDropdowns();
+      document.getElementById('s-huespedes-trigger').focus();
     });
 
     // Expose functions to window so HTML inline onclick handlers can call them
@@ -1434,6 +1466,8 @@ export default function Home() {
     window.selectCustomTipo   = selectCustomTipo
     window.preTouchCustomTipo = preTouchCustomTipo
     window.cambiarHuespedes   = cambiarHuespedes
+    window.toggleHuespedes    = toggleHuespedes
+    window.cerrarDropdowns    = cerrarDropdowns
     window.escribirHuespedes  = escribirHuespedes
     window.normalizarHuespedes = normalizarHuespedes
   }, [])
@@ -1531,6 +1565,7 @@ export default function Home() {
 <!-- ============================================================ STICKY BOOKING BAR -->
 <div class="sticky-bar" id="stickyBar">
   <div class="sticky-bar-inner">
+    <div class="sticky-fechas">
     <div class="sticky-field" onclick="if(window.innerWidth<=768)abrirFechaModal('llegada')">
       <span class="sticky-label" data-i18n="widget.llegada">Llegada</span>
       <input type="date" id="s-llegada" onclick="if(window.innerWidth<=768){event.preventDefault();event.stopPropagation();abrirFechaModal('llegada')}">
@@ -1539,12 +1574,22 @@ export default function Home() {
       <span class="sticky-label" data-i18n="widget.salida">Salida</span>
       <input type="date" id="s-salida" onclick="if(window.innerWidth<=768){event.preventDefault();event.stopPropagation();abrirFechaModal('salida')}">
     </div>
-    <div class="sticky-field sticky-field--contador">
-      <span class="sticky-label solo-desktop" data-i18n="widget.huespedes">Huéspedes</span>
-      <div class="contador">
-        <button type="button" class="contador-btn contador-menos" data-i18n-aria="widget.menos" aria-label="Menos huéspedes" onclick="cambiarHuespedes('s-huespedes',-1)" disabled>−</button>
-        <input type="text" inputmode="numeric" pattern="[0-9]*" autocomplete="off" id="s-huespedes" class="contador-num" value="1" data-i18n-aria="widget.huespedes" aria-label="Huéspedes" oninput="escribirHuespedes(this)" onblur="normalizarHuespedes('s-huespedes')">
-        <button type="button" class="contador-btn contador-mas" data-i18n-aria="widget.mas" aria-label="Más huéspedes" onclick="cambiarHuespedes('s-huespedes',1)">+</button>
+    </div>
+    <div class="sticky-selects">
+    <div class="sticky-field sticky-field--huesp">
+      <div class="huesp-wrap" id="s-huespedes-wrap">
+        <button type="button" class="huesp-trigger" id="s-huespedes-trigger" data-i18n-aria="widget.huespedes" aria-label="Huéspedes" aria-haspopup="dialog" aria-expanded="false" onclick="toggleHuespedes()">
+          <svg class="ico" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <span class="huesp-label" id="s-huespedes-label">Huésp.</span>
+        </button>
+        <div class="huesp-pop" role="dialog" data-i18n-aria="widget.huespedes" aria-label="Huéspedes">
+          <div class="contador">
+            <button type="button" class="contador-btn contador-menos" data-i18n-aria="widget.menos" aria-label="Menos huéspedes" onclick="cambiarHuespedes('s-huespedes',-1)" disabled>−</button>
+            <input type="text" inputmode="numeric" pattern="[0-9]*" autocomplete="off" id="s-huespedes" class="contador-num" data-i18n-aria="widget.huespedes" aria-label="Huéspedes" oninput="escribirHuespedes(this)" onblur="normalizarHuespedes('s-huespedes')">
+            <button type="button" class="contador-btn contador-mas" data-i18n-aria="widget.mas" aria-label="Más huéspedes" onclick="cambiarHuespedes('s-huespedes',1)">+</button>
+          </div>
+          <button type="button" class="huesp-listo" data-i18n="widget.listo" onclick="cerrarDropdowns()">Listo</button>
+        </div>
       </div>
     </div>
     <div class="sticky-field">
@@ -1569,6 +1614,7 @@ export default function Home() {
           <button type="button" class="custom-tipo-opt" data-index="5" data-abbr="Casa" data-i18n="widget.casa" ontouchstart="preTouchCustomTipo(this)" onclick="selectCustomTipo('s-tipo','s-tipo-wrap',this)">Casa</button>
         </div>
       </div>
+    </div>
     </div>
     <button class="sticky-btn" onclick="consultarStickyWsp()" data-i18n="sticky.btn">Buscar</button>
 </div>
@@ -1621,7 +1667,7 @@ export default function Home() {
           <label for="huespedes" data-i18n="widget.huespedes">Huéspedes</label>
           <div class="contador">
             <button type="button" class="contador-btn contador-menos" data-i18n-aria="widget.menos" aria-label="Menos huéspedes" onclick="cambiarHuespedes('huespedes',-1)" disabled>−</button>
-            <input type="text" inputmode="numeric" pattern="[0-9]*" autocomplete="off" id="huespedes" class="contador-num" value="1" data-i18n-aria="widget.huespedes" aria-label="Huéspedes" oninput="escribirHuespedes(this)" onblur="normalizarHuespedes('huespedes')">
+            <input type="text" inputmode="numeric" pattern="[0-9]*" autocomplete="off" id="huespedes" class="contador-num" placeholder="Huéspedes" data-i18n-ph="widget.huespedes" data-i18n-aria="widget.huespedes" aria-label="Huéspedes" oninput="escribirHuespedes(this)" onblur="normalizarHuespedes('huespedes')">
             <button type="button" class="contador-btn contador-mas" data-i18n-aria="widget.mas" aria-label="Más huéspedes" onclick="cambiarHuespedes('huespedes',1)">+</button>
           </div>
         </div>
@@ -1871,11 +1917,12 @@ export default function Home() {
           <p class="card-name" data-i18n="aloj.card1.name">Cabaña chica</p>
           <div class="card-meta"><span class="ico-txt"><svg class="ico" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span data-i18n="aloj.card1.meta1">Hasta 3 personas</span></span><span class="ico-txt"><svg class="ico" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg><span data-i18n="aloj.card1.meta2">1 dormitorio</span></span></div>
           <div class="card-features">
-            <span class="feature-tag" data-i18n="feat.ac">Aire acondicionado</span>
+            <span class="feature-tag" data-i18n="feat.frio">Aire frío/calor</span>
             <span class="feature-tag" data-i18n="feat.cocina">Cocina equipada</span>
             <span class="feature-tag" data-i18n="feat.asador.priv">Asador privado</span>
             <span class="feature-tag" data-i18n="feat.limp3">Limpieza c/3 días</span>
             <span class="feature-tag" data-i18n="feat.pet">Pet friendly</span>
+            <span class="feature-tag" data-i18n="feat.desayuno.opc">Desayuno opcional</span>
           </div>
         </div>
       </div>
@@ -1915,6 +1962,7 @@ export default function Home() {
             <span class="feature-tag" data-i18n="feat.asador.priv">Asador privado</span>
             <span class="feature-tag" data-i18n="feat.limp3">Limpieza c/3 días</span>
             <span class="feature-tag" data-i18n="feat.pet">Pet friendly</span>
+            <span class="feature-tag" data-i18n="feat.desayuno.opc">Desayuno opcional</span>
           </div>
         </div>
       </div>
@@ -1948,11 +1996,12 @@ export default function Home() {
           <p class="card-name" data-i18n="aloj.card3.name">Cabaña grande</p>
           <div class="card-meta"><span class="ico-txt"><svg class="ico" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span data-i18n="aloj.card3.meta1">Hasta 7/8 personas</span></span><span class="ico-txt"><svg class="ico" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg><span data-i18n="aloj.card3.meta2">2 dormitorios</span></span></div>
           <div class="card-features">
-            <span class="feature-tag" data-i18n="feat.ac">Aire acondicionado</span>
+            <span class="feature-tag" data-i18n="feat.frio">Aire frío/calor</span>
             <span class="feature-tag" data-i18n="feat.cocina">Cocina equipada</span>
             <span class="feature-tag" data-i18n="feat.asador.priv">Asador privado</span>
             <span class="feature-tag" data-i18n="feat.limp3">Limpieza c/3 días</span>
             <span class="feature-tag" data-i18n="feat.pet">Pet friendly</span>
+            <span class="feature-tag" data-i18n="feat.desayuno.opc">Desayuno opcional</span>
           </div>
         </div>
       </div>
@@ -1979,7 +2028,7 @@ export default function Home() {
           <span class="card-type-badge" data-i18n="aloj.tipo4">Hotel</span>
           <div class="card-hover-panel">
             <p class="card-hover-name" data-i18n="aloj.card4.name">Habitaciones de hotel</p>
-            <p class="card-hover-meta"><span class="ico-txt"><svg class="ico" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span data-i18n="aloj.card4.meta1">1–4 personas</span></span> · <span class="ico-txt"><svg class="ico" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg><span data-i18n="aloj.card4.meta2">Desayuno incluido</span></span></p>
+            <p class="card-hover-meta"><span class="ico-txt"><svg class="ico" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span data-i18n="aloj.card4.meta1">1–4 personas</span></span> · <span class="ico-txt"><svg class="ico" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span data-i18n="aloj.card4.meta1">1–4 personas</span></span><span class="ico-txt"><svg class="ico" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6 6.5 3.5a1.5 1.5 0 0 0-1-.5C4.683 3 4 3.683 4 4.5V17a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-5"/><line x1="10" y1="5" x2="8" y2="7"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="7" y1="19" x2="7" y2="21"/><line x1="17" y1="19" x2="17" y2="21"/></svg><span data-i18n="aloj.card4.body2">Baño privado</span></span></p>
             <a class="btn-consultar-card" href="javascript:void(0)" onclick="abrirWsp(getMsgWsp('habit'))" data-i18n="aloj.consultar">Consultar</a>
           </div>
         </div>
@@ -1992,10 +2041,11 @@ export default function Home() {
             <span class="variant-chip" data-i18n="aloj.card4.v3">Cuádruple</span>
           </div>
           <div class="card-features">
-            <span class="feature-tag" data-i18n="feat.ac24">Aire acond. 24hs</span>
+            <span class="feature-tag" data-i18n="feat.ac24">Aire frío/calor 24 hs</span>
             <span class="feature-tag" data-i18n="feat.heladera">Heladera privada</span>
             <span class="feature-tag" data-i18n="feat.asador.comp">Asador compartido</span>
             <span class="feature-tag" data-i18n="feat.limp1">Limpieza diaria</span>
+            <span class="feature-tag" data-i18n="feat.desayuno.opc">Desayuno opcional</span>
           </div>
         </div>
       </div>
@@ -2019,7 +2069,7 @@ export default function Home() {
           <span class="card-type-badge" data-i18n="aloj.tipo5">Apart Hotel</span>
           <div class="card-hover-panel">
             <p class="card-hover-name" data-i18n="aloj.card5.name">Apart Hotel</p>
-            <p class="card-hover-meta"><span class="ico-txt"><svg class="ico" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span data-i18n="aloj.card5.meta1">Hasta 4/5 personas</span></span> · <span class="ico-txt"><svg class="ico" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span data-i18n="aloj.card5.meta2">2 hab. combinadas</span></span></p>
+            <p class="card-hover-meta"><span class="ico-txt"><svg class="ico" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span data-i18n="aloj.card5.meta1">Hasta 4/5 personas</span></span> · <span class="ico-txt"><svg class="ico" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span data-i18n="aloj.card5.body2">2 hab. con baño privado</span></span></p>
             <a class="btn-consultar-card" href="javascript:void(0)" onclick="abrirWsp(getMsgWsp('apart'))" data-i18n="aloj.consultar">Consultar</a>
           </div>
         </div>
@@ -2027,11 +2077,12 @@ export default function Home() {
           <p class="card-name" data-i18n="aloj.card5.name">Apart Hotel</p>
           <div class="card-meta"><span class="ico-txt"><svg class="ico" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span data-i18n="aloj.card5.meta1">Hasta 4/5 personas</span></span><span class="ico-txt"><svg class="ico" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span data-i18n="aloj.card5.body2">2 hab. con baño privado</span></span></div>
           <div class="card-features">
-            <span class="feature-tag" data-i18n="feat.ac24">Aire acond. 24hs</span>
-            <span class="feature-tag" data-i18n="feat.cocina.semi">Cocina semi equipada</span>
+            <span class="feature-tag" data-i18n="feat.ac24">Aire frío/calor 24 hs</span>
+            <span class="feature-tag" data-i18n="feat.minicocina">Mini cocina equipada</span>
             <span class="feature-tag" data-i18n="feat.heladera">Heladera privada</span>
             <span class="feature-tag" data-i18n="feat.asador.comp">Asador compartido</span>
             <span class="feature-tag" data-i18n="feat.limp1">Limpieza diaria</span>
+            <span class="feature-tag" data-i18n="feat.desayuno.opc">Desayuno opcional</span>
           </div>
         </div>
       </div>

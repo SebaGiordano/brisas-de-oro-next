@@ -27,12 +27,12 @@ const I18N = {
     grupoMax:'Para grupos de más de 30 personas coordinamos la estadía de forma personalizada.',
     grupoAviso:'Nuestra unidad más grande recibe hasta 10 personas. Para tu grupo de {n} te proponemos estas combinaciones:',
     grupoInsuficiente:'Para esas fechas no tenemos disponibilidad suficiente para tu grupo. Escribinos y buscamos alternativas.',
-    grupoTitulo:'Combinaciones para tu grupo',
+    grupoTitulo:'Combinaciones para tu grupo', grupoUnidades:'Unidades disponibles para tu grupo', badgeCombinar:'Ideal para combinar',
     grupoNota:'Sugerencias orientativas, sujetas a confirmación. Escribinos y armamos la mejor opción para tu grupo.',
     grupoHotel:'Hotel', grupoMixta:'Cabaña + Hotel', grupoCabanas:'Cabañas', grupoTodas:'Cabañas + Hotel',
     grupoCapacidad:'Capacidad total: {n} personas', grupoCapacidadWsp:'capacidad total {n}',
     compactaHuespedes:'huésp.', compactaEditar:'Volver arriba para modificar la búsqueda',
-    grupoHab:['Habitación','Habitaciones'], grupoCc:['Cabaña chica','Cabañas chicas'], grupoCm:['Cabaña mediana','Cabañas medianas'], grupoCg:['Cabaña grande','Cabañas grandes'],
+    grupoHab:['Habitación de hotel','Habitaciones de hotel'], grupoCc:['Cabaña chica','Cabañas chicas'], grupoCm:['Cabaña mediana','Cabañas medianas'], grupoCg:['Cabaña grande','Cabañas grandes'],
     notaMediana6:'Para 6 personas el espacio es más ajustado. Consultanos.',
     unidadLibre:'unidad libre', unidadesLibres:'unidades libres',
     wspCard:'Hola! Me interesa consultar disponibilidad para:', wspIngreso:'Ingreso', wspEgreso:'Egreso', wspHuespedes:'Huéspedes', wspMasInfo:'¿Podría darme más información?',
@@ -51,20 +51,20 @@ const I18N = {
     tipoCabana:'Cabaña', tipoApart:'Apart Hotel', tipoCasa:'Casa',
     // Alojamientos
     habNombre:'Habitaciones de hotel',
-    habMeta1:'1–4 personas', habMeta2:'Desayuno incluido',
-    habFeatures:['Desayuno buffet','Aire acond. 24hs','Calefacción','Limpieza diaria','Baño privado'],
+    habMeta1:'1–4 personas', habMeta2:'Baño privado', habVariantes:['Doble','Triple','Cuádruple'],
+    habFeatures:['Aire frío/calor 24 hs','Heladera privada','Asador compartido','Limpieza diaria','Desayuno opcional'],
     apNombre:'Apart Hotel',
-    apMeta1:'Hasta 4/5 personas', apMeta2:'2 hab. combinadas',
-    apFeatures:['Cocina equipada','Aire acond. 24hs','Calefacción','Baño privado','Limpieza c/3 días'],
+    apMeta1:'Hasta 4/5 personas', apMeta2:'2 hab. con baño privado',
+    apFeatures:['Aire frío/calor 24 hs','Mini cocina equipada','Heladera privada','Asador compartido','Limpieza diaria','Desayuno opcional'],
     ccNombre:'Cabaña chica',
     ccMeta1:'Hasta 3 personas', ccMeta2:'1 dormitorio',
-    ccFeatures:['Aire frío/calor','Cocina equipada','Asador privado','Limpieza c/3 días','Pet friendly'],
+    ccFeatures:['Aire frío/calor','Cocina equipada','Asador privado','Limpieza c/3 días','Pet friendly','Desayuno opcional'],
     cmNombre:'Cabaña mediana',
     cmMeta1:'Hasta 5/6 personas', cmMeta2:'1 dormitorio',
-    cmFeatures:['Aire frío/calor','Cocina equipada','Asador privado','Limpieza c/3 días','Pet friendly'],
+    cmFeatures:['Aire acondicionado','Salamandra','Cocina equipada','Asador privado','Limpieza c/3 días','Pet friendly','Desayuno opcional'],
     cgNombre:'Cabaña grande',
     cgMeta1:'Hasta 7/8 personas', cgMeta2:'2 dormitorios',
-    cgFeatures:['Aire frío/calor','Cocina equipada','Asador privado','Limpieza c/3 días','Pet friendly'],
+    cgFeatures:['Aire frío/calor','Cocina equipada','Asador privado','Limpieza c/3 días','Pet friendly','Desayuno opcional'],
     casaNombre:'Casa con Pileta · Icho Cruz',
     casaMeta1:'Hasta 10 personas', casaMeta2:'3 dormitorios',
     casaFeatures:['Pileta privada','Parque privado','Asador privado','Cocina equipada','Wi-Fi y DirecTV','Pet friendly'],
@@ -160,12 +160,12 @@ const I18N = {
     grupoMax:'For groups of more than 30 people, we arrange the stay personally.',
     grupoAviso:'Our largest unit sleeps up to 10 guests. For your group of {n}, we suggest these combinations:',
     grupoInsuficiente:"We don't have enough availability for your group on those dates. Write to us and we'll look for alternatives.",
-    grupoTitulo:'Combinations for your group',
+    grupoTitulo:'Combinations for your group', grupoUnidades:'Available units for your group', badgeCombinar:'Great for combining',
     grupoNota:"Approximate suggestions, subject to confirmation. Write to us and we'll put together the best option for your group.",
     grupoHotel:'Hotel', grupoMixta:'Cabin + Hotel', grupoCabanas:'Cabins', grupoTodas:'Cabins + Hotel',
     grupoCapacidad:'Total capacity: {n} guests', grupoCapacidadWsp:'total capacity {n}',
     compactaHuespedes:'guests', compactaEditar:'Back to top to modify the search',
-    grupoHab:['Room','Rooms'], grupoCc:['Small cabin','Small cabins'], grupoCm:['Medium cabin','Medium cabins'], grupoCg:['Large cabin','Large cabins'],
+    grupoHab:['Hotel room','Hotel rooms'], grupoCc:['Small cabin','Small cabins'], grupoCm:['Medium cabin','Medium cabins'], grupoCg:['Large cabin','Large cabins'],
     notaMediana6:'For 6 guests the space is tighter. Ask us.',
     unidadLibre:'unit free', unidadesLibres:'units free',
     wspCard:'Hello! I would like to check availability for:', wspIngreso:'Check-in', wspEgreso:'Check-out', wspHuespedes:'Guests', wspMasInfo:'Could you give me more information?',
@@ -180,20 +180,20 @@ const I18N = {
     tipoCualquiera:'Any type', tipoHabitacion:'Hotel room',
     tipoCabana:'Cabin', tipoApart:'Apart Hotel', tipoCasa:'House',
     habNombre:'Hotel rooms',
-    habMeta1:'1–4 guests', habMeta2:'Breakfast included',
-    habFeatures:['Buffet breakfast','A/C 24hs','Heating','Daily cleaning','Private bathroom'],
+    habMeta1:'1–4 guests', habMeta2:'Private bathroom', habVariantes:['Double','Triple','Quadruple'],
+    habFeatures:['Air conditioning (heat/cool) 24h','Private fridge','Shared BBQ','Daily cleaning','Optional breakfast'],
     apNombre:'Apart Hotel',
-    apMeta1:'Up to 4/5 guests', apMeta2:'2 combined rooms',
-    apFeatures:['Full kitchen','A/C 24hs','Heating','Private bathroom','Cleaning every 3 days'],
+    apMeta1:'Up to 4/5 guests', apMeta2:'2 rooms with private bathroom',
+    apFeatures:['Air conditioning (heat/cool) 24h','Kitchenette','Private fridge','Shared BBQ','Daily cleaning','Optional breakfast'],
     ccNombre:'Small cabin',
     ccMeta1:'Up to 3 guests', ccMeta2:'1 bedroom',
-    ccFeatures:['Hot & cold A/C','Full kitchen','Private BBQ','Cleaning every 3 days','Pet friendly'],
+    ccFeatures:['Heat/cool A/C','Full kitchen','Private BBQ','Cleaning every 3 days','Pet friendly','Optional breakfast'],
     cmNombre:'Medium cabin',
     cmMeta1:'Up to 5/6 guests', cmMeta2:'1 bedroom',
-    cmFeatures:['Hot & cold A/C','Full kitchen','Private BBQ','Cleaning every 3 days','Pet friendly'],
+    cmFeatures:['Air conditioning','Wood stove','Full kitchen','Private BBQ','Cleaning every 3 days','Pet friendly','Optional breakfast'],
     cgNombre:'Large cabin',
     cgMeta1:'Up to 7/8 guests', cgMeta2:'2 bedrooms',
-    cgFeatures:['Hot & cold A/C','Full kitchen','Private BBQ','Cleaning every 3 days','Pet friendly'],
+    cgFeatures:['Heat/cool A/C','Full kitchen','Private BBQ','Cleaning every 3 days','Pet friendly','Optional breakfast'],
     casaNombre:'House with Pool · Icho Cruz',
     casaMeta1:'Up to 10 guests', casaMeta2:'3 bedrooms',
     casaFeatures:['Private pool','Private garden','Private BBQ','Full kitchen','Wi-Fi & DirecTV','Pet friendly'],
@@ -286,12 +286,12 @@ const I18N = {
     grupoMax:'Para grupos de mais de 30 pessoas, organizamos a estadia de forma personalizada.',
     grupoAviso:'Nossa maior unidade recebe até 10 pessoas. Para o seu grupo de {n}, propomos estas combinações:',
     grupoInsuficiente:'Para essas datas não temos disponibilidade suficiente para o seu grupo. Escreva-nos e buscamos alternativas.',
-    grupoTitulo:'Combinações para o seu grupo',
+    grupoTitulo:'Combinações para o seu grupo', grupoUnidades:'Unidades disponíveis para o seu grupo', badgeCombinar:'Ideal para combinar',
     grupoNota:'Sugestões orientativas, sujeitas a confirmação. Escreva-nos e montamos a melhor opção para o seu grupo.',
     grupoHotel:'Hotel', grupoMixta:'Chalé + Hotel', grupoCabanas:'Chalés', grupoTodas:'Chalés + Hotel',
     grupoCapacidad:'Capacidade total: {n} pessoas', grupoCapacidadWsp:'capacidade total {n}',
     compactaHuespedes:'hósp.', compactaEditar:'Voltar ao topo para modificar a busca',
-    grupoHab:['Quarto','Quartos'], grupoCc:['Chalé pequeno','Chalés pequenos'], grupoCm:['Chalé médio','Chalés médios'], grupoCg:['Chalé grande','Chalés grandes'],
+    grupoHab:['Quarto de hotel','Quartos de hotel'], grupoCc:['Chalé pequeno','Chalés pequenos'], grupoCm:['Chalé médio','Chalés médios'], grupoCg:['Chalé grande','Chalés grandes'],
     notaMediana6:'Para 6 pessoas o espaço é mais apertado. Consulte-nos.',
     unidadLibre:'unidade livre', unidadesLibres:'unidades livres',
     wspCard:'Olá! Gostaria de consultar disponibilidade para:', wspIngreso:'Chegada', wspEgreso:'Saída', wspHuespedes:'Hóspedes', wspMasInfo:'Poderia me dar mais informações?',
@@ -306,20 +306,20 @@ const I18N = {
     tipoCualquiera:'Qualquer tipo', tipoHabitacion:'Quarto de hotel',
     tipoCabana:'Chalé', tipoApart:'Apart Hotel', tipoCasa:'Casa',
     habNombre:'Quartos de hotel',
-    habMeta1:'1–4 pessoas', habMeta2:'Café incluído',
-    habFeatures:['Café buffet','A/C 24hs','Aquecimento','Limpeza diária','Banheiro privativo'],
+    habMeta1:'1–4 pessoas', habMeta2:'Banheiro privativo', habVariantes:['Duplo','Triplo','Quádruplo'],
+    habFeatures:['Ar-condicionado frio/calor 24h','Geladeira privada','Churrasqueira compartilhada','Limpeza diária','Café da manhã opcional'],
     apNombre:'Apart Hotel',
-    apMeta1:'Até 4/5 pessoas', apMeta2:'2 quartos combinados',
-    apFeatures:['Cozinha equipada','A/C 24hs','Aquecimento','Banheiro privativo','Limpeza a cada 3 dias'],
+    apMeta1:'Até 4/5 pessoas', apMeta2:'2 quartos c/ banheiro privado',
+    apFeatures:['Ar-condicionado frio/calor 24h','Minicozinha equipada','Geladeira privada','Churrasqueira compartilhada','Limpeza diária','Café da manhã opcional'],
     ccNombre:'Chalé pequeno',
     ccMeta1:'Até 3 pessoas', ccMeta2:'1 quarto',
-    ccFeatures:['A/C frio e calor','Cozinha equipada','Churrasqueira privativa','Limpeza a cada 3 dias','Pet friendly'],
+    ccFeatures:['A/C frio e calor','Cozinha equipada','Churrasqueira privativa','Limpeza a cada 3 dias','Pet friendly','Café da manhã opcional'],
     cmNombre:'Chalé médio',
     cmMeta1:'Até 5/6 pessoas', cmMeta2:'1 quarto',
-    cmFeatures:['A/C frio e calor','Cozinha equipada','Churrasqueira privativa','Limpeza a cada 3 dias','Pet friendly'],
+    cmFeatures:['Ar-condicionado','Salamandra','Cozinha equipada','Churrasqueira privativa','Limpeza a cada 3 dias','Pet friendly','Café da manhã opcional'],
     cgNombre:'Chalé grande',
     cgMeta1:'Até 7/8 pessoas', cgMeta2:'2 quartos',
-    cgFeatures:['A/C frio e calor','Cozinha equipada','Churrasqueira privativa','Limpeza a cada 3 dias','Pet friendly'],
+    cgFeatures:['A/C frio e calor','Cozinha equipada','Churrasqueira privativa','Limpeza a cada 3 dias','Pet friendly','Café da manhã opcional'],
     casaNombre:'Casa com Piscina · Icho Cruz',
     casaMeta1:'Até 10 pessoas', casaMeta2:'3 quartos',
     casaFeatures:['Piscina privativa','Jardim privativo','Churrasqueira privativa','Cozinha equipada','Wi-Fi e DirecTV','Pet friendly'],
@@ -400,7 +400,7 @@ const I18N = {
 
 /* ── Base de alojamientos (solo lo que no cambia con el idioma) ── */
 const ALOJ_BASE = {
-  habitaciones: { id:'habitaciones', tipo:'Habitación', iconoMeta1:'personas', iconoMeta2:'desayuno',    fotos:['/fotos/habitaciones/portada.jpeg','/fotos/habitaciones/1.jpeg','/fotos/habitaciones/2.jpeg','/fotos/habitaciones/3.jpeg','/fotos/habitaciones/4.jpeg','/fotos/habitaciones/5.jpeg','/fotos/habitaciones/6.jpeg','/fotos/habitaciones/7.jpeg'] },
+  habitaciones: { id:'habitaciones', tipo:'Habitación', iconoMeta1:'personas', iconoMeta2:'banio',       fotos:['/fotos/habitaciones/portada.jpeg','/fotos/habitaciones/1.jpeg','/fotos/habitaciones/2.jpeg','/fotos/habitaciones/3.jpeg','/fotos/habitaciones/4.jpeg','/fotos/habitaciones/5.jpeg','/fotos/habitaciones/6.jpeg','/fotos/habitaciones/7.jpeg'] },
   aparts:       { id:'aparts',       tipo:'Apart Hotel', iconoMeta1:'personas', iconoMeta2:'habitaciones', fotos:['/fotos/apart-hotel/portada.jpeg','/fotos/apart-hotel/1.jpeg','/fotos/apart-hotel/2.jpeg','/fotos/apart-hotel/3.jpeg','/fotos/apart-hotel/4.jpeg'] },
   cabanaChica:  { id:'cabanaChica',  tipo:'Cabaña',    iconoMeta1:'personas', iconoMeta2:'cama',         fotos:['/fotos/cabana-chica/portada.jpeg','/fotos/cabana-chica/1.jpeg','/fotos/cabana-chica/2.jpeg','/fotos/cabana-chica/3.jpeg','/fotos/cabana-chica/4.jpeg','/fotos/cabana-chica/5.jpeg'] },
   cabanaMediana:{ id:'cabanaMediana',tipo:'Cabaña',    iconoMeta1:'personas', iconoMeta2:'cama',         fotos:['/fotos/cabana-mediana/portada.webp','/fotos/cabana-mediana/1.jpeg','/fotos/cabana-mediana/2.jpeg','/fotos/cabana-mediana/3.jpeg','/fotos/cabana-mediana/4.jpeg','/fotos/cabana-mediana/5.jpeg','/fotos/cabana-mediana/6.jpeg'] },
@@ -862,8 +862,10 @@ function IcoMeta({ tipo }) {
   const props = { className:'ico', width:13, height:13, viewBox:'0 0 24 24', fill:'none', stroke:'currentColor', strokeWidth:1.8, strokeLinecap:'round', strokeLinejoin:'round', 'aria-hidden':true }
   if (tipo === 'personas')
     return <svg {...props}><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-  if (tipo === 'desayuno')
-    return <svg {...props}><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg>
+  if (tipo === 'banio')
+    return <svg {...props}><path d="M9 6 6.5 3.5a1.5 1.5 0 0 0-1-.5C4.683 3 4 3.683 4 4.5V17a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-5"/><line x1="10" y1="5" x2="8" y2="7"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="7" y1="19" x2="7" y2="21"/><line x1="17" y1="19" x2="17" y2="21"/></svg>
+  if (tipo === 'fuego')
+    return <svg {...props} width={12} height={12}><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
   if (tipo === 'habitaciones')
     return <svg {...props}><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
   if (tipo === 'cama' || tipo === 'camas')
@@ -885,7 +887,7 @@ function IconoWsp() {
   )
 }
 
-/* ── Bloque "Para grupos: combiná unidades" ── */
+/* ── Bloque "Combinaciones para tu grupo" ── */
 function BloqueCombos({ combos, aviso, wspUrl, t }) {
   if (!combos.sugerencias.length) return null
   const titulos = { hotel: t.grupoHotel, mixta: t.grupoMixta, cabanas: t.grupoCabanas, todas: t.grupoTodas }
@@ -922,11 +924,14 @@ function AvisoGrupo({ texto, wspUrl, t }) {
 }
 
 /* ── Card ── */
-function CardAlojamiento({ item, destacado, noDisponible, sinBadge, unidadesLibres, nota, wspUrl, t }) {
+const TAGS_LLAMA = ['Salamandra', 'Wood stove']
+
+function CardAlojamiento({ item, destacado, noDisponible, sinBadge, etiqueta, unidadesLibres, nota, wspUrl, t }) {
   return (
     <div className={`aloj-card disp-aloj-card${destacado?' disp-aloj-card--dest':''}${noDisponible&&!item.sinCapacidad?' disp-aloj-card--no':''}`}>
       <div className="card-img">
         <Carrusel fotos={item.fotos} id={`car-disp-${item.id}`} disabled={noDisponible} />
+        {etiqueta && <span className="disp-avail-badge disp-avail-badge--neutro">{etiqueta}</span>}
         {!sinBadge && (
           <span className={`disp-avail-badge${noDisponible?(item.sinCapacidad?' disp-avail-badge--neutro':' disp-avail-badge--no'):destacado?' disp-avail-badge--si':' disp-avail-badge--otro'}`}>
             {noDisponible ? (item.sinCapacidad ? t.badgeNoAlcanza : t.badgeNo) : t.badgeSi}
@@ -944,12 +949,19 @@ function CardAlojamiento({ item, destacado, noDisponible, sinBadge, unidadesLibr
           <span style={{ display:'flex', alignItems:'center', gap:'0.3rem' }}><IcoMeta tipo={item.iconoMeta1} />{item.meta1}</span>
           <span style={{ display:'flex', alignItems:'center', gap:'0.3rem' }}><IcoMeta tipo={item.iconoMeta2} />{item.meta2}</span>
         </div>
-        <div className="card-features">{item.features.map(f => <span key={f} className="feature-tag">{f}</span>)}</div>
+        {item.id === 'habitaciones' && (
+          <div className="variant-chips" style={{ display:'flex', flexWrap:'wrap', gap:'0.4rem', marginBottom:'0.7rem' }}>
+            {t.habVariantes.map(v => <span key={v} className="variant-chip">{v}</span>)}
+          </div>
+        )}
+        <div className="card-features">{item.features.map(f => TAGS_LLAMA.includes(f)
+          ? <span key={f} className="feature-tag ico-txt"><IcoMeta tipo="fuego" /><span>{f}</span></span>
+          : <span key={f} className="feature-tag">{f}</span>)}</div>
         {item.id === 'casa' && (
           <>
+            <p className="card-nota"><span className="card-nota-linea">{t.casaNoIncluyeA}</span><span className="card-nota-linea">{t.casaNoIncluyeB}</span></p>
             <p className="card-nota ico-txt"><IcoMeta tipo="ubicacion" /><span>{t.casaUbic}</span></p>
             <p className="card-nota">{t.casaHorario}</p>
-            <p className="card-nota"><span className="card-nota-linea">{t.casaNoIncluyeA}</span><span className="card-nota-linea">{t.casaNoIncluyeB}</span></p>
           </>
         )}
         {nota && <p className="card-nota">{nota}</p>}
@@ -1042,8 +1054,12 @@ export default function Disponibilidad() {
   const grupoGrande = personasValidas && personas > GRUPO_UNIDAD_MAX && !excedeMax
   const combos = personasValidas && personas >= GRUPO_MIN && !excedeMax && rawData?.libres ? calcularCombos(rawData.libres, personas) : null
   const idsCombo = new Set((combos?.sugerencias || []).flatMap(c => c.unidades.map(u => u.tipo)))
-  const categoriasCombo = grupoGrande ? (resultados||[]).filter(r => idsCombo.has(r.id)) : []
-  const noDisponibles = (resultados||[]).filter(r => !r.disponible && !categoriasCombo.includes(r))
+  const mostrarCombos = (combos?.sugerencias.length ?? 0) > 0
+  // Categorías sugeridas que no están arriba como opción que cubre al grupo, más el Apart si tiene unidades libres
+  const unidadesGrupo = mostrarCombos
+    ? (resultados||[]).filter(r => !r.disponible && (idsCombo.has(r.id) || (r.id === 'aparts' && rawData.libres.aparts?.length > 0)))
+    : []
+  const noDisponibles = (resultados||[]).filter(r => !r.disponible && !unidadesGrupo.includes(r))
   const tituloInferior = noDisponibles.some(r => r.sinCapacidad) ? t.dispOtrasUnidades : t.dispNoDisponibles
   const grupoWspUrl = urlWsp([
     t.wspGrupo.replace('{n}', personasTexto), ...lineasWsp,
@@ -1214,32 +1230,7 @@ export default function Disponibilidad() {
           {!cargando && !error && excedeMax && (
             <AvisoGrupo texto={t.grupoMax} wspUrl={grupoWspUrl} t={t} />
           )}
-          {!cargando && !error && hayResultados && grupoGrande && (
-            /* Más personas que la unidad más grande: las combinaciones van primero */
-            <>
-              {combos?.insuficiente && <AvisoGrupo texto={t.grupoInsuficiente} wspUrl={grupoWspUrl} t={t} />}
-              {combos && <BloqueCombos combos={combos} aviso={t.grupoAviso.replace('{n}', personas)} wspUrl={grupoWspUrl} t={t} />}
-              {categoriasCombo.length > 0 && (
-                <section className="disp-seccion">
-                  <div className="disp-grid">
-                    {categoriasCombo.map(r => <CardAlojamiento key={r.id} item={r} sinBadge unidadesLibres={rawData.libres[r.id].length} wspUrl={buildWspUrl(r)} t={t} />)}
-                  </div>
-                </section>
-              )}
-              {noDisponibles.length > 0 && (
-                <section className="disp-seccion disp-seccion--no">
-                  <h2 className="disp-seccion-titulo disp-seccion-titulo--no">
-                    {tituloInferior}
-                    <span className="disp-seccion-count">{noDisponibles.length}</span>
-                  </h2>
-                  <div className="disp-grid">
-                    {noDisponibles.map(r => <CardAlojamiento key={r.id} item={r} noDisponible wspUrl="" t={t} />)}
-                  </div>
-                </section>
-              )}
-            </>
-          )}
-          {!cargando && !error && hayResultados && !grupoGrande && !hayDisponibles && (
+          {!cargando && !error && hayResultados && !hayDisponibles && !mostrarCombos && !grupoGrande && (
             /* Ningún alojamiento disponible: mensaje + todas las cards funcionales */
             <section className="disp-seccion">
               <div style={{ textAlign:'center', padding:'1.5rem 0 2rem', borderBottom:'1px solid var(--borde)', marginBottom:'2rem' }}>
@@ -1247,7 +1238,6 @@ export default function Disponibilidad() {
                 <p style={{ fontSize:'0.85rem', color:'var(--texto-suave)' }}>{t.sinDispSub}</p>
               </div>
               {combos?.insuficiente && <AvisoGrupo texto={t.grupoInsuficiente} wspUrl={grupoWspUrl} t={t} />}
-              {combos && <BloqueCombos combos={combos} wspUrl={grupoWspUrl} t={t} />}
               <div className="disp-grid">
                 {(resultados||[]).map(r => (
                   <CardAlojamiento key={r.id} item={r} sinBadge wspUrl={buildWspUrl(r)} t={t} />
@@ -1255,8 +1245,9 @@ export default function Disponibilidad() {
               </div>
             </section>
           )}
-          {!cargando && !error && hayResultados && !grupoGrande && hayDisponibles && (
+          {!cargando && !error && hayResultados && (hayDisponibles || mostrarCombos || grupoGrande) && (
             <>
+              {grupoGrande && combos?.insuficiente && <AvisoGrupo texto={t.grupoInsuficiente} wspUrl={grupoWspUrl} t={t} />}
               {disponiblesCoincidentes.length > 0 && (
                 <section className="disp-seccion">
                   <h2 className="disp-seccion-titulo">
@@ -1279,7 +1270,18 @@ export default function Disponibilidad() {
                   </div>
                 </section>
               )}
-              {combos && <BloqueCombos combos={combos} wspUrl={grupoWspUrl} t={t} />}
+              {mostrarCombos && <BloqueCombos combos={combos} aviso={grupoGrande ? t.grupoAviso.replace('{n}', personas) : null} wspUrl={grupoWspUrl} t={t} />}
+              {unidadesGrupo.length > 0 && (
+                <section className="disp-seccion disp-seccion--grupo">
+                  <h2 className="disp-seccion-titulo">
+                    {t.grupoUnidades}
+                    <span className="disp-seccion-count">{unidadesGrupo.length}</span>
+                  </h2>
+                  <div className="disp-grid">
+                    {unidadesGrupo.map(r => <CardAlojamiento key={r.id} item={r} sinBadge etiqueta={r.id === 'aparts' ? t.badgeCombinar : null} unidadesLibres={rawData.libres[r.id].length} wspUrl={buildWspUrl(r)} t={t} />)}
+                  </div>
+                </section>
+              )}
               {noDisponibles.length > 0 && (
                 <section className="disp-seccion disp-seccion--no">
                   <h2 className="disp-seccion-titulo disp-seccion-titulo--no">
