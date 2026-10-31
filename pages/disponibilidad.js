@@ -418,12 +418,12 @@ const I18N = {
 
 /* ── Base de alojamientos (solo lo que no cambia con el idioma) ── */
 const ALOJ_BASE = {
-  habitaciones: { id:'habitaciones', tipo:'Habitación', iconoMeta1:'personas', iconoMeta2:'banio',       fotos:['/fotos/habitaciones/portada.jpeg','/fotos/habitaciones/1.jpeg','/fotos/habitaciones/2.jpeg','/fotos/habitaciones/3.jpeg','/fotos/habitaciones/4.jpeg','/fotos/habitaciones/5.jpeg','/fotos/habitaciones/6.jpeg','/fotos/habitaciones/7.jpeg'] },
-  aparts:       { id:'aparts',       tipo:'Apart Hotel', iconoMeta1:'personas', iconoMeta2:'habitaciones', fotos:['/fotos/apart-hotel/portada.jpeg','/fotos/apart-hotel/1.jpeg','/fotos/apart-hotel/2.jpeg','/fotos/apart-hotel/3.jpeg','/fotos/apart-hotel/4.jpeg'] },
-  cabanaChica:  { id:'cabanaChica',  tipo:'Cabaña',    iconoMeta1:'personas', iconoMeta2:'cama',         fotos:['/fotos/cabana-chica/portada.jpeg','/fotos/cabana-chica/1.jpeg','/fotos/cabana-chica/2.jpeg','/fotos/cabana-chica/3.jpeg','/fotos/cabana-chica/4.jpeg','/fotos/cabana-chica/5.jpeg'] },
-  cabanaMediana:{ id:'cabanaMediana',tipo:'Cabaña',    iconoMeta1:'personas', iconoMeta2:'cama',         fotos:['/fotos/cabana-mediana/portada.webp','/fotos/cabana-mediana/1.jpeg','/fotos/cabana-mediana/2.jpeg','/fotos/cabana-mediana/3.jpeg','/fotos/cabana-mediana/4.jpeg','/fotos/cabana-mediana/5.jpeg','/fotos/cabana-mediana/6.jpeg'] },
-  cabanaGrande: { id:'cabanaGrande', tipo:'Cabaña',    iconoMeta1:'personas', iconoMeta2:'camas',        fotos:['/fotos/cabana-grande/portada.jpeg','/fotos/cabana-grande/1.jpeg','/fotos/cabana-grande/2.jpeg','/fotos/cabana-grande/3.jpeg','/fotos/cabana-grande/4.jpeg','/fotos/cabana-grande/5.jpeg','/fotos/cabana-grande/6.jpeg'] },
-  casa:         { id:'casa',         tipo:'Casa',      iconoMeta1:'personas', iconoMeta2:'camas',        fotos:['/fotos/casa/portada.jpeg','/fotos/casa/1.jpeg','/fotos/casa/2.jpeg','/fotos/casa/3.jpeg','/fotos/casa/4.jpeg','/fotos/casa/5.jpeg'] },
+  habitaciones: { id:'habitaciones', tipo:'Habitación', iconoMeta1:'personas', iconoMeta2:'banio',       fotos:['/fotos/habitaciones/portada.webp','/fotos/habitaciones/1.webp','/fotos/habitaciones/2.webp','/fotos/habitaciones/3.webp','/fotos/habitaciones/4.webp','/fotos/habitaciones/5.webp','/fotos/habitaciones/6.webp','/fotos/habitaciones/7.webp'] },
+  aparts:       { id:'aparts',       tipo:'Apart Hotel', iconoMeta1:'personas', iconoMeta2:'habitaciones', fotos:['/fotos/apart-hotel/portada.webp','/fotos/apart-hotel/1.webp','/fotos/apart-hotel/2.webp','/fotos/apart-hotel/3.webp','/fotos/apart-hotel/4.webp'] },
+  cabanaChica:  { id:'cabanaChica',  tipo:'Cabaña',    iconoMeta1:'personas', iconoMeta2:'cama',         fotos:['/fotos/cabana-chica/portada.webp','/fotos/cabana-chica/1.webp','/fotos/cabana-chica/2.webp','/fotos/cabana-chica/3.webp','/fotos/cabana-chica/4.webp','/fotos/cabana-chica/5.webp'] },
+  cabanaMediana:{ id:'cabanaMediana',tipo:'Cabaña',    iconoMeta1:'personas', iconoMeta2:'cama',         fotos:['/fotos/cabana-mediana/portada.webp','/fotos/cabana-mediana/1.webp','/fotos/cabana-mediana/2.webp','/fotos/cabana-mediana/3.webp','/fotos/cabana-mediana/4.webp','/fotos/cabana-mediana/5.webp','/fotos/cabana-mediana/6.webp'] },
+  cabanaGrande: { id:'cabanaGrande', tipo:'Cabaña',    iconoMeta1:'personas', iconoMeta2:'camas',        fotos:['/fotos/cabana-grande/portada.webp','/fotos/cabana-grande/1.webp','/fotos/cabana-grande/2.webp','/fotos/cabana-grande/3.webp','/fotos/cabana-grande/4.webp','/fotos/cabana-grande/5.webp','/fotos/cabana-grande/6.webp'] },
+  casa:         { id:'casa',         tipo:'Casa',      iconoMeta1:'personas', iconoMeta2:'camas',        fotos:['/fotos/casa/portada.webp','/fotos/casa/1.webp','/fotos/casa/2.webp','/fotos/casa/3.webp','/fotos/casa/4.webp','/fotos/casa/5.webp'] },
 }
 
 /* Aplica las traducciones de `t` sobre cada entrada del API response */
@@ -1206,7 +1206,7 @@ export default function Disponibilidad() {
       {/* NAV */}
       <nav id="main-nav" className="scrolled">
         <div className="nav-inner">
-          <a href="/" className="logo"><img src="/logo.png" alt="Hotel y Cabañas Brisas de Oro" /></a>
+          <a href="/" className="logo"><img src="/logo.webp" alt="Hotel y Cabañas Brisas de Oro" /></a>
           <ul className="nav-links">
             <li><a href="/#nosotros">{t.navNosotros}</a></li>
             <li><a href="/#alojamientos">{t.navAlojamientos}</a></li>
