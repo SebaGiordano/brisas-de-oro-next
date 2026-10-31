@@ -278,12 +278,16 @@ export default function Sitio({ pagina = 'inicio' }) {
       var top    = el.getBoundingClientRect().top + window.scrollY - offset;
       window.scrollTo({ top: top, behavior: 'smooth' });
     }
-    window.addEventListener('load', function() {
+    // Si la URL trae #seccion, compensar el menú fijo. Puede que el 'load' ya haya ocurrido cuando
+    // React ejecuta este script (pasa al llegar desde otra página), así que se cubren los dos casos.
+    function irAlHashInicial() {
       if (window.location.hash) {
         var id = window.location.hash.slice(1);
         setTimeout(function() { scrollToId(id); }, 80);
       }
-    });
+    }
+    if (document.readyState === 'complete') irAlHashInicial();
+    else window.addEventListener('load', irAlHashInicial);
     
     function ajustarNav() {
       const ham   = document.getElementById('nav-hamburger');
@@ -1225,6 +1229,30 @@ export default function Sitio({ pagina = 'inicio' }) {
     // Expose functions to window so HTML inline onclick handlers can call them
     window.toggleLang         = toggleLang
     window.setLang            = setLang
+
+    // Portada: el menú baja hasta cada sección (como siempre), aunque el link apunte a su página
+    // (/nosotros, /alojamientos, ...). Google sigue leyendo el href, así que las páginas siguen enlazadas.
+    // Ctrl/Cmd/Shift + clic o clic del medio respetan el link (abrir la página en otra pestaña).
+    if (esInicio) {
+      const SECCION_DE_RUTA = {
+        '': null, 'nosotros': 'nosotros', 'alojamientos': 'alojamientos',
+        'alojamientos#antes-de-reservar': 'antes-de-reservar', 'servicios': 'servicios',
+        'opiniones': 'testimonios', 'ubicacion#clima': 'clima', 'ubicacion': 'ubicacion',
+      };
+      document.querySelectorAll('#main-nav a[data-ruta], #nav-mobile-menu a[data-ruta]').forEach(function(a) {
+        a.addEventListener('click', function(e) {
+          if (e.button !== 0 || e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return;
+          const ruta = a.getAttribute('data-ruta');
+          if (!(ruta in SECCION_DE_RUTA)) return;
+          const id = SECCION_DE_RUTA[ruta];
+          if (id && !document.getElementById(id)) return;
+          e.preventDefault();
+          cerrarMenu();
+          if (id) scrollToId(id);
+          else window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      });
+    }
 
     // Páginas /en y /pt: el HTML ya llega traducido del servidor; esto ajusta selector, clases y textos dinámicos
     if (pageLang !== 'es') {
