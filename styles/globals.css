@@ -2155,3 +2155,51 @@ footer { background: var(--footer-bg); color: var(--footer-text); padding: 3.5re
 .date-wrap:has(input:disabled), .date-wrap:has(input:disabled) *,
 .sticky-field:has(input:disabled), .sticky-field:has(input:disabled) * { cursor: default; }
 .date-wrap input:disabled, .sticky-field input:disabled { pointer-events: none; }
+
+/* ===================== PÁGINAS DE ALOJAMIENTO (/alojamientos/<slug>) ===================== */
+.ap-header { background: var(--nav-solid); position: sticky; top: 0; z-index: 50; }
+.ap-header-inner { max-width: 1200px; margin: 0 auto; padding: 0.7rem 1.5rem; display: flex; align-items: center; justify-content: space-between; }
+.ap-logo img { height: 54px; width: auto; display: block; }
+.ap-langs { display: flex; gap: 0.35rem; }
+.ap-lang { color: var(--footer-text); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-decoration: none; padding: 0.35rem 0.6rem; border: 1px solid rgba(200,194,182,0.35); border-radius: 5px; }
+.ap-lang:hover, .ap-lang.activo { color: #E2C96A; border-color: #E2C96A; }
+.ap-main { padding: 1.5rem 1.5rem 3.5rem; }
+.ap-breadcrumb { display: flex; flex-wrap: wrap; gap: 0.45rem; font-size: 0.78rem; color: var(--texto-suave); margin-bottom: 1.6rem; }
+.ap-breadcrumb a { color: var(--oro); text-decoration: none; }
+.ap-breadcrumb a:hover { text-decoration: underline; }
+.ap-top { display: grid; grid-template-columns: 1.15fr 1fr; gap: 3rem; align-items: start; }
+.ap-portada { border-radius: 10px; overflow: hidden; border: 1.5px solid var(--borde); background: var(--blanco); }
+.ap-portada img { width: 100%; height: 100%; max-height: 560px; object-fit: cover; display: block; }
+.ap-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.9rem, 3vw, 2.7rem); font-weight: 500; color: var(--texto); line-height: 1.15; margin-bottom: 1rem; }
+.ap-subtitle { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--texto-medio); margin: 1.4rem 0 0.6rem; }
+.ap-datos { list-style: none; display: flex; flex-wrap: wrap; gap: 0.4rem 1.2rem; color: var(--texto-medio); font-size: 0.95rem; }
+.ap-datos li::before { content: '•'; color: var(--oro); margin-right: 0.45rem; }
+.ap-noincluye { flex-direction: column; font-size: 0.88rem; }
+.ap-ctas { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.8rem; }
+.ap-btn { display: inline-block; padding: 0.8rem 1.4rem; border-radius: 6px; font-weight: 700; font-size: 0.82rem; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; transition: filter 0.2s, background 0.2s; }
+.ap-btn-wsp { background: var(--oro); color: var(--blanco); }
+.ap-btn-wsp:hover { background: var(--oro-hover); filter: brightness(1.12); }
+.ap-btn-sec { border: 1.5px solid var(--oro); color: var(--oro); background: transparent; }
+.ap-btn-sec:hover { background: rgba(184,152,42,0.08); }
+.ap-nota { font-size: 0.75rem; color: var(--texto-suave); margin-top: 0.7rem; }
+.ap-galeria-titulo { margin-top: 2.8rem; }
+.ap-galeria { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 0.8rem; }
+.ap-galeria img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 8px; border: 1.5px solid var(--borde); display: block; }
+.ap-otros { list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 0.8rem; }
+.ap-otros a { display: block; text-decoration: none; color: var(--texto); background: var(--blanco); border: 1.5px solid var(--borde); border-radius: 8px; overflow: hidden; transition: border-color 0.2s, transform 0.2s; }
+.ap-otros a:hover { border-color: var(--oro); transform: translateY(-2px); }
+.ap-otros img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; }
+.ap-otros span { display: block; padding: 0.55rem 0.7rem; font-size: 0.85rem; font-weight: 600; }
+.ap-volver { margin-top: 2.2rem; }
+.ap-volver a { color: var(--oro); font-weight: 700; text-decoration: none; font-size: 0.88rem; }
+.ap-footer { background: var(--footer-bg); color: var(--footer-text); text-align: center; font-size: 0.78rem; padding: 1.4rem 1rem; }
+.card-detalle { display: inline-block; margin-top: 0.75rem; color: var(--oro); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.04em; text-decoration: none; }
+.card-detalle:hover { text-decoration: underline; }
+@media (max-width: 860px) {
+  .ap-top { grid-template-columns: 1fr; gap: 1.6rem; }
+  .ap-portada img { max-height: 380px; }
+  .ap-main { padding: 1.2rem 1rem 3rem; }
+  .ap-header-inner { padding: 0.6rem 1rem; }
+  .ap-galeria { grid-template-columns: repeat(2, 1fr); }
+  .ap-otros { grid-template-columns: repeat(2, 1fr); }
+}
