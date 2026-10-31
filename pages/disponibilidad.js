@@ -1073,6 +1073,16 @@ export default function Disponibilidad() {
   const [combosAbiertos, setCombosAbiertos] = useState(false)
   const [combosElegidos, setCombosElegidos] = useState([])
   const irA = id => e => { e.preventDefault(); setMenuOpen(false); saltarA(id) }
+  // Links al sitio en el idioma actual: '' (español), '/en' o '/pt'
+  const pre = lang === 'es' ? '' : '/' + lang
+  const inicio = pre || '/'
+  // Cambiar de idioma también cambia la URL (/disponibilidad?... → /en/disponibilidad?...), conservando la búsqueda
+  function cambiarIdioma(l) {
+    setLang(l)
+    setLangOpen(false)
+    if (typeof document !== 'undefined') document.documentElement.lang = l
+    router.replace({ pathname: router.pathname, query: router.query }, undefined, { locale: l, shallow: true, scroll: false })
+  }
   const bannerRef = useRef(null)
   const langRef = useRef(null)
 
@@ -1175,7 +1185,7 @@ export default function Disponibilidad() {
   return (
     <>
       <Head>
-        <title>Disponibilidad | Hotel y Cabañas Brisas de Oro</title>
+        <title>{{ es: 'Disponibilidad | Hotel y Cabañas Brisas de Oro', en: 'Availability | Brisas de Oro Hotel & Cabins', pt: 'Disponibilidade | Hotel e Cabanas Brisas de Oro' }[lang]}</title>
         <meta name="description" content="Consulta de disponibilidad — Hotel y Cabañas Brisas de Oro, Villa Carlos Paz" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="robots" content="noindex, follow" />
@@ -1206,15 +1216,15 @@ export default function Disponibilidad() {
       {/* NAV */}
       <nav id="main-nav" className="scrolled">
         <div className="nav-inner">
-          <a href="/" className="logo"><img src="/logo.webp" alt="Hotel y Cabañas Brisas de Oro" /></a>
+          <a href={inicio} className="logo"><img src="/logo.webp" alt="Hotel y Cabañas Brisas de Oro" /></a>
           <ul className="nav-links">
-            <li><a href="/#nosotros">{t.navNosotros}</a></li>
-            <li><a href="/#alojamientos">{t.navAlojamientos}</a></li>
+            <li><a href={pre + '/nosotros'}>{t.navNosotros}</a></li>
+            <li><a href={pre + '/alojamientos'}>{t.navAlojamientos}</a></li>
             <li><a href="#antes-de-reservar" onClick={irA('antes-de-reservar')}>{t.navInfo}</a></li>
             <li><a href="#servicios" onClick={irA('servicios')}>{t.navServicios}</a></li>
-            <li><a href="/#testimonios">{t.navTestimonios}</a></li>
+            <li><a href={pre + '/opiniones'}>{t.navTestimonios}</a></li>
             <li><a href="#clima" onClick={irA('clima')}>{t.navClima}</a></li>
-            <li><a href="/#ubicacion">{t.navUbicacion}</a></li>
+            <li><a href={pre + '/ubicacion'}>{t.navUbicacion}</a></li>
           </ul>
           <div className="nav-right">
             <div ref={langRef} className={`lang-selector${langOpen?' open':''}`} id="langSelector">
@@ -1224,9 +1234,9 @@ export default function Disponibilidad() {
                 <span className="chevron">▼</span>
               </button>
               <div className="lang-dropdown">
-                <div className={`lang-option${lang==='es'?' active':''}`} onClick={() => { setLang('es'); setLangOpen(false) }}><span className="flag">ES</span> Español</div>
-                <div className={`lang-option${lang==='en'?' active':''}`} onClick={() => { setLang('en'); setLangOpen(false) }}><span className="flag">EN</span> English</div>
-                <div className={`lang-option${lang==='pt'?' active':''}`} onClick={() => { setLang('pt'); setLangOpen(false) }}><span className="flag">PT</span> Português</div>
+                <div className={`lang-option${lang==='es'?' active':''}`} onClick={() => cambiarIdioma('es')}><span className="flag">ES</span> Español</div>
+                <div className={`lang-option${lang==='en'?' active':''}`} onClick={() => cambiarIdioma('en')}><span className="flag">EN</span> English</div>
+                <div className={`lang-option${lang==='pt'?' active':''}`} onClick={() => cambiarIdioma('pt')}><span className="flag">PT</span> Português</div>
               </div>
             </div>
             <a href={`https://wa.me/${WSP}?text=${encodeURIComponent('Hola! Me gustaría consultar disponibilidad y tarifas.')}`} className="nav-cta" target="_blank" rel="noopener noreferrer">{t.navCta}</a>
@@ -1237,13 +1247,13 @@ export default function Disponibilidad() {
 
       {/* MENÚ MOBILE */}
       <nav className={`nav-mobile-menu${menuOpen?' open':''}`}>
-        <a href="/#nosotros" onClick={() => setMenuOpen(false)}>{t.navNosotros}</a>
-        <a href="/#alojamientos" onClick={() => setMenuOpen(false)}>{t.navAlojamientos}</a>
+        <a href={pre + '/nosotros'} onClick={() => setMenuOpen(false)}>{t.navNosotros}</a>
+        <a href={pre + '/alojamientos'} onClick={() => setMenuOpen(false)}>{t.navAlojamientos}</a>
         <a href="#antes-de-reservar" onClick={irA('antes-de-reservar')}>{t.navInfo}</a>
         <a href="#servicios" onClick={irA('servicios')}>{t.navServicios}</a>
-        <a href="/#testimonios" onClick={() => setMenuOpen(false)}>{t.navTestimonios}</a>
+        <a href={pre + '/opiniones'} onClick={() => setMenuOpen(false)}>{t.navTestimonios}</a>
         <a href="#clima" onClick={irA('clima')}>{t.navClima}</a>
-        <a href="/#ubicacion" onClick={() => setMenuOpen(false)}>{t.navUbicacion}</a>
+        <a href={pre + '/ubicacion'} onClick={() => setMenuOpen(false)}>{t.navUbicacion}</a>
       </nav>
 
       {/* MAIN */}
@@ -1309,7 +1319,7 @@ export default function Disponibilidad() {
                   </div>
               )}
             </div>
-            <a href="/" className="disp-banner-btn">{t.bannerModificar}</a>
+            <a href={inicio} className="disp-banner-btn">{t.bannerModificar}</a>
           </div>
         </div>
 
@@ -1322,14 +1332,14 @@ export default function Disponibilidad() {
             <div className="disp-estado disp-estado--error">
               <p className="disp-estado-icono">⚠</p>
               <p>{error === 'huespedes' ? t.errorHuespedes : error}</p>
-              <a href="/" className="disp-btn-volver">{t.volverIntentar}</a>
+              <a href={inicio} className="disp-btn-volver">{t.volverIntentar}</a>
             </div>
           )}
           {!cargando && !error && resultados !== null && !hayResultados && (
             <div className="disp-estado">
               <p className="disp-estado-icono">🔍</p>
               <p>{t.sinResultados}</p>
-              <a href="/" className="disp-btn-volver">{t.bannerModificar}</a>
+              <a href={inicio} className="disp-btn-volver">{t.bannerModificar}</a>
             </div>
           )}
           {!cargando && !error && excedeMax && (
