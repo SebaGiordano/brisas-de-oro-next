@@ -41,7 +41,7 @@ export default function Alojamiento({ slug, lang }) {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: ui.inicio, item: SITE_URL + inicioDe(lang) },
-        { '@type': 'ListItem', position: 2, name: ui.alojamientos, item: SITE_URL + inicioDe(lang) + '#alojamientos' },
+        { '@type': 'ListItem', position: 2, name: ui.alojamientos, item: SITE_URL + (lang === 'es' ? '' : '/' + lang) + '/alojamientos' },
         { '@type': 'ListItem', position: 3, name: nombre, item: url },
       ],
     },
@@ -102,7 +102,7 @@ export default function Alojamiento({ slug, lang }) {
           <div role="navigation" className="ap-breadcrumb" aria-label="Breadcrumb">
             <Link href="/" locale={lang}>{ui.inicio}</Link>
             <span>›</span>
-            <Link href="/#alojamientos" locale={lang}>{ui.alojamientos}</Link>
+            <Link href="/alojamientos" locale={lang}>{ui.alojamientos}</Link>
             <span>›</span>
             <span aria-current="page">{nombre}</span>
           </div>
@@ -164,7 +164,7 @@ export default function Alojamiento({ slug, lang }) {
             ))}
           </ul>
 
-          <p className="ap-volver"><Link href="/#alojamientos" locale={lang}>{ui.volver}</Link></p>
+          <p className="ap-volver"><Link href="/alojamientos" locale={lang}>{ui.volver}</Link></p>
         </div>
       </main>
 

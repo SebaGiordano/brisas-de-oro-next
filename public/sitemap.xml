@@ -22,6 +22,111 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://brisas-de-oro-next.vercel.app/" />
   </url>
   <url>
+    <loc>https://brisas-de-oro-next.vercel.app/nosotros</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://brisas-de-oro-next.vercel.app/nosotros" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://brisas-de-oro-next.vercel.app/en/nosotros" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://brisas-de-oro-next.vercel.app/pt/nosotros" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://brisas-de-oro-next.vercel.app/nosotros" />
+  </url>
+  <url>
+    <loc>https://brisas-de-oro-next.vercel.app/en/nosotros</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://brisas-de-oro-next.vercel.app/nosotros" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://brisas-de-oro-next.vercel.app/en/nosotros" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://brisas-de-oro-next.vercel.app/pt/nosotros" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://brisas-de-oro-next.vercel.app/nosotros" />
+  </url>
+  <url>
+    <loc>https://brisas-de-oro-next.vercel.app/pt/nosotros</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://brisas-de-oro-next.vercel.app/nosotros" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://brisas-de-oro-next.vercel.app/en/nosotros" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://brisas-de-oro-next.vercel.app/pt/nosotros" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://brisas-de-oro-next.vercel.app/nosotros" />
+  </url>
+  <url>
+    <loc>https://brisas-de-oro-next.vercel.app/alojamientos</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://brisas-de-oro-next.vercel.app/alojamientos" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://brisas-de-oro-next.vercel.app/en/alojamientos" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://brisas-de-oro-next.vercel.app/pt/alojamientos" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://brisas-de-oro-next.vercel.app/alojamientos" />
+  </url>
+  <url>
+    <loc>https://brisas-de-oro-next.vercel.app/en/alojamientos</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://brisas-de-oro-next.vercel.app/alojamientos" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://brisas-de-oro-next.vercel.app/en/alojamientos" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://brisas-de-oro-next.vercel.app/pt/alojamientos" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://brisas-de-oro-next.vercel.app/alojamientos" />
+  </url>
+  <url>
+    <loc>https://brisas-de-oro-next.vercel.app/pt/alojamientos</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://brisas-de-oro-next.vercel.app/alojamientos" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://brisas-de-oro-next.vercel.app/en/alojamientos" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://brisas-de-oro-next.vercel.app/pt/alojamientos" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://brisas-de-oro-next.vercel.app/alojamientos" />
+  </url>
+  <url>
+    <loc>https://brisas-de-oro-next.vercel.app/servicios</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://brisas-de-oro-next.vercel.app/servicios" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://brisas-de-oro-next.vercel.app/en/servicios" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://brisas-de-oro-next.vercel.app/pt/servicios" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://brisas-de-oro-next.vercel.app/servicios" />
+  </url>
+  <url>
+    <loc>https://brisas-de-oro-next.vercel.app/en/servicios</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://brisas-de-oro-next.vercel.app/servicios" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://brisas-de-oro-next.vercel.app/en/servicios" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://brisas-de-oro-next.vercel.app/pt/servicios" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://brisas-de-oro-next.vercel.app/servicios" />
+  </url>
+  <url>
+    <loc>https://brisas-de-oro-next.vercel.app/pt/servicios</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://brisas-de-oro-next.vercel.app/servicios" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://brisas-de-oro-next.vercel.app/en/servicios" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://brisas-de-oro-next.vercel.app/pt/servicios" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://brisas-de-oro-next.vercel.app/servicios" />
+  </url>
+  <url>
+    <loc>https://brisas-de-oro-next.vercel.app/opiniones</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://brisas-de-oro-next.vercel.app/opiniones" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://brisas-de-oro-next.vercel.app/en/opiniones" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://brisas-de-oro-next.vercel.app/pt/opiniones" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://brisas-de-oro-next.vercel.app/opiniones" />
+  </url>
+  <url>
+    <loc>https://brisas-de-oro-next.vercel.app/en/opiniones</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://brisas-de-oro-next.vercel.app/opiniones" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://brisas-de-oro-next.vercel.app/en/opiniones" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://brisas-de-oro-next.vercel.app/pt/opiniones" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://brisas-de-oro-next.vercel.app/opiniones" />
+  </url>
+  <url>
+    <loc>https://brisas-de-oro-next.vercel.app/pt/opiniones</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://brisas-de-oro-next.vercel.app/opiniones" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://brisas-de-oro-next.vercel.app/en/opiniones" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://brisas-de-oro-next.vercel.app/pt/opiniones" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://brisas-de-oro-next.vercel.app/opiniones" />
+  </url>
+  <url>
+    <loc>https://brisas-de-oro-next.vercel.app/ubicacion</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://brisas-de-oro-next.vercel.app/ubicacion" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://brisas-de-oro-next.vercel.app/en/ubicacion" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://brisas-de-oro-next.vercel.app/pt/ubicacion" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://brisas-de-oro-next.vercel.app/ubicacion" />
+  </url>
+  <url>
+    <loc>https://brisas-de-oro-next.vercel.app/en/ubicacion</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://brisas-de-oro-next.vercel.app/ubicacion" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://brisas-de-oro-next.vercel.app/en/ubicacion" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://brisas-de-oro-next.vercel.app/pt/ubicacion" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://brisas-de-oro-next.vercel.app/ubicacion" />
+  </url>
+  <url>
+    <loc>https://brisas-de-oro-next.vercel.app/pt/ubicacion</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://brisas-de-oro-next.vercel.app/ubicacion" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://brisas-de-oro-next.vercel.app/en/ubicacion" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://brisas-de-oro-next.vercel.app/pt/ubicacion" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://brisas-de-oro-next.vercel.app/ubicacion" />
+  </url>
+  <url>
     <loc>https://brisas-de-oro-next.vercel.app/alojamientos/cabana-chica</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://brisas-de-oro-next.vercel.app/alojamientos/cabana-chica" />
     <xhtml:link rel="alternate" hreflang="en" href="https://brisas-de-oro-next.vercel.app/en/alojamientos/cabana-chica" />

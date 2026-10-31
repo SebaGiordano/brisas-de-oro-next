@@ -2203,3 +2203,24 @@ footer { background: var(--footer-bg); color: var(--footer-text); padding: 3.5re
   .ap-galeria { grid-template-columns: repeat(2, 1fr); }
   .ap-otros { grid-template-columns: repeat(2, 1fr); }
 }
+
+/* ===================== PÁGINAS DE SECCIÓN (/nosotros, /alojamientos, ...) ===================== */
+.sub-espaciador { height: 190px; }
+.nav-links a[aria-current="page"], .nav-mobile-menu a[aria-current="page"] { color: #E2C96A; }
+
+/* ===================== RESUMEN DE LA PORTADA ===================== */
+#explorar { padding: 5rem 6%; }
+.res-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; }
+.res-card { display: flex; flex-direction: column; text-decoration: none; color: var(--texto); background: var(--blanco); border: 1.5px solid var(--borde); border-radius: 10px; overflow: hidden; transition: box-shadow 0.3s, border-color 0.3s, transform 0.3s; }
+.res-card:hover { box-shadow: 0 12px 36px rgba(0,0,0,0.13); border-color: var(--oro); transform: translateY(-4px); }
+.res-card img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; }
+.res-body { display: flex; flex-direction: column; gap: 0.4rem; padding: 1rem 1rem 1.2rem; flex: 1; }
+.res-label { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--oro); }
+.res-title { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 500; line-height: 1.2; flex: 1; }
+.res-mas { font-size: 0.78rem; font-weight: 700; color: var(--oro); }
+@media (max-width: 1100px) { .res-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 768px) {
+  #explorar { padding: 3.5rem 5%; }
+  .res-grid { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+  .res-title { font-size: 1.05rem; }
+}
