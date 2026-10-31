@@ -1121,9 +1121,7 @@ export default function Disponibilidad() {
 
   const esCualquiera = !tipo || normalizarTipo(tipo) === 'cualquiera'
   const esCasa = !esCualquiera && tipoCanonico(tipo) === 'casa'
-  // Cabaña mediana con 6 personas: entra justa, va siempre en "Otras opciones" con una nota
-  const esMedianaAjustada = r => r.id === 'cabanaMediana' && personas === 6
-  const coincide = r => tipoCoincide(tipo, r.tipo) && !esMedianaAjustada(r)
+  const coincide = r => tipoCoincide(tipo, r.tipo)
   const disponiblesCoincidentes = (resultados||[]).filter(r => r.disponible && coincide(r))
   const disponiblesOtros        = (resultados||[]).filter(r => r.disponible && !coincide(r))
 
@@ -1360,7 +1358,7 @@ export default function Disponibilidad() {
                     <span className="disp-seccion-count">{disponiblesCoincidentes.length}</span>
                   </h2>
                   <div className="disp-grid">
-                    {disponiblesCoincidentes.map(r => <CardAlojamiento key={r.id} item={r} destacado {...propsHabArriba(r)} wspUrl={buildWspUrl(r)} t={t} />)}
+                    {disponiblesCoincidentes.map(r => <CardAlojamiento key={r.id} item={r} destacado {...propsHabArriba(r)} nota={personas === 6 && r.id === 'cabanaMediana' ? t.notaMediana6 : null} wspUrl={buildWspUrl(r)} t={t} />)}
                   </div>
                 </section>
               )}
@@ -1371,7 +1369,7 @@ export default function Disponibilidad() {
                     <span className="disp-seccion-count">{disponiblesOtros.length}</span>
                   </h2>
                   <div className="disp-grid">
-                    {disponiblesOtros.map(r => <CardAlojamiento key={r.id} item={r} {...propsHabArriba(r)} nota={esMedianaAjustada(r) ? t.notaMediana6 : null} wspUrl={buildWspUrl(r)} t={t} />)}
+                    {disponiblesOtros.map(r => <CardAlojamiento key={r.id} item={r} {...propsHabArriba(r)} nota={personas === 6 && r.id === 'cabanaMediana' ? t.notaMediana6 : null} wspUrl={buildWspUrl(r)} t={t} />)}
                   </div>
                 </section>
               )}
