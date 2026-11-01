@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 import { SITE_URL, LOCALES, SEO, HOTEL_SCHEMA, translateHtml } from '../lib/seo'
 import { PAGINAS, rutaDe, urlDe, metaPagina, breadcrumbSchema } from '../lib/paginas'
 import { I18N } from '../lib/i18n'
+import { guardarIdioma, idiomaGuardado } from '../lib/idioma'
 
 
 /* Componente compartido por todas las páginas del sitio (portada, /nosotros, /alojamientos, ...).
@@ -17,6 +18,8 @@ export default function Sitio({ pagina = 'inicio' }) {
   const path = PAGINAS[pagina].path
 
   useEffect(() => {
+    // Si la portada se desmonta (navegación interna de Next), las escuchas nuevas dejan de actuar
+    let sitioDesmontado = false;
     // Red de seguridad: si algo del script falla, se registra pero la página sigue visible
     try {
     const i18n = I18N;
@@ -71,6 +74,7 @@ export default function Sitio({ pagina = 'inicio' }) {
     }
     
     function setLang(lang) {
+      guardarIdioma(lang); // se recuerda para el resto de la navegación
       applyTranslations(lang);
       document.getElementById('langSelector').classList.remove('open');
       // Reflejar el idioma en la URL (/, /en, /pt) y en <html lang>, sin recargar
@@ -1286,7 +1290,7 @@ export default function Sitio({ pagina = 'inicio' }) {
     let cuadroSeguimiento = 0;
     let seguimientoActivo = false; // se activa recién cuando la página terminó de cargar y quedó en su sección
     window.addEventListener('scroll', function() {
-      if (!seguimientoActivo || Date.now() < pausaSeguimiento) return;
+      if (sitioDesmontado || !seguimientoActivo || Date.now() < pausaSeguimiento) return;
       cancelAnimationFrame(cuadroSeguimiento);
       cuadroSeguimiento = requestAnimationFrame(function() {
         const ruta = rutaVisible();
@@ -1296,6 +1300,7 @@ export default function Sitio({ pagina = 'inicio' }) {
 
     // Atrás / adelante del navegador: volver a la sección de esa URL
     window.addEventListener('popstate', function() {
+      if (sitioDesmontado) return;
       const ruta = rutaDeUrl();
       const id = window.location.hash.slice(1) || SECCION_DE_RUTA[ruta];
       marcarMenu(ruta);
@@ -1331,6 +1336,15 @@ export default function Sitio({ pagina = 'inicio' }) {
       applyTranslations(pageLang);
       if (window.fetchClima) window.fetchClima();
     }
+
+    // Si la persona ya eligió otro idioma (por ejemplo, volvió con "atrás" a una página en el idioma
+    // anterior), se pasa a ese idioma. También al restaurar la página desde la caché del navegador.
+    function aplicarIdiomaGuardado() {
+      const guardado = idiomaGuardado();
+      if (guardado && guardado !== currentLang) setLang(guardado);
+    }
+    aplicarIdiomaGuardado();
+    window.addEventListener('pageshow', function(e) { if (!sitioDesmontado && e.persisted) aplicarIdiomaGuardado(); });
     window.abrirWsp           = abrirWsp
     window.getMsgWsp          = getMsgWsp
     window.scrollToId         = scrollToId
@@ -1354,6 +1368,7 @@ export default function Sitio({ pagina = 'inicio' }) {
     } catch (e) {
       console.error('[Brisas de Oro] Error en el script de la página:', e)
     }
+    return () => { sitioDesmontado = true }
   }, [])
 
   return (

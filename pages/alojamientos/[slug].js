@@ -1,11 +1,17 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import { useEffect } from 'react'
+import { useRouter } from 'next/router'
+import { guardarIdioma, idiomaGuardado } from '../../lib/idioma'
 import { SITE_URL, LOCALES, SEO, HOTEL_SCHEMA } from '../../lib/seo'
 import { I18N } from '../../lib/i18n'
 import { ALOJAMIENTOS, getAlojamiento, WSP_NUMERO, WSP_MSG, UI, plano } from '../../lib/alojamientos'
 
 const pathDe = (lang, slug) => (lang === 'es' ? '' : '/' + lang) + '/alojamientos/' + slug
 const inicioDe = lang => (lang === 'es' ? '/' : '/' + lang)
+// Links hacia el sitio principal (portada y secciones): <a> común, con carga completa. Si se usara <Link>,
+// la portada se montaría dentro de esta página y al volver con "atrás" quedarían activos sus scripts.
+const sitioDe = (lang, ruta) => (lang === 'es' ? '' : '/' + lang) + ruta
 const Html = ({ as: Tag = 'span', html, ...props }) => <Tag {...props} dangerouslySetInnerHTML={{ __html: html }} />
 
 export async function getStaticPaths({ locales }) {
@@ -20,6 +26,15 @@ export async function getStaticProps({ params, locale }) {
 }
 
 export default function Alojamiento({ slug, lang }) {
+  const router = useRouter()
+  // Idioma elegido antes en el sitio: si esta ficha está en otro, se pasa a ese (también al volver con "atrás")
+  useEffect(() => {
+    const aplicar = () => { const g = idiomaGuardado(); if (g && g !== lang) router.replace(router.asPath, undefined, { locale: g, scroll: false }) }
+    aplicar()
+    const alMostrar = e => { if (e.persisted) aplicar() }
+    window.addEventListener('pageshow', alMostrar)
+    return () => window.removeEventListener('pageshow', alMostrar)
+  }, [lang])
   const a = getAlojamiento(slug)
   const t = I18N[lang]
   const ui = UI[lang]
@@ -83,13 +98,13 @@ export default function Alojamiento({ slug, lang }) {
 
       <header className="ap-header">
         <div className="ap-header-inner">
-          <Link href="/" locale={lang} className="ap-logo">
+          <a href={inicioDe(lang)} className="ap-logo">
             <img src="/logo.webp" alt="Hotel y Cabañas Brisas de Oro" width="120" height="74" />
-          </Link>
+          </a>
           {/* div con role en vez de <nav>: globals.css fija la posición de todo <nav> (menú de la portada) */}
           <div role="navigation" className="ap-langs" aria-label="Idioma">
             {LOCALES.map(l => (
-              <Link key={l} href={`/alojamientos/${slug}`} locale={l} className={'ap-lang' + (l === lang ? ' activo' : '')} hrefLang={l}>
+              <Link key={l} href={`/alojamientos/${slug}`} locale={l} className={'ap-lang' + (l === lang ? ' activo' : '')} hrefLang={l} onClick={() => guardarIdioma(l)}>
                 {l.toUpperCase()}
               </Link>
             ))}
@@ -100,9 +115,9 @@ export default function Alojamiento({ slug, lang }) {
       <main className="ap-main sec-crema-a">
         <div className="section-inner">
           <div role="navigation" className="ap-breadcrumb" aria-label="Breadcrumb">
-            <Link href="/" locale={lang}>{ui.inicio}</Link>
+            <a href={inicioDe(lang)}>{ui.inicio}</a>
             <span>›</span>
-            <Link href="/alojamientos" locale={lang}>{ui.alojamientos}</Link>
+            <a href={sitioDe(lang, '/alojamientos')}>{ui.alojamientos}</a>
             <span>›</span>
             <span aria-current="page">{nombre}</span>
           </div>
@@ -139,7 +154,7 @@ export default function Alojamiento({ slug, lang }) {
               )}
               <div className="ap-ctas">
                 <a className="ap-btn ap-btn-wsp" href={wsp} target="_blank" rel="noopener noreferrer">{ui.consultarWsp}</a>
-                <Link className="ap-btn ap-btn-sec" href="/#inicio" locale={lang}>{ui.verDisponibilidad}</Link>
+                <a className="ap-btn ap-btn-sec" href={inicioDe(lang) + '#inicio'}>{ui.verDisponibilidad}</a>
               </div>
               <p className="ap-nota">{ui.nota}</p>
             </div>
@@ -164,7 +179,7 @@ export default function Alojamiento({ slug, lang }) {
             ))}
           </ul>
 
-          <p className="ap-volver"><Link href="/alojamientos" locale={lang}>{ui.volver}</Link></p>
+          <p className="ap-volver"><a href={sitioDe(lang, '/alojamientos')}>{ui.volver}</a></p>
         </div>
       </main>
 
