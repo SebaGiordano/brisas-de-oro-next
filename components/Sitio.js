@@ -279,6 +279,162 @@ export default function Sitio({ pagina = 'inicio' }) {
     function cerrarMenu() {
       document.getElementById('nav-mobile-menu').classList.remove('open');
     }
+
+    // Pantallas táctiles: el efecto de la tarjeta (clase "tocada") y WhatsApp en un mismo toque.
+    // WhatsApp se abre al soltar el dedo sobre el botón donde empezó el toque: así no importa que la
+    // tarjeta se haya levantado, ni que el navegador use el primer toque para el hover (iOS)
+    if (window.matchMedia('(hover: none)').matches) {
+      var toqueWsp = null;
+      var SEL_WSP = 'a[onclick*="abrirWsp"], a[href^="https://wa.me/"], .disp-wsp-btn, .btn-consultar-card, .wsp-float';
+      document.addEventListener('touchstart', function(e) {
+        var t = e.touches[0];
+        var card = e.target.closest('.aloj-card');
+        document.querySelectorAll('.aloj-card.tocada').forEach(function(c) { if (c !== card) c.classList.remove('tocada'); });
+        if (card) card.classList.add('tocada');
+        var btn = e.target.closest(SEL_WSP);
+        toqueWsp = btn ? { el: btn, x: t.clientX, y: t.clientY } : null;
+      }, { passive: true });
+      document.addEventListener('touchend', function(e) {
+        if (!toqueWsp) return;
+        var t = e.changedTouches[0], el = toqueWsp.el;
+        var movio = Math.abs(t.clientX - toqueWsp.x) > 10 || Math.abs(t.clientY - toqueWsp.y) > 10;
+        toqueWsp = null;
+        if (movio) return; // fue un desplazamiento, no un toque
+        e.preventDefault(); // sin el clic posterior del navegador (no se abre dos veces)
+        el.click();
+      });
+    }
+
+    // Chips de "Quiénes somos": al tocarlos se levantan un instante (clase, porque :active no siempre aplica en táctil)
+    document.querySelectorAll('.info-chips .chip').forEach(function(chip) {
+      chip.addEventListener('touchstart', function() { chip.classList.add('tocado'); }, { passive: true });
+      ['touchend', 'touchcancel'].forEach(function(ev) {
+        chip.addEventListener(ev, function() { setTimeout(function() { chip.classList.remove('tocado'); }, 180); });
+      });
+    });
+
+    /* ===== MAPA DE UBICACIÓN (Leaflet + OpenStreetMap) ===== */
+    (function() {
+      var cont = document.getElementById('mapa-ubic');
+      if (!cont || cont.dataset.iniciado) return;
+      cont.dataset.iniciado = '1';
+      // Coordenadas del marcador de cada lugar (Google Maps); Brisas de Oro: Av. Ramón J. Cárcano 2590
+      var BRISAS = [-31.4540395, -64.5080366];
+      var LUGARES = {
+        balneario:  [-31.4546692, -64.5112997],
+        centro:     [-31.4202455, -64.5019339],
+        aeropuerto: [-31.3155152, -64.2136596],
+        cucu:       [-31.4153194, -64.5030279],
+        dique:      [-31.3731623, -64.4322444],
+        cordoba:    [-31.4200833, -64.1887761]
+      };
+      var ZOOM = { balneario: 16, centro: 16, aeropuerto: 14, cucu: 17, dique: 15, cordoba: 12 };
+      // Casa con Pileta: Calle Uruguay esq. Lombardo, Icho Cruz
+      var CASA = [-31.4795524, -64.5641224];
+      // "Abrir en Google Maps" lleva al lugar que se está mostrando
+      var GMAPS = {
+        brisas:     'https://www.google.com/maps/search/Av.+Ram%C3%B3n+J.+C%C3%A1rcano+2590+Villa+Carlos+Paz',
+        casa:       'https://maps.app.goo.gl/LNTt8TeZjFvNtwUY9',
+        balneario:  'https://maps.app.goo.gl/ZrR9xqTGqVDpNcem9',
+        centro:     'https://maps.app.goo.gl/GBVLpMyuEAoChWiu7',
+        aeropuerto: 'https://maps.app.goo.gl/XzpztYdDn4T9Z5dq5',
+        cucu:       'https://maps.app.goo.gl/TnkvrMMQfWuW6ZF79',
+        dique:      'https://maps.app.goo.gl/WWHQB8iUkScJT33k8',
+        cordoba:    'https://maps.app.goo.gl/zeFerwzHzX6Nk5CA7'
+      };
+      var linkGmaps = document.getElementById('mapa-gmaps');
+      var mapa = null, destino = null, esperando = [];
+      var refs = document.querySelectorAll('#ubicacion .dist-list li[data-lugar]');
+
+      function conMapa(fn) {
+        if (mapa) return fn();
+        esperando.push(fn);
+        if (esperando.length > 1) return;
+        var css = document.createElement('link');
+        css.rel = 'stylesheet';
+        css.href = 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css';
+        document.head.appendChild(css);
+        var js = document.createElement('script');
+        js.src = 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js';
+        js.onload = function() {
+          var L = window.L;
+          // Arrastre con mouse o dedo siempre; zoom con la rueda desde 769 px de ancho (no depende de si la pantalla es táctil)
+          var compu = window.matchMedia('(min-width: 769px)');
+          mapa = L.map(cont, { scrollWheelZoom: compu.matches, dragging: true }).setView(BRISAS, 15);
+          var alCambiarAncho = function(e) { if (e.matches) mapa.scrollWheelZoom.enable(); else mapa.scrollWheelZoom.disable(); };
+          if (compu.addEventListener) compu.addEventListener('change', alCambiarAncho); else compu.addListener(alCambiarAncho);
+          L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>'
+          }).addTo(mapa);
+          L.marker(BRISAS, { title: 'Brisas de Oro', zIndexOffset: 1000 }).addTo(mapa)
+            .bindTooltip('Brisas de Oro', { permanent: true, direction: 'top', offset: [-15, -10], className: 'mapa-etiqueta mapa-etiqueta--brisas' });
+          esperando.forEach(function(f) { f(); });
+          esperando = [];
+        };
+        document.head.appendChild(js);
+      }
+
+      function marcarActiva(li) {
+        refs.forEach(function(r) { r.classList.toggle('activa', r === li); r.setAttribute('aria-pressed', r === li ? 'true' : 'false'); });
+      }
+
+      // Muestra un lugar: su marcador con etiqueta, centrado con su zoom; el de Brisas de Oro sigue en el mapa
+      function mostrar(coords, nombre, zoom, gmaps) {
+        // Si el mapa no está a la vista (celular, o desde la Casa), acercarlo
+        var r = cont.getBoundingClientRect();
+        if (r.top < 0 || r.bottom > window.innerHeight) cont.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        linkGmaps.href = gmaps;
+        conMapa(function() {
+          var L = window.L;
+          if (destino) mapa.removeLayer(destino);
+          destino = L.marker(coords, { title: nombre }).addTo(mapa)
+            .bindTooltip(nombre, { permanent: true, direction: 'top', offset: [-15, -10], className: 'mapa-etiqueta' });
+          mapa.flyTo(coords, zoom, { duration: 0.8 });
+        });
+      }
+
+      function irA(li) {
+        var lugar = li.getAttribute('data-lugar');
+        marcarActiva(li);
+        // Etiqueta corta en el mapa (sin la aclaración entre paréntesis)
+        mostrar(LUGARES[lugar], li.querySelector('.dist-text span').textContent.split(' (')[0], ZOOM[lugar], GMAPS[lugar]);
+      }
+
+      function volver() {
+        marcarActiva(null);
+        linkGmaps.href = GMAPS.brisas;
+        conMapa(function() {
+          if (destino) { mapa.removeLayer(destino); destino = null; }
+          mapa.flyTo(BRISAS, 15, { duration: 0.8 });
+        });
+      }
+
+      refs.forEach(function(li) {
+        li.addEventListener('click', function() { irA(li); });
+        li.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); irA(li); }
+        });
+      });
+      document.getElementById('mapa-volver').addEventListener('click', volver);
+      // "Cómo llegar" de la Casa: sube al mapa y muestra la Casa (el href queda como respaldo)
+      var btnCasa = document.querySelector('.ubic-casa-btn');
+      if (btnCasa) btnCasa.addEventListener('click', function(e) {
+        e.preventDefault();
+        marcarActiva(null);
+        mostrar(CASA, document.querySelector('.ubic-casa-title').textContent.split(' · ')[0], 15, GMAPS.casa);
+      });
+
+      // Carga diferida: el mapa se arma cuando la sección se acerca a la pantalla
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function(entradas) {
+          if (entradas.some(function(e) { return e.isIntersecting; })) { io.disconnect(); conMapa(function() {}); }
+        }, { rootMargin: '400px' });
+        io.observe(cont);
+      } else {
+        conMapa(function() {});
+      }
+    })();
     function scrollToId(id, suave) {
       var el = document.getElementById(id);
       if (!el) return;
@@ -717,13 +873,20 @@ export default function Sitio({ pagina = 'inicio' }) {
       return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
     }
     
-    // Abrir WhatsApp — esquema directo en mobile, wa.me en desktop
+    // Abrir WhatsApp con wa.me: en celular en la misma pestaña (abre la app), en computadora en una pestaña nueva
     function abrirWsp(texto) {
-      const msg = encodeURIComponent(texto);
-      const url = esMobile()
-        ? `whatsapp://send?phone=543541548053&text=${msg}`
-        : `https://wa.me/543541548053?text=${msg}`;
-      window.open(url, '_blank');
+      const url = 'https://wa.me/543541548053?text=' + encodeURIComponent(texto);
+      if (esMobile()) { window.location.href = url; return; }
+      const a = document.createElement('a');
+      a.href = url; a.target = '_blank'; a.rel = 'noopener noreferrer';
+      document.body.appendChild(a); a.click(); a.remove();
+    }
+    // Enlaces fijos a wa.me (pie de página): en celular, en la misma pestaña
+    if (esMobile()) {
+      document.addEventListener('click', function(e) {
+        var a = e.target.closest && e.target.closest('a[href^="https://wa.me/"]');
+        if (a && a.target === '_blank') { e.preventDefault(); window.location.href = a.href; }
+      }, true);
     }
     
     
@@ -1412,7 +1575,7 @@ export default function Sitio({ pagina = 'inicio' }) {
         <meta property="og:url" content={urlDe(lang, path)} />
         <meta property="og:locale" content={seo.ogLocale} />
         {LOCALES.filter(l => l !== lang).map(l => <meta key={"og-locale-" + l} property="og:locale:alternate" content={SEO[l].ogLocale} />)}
-        <meta property="og:site_name" content="Brisas de Oro Hotel y Cabañas" />
+        <meta property="og:site_name" content={{ es: 'Brisas de Oro Hotel y Cabañas', en: 'Brisas de Oro Hotel & Cabins', pt: 'Brisas de Oro Hotel e Cabanas' }[lang] || 'Brisas de Oro Hotel y Cabañas'} />
         <meta property="business:contact_data:street_address" content="Av. Ramón J. Cárcano 2590" />
         <meta property="business:contact_data:locality" content="Villa Carlos Paz" />
         <meta property="business:contact_data:region" content="Córdoba" />
@@ -1467,7 +1630,7 @@ const HTML = `
 <nav id="main-nav">
   <div class="nav-inner">
     <a href="/" data-ruta="" class="logo">
-      <img src="/logo.webp" alt="Hotel y Cabañas Brisas de Oro">
+      <img src="/logo.webp" alt="Hotel y Cabañas Brisas de Oro" data-i18n-alt="alt.marca">
     </a>
     <ul class="nav-links">
       <li><a href="/nosotros" data-ruta="nosotros" data-i18n="nav.nosotros">Nosotros</a></li>
@@ -1682,9 +1845,12 @@ const HTML = `
           <span data-i18n="nosotros.badge2">María Celia, anfitriona</span>
         </div>
       </div>
-      <div class="nosotros-text">
+      <!-- Etiqueta y título: en computadora arriba y a lo ancho; en celular entre la foto y el texto -->
+      <div class="nosotros-text nosotros-head">
         <p class="section-label" data-i18n="nosotros.label">Quiénes somos</p>
         <h2 class="section-title" data-i18n="nosotros.title">Un lugar donde cada huésped es parte de la familia</h2>
+      </div>
+      <div class="nosotros-text">
         <div class="divider"></div>
         <p data-i18n="nosotros.p1">Somos un complejo familiar ubicado en Villa Carlos Paz, atendido directamente por sus dueños. Desde el primer contacto hasta el momento de la despedida, nos ocupamos personalmente de que tu estadía sea cómoda, tranquila y especial.</p>
         <p data-i18n="nosotros.p2">Cada detalle importa: el desayuno casero preparado con amor, el saludo al llegar, la charla de tarde. Son esas pequeñas cosas las que hacen que nuestros huéspedes se vayan con una sonrisa y quieran volver.</p>
@@ -1692,15 +1858,16 @@ const HTML = `
         <div class="highlight-box">
           <p data-i18n="nosotros.quote"><span class="cita-linea">"Más que una estadía, un recuerdo</span><span class="cita-linea">que se lleva en el corazón."</span></p>
         </div>
-        <div class="info-chips">
-          <span class="chip" data-i18n="nosotros.c1">Atención personalizada</span>
-          <span class="chip" data-i18n="nosotros.c2">Ubicación estratégica</span>
-          <span class="chip" data-i18n="nosotros.c3">Flexibilidad y comodidad</span>
-          <span class="chip" data-i18n="nosotros.c4">16 unidades</span>
-          <span class="chip" data-i18n="nosotros.c5">Atendido por la familia</span>
-          <span class="chip" data-i18n="nosotros.c6">El Algarrobo</span>
-        </div>
       </div>
+    </div>
+    <!-- Chips: franja a lo ancho, debajo de la foto y del texto -->
+    <div class="info-chips">
+      <span class="chip" data-i18n="nosotros.c1">Atención personalizada</span>
+      <span class="chip" data-i18n="nosotros.c2">Ubicación estratégica</span>
+      <span class="chip" data-i18n="nosotros.c3">Flexibilidad y comodidad</span>
+      <span class="chip" data-i18n="nosotros.c4">16 unidades</span>
+      <span class="chip" data-i18n="nosotros.c5">Atendido por la familia</span>
+      <span class="chip" data-i18n="nosotros.c6">El Algarrobo</span>
     </div>
   </div>
 </section>
@@ -1851,7 +2018,7 @@ const HTML = `
     <div class="aloj-grid">
 
       <!-- CARD 1 — Cabaña chica -->
-      <div class="aloj-card">
+      <div class="aloj-card disp-aloj-card">
         <div class="card-img">
           <div class="card-carousel" id="car-cabana-chica">
             <div class="card-carousel-track">
@@ -1885,11 +2052,13 @@ const HTML = `
             <span class="feature-tag" data-i18n="feat.pet">Pet friendly</span>
             <span class="feature-tag" data-i18n="feat.desayuno.opc">Desayuno opcional</span>
           </div>
+          <div style="flex:1"></div>
+          <a class="disp-wsp-btn" href="javascript:void(0)" onclick="abrirWsp(getMsgWsp('cabChica'))"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg><span data-i18n="aloj.wsp">Consultar por WhatsApp</span></a>
         </div>
       </div>
 
       <!-- CARD 2 — Cabaña mediana -->
-      <div class="aloj-card">
+      <div class="aloj-card disp-aloj-card">
         <div class="card-img">
           <div class="card-carousel" id="car-cabana-mediana">
             <div class="card-carousel-track">
@@ -1925,11 +2094,13 @@ const HTML = `
             <span class="feature-tag" data-i18n="feat.pet">Pet friendly</span>
             <span class="feature-tag" data-i18n="feat.desayuno.opc">Desayuno opcional</span>
           </div>
+          <div style="flex:1"></div>
+          <a class="disp-wsp-btn" href="javascript:void(0)" onclick="abrirWsp(getMsgWsp('cabMed'))"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg><span data-i18n="aloj.wsp">Consultar por WhatsApp</span></a>
         </div>
       </div>
 
       <!-- CARD 3 — Cabaña grande -->
-      <div class="aloj-card">
+      <div class="aloj-card disp-aloj-card">
         <div class="card-img">
           <div class="card-carousel" id="car-cabana-grande">
             <div class="card-carousel-track">
@@ -1964,11 +2135,13 @@ const HTML = `
             <span class="feature-tag" data-i18n="feat.pet">Pet friendly</span>
             <span class="feature-tag" data-i18n="feat.desayuno.opc">Desayuno opcional</span>
           </div>
+          <div style="flex:1"></div>
+          <a class="disp-wsp-btn" href="javascript:void(0)" onclick="abrirWsp(getMsgWsp('cabGrande'))"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg><span data-i18n="aloj.wsp">Consultar por WhatsApp</span></a>
         </div>
       </div>
 
       <!-- CARD 4 — Habitaciones de hotel -->
-      <div class="aloj-card">
+      <div class="aloj-card disp-aloj-card">
         <div class="card-img">
           <div class="card-carousel" id="car-habitaciones">
             <div class="card-carousel-track">
@@ -2008,11 +2181,13 @@ const HTML = `
             <span class="feature-tag" data-i18n="feat.limp1">Limpieza diaria</span>
             <span class="feature-tag" data-i18n="feat.desayuno.opc">Desayuno opcional</span>
           </div>
+          <div style="flex:1"></div>
+          <a class="disp-wsp-btn" href="javascript:void(0)" onclick="abrirWsp(getMsgWsp('habit'))"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg><span data-i18n="aloj.wsp">Consultar por WhatsApp</span></a>
         </div>
       </div>
 
       <!-- CARD 5 — Apart Hotel -->
-      <div class="aloj-card">
+      <div class="aloj-card disp-aloj-card">
         <div class="card-img">
           <div class="card-carousel" id="car-apart">
             <div class="card-carousel-track">
@@ -2045,11 +2220,13 @@ const HTML = `
             <span class="feature-tag" data-i18n="feat.limp1">Limpieza diaria</span>
             <span class="feature-tag" data-i18n="feat.desayuno.opc">Desayuno opcional</span>
           </div>
+          <div style="flex:1"></div>
+          <a class="disp-wsp-btn" href="javascript:void(0)" onclick="abrirWsp(getMsgWsp('apart'))"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg><span data-i18n="aloj.wsp">Consultar por WhatsApp</span></a>
         </div>
       </div>
 
       <!-- CARD 6 — Casa con Pileta · Icho Cruz (fuera del complejo) -->
-      <div class="aloj-card">
+      <div class="aloj-card disp-aloj-card">
         <div class="card-img">
           <div class="card-carousel" id="car-casa">
             <div class="card-carousel-track">
@@ -2085,6 +2262,8 @@ const HTML = `
           </div>
           <p class="card-nota"><span class="card-nota-linea" data-i18n="aloj.card6.noincluye.a">Sin desayuno ni toallas</span><span class="card-nota-linea" data-i18n="aloj.card6.noincluye.b">Ropa de cama opcional (con cargo adicional)</span></p>
           <p class="card-nota ico-txt"><svg class="ico" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span data-i18n="aloj.card6.ubic">Icho Cruz — a 15 min de Brisas de Oro</span></p>
+          <div style="flex:1"></div>
+          <a class="disp-wsp-btn" href="javascript:void(0)" onclick="abrirWsp(getMsgWsp('casa'))"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg><span data-i18n="aloj.wsp">Consultar por WhatsApp</span></a>
         </div>
       </div>
     </div>
@@ -2550,12 +2729,15 @@ const HTML = `
 
 <!-- ============================================================ UBICACIÓN -->
 <section id="ubicacion" class="sec-blanco">
+  <!-- Etiqueta y título arriba; debajo, la información a la izquierda y el mapa a la derecha -->
+  <div class="ubic-head">
+    <p class="section-label" data-i18n="ubic.label">Dónde estamos</p>
+    <h2 class="section-title" data-i18n="ubic.title">En plena avenida,<br class="br-movil"> rodeados de naturaleza</h2>
+    <div class="divider"></div>
+  </div>
   <div class="ubicacion-grid">
     <div>
-      <p class="section-label" data-i18n="ubic.label">Dónde estamos</p>
-      <h2 class="section-title" data-i18n="ubic.title">En plena avenida,<br>rodeados de naturaleza</h2>
-      <div class="divider"></div>
-      <p style="color:var(--texto-medio);font-size:0.91rem;line-height:1.85;margin-bottom:1rem;margin-top:-0.6rem;" data-i18n="ubic.desc">Ubicados sobre una de las avenidas principales de Villa Carlos Paz, con las sierras como horizonte y&nbsp;el&nbsp;río a pocos pasos.</p>
+      <p style="color:var(--texto-medio);font-size:0.91rem;line-height:1.85;margin-bottom:1rem;margin-top:-0.6rem;" data-i18n="ubic.desc">Ubicados sobre una de las avenidas principales de Villa Carlos Paz, con las sierras como horizonte y el río a pocos pasos. Aquí el ritmo baja: aire serrano, sonido de agua y montañas que acompañan cada mañana. Un lugar para descansar con calma, con la ciudad al alcance y la naturaleza en&nbsp;la&nbsp;puerta.</p>
       <p style="display:flex;align-items:center;gap:0.5rem;font-size:0.82rem;font-weight:600;margin-bottom:1.4rem;">
         <svg width="11" height="14" viewBox="0 0 11 14" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0">
           <path d="M5.5 0C2.46 0 0 2.46 0 5.5C0 9.625 5.5 14 5.5 14C5.5 14 11 9.625 11 5.5C11 2.46 8.54 0 5.5 0ZM5.5 7.5C4.395 7.5 3.5 6.605 3.5 5.5C3.5 4.395 4.395 3.5 5.5 3.5C6.605 3.5 7.5 4.395 7.5 5.5C7.5 6.605 6.605 7.5 5.5 7.5Z" fill="var(--oro)"/>
@@ -2567,7 +2749,7 @@ const HTML = `
         </a>
       </p>
       <ul class="dist-list">
-        <li>
+        <li data-lugar="balneario" tabindex="0" role="button">
           <!-- Ícono: sol / playa -->
           <span class="dist-icon">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
@@ -2577,7 +2759,7 @@ const HTML = `
             <span data-i18n="ubic.d1b">Balneario Playas de Oro</span>
           </div>
         </li>
-        <li>
+        <li data-lugar="centro" tabindex="0" role="button">
           <!-- Ícono: edificios / ciudad -->
           <span class="dist-icon">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M3 7l9-4 9 4M4 21V7M20 21V7M9 21v-4h6v4M9 10h.01M15 10h.01M9 14h.01M15 14h.01"/></svg>
@@ -2587,7 +2769,7 @@ const HTML = `
             <span data-i18n="ubic.d3b">Centro de Villa Carlos Paz</span>
           </div>
         </li>
-        <li>
+        <li data-lugar="aeropuerto" tabindex="0" role="button">
           <!-- Ícono: avión -->
           <span class="dist-icon">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg>
@@ -2597,25 +2779,50 @@ const HTML = `
             <span data-i18n="ubic.d4b">Aeropuerto Internacional de Córdoba</span>
           </div>
         </li>
+        <li data-lugar="cucu" tabindex="0" role="button">
+          <!-- Ícono: reloj -->
+          <span class="dist-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          </span>
+          <div class="dist-text">
+            <strong data-i18n="ubic.cucu.a">5 km</strong>
+            <span data-i18n="ubic.cucu.b">Reloj Cucú (centro turístico de Villa Carlos Paz)</span>
+          </div>
+        </li>
+        <li data-lugar="dique" tabindex="0" role="button">
+          <!-- Ícono: agua / dique -->
+          <span class="dist-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8c2 0 2-2 4-2s2 2 4 2 2-2 4-2 2 2 4 2 2-2 4-2M2 13c2 0 2-2 4-2s2 2 4 2 2-2 4-2 2 2 4 2 2-2 4-2M2 18c2 0 2-2 4-2s2 2 4 2 2-2 4-2 2 2 4 2 2-2 4-2"/></svg>
+          </span>
+          <div class="dist-text">
+            <strong data-i18n="ubic.dique.a">16 km</strong>
+            <span data-i18n="ubic.dique.b">Dique San Roque y su embudo</span>
+          </div>
+        </li>
+        <li data-lugar="cordoba" tabindex="0" role="button">
+          <!-- Ícono: edificios / capital -->
+          <span class="dist-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V9l5-3v15M10 21V4l9 4v13M14 11h2M14 15h2M14 18h2M7 12h1M7 16h1"/></svg>
+          </span>
+          <div class="dist-text">
+            <strong data-i18n="ubic.cba.a">40 km</strong>
+            <span data-i18n="ubic.cba.b">Córdoba capital</span>
+          </div>
+        </li>
       </ul>
     </div>
-    <!-- Google Maps embed — Av. Ramón J. Cárcano 2590, Villa Carlos Paz -->
-    <div style="height:420px;border-radius:10px;overflow:hidden;border:1px solid var(--borde);flex-shrink:0;">
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3397.8!2d-64.4872!3d-31.4285!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x942d6b4c8b1e2a3d%3A0x0!2sAv.+Ram%C3%B3n+J.+C%C3%A1rcano+2590%2C+X5152+Villa+Carlos+Paz%2C+C%C3%B3rdoba!5e0!3m2!1ses!2sar!4v1"
-        width="100%" height="100%"
-        style="border:0;display:block;"
-        allowfullscreen="" loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-        title="Hotel y Cabañas Brisas de Oro — Av. Ramón J. Cárcano 2590, Villa Carlos Paz">
-      </iframe>
+    <!-- Mapa (Leaflet + OpenStreetMap): Brisas de Oro siempre marcado; al tocar una referencia muestra ese lugar -->
+    <div class="mapa-ubic-wrap" style="height:420px;border-radius:10px;overflow:hidden;border:1px solid var(--borde);flex-shrink:0;">
+      <div id="mapa-ubic" class="mapa-ubic" role="region" data-i18n-aria="ubic.mapa.aria" aria-label="Mapa: Hotel y Cabañas Brisas de Oro, Av. Ramón J. Cárcano 2590, Villa Carlos Paz"></div>
+      <button type="button" class="mapa-volver" id="mapa-volver" data-i18n="ubic.volver">Volver a Brisas de Oro</button>
+      <a class="mapa-gmaps" id="mapa-gmaps" href="https://www.google.com/maps/search/Av.+Ram%C3%B3n+J.+C%C3%A1rcano+2590+Villa+Carlos+Paz" target="_blank" rel="noopener" data-i18n="ubic.gmaps">Abrir en Google Maps</a>
     </div>
   </div>
   <!-- Casa con Pileta · Icho Cruz — alojamiento independiente, fuera del complejo (sin mapa embebido) -->
   <div class="ubic-casa">
     <h3 class="ubic-casa-title" data-i18n="ubic.casa.title">Casa con Pileta · Icho Cruz</h3>
     <div class="divider ubic-casa-divider"></div>
-    <p class="ubic-casa-sub" data-i18n="ubic.casa.sub">Alojamiento independiente, fuera del complejo Brisas de Oro.</p>
+    <p class="ubic-casa-sub" data-i18n="ubic.casa.sub">Alojamiento privado e independiente<br class="br-movil"> para compartir y disfrutar con amigos y familia</p>
     <p class="ubic-casa-dir">
       <svg width="11" height="14" viewBox="0 0 11 14" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0">
           <path d="M5.5 0C2.46 0 0 2.46 0 5.5C0 9.625 5.5 14 5.5 14C5.5 14 11 9.625 11 5.5C11 2.46 8.54 0 5.5 0ZM5.5 7.5C4.395 7.5 3.5 6.605 3.5 5.5C3.5 4.395 4.395 3.5 5.5 3.5C6.605 3.5 7.5 4.395 7.5 5.5C7.5 6.605 6.605 7.5 5.5 7.5Z" fill="var(--oro)"/>
@@ -2680,7 +2887,7 @@ const HTML = `
   <div class="footer-inner">
     <div class="footer-grid">
       <div>
-        <p class="footer-logo">Hotel y Cabañas Brisas de Oro<span>Villa Carlos Paz · Córdoba · Argentina</span></p>
+        <p class="footer-logo" data-i18n="footer.marca">Hotel y Cabañas Brisas de Oro<span>Villa Carlos Paz · Córdoba · Argentina</span></p>
         <p class="footer-desc" data-i18n="footer.desc">Complejo familiar atendido por sus dueños, donde el trato personalizado y el clima hogareño hacen que cada huésped se sienta en casa. Rodeados de las sierras cordobesas y a orillas del río San Antonio.</p>
 
       </div>
@@ -2692,7 +2899,7 @@ const HTML = `
           <li data-i18n="footer.a3">Cabaña grande (hasta 8 pers.)</li>
           <li data-i18n="footer.a4">Habitaciones de hotel</li>
           <li data-i18n="footer.a5">Apart Hotel</li>
-          <li data-i18n="footer.a6">Casa con Pileta · Icho Cruz (hasta 10 pers.)</li>
+          <li data-i18n="footer.a6">Casa con Pileta · Icho Cruz <span class="pie-casa-cap">(hasta 10 pers.)</span></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -2716,7 +2923,7 @@ const HTML = `
                onmouseover="this.style.color='var(--oro)';this.style.opacity='1'"
                onmouseout="this.style.color='';this.style.opacity='0.7'">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
-              Av. Ramón J. Cárcano 2590
+              <span>Av. Ramón J. Cárcano 2590<span class="pie-solo-compu">, VCP</span></span>
             </a>
           </li>
           <li>
@@ -2781,7 +2988,7 @@ const HTML = `
     </div>
     <hr class="footer-divider">
     <div class="footer-bottom" style="justify-content:center;text-align:center;">
-      <p class="solo-desktop">© 2026 Hotel y Cabañas Brisas de Oro · Villa Carlos Paz, Córdoba, Argentina</p>
+      <p class="solo-desktop" data-i18n="footer.copy">© 2026 Hotel y Cabañas Brisas de Oro · Villa Carlos Paz, Córdoba, Argentina</p>
       <p class="solo-mobile">© 2026 Brisas de Oro · Villa Carlos Paz, Córdoba, Argentina</p>
     </div>
   </div>

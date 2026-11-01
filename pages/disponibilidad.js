@@ -30,7 +30,7 @@ const I18N = {
     grupoMax:'Para grupos de más de 30 personas coordinamos la estadía de forma personalizada.',
     grupoAviso:'Nuestra unidad más grande recibe hasta 10 personas. Para tu grupo de {n} te proponemos estas combinaciones:',
     grupoInsuficiente:'Para esas fechas no tenemos disponibilidad suficiente para tu grupo. Escribinos y buscamos alternativas.',
-    grupoTitulo:'Combinaciones para tu grupo', grupoOpciones:'Opciones disponibles para combinar', grupoUnidades:'Unidades correspondientes a las opciones para combinar', badgeCombinar:'Ideal para combinar',
+    grupoTitulo:'Combinaciones para tu grupo', grupoOpciones:'Opciones disponibles\npara combinar', grupoUnidades:'Unidades correspondientes a las opciones para combinar', badgeCombinar:'Ideal para combinar',
     grupoNota:'Sugerencias orientativas, sujetas a confirmación. Escribinos y armamos la mejor opción para tu grupo.',
     combosTodas:'Ver todas las combinaciones ({n})', combosMenos:'Ver menos', combosAyuda:'Tildá una o más opciones para consultarlas.',
     combosUbicHotel:['Hotel y cabañas:', 'Brisas de Oro, Villa Carlos Paz.'], combosUbicCasa:['Casa con Pileta:', 'Icho Cruz, a 15 min de Brisas de Oro.'],
@@ -150,6 +150,8 @@ const I18N = {
     topbarDirCorta:'Av. Ramón J. Cárcano 2590', topbarCasa:'Casa con Pileta · Icho Cruz', topbarCasaCorta:'Casa · Icho Cruz',
     footerInfo:'Información', footerCheckin:'Check-in: 13:00 hs', footerCheckout:'Check-out: 10:00 hs',
     footerTambien:'También en',
+    metaTitulo:'Disponibilidad | Hotel y Cabañas Brisas de Oro', metaDesc:'Consulta de disponibilidad — Hotel y Cabañas Brisas de Oro, Villa Carlos Paz', altLogo:'Hotel y Cabañas Brisas de Oro',
+    footerMarca:'Hotel y Cabañas Brisas de Oro',
     footerCopy:'© 2026 Hotel y Cabañas Brisas de Oro · Villa Carlos Paz, Córdoba, Argentina',
     footerCopyMobile:'© 2026 Brisas de Oro · Villa Carlos Paz, Córdoba, Argentina',
   },
@@ -171,7 +173,7 @@ const I18N = {
     grupoMax:'For groups of more than 30 people, we arrange the stay personally.',
     grupoAviso:'Our largest unit sleeps up to 10 guests. For your group of {n}, we suggest these combinations:',
     grupoInsuficiente:"We don't have enough availability for your group on those dates. Write to us and we'll look for alternatives.",
-    grupoTitulo:'Combinations for your group', grupoOpciones:'Options available to combine', grupoUnidades:'Units corresponding to the options to combine', badgeCombinar:'Great for combining',
+    grupoTitulo:'Combinations for your group', grupoOpciones:'Options available\nto combine', grupoUnidades:'Units corresponding to the options to combine', badgeCombinar:'Great for combining',
     grupoNota:"Approximate suggestions, subject to confirmation. Write to us and we'll put together the best option for your group.",
     combosTodas:'See all combinations ({n})', combosMenos:'See less', combosAyuda:'Tick one or more options to ask about them.',
     combosUbicHotel:['Hotel and cabins:', 'Brisas de Oro, Villa Carlos Paz.'], combosUbicCasa:['House with Pool:', 'Icho Cruz, 15 min from Brisas de Oro.'],
@@ -260,7 +262,7 @@ const I18N = {
     acordCasaL3:'Not included', acordCasaV3:'Breakfast or towels. Bed linen optional, at an extra charge.',
     acordCasaL4:'Capacity', acordCasaV4:'Up to 10 guests · 3 bedrooms · 2 bathrooms',
     acordCasaL5:'Address', acordCasaV5:'Calle Uruguay & Lombardo, Icho Cruz', acordCasaBtn:'Get directions',
-    servSub:'Services available at', servSubNombre:'Brisas de Oro Hotel y Cabañas.',
+    servSub:'Services available at', servSubNombre:'Brisas de Oro Hotel & Cabins.',
     footerCasaResenas:'House reviews on Google',
     servLabel:'What we offer', servTitle:'Our services',
     servPileta:'Pool', servPiletaD:'Shared by all guests',
@@ -284,7 +286,9 @@ const I18N = {
     topbarDirCorta:'Av. Ramón J. Cárcano 2590', topbarCasa:'House with Pool · Icho Cruz', topbarCasaCorta:'House · Icho Cruz',
     footerInfo:'Information', footerCheckin:'Check-in: 1:00 pm', footerCheckout:'Check-out: 10:00 am',
     footerTambien:'Also on',
-    footerCopy:'© 2026 Hotel y Cabañas Brisas de Oro · Villa Carlos Paz, Córdoba, Argentina',
+    metaTitulo:'Availability | Hotel & Cabins Brisas de Oro', metaDesc:'Availability check — Hotel & Cabins Brisas de Oro, Villa Carlos Paz', altLogo:'Hotel & Cabins Brisas de Oro',
+    footerMarca:'Hotel & Cabins Brisas de Oro',
+    footerCopy:'© 2026 Hotel & Cabins Brisas de Oro · Villa Carlos Paz, Córdoba, Argentina',
     footerCopyMobile:'© 2026 Brisas de Oro · Villa Carlos Paz, Córdoba, Argentina',
   },
   pt: {
@@ -305,7 +309,7 @@ const I18N = {
     grupoMax:'Para grupos de mais de 30 pessoas, organizamos a estadia de forma personalizada.',
     grupoAviso:'Nossa maior unidade recebe até 10 pessoas. Para o seu grupo de {n}, propomos estas combinações:',
     grupoInsuficiente:'Para essas datas não temos disponibilidade suficiente para o seu grupo. Escreva-nos e buscamos alternativas.',
-    grupoTitulo:'Combinações para o seu grupo', grupoOpciones:'Opções disponíveis para combinar', grupoUnidades:'Unidades correspondentes às opções para combinar', badgeCombinar:'Ideal para combinar',
+    grupoTitulo:'Combinações para o seu grupo', grupoOpciones:'Opções disponíveis\npara combinar', grupoUnidades:'Unidades correspondentes às opções para combinar', badgeCombinar:'Ideal para combinar',
     grupoNota:'Sugestões orientativas, sujeitas a confirmação. Escreva-nos e montamos a melhor opção para o seu grupo.',
     combosTodas:'Ver todas as combinações ({n})', combosMenos:'Ver menos', combosAyuda:'Marque uma ou mais opções para consultá-las.',
     combosUbicHotel:['Hotel e cabanas:', 'Brisas de Oro, Villa Carlos Paz.'], combosUbicCasa:['Casa com Piscina:', 'Icho Cruz, a 15 min do Brisas de Oro.'],
@@ -394,7 +398,7 @@ const I18N = {
     acordCasaL3:'Não inclui', acordCasaV3:'Café da manhã nem toalhas. Roupa de cama opcional, com custo adicional.',
     acordCasaL4:'Capacidade', acordCasaV4:'Até 10 pessoas · 3 quartos · 2 banheiros',
     acordCasaL5:'Endereço', acordCasaV5:'Calle Uruguay esq. Lombardo, Icho Cruz', acordCasaBtn:'Como chegar',
-    servSub:'Serviços disponíveis no', servSubNombre:'Brisas de Oro Hotel y Cabañas.',
+    servSub:'Serviços disponíveis no', servSubNombre:'Brisas de Oro Hotel e Cabanas.',
     footerCasaResenas:'Avaliações da Casa no Google',
     servLabel:'O que oferecemos', servTitle:'Nossos serviços',
     servPileta:'Piscina', servPiletaD:'Compartilhada por todos os hóspedes',
@@ -418,7 +422,9 @@ const I18N = {
     topbarDirCorta:'Av. Ramón J. Cárcano 2590', topbarCasa:'Casa com Piscina · Icho Cruz', topbarCasaCorta:'Casa · Icho Cruz',
     footerInfo:'Informações', footerCheckin:'Check-in: 13:00 hs', footerCheckout:'Check-out: 10:00 hs',
     footerTambien:'Também em',
-    footerCopy:'© 2026 Hotel y Cabañas Brisas de Oro · Villa Carlos Paz, Córdoba, Argentina',
+    metaTitulo:'Disponibilidade | Hotel e Cabanas Brisas de Oro', metaDesc:'Consulta de disponibilidade — Hotel e Cabanas Brisas de Oro, Villa Carlos Paz', altLogo:'Hotel e Cabanas Brisas de Oro',
+    footerMarca:'Hotel e Cabanas Brisas de Oro',
+    footerCopy:'© 2026 Hotel e Cabanas Brisas de Oro · Villa Carlos Paz, Córdoba, Argentina',
     footerCopyMobile:'© 2026 Brisas de Oro · Villa Carlos Paz, Córdoba, Argentina',
   },
 }
@@ -947,7 +953,8 @@ function BloqueCombos({ combos, visibles, abiertos, onAlternar, elegidos, onEleg
   return (
     <section className="disp-seccion">
       <div className="combo-header">
-        <h2 className="section-title">{titulo}</h2>
+        {/* pre-line: "Opciones disponibles / para combinar" en dos renglones */}
+        <h2 className="section-title" style={{ whiteSpace:'pre-line' }}>{titulo}</h2>
         <div className="divider" />
         {aviso && <p className="disp-aviso-texto">{aviso}</p>}
       </div>
@@ -1074,6 +1081,46 @@ export default function Disponibilidad() {
   const [cargando, setCargando] = useState(true)
   const [error, setError] = useState(null)
   const [menuOpen, setMenuOpen] = useState(false)
+  // Último ítem tocado del menú móvil (por href); se borra al recargar
+  const [menuActivo, setMenuActivo] = useState(null)
+  // Pantallas táctiles: efecto de la tarjeta (clase "tocada") y WhatsApp en un mismo toque.
+  // WhatsApp se abre al soltar el dedo sobre el botón donde empezó el toque (no depende del hover de iOS
+  // ni de que la tarjeta se haya levantado)
+  useEffect(() => {
+    if (!window.matchMedia('(hover: none)').matches) return
+    let toque = null
+    const SEL = 'a[href^="https://wa.me/"]'
+    const alEmpezar = e => {
+      const t = e.touches[0]
+      const card = e.target.closest('.aloj-card')
+      document.querySelectorAll('.aloj-card.tocada').forEach(c => { if (c !== card) c.classList.remove('tocada') })
+      if (card && !card.classList.contains('disp-aloj-card--no')) card.classList.add('tocada')
+      const btn = e.target.closest(SEL)
+      toque = btn ? { el: btn, x: t.clientX, y: t.clientY } : null
+    }
+    const alSoltar = e => {
+      if (!toque) return
+      const t = e.changedTouches[0], el = toque.el
+      const movio = Math.abs(t.clientX - toque.x) > 10 || Math.abs(t.clientY - toque.y) > 10
+      toque = null
+      if (movio) return
+      e.preventDefault()
+      el.click()
+    }
+    document.addEventListener('touchstart', alEmpezar, { passive: true })
+    document.addEventListener('touchend', alSoltar)
+    return () => { document.removeEventListener('touchstart', alEmpezar); document.removeEventListener('touchend', alSoltar) }
+  }, [])
+  // WhatsApp en celular: abrir wa.me en la misma pestaña (abre la app); en computadora sigue en una pestaña nueva
+  useEffect(() => {
+    if (!/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) return
+    const alClic = e => {
+      const a = e.target.closest && e.target.closest('a[href^="https://wa.me/"]')
+      if (a && a.target === '_blank') { e.preventDefault(); window.location.href = a.href }
+    }
+    document.addEventListener('click', alClic, true)
+    return () => document.removeEventListener('click', alClic, true)
+  }, [])
   const [lang, setLang] = useState(['es', 'en', 'pt'].includes(router.locale) ? router.locale : 'es')
   const [langOpen, setLangOpen] = useState(false)
   const [barraCompacta, setBarraCompacta] = useState(false)
@@ -1171,9 +1218,7 @@ export default function Disponibilidad() {
 
   const esCualquiera = !tipo || normalizarTipo(tipo) === 'cualquiera'
   const esCasa = !esCualquiera && tipoCanonico(tipo) === 'casa'
-  // Cabaña mediana con 6 personas: entra justa, va siempre en "Otras opciones" con una nota
-  const esMedianaAjustada = r => r.id === 'cabanaMediana' && personas === 6
-  const coincide = r => tipoCoincide(tipo, r.tipo) && !esMedianaAjustada(r)
+  const coincide = r => tipoCoincide(tipo, r.tipo)
   const disponiblesCoincidentes = (resultados||[]).filter(r => r.disponible && coincide(r))
   const disponiblesOtros        = (resultados||[]).filter(r => r.disponible && !coincide(r))
 
@@ -1225,8 +1270,8 @@ export default function Disponibilidad() {
   return (
     <>
       <Head>
-        <title>{{ es: 'Disponibilidad | Hotel y Cabañas Brisas de Oro', en: 'Availability | Brisas de Oro Hotel & Cabins', pt: 'Disponibilidade | Hotel e Cabanas Brisas de Oro' }[lang]}</title>
-        <meta name="description" content="Consulta de disponibilidad — Hotel y Cabañas Brisas de Oro, Villa Carlos Paz" />
+        <title>{t.metaTitulo}</title>
+        <meta name="description" content={t.metaDesc} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="robots" content="noindex, follow" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -1256,7 +1301,7 @@ export default function Disponibilidad() {
       {/* NAV */}
       <nav id="main-nav" className="scrolled">
         <div className="nav-inner">
-          <a href={inicio} className="logo"><img src="/logo.webp" alt="Hotel y Cabañas Brisas de Oro" /></a>
+          <a href={inicio} className="logo" onClick={() => setMenuOpen(false)}><img src="/logo.webp" alt={t.altLogo} /></a>
           <ul className="nav-links">
             <li><a href={pre + '/nosotros'}>{t.navNosotros}</a></li>
             <li><a href={pre + '/alojamientos'}>{t.navAlojamientos}</a></li>
@@ -1286,14 +1331,14 @@ export default function Disponibilidad() {
       </nav>
 
       {/* MENÚ MOBILE */}
-      <nav ref={menuMovilRef} className={`nav-mobile-menu${menuOpen?' open':''}`}>
-        <a href={pre + '/nosotros'} onClick={() => setMenuOpen(false)}>{t.navNosotros}</a>
-        <a href={pre + '/alojamientos'} onClick={() => setMenuOpen(false)}>{t.navAlojamientos}</a>
-        <a href="#antes-de-reservar" onClick={irA('antes-de-reservar')}>{t.navInfo}</a>
-        <a href="#servicios" onClick={irA('servicios')}>{t.navServicios}</a>
-        <a href={pre + '/opiniones'} onClick={() => setMenuOpen(false)}>{t.navTestimonios}</a>
-        <a href="#clima" onClick={irA('clima')}>{t.navClima}</a>
-        <a href={pre + '/ubicacion'} onClick={() => setMenuOpen(false)}>{t.navUbicacion}</a>
+      <nav ref={menuMovilRef} className={`nav-mobile-menu${menuOpen?' open':''}`} onClickCapture={e => { const a = e.target.closest('a'); if (a) setMenuActivo(a.getAttribute('href')) }}>
+        <a href={pre + '/nosotros'} className={menuActivo === pre + '/nosotros' ? 'activo' : undefined} onClick={() => setMenuOpen(false)}>{t.navNosotros}</a>
+        <a href={pre + '/alojamientos'} className={menuActivo === pre + '/alojamientos' ? 'activo' : undefined} onClick={() => setMenuOpen(false)}>{t.navAlojamientos}</a>
+        <a href="#antes-de-reservar" className={menuActivo === '#antes-de-reservar' ? 'activo' : undefined} onClick={irA('antes-de-reservar')}>{t.navInfo}</a>
+        <a href="#servicios" className={menuActivo === '#servicios' ? 'activo' : undefined} onClick={irA('servicios')}>{t.navServicios}</a>
+        <a href={pre + '/opiniones'} className={menuActivo === pre + '/opiniones' ? 'activo' : undefined} onClick={() => setMenuOpen(false)}>{t.navTestimonios}</a>
+        <a href="#clima" className={menuActivo === '#clima' ? 'activo' : undefined} onClick={irA('clima')}>{t.navClima}</a>
+        <a href={pre + '/ubicacion'} className={menuActivo === pre + '/ubicacion' ? 'activo' : undefined} onClick={() => setMenuOpen(false)}>{t.navUbicacion}</a>
       </nav>
 
       {/* MAIN */}
@@ -1410,7 +1455,7 @@ export default function Disponibilidad() {
                     <span className="disp-seccion-count">{disponiblesCoincidentes.length}</span>
                   </h2>
                   <div className="disp-grid">
-                    {disponiblesCoincidentes.map(r => <CardAlojamiento key={r.id} item={r} destacado {...propsHabArriba(r)} wspUrl={buildWspUrl(r)} t={t} />)}
+                    {disponiblesCoincidentes.map(r => <CardAlojamiento key={r.id} item={r} destacado {...propsHabArriba(r)} nota={personas === 6 && r.id === 'cabanaMediana' ? t.notaMediana6 : null} wspUrl={buildWspUrl(r)} t={t} />)}
                   </div>
                 </section>
               )}
@@ -1421,7 +1466,7 @@ export default function Disponibilidad() {
                     <span className="disp-seccion-count">{disponiblesOtros.length}</span>
                   </h2>
                   <div className="disp-grid">
-                    {disponiblesOtros.map(r => <CardAlojamiento key={r.id} item={r} {...propsHabArriba(r)} nota={esMedianaAjustada(r) ? t.notaMediana6 : null} wspUrl={buildWspUrl(r)} t={t} />)}
+                    {disponiblesOtros.map(r => <CardAlojamiento key={r.id} item={r} {...propsHabArriba(r)} nota={personas === 6 && r.id === 'cabanaMediana' ? t.notaMediana6 : null} wspUrl={buildWspUrl(r)} t={t} />)}
                   </div>
                 </section>
               )}
@@ -1495,7 +1540,7 @@ export default function Disponibilidad() {
         <div className="footer-inner">
           <div className="footer-grid">
             <div>
-              <p className="footer-logo">Hotel y Cabañas Brisas de Oro<span>Villa Carlos Paz · Córdoba · Argentina</span></p>
+              <p className="footer-logo">{t.footerMarca}<span>Villa Carlos Paz · Córdoba · Argentina</span></p>
               <p className="footer-desc">{t.footerDesc}</p>
             </div>
             <div className="footer-col">
