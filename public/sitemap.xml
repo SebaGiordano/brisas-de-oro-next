@@ -64,6 +64,27 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://brisas-de-oro-next.vercel.app/alojamientos" />
   </url>
   <url>
+    <loc>https://brisas-de-oro-next.vercel.app/info-importante</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://brisas-de-oro-next.vercel.app/info-importante" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://brisas-de-oro-next.vercel.app/en/info-importante" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://brisas-de-oro-next.vercel.app/pt/info-importante" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://brisas-de-oro-next.vercel.app/info-importante" />
+  </url>
+  <url>
+    <loc>https://brisas-de-oro-next.vercel.app/en/info-importante</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://brisas-de-oro-next.vercel.app/info-importante" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://brisas-de-oro-next.vercel.app/en/info-importante" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://brisas-de-oro-next.vercel.app/pt/info-importante" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://brisas-de-oro-next.vercel.app/info-importante" />
+  </url>
+  <url>
+    <loc>https://brisas-de-oro-next.vercel.app/pt/info-importante</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://brisas-de-oro-next.vercel.app/info-importante" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://brisas-de-oro-next.vercel.app/en/info-importante" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://brisas-de-oro-next.vercel.app/pt/info-importante" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://brisas-de-oro-next.vercel.app/info-importante" />
+  </url>
+  <url>
     <loc>https://brisas-de-oro-next.vercel.app/servicios</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://brisas-de-oro-next.vercel.app/servicios" />
     <xhtml:link rel="alternate" hreflang="en" href="https://brisas-de-oro-next.vercel.app/en/servicios" />
@@ -104,6 +125,27 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://brisas-de-oro-next.vercel.app/en/opiniones" />
     <xhtml:link rel="alternate" hreflang="pt" href="https://brisas-de-oro-next.vercel.app/pt/opiniones" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://brisas-de-oro-next.vercel.app/opiniones" />
+  </url>
+  <url>
+    <loc>https://brisas-de-oro-next.vercel.app/clima</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://brisas-de-oro-next.vercel.app/clima" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://brisas-de-oro-next.vercel.app/en/clima" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://brisas-de-oro-next.vercel.app/pt/clima" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://brisas-de-oro-next.vercel.app/clima" />
+  </url>
+  <url>
+    <loc>https://brisas-de-oro-next.vercel.app/en/clima</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://brisas-de-oro-next.vercel.app/clima" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://brisas-de-oro-next.vercel.app/en/clima" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://brisas-de-oro-next.vercel.app/pt/clima" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://brisas-de-oro-next.vercel.app/clima" />
+  </url>
+  <url>
+    <loc>https://brisas-de-oro-next.vercel.app/pt/clima</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://brisas-de-oro-next.vercel.app/clima" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://brisas-de-oro-next.vercel.app/en/clima" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://brisas-de-oro-next.vercel.app/pt/clima" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://brisas-de-oro-next.vercel.app/clima" />
   </url>
   <url>
     <loc>https://brisas-de-oro-next.vercel.app/ubicacion</loc>

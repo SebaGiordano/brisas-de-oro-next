@@ -1245,10 +1245,9 @@ export default function Sitio({ pagina = 'inicio' }) {
        sitio completo. El menú baja hasta la sección y cambia la URL; al hacer scroll la URL acompaña la
        sección visible; al entrar directo a una dirección, la página arranca en esa sección.
        Se usa un estado propio ({ brisas: true }) para que el router de Next no intente navegar. */
-    const SECCION_DE_RUTA = { '': null, 'nosotros': 'nosotros', 'alojamientos': 'alojamientos', 'servicios': 'servicios', 'opiniones': 'testimonios', 'ubicacion': 'ubicacion' };
-    // Orden en la página: [id de la sección, ruta]. Familias y galería quedan dentro de "nosotros";
-    // info importante dentro de "alojamientos"; el clima va con "ubicacion".
-    const SECCIONES_URL = [['nosotros', 'nosotros'], ['alojamientos', 'alojamientos'], ['servicios', 'servicios'], ['testimonios', 'opiniones'], ['clima', 'ubicacion'], ['ubicacion', 'ubicacion']];
+    const SECCION_DE_RUTA = { '': null, 'nosotros': 'nosotros', 'alojamientos': 'alojamientos', 'info-importante': 'antes-de-reservar', 'servicios': 'servicios', 'opiniones': 'testimonios', 'clima': 'clima', 'ubicacion': 'ubicacion' };
+    // Orden en la página: [id de la sección, ruta]. Familias y galería quedan dentro de "nosotros".
+    const SECCIONES_URL = [['nosotros', 'nosotros'], ['alojamientos', 'alojamientos'], ['antes-de-reservar', 'info-importante'], ['servicios', 'servicios'], ['testimonios', 'opiniones'], ['clima', 'clima'], ['ubicacion', 'ubicacion']];
 
     function rutaDeUrl() {
       return window.location.pathname.replace(/^\/(en|pt)(?=\/|$)/, '').replace(/^\/+|\/+$/g, '');
@@ -1473,10 +1472,10 @@ const HTML = `
     <ul class="nav-links">
       <li><a href="/nosotros" data-ruta="nosotros" data-i18n="nav.nosotros">Nosotros</a></li>
       <li><a href="/alojamientos" data-ruta="alojamientos" data-i18n="nav.alojamientos">Alojamientos</a></li>
-      <li><a href="/alojamientos#antes-de-reservar" data-ruta="alojamientos#antes-de-reservar" data-i18n="nav.info">Info importante</a></li>
+      <li><a href="/info-importante" data-ruta="info-importante" data-i18n="nav.info">Info importante</a></li>
       <li><a href="/servicios" data-ruta="servicios" data-i18n="nav.servicios">Servicios</a></li>
       <li><a href="/opiniones" data-ruta="opiniones" data-i18n="nav.testimonios">Reseñas</a></li>
-      <li><a href="/ubicacion#clima" data-ruta="ubicacion#clima" data-i18n="nav.clima">Clima</a></li>
+      <li><a href="/clima" data-ruta="clima" data-i18n="nav.clima">Clima</a></li>
       <li><a href="/ubicacion" data-ruta="ubicacion" data-i18n="nav.ubicacion">Ubicación</a></li>
     </ul>
     <div class="nav-right">
@@ -1506,10 +1505,10 @@ const HTML = `
 <nav class="nav-mobile-menu" id="nav-mobile-menu">
   <a href="/nosotros" data-ruta="nosotros" onclick="cerrarMenu()" data-i18n="nav.nosotros">Nosotros</a>
   <a href="/alojamientos" data-ruta="alojamientos" onclick="cerrarMenu()" data-i18n="nav.alojamientos">Alojamientos</a>
-  <a href="/alojamientos#antes-de-reservar" data-ruta="alojamientos#antes-de-reservar" onclick="cerrarMenu()" data-i18n="nav.info">Info importante</a>
+  <a href="/info-importante" data-ruta="info-importante" onclick="cerrarMenu()" data-i18n="nav.info">Info importante</a>
   <a href="/servicios" data-ruta="servicios" onclick="cerrarMenu()" data-i18n="nav.servicios">Servicios</a>
   <a href="/opiniones" data-ruta="opiniones" onclick="cerrarMenu()" data-i18n="nav.testimonios">Reseñas</a>
-  <a href="/ubicacion#clima" data-ruta="ubicacion#clima" onclick="cerrarMenu()" data-i18n="nav.clima">Clima</a>
+  <a href="/clima" data-ruta="clima" onclick="cerrarMenu()" data-i18n="nav.clima">Clima</a>
   <a href="/ubicacion" data-ruta="ubicacion" onclick="cerrarMenu()" data-i18n="nav.ubicacion">Ubicación</a>
 </nav>
 
