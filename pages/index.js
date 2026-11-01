@@ -116,7 +116,7 @@ const I18N = {
         'ubic.casa.d1a':'15 min (9 km)','ubic.casa.d1b':'Brisas de Oro','ubic.casa.d2a':'20 min (13 km)','ubic.casa.d2b':'Centro de Villa Carlos Paz',
         'ubic.casa.d3a':'22 min (13,5 km)','ubic.casa.d3b':'Terminal de ómnibus de Carlos Paz','ubic.casa.d4a':'1 h (57 km)','ubic.casa.d4b':'Aeropuerto de Córdoba',
         'ubic.casa.btn':'Cómo llegar',
-        'footer.a6':'Casa con Pileta · Icho Cruz (hasta 10 pers.)','footer.casa.dir':'Uruguay esq. Lombardo, Icho Cruz',
+        'footer.a6':'Casa con Pileta · Icho Cruz <span class="pie-casa-cap">(hasta 10 pers.)</span>','footer.casa.dir':'Uruguay esq. Lombardo, Icho Cruz',
         'acord.hora.casa':'Casa con Pileta · Icho Cruz: check-in 14:00 hs · check-out 10:00 hs',
         'acord.casa.title':'Casa con Pileta · Icho Cruz',
         'acord.casa.intro':'Rigen las mismas condiciones de reserva, cancelación, formas de pago y normas que en Brisas de Oro. Lo propio de la casa:',
@@ -242,7 +242,7 @@ const I18N = {
         'ubic.casa.d1a':'15 min (9 km)','ubic.casa.d1b':'Brisas de Oro','ubic.casa.d2a':'20 min (13 km)','ubic.casa.d2b':'Villa Carlos Paz city center',
         'ubic.casa.d3a':'22 min (13.5 km)','ubic.casa.d3b':'Carlos Paz bus terminal','ubic.casa.d4a':'1 h (57 km)','ubic.casa.d4b':'Córdoba Airport',
         'ubic.casa.btn':'Get directions',
-        'footer.a6':'House with Pool · Icho Cruz (up to 10 guests)','footer.casa.dir':'Uruguay & Lombardo, Icho Cruz',
+        'footer.a6':'House with Pool · Icho Cruz <span class="pie-casa-cap">(up to 10 guests)</span>','footer.casa.dir':'Uruguay & Lombardo, Icho Cruz',
         'acord.hora.casa':'House with Pool · Icho Cruz: check-in 14:00 hs · check-out 10:00 hs',
         'acord.casa.title':'House with Pool · Icho Cruz',
         'acord.casa.intro':'The same booking, cancellation, payment and house rules as at Brisas de Oro apply. Specific to the house:',
@@ -368,7 +368,7 @@ const I18N = {
         'ubic.casa.d1a':'15 min (9 km)','ubic.casa.d1b':'Brisas de Oro','ubic.casa.d2a':'20 min (13 km)','ubic.casa.d2b':'Centro de Villa Carlos Paz',
         'ubic.casa.d3a':'22 min (13,5 km)','ubic.casa.d3b':'Rodoviária de Carlos Paz','ubic.casa.d4a':'1 h (57 km)','ubic.casa.d4b':'Aeroporto de Córdoba',
         'ubic.casa.btn':'Como chegar',
-        'footer.a6':'Casa com Piscina · Icho Cruz (até 10 pessoas)','footer.casa.dir':'Uruguay esq. Lombardo, Icho Cruz',
+        'footer.a6':'Casa com Piscina · Icho Cruz <span class="pie-casa-cap">(até 10 pessoas)</span>','footer.casa.dir':'Uruguay esq. Lombardo, Icho Cruz',
         'acord.hora.casa':'Casa com Piscina · Icho Cruz: check-in 14:00 hs · check-out 10:00 hs',
         'acord.casa.title':'Casa com Piscina · Icho Cruz',
         'acord.casa.intro':'Valem as mesmas condições de reserva, cancelamento, formas de pagamento e regras do Brisas de Oro. O que é próprio da casa:',
@@ -3124,7 +3124,7 @@ const HTML = `
           <li data-i18n="footer.a3">Cabaña grande (hasta 8 pers.)</li>
           <li data-i18n="footer.a4">Habitaciones de hotel</li>
           <li data-i18n="footer.a5">Apart Hotel</li>
-          <li data-i18n="footer.a6">Casa con Pileta · Icho Cruz (hasta 10 pers.)</li>
+          <li data-i18n="footer.a6">Casa con Pileta · Icho Cruz <span class="pie-casa-cap">(hasta 10 pers.)</span></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -3148,7 +3148,7 @@ const HTML = `
                onmouseover="this.style.color='var(--oro)';this.style.opacity='1'"
                onmouseout="this.style.color='';this.style.opacity='0.7'">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
-              Av. Ramón J. Cárcano 2590
+              <span>Av. Ramón J. Cárcano 2590<span class="pie-solo-compu">, VCP</span></span>
             </a>
           </li>
           <li>
