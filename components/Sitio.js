@@ -50,6 +50,10 @@ export default function Sitio({ pagina = 'inicio' }) {
         const key = el.getAttribute('data-i18n-ph');
         if (t[key] !== undefined) el.placeholder = t[key];
       });
+      document.querySelectorAll('.date-ph-txt').forEach(span => {
+        const campo = span.closest('.date-wrap') && span.closest('.date-wrap').querySelector('input[type="date"]');
+        if (!campo || !campo.value) span.textContent = t['fecha.formato'];
+      });
       document.querySelectorAll('[data-i18n-alt]').forEach(el => {
         const key = el.getAttribute('data-i18n-alt');
         if (t[key] !== undefined) el.setAttribute('alt', t[key]);
@@ -585,7 +589,7 @@ export default function Sitio({ pagina = 'inicio' }) {
           const { realtime: curr, forecast: daily } = await r.json();
           renderClima(curr, daily, lang);
         } catch(e) {
-          CONT.innerHTML = `<div class="clima-error"><span style="font-size:1.5rem;display:block;margin-bottom:0.5rem">🌡️</span>No se pudo cargar el clima. Intentá más tarde.</div>`;
+          CONT.innerHTML = `<div class="clima-error"><span style="font-size:1.5rem;display:block;margin-bottom:0.5rem">🌡️</span>${(i18n[lang] || i18n.es)['clima.error']}</div>`;
         }
       }
     
@@ -896,7 +900,7 @@ export default function Sitio({ pagina = 'inicio' }) {
       if (!wrap) return;
       wrap.classList.toggle('has-value', input.value !== '');
       const txt = wrap.querySelector('.date-ph-txt');
-      if (txt) txt.textContent = input.value ? fmtFecha(input.value) : 'dd/mm/aaaa';
+      if (txt) txt.textContent = input.value ? fmtFecha(input.value) : (i18n[currentLang] || i18n.es)['fecha.formato'];
     }
     window.actualizarFechaPh = actualizarFechaPh;
     // Contador de huéspedes: con los botones va de 1 a 30; a mano se acepta más (/disponibilidad deriva a WhatsApp)
@@ -1495,11 +1499,11 @@ const HTML = `
 <!-- Modal fecha mobile -->
 <div class="date-modal-overlay" id="date-modal-overlay" style="display:none!important">
   <div class="date-modal">
-    <p class="date-modal-title" id="date-modal-title">Llegada</p>
+    <p class="date-modal-title" id="date-modal-title" data-i18n="fecha.modal.titulo">Llegada</p>
     <input type="date" id="date-modal-input">
-    <p id="date-modal-error">La fecha ingresada no es válida.<br>Por favor seleccioná una fecha a partir del día de hoy.</p>
-    <button class="date-modal-confirm" onclick="confirmarFechaModal()">Confirmar</button>
-    <button class="date-modal-cancel" onclick="cerrarFechaModal()">Cancelar</button>
+    <p id="date-modal-error" data-i18n="fecha.modal.error">La fecha ingresada no es válida.<br>Por favor seleccioná una fecha a partir del día de hoy.</p>
+    <button class="date-modal-confirm" onclick="confirmarFechaModal()" data-i18n="fecha.confirmar">Confirmar</button>
+    <button class="date-modal-cancel" onclick="cerrarFechaModal()" data-i18n="fecha.cancelar">Cancelar</button>
   </div>
 </div>
 
@@ -1636,7 +1640,7 @@ const HTML = `
           </div>
         </div>
       </div>
-      <p id="hero-fecha-error">⚠ Fecha no válida. Por favor seleccioná una fecha a partir del día de hoy.</p>
+      <p id="hero-fecha-error" data-i18n="fecha.hero.error">⚠ Fecha no válida. Por favor seleccioná una fecha a partir del día de hoy.</p>
       <button class="btn-consultar" onclick="consultarWhatsApp()" data-i18n="widget.btn">Ver disponibilidad</button>
       <p class="widget-note"><span data-i18n="widget.note.a">Sin pagos online</span><span class="widget-note-sep"> · </span><span data-i18n="widget.note.b">Confirmamos directamente por WhatsApp</span></p>
     </div>
@@ -2526,7 +2530,7 @@ const HTML = `
     <div id="clima-container">
       <div class="clima-loading">
         <span style="font-size:1.5rem;display:block;margin-bottom:0.5rem">⛅</span>
-        Cargando el clima de Villa Carlos Paz...
+        <span data-i18n="clima.cargando">Cargando el clima de Villa Carlos Paz...</span>
       </div>
     </div>
 
@@ -2783,7 +2787,7 @@ const HTML = `
   </svg>
 </a>
 
-<div id="fecha-toast">La fecha ingresada no es válida.<br>Seleccioná una fecha a partir del día de hoy.</div>
+<div id="fecha-toast" data-i18n="fecha.toast">La fecha ingresada no es válida.<br>Seleccioná una fecha a partir del día de hoy.</div>
 `
 
 // Corta el markup en bloques usando los comentarios <!-- ===== NOMBRE --> que ya separan cada sección
@@ -2820,6 +2824,8 @@ function armarHtml(pagina, lang) {
     : BLOQUES.pre.split('data-ruta="' + PAGINAS[pagina].path + '"').join('data-ruta="' + PAGINAS[pagina].path + '" aria-current="page"')
   let html = [pre, ...SITIO_COMPLETO.map(b => BLOQUES[b]), BLOQUES.post].join('\n')
   html = translateHtml(html, I18N[lang], lang)
+  // Formato de los campos de fecha vacíos (dd/mm/aaaa → dd/mm/yyyy en inglés)
+  html = html.split('<span class="date-ph-txt">dd/mm/aaaa</span>').join('<span class="date-ph-txt">' + I18N[lang]['fecha.formato'] + '</span>')
   // Links internos con el prefijo del idioma (/en/nosotros, /pt/alojamientos/...)
   if (lang !== 'es') {
     html = html.replace(/href="\/(?!fotos\/|api\/|logo\.)([^"]*)"/g, (m, r) => {
