@@ -9,6 +9,7 @@
   --borde:        #E2DDD4;
   --oro:          #B8982A;
   --oro-hover:    #C8A028;
+  --oro-oscuro:   #A38A30; /* texto dorado de los chips sobre fondo claro (contraste 3,4:1 sobre blanco) */
   --texto:        #1A1A1A;
   --texto-medio:  #4A4A4A;
   --texto-suave:  #6B6B6B;
@@ -543,6 +544,12 @@ section { padding: 5.5rem 5%; }
 .nosotros-img-badge span { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: #F5F2EC; display: block; font-style: italic; }
 .nosotros-text p { color: var(--texto-medio); line-height: 1.9; font-size: 0.93rem; margin-bottom: 1.1rem; }
 .nosotros-text .section-label { color: var(--oro) !important; }
+/* Computadora: etiqueta y título centrados arriba, a lo ancho; debajo, la fila de foto y texto */
+@media (min-width: 769px) {
+  .nosotros-grid { row-gap: 1.2rem; }
+  .nosotros-head { grid-column: 1 / -1; grid-row: 1; text-align: center; }
+  .nosotros-img-wrap { grid-column: 1; grid-row: 2; }
+}
 /* Marco en diagonal: línea dorada arriba a la izquierda y abajo a la derecha */
 .highlight-box { background: var(--crema-a); position: relative; padding: 1.25rem; margin-top: 1.5rem; text-align: center; }
 .highlight-box::before,
@@ -566,6 +573,18 @@ section { padding: 5.5rem 5%; }
   transform: translateY(-4px);
   border-color: var(--oro); color: var(--oro);
   box-shadow: 0 8px 20px rgba(184,152,42,0.18);
+}
+/* Celular: los chips con el estilo dorado siempre; al tocarlos se levantan 2px */
+@media (max-width: 768px) {
+  .info-chips .chip { border-color: var(--oro); color: var(--oro); box-shadow: 0 8px 20px rgba(184,152,42,0.18); -webkit-tap-highlight-color: transparent; }
+}
+@media (hover: none) {
+  .info-chips .chip:hover { transform: none; }
+  .info-chips .chip.tocado { transform: translateY(-2px); }
+}
+/* Computadora: franja centrada debajo de la foto y del texto */
+@media (min-width: 769px) {
+  .info-chips { justify-content: center; margin-top: 2.5rem; }
 }
 
 /* ===================== SECCIÓN FAMILIAS — carrusel circular ===================== */
@@ -729,7 +748,8 @@ section { padding: 5.5rem 5%; }
   margin-left: 0;
 }
 .aloj-card { position: relative; overflow: hidden; border-radius: 10px; border: 1.5px solid var(--borde); background: var(--blanco); transition: box-shadow 0.3s, border-color 0.3s, transform 0.3s; }
-.aloj-card:hover { box-shadow: 0 12px 36px rgba(0,0,0,0.13); border-color: var(--oro); transform: translateY(-4px); }
+/* .tocada: el mismo efecto al tocar la tarjeta en pantallas táctiles */
+.aloj-card:hover, .aloj-card.tocada { box-shadow: 0 12px 36px rgba(0,0,0,0.13); border-color: var(--oro); transform: translateY(-4px); }
 .card-img { height: 220px; position: relative; overflow: hidden; }
 /* Carrusel interno */
 .card-carousel { position: relative; height: 100%; width: 100%; }
@@ -738,21 +758,21 @@ section { padding: 5.5rem 5%; }
 .card-arrow { position: absolute; top: 30%; transform: translateY(-50%); z-index: 4; width: 28px; height: 28px; border-radius: 50%; background: rgba(255,255,255,0.88); border: none; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 0.8rem; color: var(--texto); transition: background 0.2s, opacity 0.25s; opacity: 0; pointer-events: none; box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
 .card-arrow.prev { left: 8px; }
 .card-arrow.next { right: 8px; }
-.aloj-card:hover .card-arrow:not([disabled]) { opacity: 1; pointer-events: all; }
+.aloj-card:hover .card-arrow:not([disabled]), .aloj-card.tocada .card-arrow:not([disabled]) { opacity: 1; pointer-events: all; }
 .card-arrow[disabled] { opacity: 0 !important; pointer-events: none; }
 .card-arrow:hover { background: var(--blanco); }
 .card-dots { position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%); display: flex; gap: 5px; z-index: 4; }
 .card-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.5); transition: background 0.25s, transform 0.25s; }
 .card-dot.active { background: #fff; transform: scale(1.3); }
 .card-counter { position: absolute; top: 10px; right: 44px; z-index: 4; background: rgba(0,0,0,0.45); color: #fff; font-size: 0.65rem; font-weight: 600; padding: 0.2rem 0.5rem; border-radius: 10px; opacity: 0; transition: opacity 0.25s; }
-.aloj-card:hover .card-counter { opacity: 1; }
+.aloj-card:hover .card-counter, .aloj-card.tocada .card-counter { opacity: 1; }
 .card-type-badge { display: none; }
 .card-hover-panel {
   position: absolute; bottom: 0; left: 0; right: 0; z-index: 3;
   padding: 2rem 1rem 0.85rem;
   background: linear-gradient(to top, rgba(20,16,10,0.55) 0%, rgba(20,16,10,0) 100%);
   display: flex; align-items: flex-end; justify-content: center;
-  opacity: 0; transition: opacity 0.3s ease;
+  opacity: 0; transition: opacity 0.15s ease;
   pointer-events: none;
 }
 .card-img:hover .card-hover-panel { opacity: 1; pointer-events: all; }
@@ -767,17 +787,36 @@ section { padding: 5.5rem 5%; }
   font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
   cursor: pointer; text-decoration: none;
   opacity: 0; transform: translateY(6px);
-  transition: opacity 0.25s 0.05s, transform 0.25s 0.05s, background 0.25s;
+  transition: opacity 0.15s, transform 0.15s, background 0.25s;
   box-shadow: 0 3px 12px rgba(0,0,0,0.3);
   margin-bottom: 0.5rem;
 }
 .card-img:hover .btn-consultar-card { opacity: 1; transform: translateY(0); }
 .btn-consultar-card:hover { background: var(--oro-hover); filter: brightness(1.12); }
+/* Pantallas táctiles: el botón aparece al tocar cualquier parte de la tarjeta */
+@media (hover: none) {
+  .card-hover-panel, .btn-consultar-card { transition: none; }
+  .aloj-card:hover .card-hover-panel, .aloj-card.tocada .card-hover-panel { opacity: 1; pointer-events: all; }
+  .aloj-card:hover .btn-consultar-card, .aloj-card.tocada .btn-consultar-card { opacity: 1; transform: translateY(0); }
+}
 .card-body { padding: 1.1rem 1.2rem 1.2rem; border-top: 1px solid var(--borde); }
 .card-name { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 600; color: var(--texto); margin-bottom: 0.3rem; }
 .card-meta { font-size: 0.78rem; color: var(--texto-suave); margin-bottom: 0.8rem; display: flex; gap: 0.85rem; flex-wrap: wrap; }
 .card-features { display: flex; flex-wrap: wrap; gap: 0.3rem; }
 .feature-tag { background: var(--crema-a); font-size: 0.68rem; color: var(--texto-suave); padding: 0.2rem 0.6rem; border-radius: 5px; border: 1.5px solid rgba(184,152,42,0.4); }
+/* Chips de las tarjetas de alojamiento: con el borde y el brillo dorados del botón de plataformas
+   (.platform-link:hover) siempre visibles y texto en el dorado de los chips de "Quiénes somos";
+   al pasar el mouse solo sube y el brillo se intensifica */
+.aloj-card .feature-tag {
+  background: var(--blanco); color: var(--oro); font-weight: 600;
+  border-color: var(--oro);
+  box-shadow: 0 6px 20px rgba(184,152,42,0.22);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.aloj-card .feature-tag:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(184,152,42,0.25);
+}
 /* Íconos de línea monocromáticos en las cards (reemplazan a los emojis) */
 .ico-txt { display: inline-flex; align-items: center; gap: 0.3rem; }
 .ico { flex-shrink: 0; display: block; }
@@ -950,15 +989,77 @@ section { padding: 5.5rem 5%; }
 .rating-num { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 600; color: var(--texto); line-height: 1; }
 .rating-stars { color: var(--oro); font-size: 0.88rem; letter-spacing: 3px; display: block; }
 .rating-label { font-size: 0.7rem; color: var(--texto-suave); display: block; }
+/* Computadora: título centrado arriba; debajo, una fila con la flecha izquierda, el 5.0 centrado y la flecha derecha
+   (alineadas con el borde de la primera y de la cuarta columna); y la grilla a todo el ancho.
+   El encabezado y la fila de 5.0 + flechas se "disuelven" (display: contents) para ubicar sus partes en la grilla */
+@media (min-width: 769px) {
+  #testimonios .section-inner { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; }
+  #testimonios .test-header, #testimonios .test-nav { display: contents; }
+  #testimonios .test-header > div:last-child { display: contents !important; } /* tiene display:flex en línea */
+  #testimonios .test-header-left { grid-column: 1 / -1; grid-row: 1; text-align: center; }
+  #testimonios .test-header-left .divider { margin-left: auto; margin-right: auto; }
+  /* Mismo margen en las tres piezas para que queden centradas a la misma altura */
+  #test-prev, #testimonios .rating-total, #test-next { grid-row: 2; margin: 1.5rem 0 2rem; }
+  #test-prev { grid-column: 1; }
+  #testimonios .rating-total { grid-column: 2; justify-self: center; }
+  #test-next { grid-column: 3; }
+  #testViewport { grid-column: 1 / -1; grid-row: 3; }
+  #testimonios .section-inner > div:last-child { grid-column: 1 / -1; grid-row: 4; }
+}
 
 /* ===================== UBICACIÓN ===================== */
+.ubic-head { max-width: 1200px; margin: 0 auto; }
 .ubicacion-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4.5rem; align-items: center; }
+/* Computadora: etiqueta, título, línea dorada y subtítulo centrados, como en Quiénes somos */
+@media (min-width: 769px) {
+  #alojamientos .section-label, #alojamientos .section-title,
+  #servicios .section-label, #servicios .section-title, #servicios .serv-sub,
+  .ubic-head { text-align: center; }
+  #alojamientos .divider, #servicios .divider, .ubic-head .divider { margin-left: auto; margin-right: auto; }
+}
 .mapa-placeholder { height: 340px; background: var(--crema-a); border-radius: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem; border: 1px dashed var(--borde); }
 .mapa-placeholder .mapa-icon { font-size: 2rem; }
 .mapa-placeholder p { font-size: 0.84rem; color: var(--texto-suave); font-weight: 500; }
 .mapa-placeholder small { font-size: 0.72rem; color: var(--texto-suave); opacity: 0.6; }
 .dist-list { list-style: none; display: flex; flex-direction: column; gap: 0.85rem; margin-top: 1.4rem; }
 .dist-list li { display: flex; align-items: center; gap: 0.75rem; font-size: 0.87rem; color: var(--texto-medio); }
+/* Referencias de Brisas de Oro: al tocarlas, el mapa muestra ese lugar */
+.dist-list li[data-lugar] { cursor: pointer; border-radius: 8px; }
+.dist-list li[data-lugar] .dist-icon { transition: border-color 0.2s, background 0.2s; }
+.dist-list li[data-lugar]:hover .dist-icon,
+.dist-list li[data-lugar].activa .dist-icon { border-color: var(--oro); background: var(--blanco); }
+.dist-list li[data-lugar].activa strong { color: var(--oro-oscuro); }
+.dist-list li[data-lugar]:focus-visible { outline: 2px solid var(--oro); outline-offset: 3px; }
+/* Mapa de ubicación y botón para volver a Brisas de Oro */
+/* Contexto de apilado propio: las capas de Leaflet (z-index 400 a 1000) quedan dentro del mapa,
+   por debajo de la cabecera y de la barra sticky */
+.mapa-ubic-wrap { position: relative; isolation: isolate; z-index: 0; }
+.mapa-ubic { width: 100%; height: 100%; }
+.mapa-volver {
+  position: absolute; top: 10px; right: 10px; z-index: 500;
+  background: var(--blanco); color: var(--oro-oscuro); border: 1px solid var(--oro); border-radius: 6px;
+  padding: 0.4rem 0.8rem; font: inherit; font-size: 0.74rem; font-weight: 600; cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+.mapa-volver:hover { background: var(--crema-a); }
+.mapa-gmaps {
+  position: absolute; left: 10px; bottom: 10px; z-index: 500;
+  background: var(--blanco); color: var(--oro-oscuro); border: 1px solid var(--borde); border-radius: 6px;
+  padding: 0.3rem 0.65rem; font-size: 0.7rem; font-weight: 600; text-decoration: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+.mapa-gmaps:hover { border-color: var(--oro); }
+/* Etiquetas del mapa: hasta 150px de ancho, en dos renglones si el nombre es largo (no se salen en celular) */
+.leaflet-tooltip.mapa-etiqueta { font-size: 0.72rem; font-weight: 600; color: var(--texto-medio); white-space: normal; width: max-content; max-width: 150px; text-align: center; line-height: 1.3; }
+.leaflet-tooltip.mapa-etiqueta--brisas { color: var(--oro-oscuro); }
+/* Computadora: la columna de información mide lo mismo que el mapa; referencias en dos columnas de tres
+   y el espacio sobrante repartido en partes iguales entre el texto, la dirección y las filas de referencias */
+@media (min-width: 769px) {
+  #ubicacion .ubicacion-grid > div:first-child { align-self: stretch; display: flex; flex-direction: column; }
+  #ubicacion .ubicacion-grid > div:first-child > * { flex: 1 0 auto; }
+  #ubicacion .ubicacion-grid > div:first-child > p:first-child { margin-top: 0 !important; } /* tenía -0.6rem en línea, para acercarlo a la línea dorada */
+  #ubicacion .ubicacion-grid .dist-list { display: grid; grid-template-rows: repeat(3, auto); grid-auto-flow: column; grid-auto-columns: 1fr; align-content: space-between; column-gap: 1.5rem; margin-bottom: 0; }
+}
 .dist-icon { width: 38px; height: 38px; border-radius: 50%; background: var(--crema-a); border: 1px solid var(--borde); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--texto-medio); }
 .dist-text strong { display: block; color: var(--texto); font-size: 0.82rem; font-weight: 700; }
 /* Bloque compacto de la Casa en Icho Cruz, debajo del complejo */
@@ -991,6 +1092,12 @@ section { padding: 5.5rem 5%; }
 footer { background: var(--footer-bg); color: var(--footer-text); padding: 3.5rem 5% 2rem; }
 .footer-inner { max-width: 1200px; margin: 0 auto; }
 .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 2.5rem; margin-bottom: 2.5rem; }
+/* Computadora: columnas según su contenido (marca más angosta, Alojamientos e Información más anchas,
+   "También en" con el ancho justo para que cada botón entre en una línea) */
+@media (min-width: 1025px) {
+  .footer-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr) minmax(0, 1.25fr) max-content; gap: 2rem; }
+  .footer-col .platform-link { white-space: nowrap; }
+}
 .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 600; color: #F5F2EC; margin-bottom: 0.7rem; line-height: 1.2; }
 .footer-logo span { display: block; font-size: 0.63rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--oro); font-family: 'Nunito', sans-serif; margin-top: 0.2rem; }
 .footer-desc { font-size: 0.82rem; color: var(--footer-text); line-height: 1.8; max-width: 270px; opacity: 0.75; }
@@ -1169,6 +1276,11 @@ footer { background: var(--footer-bg); color: var(--footer-text); padding: 3.5re
   box-shadow: 0 6px 20px rgba(184,152,42,0.22);
 }
 .platform-link svg { flex-shrink: 0; }
+/* Celular: los links de "También nos encontrás en" uno debajo del otro, todos del mismo ancho */
+@media (max-width: 768px) {
+  #testimonios .platform-links { flex-direction: column; align-items: stretch; max-width: 280px; margin-left: auto; margin-right: auto; }
+  #testimonios .platform-link { justify-content: center; }
+}
 /* Versión footer (sobre fondo oscuro) */
 .platform-link.dark {
   background: transparent;
@@ -1207,7 +1319,6 @@ footer { background: var(--footer-bg); color: var(--footer-text); padding: 3.5re
     letter-spacing: 0.06em; text-transform: uppercase;
     border-bottom: 1px solid rgba(255,255,255,0.06);
   }
-  .nav-mobile-menu a:hover { color: var(--oro); }
   .nav-cta { padding: 0.45rem 1rem; font-size: 0.72rem; }
 
   /* Sticky bar mobile — compacta */
@@ -1409,8 +1520,9 @@ footer { background: var(--footer-bg); color: var(--footer-text); padding: 3.5re
   section { padding: 3.5rem 5%; }
 
   /* --- NOSOTROS --- */
-  .nosotros-grid { grid-template-columns: 1fr; gap: 2rem; }
-  .nosotros-img-wrap { height: 260px; }
+  /* En bloque (no grilla): el título y el separador quedan con el mismo espacio que cuando estaban juntos */
+  .nosotros-grid { display: block; }
+  .nosotros-img-wrap { height: 260px; margin-bottom: 2rem; }
 
   /* --- GALERÍA — 1 foto por vez --- */
   .galeria-slide { flex: 0 0 100%; height: 240px; }
@@ -1495,7 +1607,10 @@ footer { background: var(--footer-bg); color: var(--footer-text); padding: 3.5re
   letter-spacing: 0.06em; text-transform: uppercase;
   border-bottom: 1px solid rgba(255,255,255,0.06);
 }
-.nav-mobile-menu a:hover { color: var(--oro); }
+/* Dorado al pasar el mouse solo en dispositivos con mouse (en celular el hover queda "pegado" y titila) */
+@media (hover: hover) {
+  .nav-mobile-menu a:hover { color: var(--oro); }
+}
 /* Último ítem tocado del menú móvil */
 .nav-mobile-menu a.activo { color: var(--oro); }
 
@@ -1706,13 +1821,15 @@ footer { background: var(--footer-bg); color: var(--footer-text); padding: 3.5re
   color: var(--texto);
   margin-top: 0;
   margin-bottom: 1.4rem;
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
+  /* Centrado; la insignia va a continuación del texto, en la misma línea */
+  display: block;
+  text-align: center;
+  text-wrap: balance;
 }
 .disp-seccion-titulo--gris { color: var(--texto-medio); font-size: 1.3rem; }
 .disp-seccion-titulo--no   { color: var(--texto-suave); font-size: 1.3rem; }
 .disp-seccion-count {
+  display: inline-block; margin-left: 0.6rem; vertical-align: 0.2em; line-height: 1.4;
   font-family: 'Nunito', sans-serif;
   font-size: 0.7rem;
   font-weight: 700;
@@ -1751,7 +1868,7 @@ footer { background: var(--footer-bg); color: var(--footer-text); padding: 3.5re
   border-color: var(--oro) !important;
   box-shadow: 0 0 0 3px rgba(184,152,42,0.18);
 }
-.disp-aloj-card--dest:hover {
+.disp-aloj-card--dest:hover, .disp-aloj-card--dest.tocada {
   box-shadow: 0 12px 36px rgba(0,0,0,0.13), 0 0 0 3px rgba(184,152,42,0.28) !important;
 }
 
