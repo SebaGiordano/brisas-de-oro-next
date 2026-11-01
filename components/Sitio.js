@@ -623,6 +623,11 @@ export default function Sitio({ pagina = 'inicio' }) {
         stickyBar.style.top = (TOPBAR_H + NAV_H) + 'px';
       }
     
+      // Menú hamburguesa desplegado: acompaña al menú cuando la barra superior se oculta o vuelve a aparecer
+      // (si no, queda donde estaba y en el hueco asoma la barra de búsqueda)
+      const menuMovil = document.getElementById('nav-mobile-menu');
+      if (menuMovil) menuMovil.style.top = ((topbarVisible ? TOPBAR_H : 0) + nav.offsetHeight) + 'px';
+
       // Nav: se oscurece al bajar
       if (scrollY > 50) nav.classList.add('scrolled');
       else nav.classList.remove('scrolled');

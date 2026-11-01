@@ -1196,7 +1196,7 @@ footer { background: var(--footer-bg); color: var(--footer-text); padding: 3.5re
   /* Menú mobile desplegable */
   .nav-mobile-menu {
     display: none; position: fixed; top: 96px; left: 0; right: 0;
-    background: var(--nav-solid); border-top: 1px solid rgba(255,255,255,0.08);
+    background: #201E1B; border-top: 1px solid rgba(255,255,255,0.08);
     padding: 1rem 0; z-index: 200; /* por encima de la barra de búsqueda (sticky-bar, 199) */
     flex-direction: column;
   }
@@ -1492,7 +1492,8 @@ footer { background: var(--footer-bg); color: var(--footer-text); padding: 3.5re
 .nav-mobile-menu {
   display: none; position: fixed; z-index: 200; /* por encima de la barra de búsqueda (sticky-bar, 199) */
   left: 0; right: 0;
-  background: var(--nav-solid);
+  background: #201E1B; /* opaco: que no se vea la barra de búsqueda ni la página por detrás */
+  transition: top 0.35s ease; /* se mueve junto con el menú (nav) al ocultarse la barra superior */
   border-top: 1px solid rgba(255,255,255,0.08);
   padding: 1rem 0;
   flex-direction: column;
