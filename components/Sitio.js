@@ -84,7 +84,7 @@ export default function Sitio({ pagina = 'inicio' }) {
       // Reflejar el idioma en la URL (/, /en, /pt) y en <html lang>, sin recargar
       document.documentElement.lang = lang;
       document.title = metaPagina(paginaDeRuta(rutaDeUrl()), lang).title;
-      // Links internos (menú, tarjetas): al idioma elegido
+      // Links internos (menú, logo): al idioma elegido
       document.querySelectorAll('a[data-ruta]').forEach(a => {
         const r = a.getAttribute('data-ruta');
         const [ruta, ancla] = r.split('#');
@@ -1869,7 +1869,6 @@ const HTML = `
             <span class="feature-tag" data-i18n="feat.pet">Pet friendly</span>
             <span class="feature-tag" data-i18n="feat.desayuno.opc">Desayuno opcional</span>
           </div>
-          <a class="card-detalle" data-ruta="alojamientos/cabana-chica" href="/alojamientos/cabana-chica" data-i18n="aloj.verdetalle">Ver detalles →</a>
         </div>
       </div>
 
@@ -1910,7 +1909,6 @@ const HTML = `
             <span class="feature-tag" data-i18n="feat.pet">Pet friendly</span>
             <span class="feature-tag" data-i18n="feat.desayuno.opc">Desayuno opcional</span>
           </div>
-          <a class="card-detalle" data-ruta="alojamientos/cabana-mediana" href="/alojamientos/cabana-mediana" data-i18n="aloj.verdetalle">Ver detalles →</a>
         </div>
       </div>
 
@@ -1950,7 +1948,6 @@ const HTML = `
             <span class="feature-tag" data-i18n="feat.pet">Pet friendly</span>
             <span class="feature-tag" data-i18n="feat.desayuno.opc">Desayuno opcional</span>
           </div>
-          <a class="card-detalle" data-ruta="alojamientos/cabana-grande" href="/alojamientos/cabana-grande" data-i18n="aloj.verdetalle">Ver detalles →</a>
         </div>
       </div>
 
@@ -1995,7 +1992,6 @@ const HTML = `
             <span class="feature-tag" data-i18n="feat.limp1">Limpieza diaria</span>
             <span class="feature-tag" data-i18n="feat.desayuno.opc">Desayuno opcional</span>
           </div>
-          <a class="card-detalle" data-ruta="alojamientos/habitaciones" href="/alojamientos/habitaciones" data-i18n="aloj.verdetalle">Ver detalles →</a>
         </div>
       </div>
 
@@ -2033,7 +2029,6 @@ const HTML = `
             <span class="feature-tag" data-i18n="feat.limp1">Limpieza diaria</span>
             <span class="feature-tag" data-i18n="feat.desayuno.opc">Desayuno opcional</span>
           </div>
-          <a class="card-detalle" data-ruta="alojamientos/apart-hotel" href="/alojamientos/apart-hotel" data-i18n="aloj.verdetalle">Ver detalles →</a>
         </div>
       </div>
 
@@ -2072,7 +2067,6 @@ const HTML = `
             <span class="feature-tag" data-i18n="feat.wifi.tv">Wi-Fi y DirecTV</span>
             <span class="feature-tag" data-i18n="feat.pet">Pet friendly</span>
           </div>
-          <a class="card-detalle" data-ruta="alojamientos/casa-icho-cruz" href="/alojamientos/casa-icho-cruz" data-i18n="aloj.verdetalle">Ver detalles →</a>
           <p class="card-nota"><span class="card-nota-linea" data-i18n="aloj.card6.noincluye.a">Sin desayuno ni toallas</span><span class="card-nota-linea" data-i18n="aloj.card6.noincluye.b">Ropa de cama opcional (con cargo adicional)</span></p>
           <p class="card-nota ico-txt"><svg class="ico" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span data-i18n="aloj.card6.ubic">Icho Cruz — a 15 min de Brisas de Oro</span></p>
         </div>
