@@ -1197,7 +1197,7 @@ footer { background: var(--footer-bg); color: var(--footer-text); padding: 3.5re
   .nav-mobile-menu {
     display: none; position: fixed; top: 96px; left: 0; right: 0;
     background: #201E1B; border-top: 1px solid rgba(255,255,255,0.08);
-    padding: 1rem 0; z-index: 200; /* por encima de la barra de búsqueda (sticky-bar, 199) */
+    padding: 1rem 0; z-index: 198; /* debajo de la barra de búsqueda (sticky-bar, 199): el menú se abre debajo de ella, y así sus desplegables (tipo, huéspedes, avisos) quedan por encima del menú */
     flex-direction: column;
   }
   .nav-mobile-menu.open { display: flex; }
@@ -1490,7 +1490,7 @@ footer { background: var(--footer-bg); color: var(--footer-text); padding: 3.5re
 }
 /* Menú mobile desplegable — oculto por defecto */
 .nav-mobile-menu {
-  display: none; position: fixed; z-index: 200; /* por encima de la barra de búsqueda (sticky-bar, 199) */
+  display: none; position: fixed; z-index: 198; /* debajo de la barra de búsqueda (sticky-bar, 199): el menú se abre debajo de ella, y así sus desplegables (tipo, huéspedes, avisos) quedan por encima del menú */
   left: 0; right: 0;
   background: #201E1B; /* opaco: que no se vea la página por detrás */
   transition: top 0.35s ease; /* se mueve junto con el menú y la barra de búsqueda */
