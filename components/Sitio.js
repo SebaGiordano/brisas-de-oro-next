@@ -260,8 +260,12 @@ export default function Sitio({ pagina = 'inicio' }) {
     
     /* ===== MENÚ HAMBURGUESA ===== */
     function isMobile() { return window.innerWidth <= 768; }
+    // Menú hamburguesa hasta 1279px: entre 769 y 1279px los 7 links + idioma + "Consultar" no entran
+    // en una línea (en los tres idiomas). Mismo corte que el CSS (@media max-width: 1279px).
+    function menuCompacto() { return window.innerWidth <= 1279; }
     
     function toggleMenu() {
+      ajustarNav(); // recalcula la posición del desplegable (la barra superior pudo ocultarse con el scroll)
       document.getElementById('nav-mobile-menu').classList.toggle('open');
     }
     function cerrarMenu() {
@@ -294,7 +298,7 @@ export default function Sitio({ pagina = 'inicio' }) {
       const links = document.querySelector('.nav-links');
       const menu  = document.getElementById('nav-mobile-menu');
       const topH  = document.getElementById('main-topbar');
-      if (isMobile()) {
+      if (menuCompacto()) {
         ham.style.display   = 'flex';
         links.style.display = 'none';
         // Posicionar menú mobile debajo del nav

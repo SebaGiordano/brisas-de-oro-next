@@ -1480,6 +1480,14 @@ footer { background: var(--footer-bg); color: var(--footer-text); padding: 3.5re
   background: rgba(245,242,236,0.85); border-radius: 2px;
   transition: all 0.3s;
 }
+/* Tablets y notebooks chicas (769–1279px): los 7 links del menú + idioma + "Consultar" no entran en una
+   línea en ningún idioma, así que se usa el menú hamburguesa. En las páginas del sitio lo ajusta además
+   ajustarNav() con el mismo corte; esta regla cubre la página de resultados (/disponibilidad). */
+@media (min-width: 769px) and (max-width: 1279px) {
+  .nav-links { display: none; }
+  .nav-hamburger { display: flex !important; }
+  .nav-mobile-menu { top: 120px; }
+}
 /* Menú mobile desplegable — oculto por defecto */
 .nav-mobile-menu {
   display: none; position: fixed; z-index: 199;
