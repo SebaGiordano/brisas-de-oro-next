@@ -1092,6 +1092,7 @@ export default function Disponibilidad() {
     router.replace({ pathname: router.pathname, query: router.query }, undefined, { locale: l, shallow: true, scroll: false })
   }
   const bannerRef = useRef(null)
+  const menuMovilRef = useRef(null)
   const langRef = useRef(null)
 
   const t = I18N[lang] || I18N.es
@@ -1108,6 +1109,26 @@ export default function Disponibilidad() {
     window.addEventListener('pageshow', alMostrar)
     return () => window.removeEventListener('pageshow', alMostrar)
   }, [router.isReady, router.locale])
+
+  // Menú hamburguesa desplegado: debajo del menú y, si está visible, de la barra compacta de búsqueda (nunca la tapa)
+  useEffect(() => {
+    if (!menuOpen) return
+    const ubicar = () => {
+      const menu = menuMovilRef.current
+      if (!menu) return
+      const navEl = document.querySelector('.nav-inner')?.closest('nav')
+      let top = navEl ? navEl.getBoundingClientRect().bottom : 0
+      const compacta = document.querySelector('.disp-compacta')
+      if (barraCompacta && compacta && getComputedStyle(compacta).display !== 'none') {
+        top = Math.max(top, (parseFloat(getComputedStyle(compacta).top) || 0) + compacta.offsetHeight)
+      }
+      menu.style.top = top + 'px'
+      menu.style.maxHeight = (window.innerHeight - top) + 'px'
+    }
+    ubicar()
+    window.addEventListener('resize', ubicar)
+    return () => window.removeEventListener('resize', ubicar)
+  }, [menuOpen, barraCompacta])
 
   useEffect(() => {
     function handler(e) { if (langRef.current && !langRef.current.contains(e.target)) setLangOpen(false) }
@@ -1265,7 +1286,7 @@ export default function Disponibilidad() {
       </nav>
 
       {/* MENÚ MOBILE */}
-      <nav className={`nav-mobile-menu${menuOpen?' open':''}`}>
+      <nav ref={menuMovilRef} className={`nav-mobile-menu${menuOpen?' open':''}`}>
         <a href={pre + '/nosotros'} onClick={() => setMenuOpen(false)}>{t.navNosotros}</a>
         <a href={pre + '/alojamientos'} onClick={() => setMenuOpen(false)}>{t.navAlojamientos}</a>
         <a href="#antes-de-reservar" onClick={irA('antes-de-reservar')}>{t.navInfo}</a>

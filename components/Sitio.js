@@ -301,6 +301,24 @@ export default function Sitio({ pagina = 'inicio' }) {
       html.style.scrollBehavior = previo;
     }
     
+    // El desplegable del menú hamburguesa va debajo de lo que esté visible más abajo: el menú (nav) o,
+    // si está visible, la barra de búsqueda (sticky). Nunca la tapa. Usa los valores finales de posición
+    // (no los de mitad de animación): la barra superior oculta o no, y el 'top' fijo de la barra de búsqueda.
+    function posicionarMenuMovil() {
+      const menu = document.getElementById('nav-mobile-menu');
+      const navEl = document.getElementById('main-nav');
+      const topH = document.getElementById('main-topbar');
+      const barra = document.getElementById('stickyBar');
+      if (!menu || !navEl) return;
+      const topbarVisible = !(topH && topH.style.transform === 'translateY(-100%)');
+      let top = (topbarVisible && topH ? topH.offsetHeight : 0) + navEl.offsetHeight;
+      if (barra && barra.classList.contains('visible')) {
+        top = Math.max(top, (parseFloat(getComputedStyle(barra).top) || 0) + barra.offsetHeight);
+      }
+      menu.style.top = top + 'px';
+      menu.style.maxHeight = (window.innerHeight - top) + 'px'; // si no entra, se scrollea por dentro
+    }
+
     function ajustarNav() {
       const ham   = document.getElementById('nav-hamburger');
       const links = document.querySelector('.nav-links');
@@ -309,10 +327,7 @@ export default function Sitio({ pagina = 'inicio' }) {
       if (menuCompacto()) {
         ham.style.display   = 'flex';
         links.style.display = 'none';
-        // Posicionar menú mobile debajo del nav
-        const navH = document.getElementById('main-nav').offsetHeight;
-        const topbarH = (topH && topH.style.transform !== 'translateY(-100%)') ? 36 : 0;
-        menu.style.top = (topbarH + navH) + 'px';
+        posicionarMenuMovil();
       } else {
         ham.style.display   = 'none';
         links.style.display = 'flex';
@@ -623,11 +638,6 @@ export default function Sitio({ pagina = 'inicio' }) {
         stickyBar.style.top = (TOPBAR_H + NAV_H) + 'px';
       }
     
-      // Menú hamburguesa desplegado: acompaña al menú cuando la barra superior se oculta o vuelve a aparecer
-      // (si no, queda donde estaba y en el hueco asoma la barra de búsqueda)
-      const menuMovil = document.getElementById('nav-mobile-menu');
-      if (menuMovil) menuMovil.style.top = ((topbarVisible ? TOPBAR_H : 0) + nav.offsetHeight) + 'px';
-
       // Nav: se oscurece al bajar
       if (scrollY > 50) nav.classList.add('scrolled');
       else nav.classList.remove('scrolled');
@@ -639,6 +649,8 @@ export default function Sitio({ pagina = 'inicio' }) {
         if (rect.bottom < limite) stickyBar.classList.add('visible');
         else stickyBar.classList.remove('visible');
       }
+      // Menú hamburguesa desplegado: siempre debajo del menú y de la barra de búsqueda
+      posicionarMenuMovil();
     }
     
     window.addEventListener('scroll', onScroll, { passive: true });
