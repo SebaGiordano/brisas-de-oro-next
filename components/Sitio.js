@@ -738,7 +738,8 @@ export default function Sitio({ pagina = 'inicio' }) {
               <div style="font-size:0.75rem;color:var(--texto-medio);margin-bottom:0.4rem;font-weight:600">${dt.getDate()}/${dt.getMonth()+1}</div>
               <div class="clima-icon-wrap">
                 <div class="clima-tooltip">${getDesc(d.weatherCodeMax, lang)}</div>
-                ${getIcono(d.weatherCodeMax, 44)}
+                ${/* Hoy: sol o luna según la hora, como la tarjeta principal; los días siguientes, siempre el ícono de día */''}
+                ${getIcono(d.weatherCodeMax, 44, i === 0 ? undefined : false)}
               </div>
               <div class="clima-dia-temps">
                 <span style="color:var(--texto)">↑ ${Math.round(d.temperatureMax)}°</span>

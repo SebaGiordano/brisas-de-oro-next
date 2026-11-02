@@ -1198,6 +1198,15 @@ footer { background: var(--footer-bg); color: var(--footer-text); padding: 3.5re
   font-size: 0.75rem; color: var(--oro); font-weight: 600;
   letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 0.4rem;
 }
+/* Computadora: ícono, temperatura y textos centrados en la tarjeta, con los textos centrados entre sí
+   (el bloque de textos ya no se estira hasta el borde) */
+@media (min-width: 769px) {
+  .clima-actual { justify-content: center; }
+  /* sin los márgenes automáticos del ícono, que se quedaban con el espacio libre de la fila */
+  .clima-actual > .clima-icon-wrap { margin-left: 0; margin-right: 0; }
+  .clima-actual-info { flex: 0 1 auto; text-align: center; }
+  .clima-actual-loc { justify-content: center; }
+}
 /* Pronóstico 6 días */
 .clima-grid {
   display: grid; grid-template-columns: repeat(6, 1fr); gap: 0.75rem;
@@ -2175,6 +2184,10 @@ footer { background: var(--footer-bg); color: var(--footer-text); padding: 3.5re
 }
 .huesp-wrap.open .huesp-pop { display: block; }
 .huesp-pop.dd-arriba { top: auto; bottom: calc(100% + 4px); }
+/* Computadora: el panel de huéspedes centrado debajo del campo "Huésp." (la etiqueta sigue a la izquierda) */
+@media (min-width: 769px) {
+  .sticky-bar .huesp-pop { left: 50%; transform: translateX(-50%); }
+}
 .huesp-pop .contador { align-items: center; }
 .huesp-pop .contador-btn { flex: 0 0 44px; width: 44px; height: 44px; font-size: 1.6rem; }
 .sticky-field .huesp-pop .contador-num { padding: 0; font-size: max(16px, 1.05rem); font-weight: 600; color: #F5F2EC; cursor: text; }
@@ -2219,6 +2232,12 @@ footer { background: var(--footer-bg); color: var(--footer-text); padding: 3.5re
 /* Título del bloque de combinaciones: como los títulos de sección del sitio */
 .combo-header { text-align: center; margin-bottom: 1.5rem; }
 .combo-header .section-title { margin-bottom: 0; }
+/* Título de combinaciones: el salto del texto ("
+") parte el renglón en celular; desde 1025 px queda en una línea */
+.combo-titulo { white-space: pre-line; }
+@media (min-width: 1025px) {
+  .combo-titulo { white-space: normal; }
+}
 .combo-header .divider { margin: 0.9rem auto 1.1rem; }
 .combo-header .disp-aviso-texto { margin: 0 auto; font-weight: 500; color: var(--texto-medio); }
 .combo-capacidad { font-size: 0.74rem; color: var(--texto-suave); line-height: 1.5; margin-top: 0.15rem; }

@@ -1,5 +1,6 @@
-const LAT = -31.4285
-const LON = -64.4872
+// Ubicación del hotel (Av. Ramón J. Cárcano 2590, Villa Carlos Paz)
+const LAT = -31.4540395
+const LON = -64.5080366
 const BASE = 'https://api.tomorrow.io/v4/weather'
 
 export default async function handler(req, res) {

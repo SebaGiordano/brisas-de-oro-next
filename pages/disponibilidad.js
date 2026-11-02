@@ -953,8 +953,8 @@ function BloqueCombos({ combos, visibles, abiertos, onAlternar, elegidos, onEleg
   return (
     <section className="disp-seccion">
       <div className="combo-header">
-        {/* pre-line: "Opciones disponibles / para combinar" en dos renglones */}
-        <h2 className="section-title" style={{ whiteSpace:'pre-line' }}>{titulo}</h2>
+        {/* combo-titulo: "Opciones disponibles / para combinar" en dos renglones en celular, en una línea en computadora */}
+        <h2 className="section-title combo-titulo">{titulo}</h2>
         <div className="divider" />
         {aviso && <p className="disp-aviso-texto">{aviso}</p>}
       </div>
