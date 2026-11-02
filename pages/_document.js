@@ -7,7 +7,7 @@ export default function Document() {
         {/* ===== SEO común a todas las páginas =====
             Título, descripción, canonical, idiomas (hreflang), Open Graph y Schema.org
             se definen por página e idioma en pages/index.js (lib/seo.js). */}
-        <meta name="author" content="Hotel y Cabañas Brisas de Oro" />
+        <meta name="author" content="Brisas de Oro Hotel y Cabañas" />
         <meta name="geo.region" content="AR-X" />
         <meta name="geo.placename" content="Villa Carlos Paz, Córdoba, Argentina" />
         <meta name="geo.position" content="-31.4285;-64.4872" />

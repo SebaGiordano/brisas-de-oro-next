@@ -1631,7 +1631,7 @@ const HTML = `
 <nav id="main-nav">
   <div class="nav-inner">
     <a href="/" data-ruta="" class="logo">
-      <img src="/logo.webp" alt="Hotel y Cabañas Brisas de Oro" data-i18n-alt="alt.marca">
+      <img src="/logo.webp" alt="Brisas de Oro Hotel y Cabañas" data-i18n-alt="alt.marca">
     </a>
     <ul class="nav-links">
       <li><a href="/nosotros" data-ruta="nosotros" data-i18n="nav.nosotros">Nosotros</a></li>
@@ -1751,7 +1751,7 @@ const HTML = `
   <div class="hero-bg">
     <img id="hero-main-img"
       src="/fotos/general/1.webp"
-      alt="Hotel y Cabañas Brisas de Oro en Villa Carlos Paz, Córdoba" data-i18n-alt="alt.hero"
+      alt="Brisas de Oro Hotel y Cabañas en Villa Carlos Paz, Córdoba" data-i18n-alt="alt.hero"
       style="object-position: center 45%;">
   </div>
   <div class="hero-overlay"></div>
@@ -1759,7 +1759,7 @@ const HTML = `
   <!-- Texto centrado -->
   <div class="hero-content">
     <div class="hero-text">
-      <h1 class="hero-eyebrow" data-i18n="hero.eyebrow">Hotel y Cabañas en Villa Carlos Paz</h1>
+      <h1 class="hero-eyebrow" data-i18n="hero.eyebrow">Brisas de Oro Hotel y Cabañas</h1>
       <p class="hero-title" data-i18n="hero.title">Viví <em>momentos inolvidables</em></p>
       <p id="hero-desc-desktop" class="hero-desc solo-desktop" data-i18n="hero.desc">Complejo familiar atendido por sus dueños, donde el trato personalizado y el clima hogareño hacen que cada huésped se sienta en casa. Rodeados de las sierras cordobesas y a orillas del río San Antonio, en Villa&nbsp;Carlos&nbsp;Paz.</p>
       <p id="hero-desc-mobile" class="hero-desc solo-mobile" style="display:none" data-i18n="hero.descMobile">Complejo familiar atendido por sus dueños, donde el trato personalizado y el clima hogareño hacen que cada huésped se sienta en casa. Rodeados de las sierras cordobesas y a orillas del río San Antonio, en Villa&nbsp;Carlos&nbsp;Paz.</p>
@@ -2814,7 +2814,7 @@ const HTML = `
     </div>
     <!-- Mapa (Leaflet + OpenStreetMap): Brisas de Oro siempre marcado; al tocar una referencia muestra ese lugar -->
     <div class="mapa-ubic-wrap" style="height:420px;border-radius:10px;overflow:hidden;border:1px solid var(--borde);flex-shrink:0;">
-      <div id="mapa-ubic" class="mapa-ubic" role="region" data-i18n-aria="ubic.mapa.aria" aria-label="Mapa: Hotel y Cabañas Brisas de Oro, Av. Ramón J. Cárcano 2590, Villa Carlos Paz"></div>
+      <div id="mapa-ubic" class="mapa-ubic" role="region" data-i18n-aria="ubic.mapa.aria" aria-label="Mapa: Brisas de Oro Hotel y Cabañas, Av. Ramón J. Cárcano 2590, Villa Carlos Paz"></div>
       <button type="button" class="mapa-volver" id="mapa-volver" data-i18n="ubic.volver">Volver a Brisas de Oro</button>
       <a class="mapa-gmaps" id="mapa-gmaps" href="https://www.google.com/maps/search/Av.+Ram%C3%B3n+J.+C%C3%A1rcano+2590+Villa+Carlos+Paz" target="_blank" rel="noopener" data-i18n="ubic.gmaps">Abrir en Google Maps</a>
     </div>
@@ -2888,7 +2888,7 @@ const HTML = `
   <div class="footer-inner">
     <div class="footer-grid">
       <div>
-        <p class="footer-logo" data-i18n="footer.marca">Hotel y Cabañas Brisas de Oro<span>Villa Carlos Paz · Córdoba · Argentina</span></p>
+        <p class="footer-logo" data-i18n="footer.marca">Brisas de Oro Hotel y Cabañas<span>Villa Carlos Paz · Córdoba · Argentina</span></p>
         <p class="footer-desc" data-i18n="footer.desc">Complejo familiar atendido por sus dueños, donde el trato personalizado y el clima hogareño hacen que cada huésped se sienta en casa. Rodeados de las sierras cordobesas y a orillas del río San Antonio.</p>
 
       </div>
@@ -2989,7 +2989,7 @@ const HTML = `
     </div>
     <hr class="footer-divider">
     <div class="footer-bottom" style="justify-content:center;text-align:center;">
-      <p class="solo-desktop" data-i18n="footer.copy">© 2026 Hotel y Cabañas Brisas de Oro · Villa Carlos Paz, Córdoba, Argentina</p>
+      <p class="solo-desktop" data-i18n="footer.copy">© 2026 Brisas de Oro Hotel y Cabañas · Villa Carlos Paz, Córdoba, Argentina</p>
       <p class="solo-mobile">© 2026 Brisas de Oro · Villa Carlos Paz, Córdoba, Argentina</p>
     </div>
   </div>
