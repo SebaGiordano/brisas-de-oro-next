@@ -1610,8 +1610,8 @@ const HTML = `
         <svg width="11" height="14" viewBox="0 0 11 14" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;opacity:0.7">
         <path d="M5.5 0C2.46 0 0 2.46 0 5.5C0 9.625 5.5 14 5.5 14C5.5 14 11 9.625 11 5.5C11 2.46 8.54 0 5.5 0ZM5.5 7.5C4.395 7.5 3.5 6.605 3.5 5.5C3.5 4.395 4.395 3.5 5.5 3.5C6.605 3.5 7.5 4.395 7.5 5.5C7.5 6.605 6.605 7.5 5.5 7.5Z" fill="var(--oro)"/>
       </svg>
-        <span class="solo-desktop" data-i18n="topbar.dir">Av. Ramón J. Cárcano 2590 · Villa Carlos Paz, Córdoba</span>
-        <span class="solo-mobile" data-i18n="topbar.dir.short">Av. Ramón J. Cárcano 2590</span>
+        <span class="topbar-largo" data-i18n="topbar.dir">Av. Ramón J. Cárcano 2590, Villa Carlos Paz, Córdoba</span>
+        <span class="topbar-corto" data-i18n="topbar.dir.short">Av. Ramón J. Cárcano 2590<span class="topbar-loc">, Villa Carlos Paz</span></span>
       </a>
       <span class="topbar-sep"></span>
       <a class="topbar-dir"
@@ -1620,8 +1620,8 @@ const HTML = `
         <svg width="11" height="14" viewBox="0 0 11 14" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;opacity:0.7">
         <path d="M5.5 0C2.46 0 0 2.46 0 5.5C0 9.625 5.5 14 5.5 14C5.5 14 11 9.625 11 5.5C11 2.46 8.54 0 5.5 0ZM5.5 7.5C4.395 7.5 3.5 6.605 3.5 5.5C3.5 4.395 4.395 3.5 5.5 3.5C6.605 3.5 7.5 4.395 7.5 5.5C7.5 6.605 6.605 7.5 5.5 7.5Z" fill="var(--oro)"/>
       </svg>
-        <span class="solo-desktop" data-i18n="topbar.casa">Casa con Pileta · Icho Cruz</span>
-        <span class="solo-mobile" data-i18n="topbar.casa.short">Casa · Icho Cruz</span>
+        <span class="topbar-largo" data-i18n="topbar.casa">Casa con Pileta · Icho Cruz, Córdoba</span>
+        <span class="topbar-corto" data-i18n="topbar.casa.short">Casa · Icho Cruz</span>
       </a>
     </div>
   </div>
@@ -2746,7 +2746,7 @@ const HTML = `
         <a href="https://www.google.com/maps/search/Av.+Ram%C3%B3n+J.+C%C3%A1rcano+2590+Villa+Carlos+Paz" target="_blank"
            style="color:var(--oro);text-decoration:none;border-bottom:1px solid rgba(184,152,42,0.3);transition:color 0.25s;"
            onmouseover="this.style.color='var(--oro-hover)'" onmouseout="this.style.color='var(--oro)'">
-          Av. Ramón J. Cárcano 2590, X5152 Villa Carlos Paz
+          Av. Ramón J. Cárcano 2590, X5152 Villa Carlos Paz<span class="dir-cordoba">, Córdoba</span>
         </a>
       </p>
       <ul class="dist-list">
@@ -2828,7 +2828,9 @@ const HTML = `
       <svg width="11" height="14" viewBox="0 0 11 14" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0">
           <path d="M5.5 0C2.46 0 0 2.46 0 5.5C0 9.625 5.5 14 5.5 14C5.5 14 11 9.625 11 5.5C11 2.46 8.54 0 5.5 0ZM5.5 7.5C4.395 7.5 3.5 6.605 3.5 5.5C3.5 4.395 4.395 3.5 5.5 3.5C6.605 3.5 7.5 4.395 7.5 5.5C7.5 6.605 6.605 7.5 5.5 7.5Z" fill="var(--oro)"/>
         </svg>
-      <span data-i18n="ubic.casa.dir">Calle Uruguay esq. Lombardo, Icho Cruz</span>
+      <a href="https://www.google.com/maps/search/Calle+Uruguay+esq.+Lombardo,+Icho+Cruz,+C%C3%B3rdoba" target="_blank" data-i18n="ubic.casa.dir"
+         style="color:var(--oro);text-decoration:none;border-bottom:1px solid rgba(184,152,42,0.3);transition:color 0.25s;"
+         onmouseover="this.style.color='var(--oro-hover)'" onmouseout="this.style.color='var(--oro)'">Calle Uruguay esq. Lombardo, Icho Cruz<span class="dir-cordoba">, Córdoba</span></a>
     </p>
     <ul class="dist-list ubic-casa-dist">
       <li>

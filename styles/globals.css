@@ -58,6 +58,17 @@ body {
 /* Dirección del complejo + link a la Casa en Icho Cruz, uno al lado del otro */
 .topbar-dirs { display: flex; align-items: center; gap: 0.9rem; min-width: 0; white-space: nowrap; }
 .topbar-dir .pin { font-size: 0.75rem; color: var(--oro); flex-shrink: 0; }
+/* Direcciones de la barra superior: completas desde 1025 px, cortas por debajo */
+.topbar-corto { display: none; }
+@media (max-width: 1024px) {
+  .topbar-largo { display: none; }
+  .topbar-corto { display: inline; }
+}
+/* Pantallas muy angostas: sin ", Villa Carlos Paz" para que las dos direcciones entren sin cortarse
+   (con la localidad entran desde 376 px en ES/PT y 384 px en EN) */
+@media (max-width: 383px) {
+  .topbar-loc { display: none; }
+}
 .topbar-right {
   display: flex; align-items: center; gap: 1.25rem;
 }
@@ -1069,6 +1080,11 @@ section { padding: 5.5rem 5%; }
 .ubic-casa-divider { margin: 0.6rem auto 1rem; }
 .ubic-casa-sub { font-size: 0.85rem; color: var(--texto-suave); margin-bottom: 0.8rem; text-align: center; text-wrap: balance; }
 .ubic-casa-dir { display: flex; align-items: center; justify-content: center; gap: 0.5rem; font-size: 0.82rem; font-weight: 600; color: var(--texto-medio); }
+/* Direcciones de la sección de ubicación: ", Córdoba" solo desde 1025 px */
+.dir-cordoba { display: none; }
+@media (min-width: 1025px) {
+  .dir-cordoba { display: inline; }
+}
 .ubic-casa-dist { display: flex; flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 0.85rem 2.75rem; }
 /* Botón "Cómo llegar": mismo estilo que el botón principal dorado ("Ver disponibilidad"), centrado */
 .ubic-casa-btn { display: flex; width: fit-content; margin: 0 auto; align-items: center; justify-content: center; gap: 0.55rem; background: var(--oro); color: var(--blanco); padding: 0.95rem 2.6rem; border-radius: 7px; text-decoration: none; font-family: 'Nunito', sans-serif; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; transition: background 0.25s; }

@@ -147,7 +147,7 @@ const I18N = {
     footerAloj1:'Cabaña chica (hasta 3 pers.)', footerAloj2:'Cabaña mediana (hasta 6 pers.)',
     footerAloj3:'Cabaña grande (hasta 8 pers.)', footerAloj4:'Habitaciones de hotel', footerAloj5:'Apart Hotel',
     footerAloj6:'Casa con Pileta · Icho Cruz (hasta 10 pers.)', footerCasaDir:'Uruguay esq. Lombardo, Icho Cruz',
-    topbarDirCorta:'Av. Ramón J. Cárcano 2590', topbarCasa:'Casa con Pileta · Icho Cruz', topbarCasaCorta:'Casa · Icho Cruz',
+    topbarDirCorta:'Av. Ramón J. Cárcano 2590', topbarCasa:'Casa con Pileta · Icho Cruz, Córdoba', topbarCasaCorta:'Casa · Icho Cruz',
     footerInfo:'Información', footerCheckin:'Check-in: 13:00 hs', footerCheckout:'Check-out: 10:00 hs',
     footerTambien:'También en',
     metaTitulo:'Disponibilidad | Brisas de Oro Hotel y Cabañas', metaDesc:'Consulta de disponibilidad — Brisas de Oro Hotel y Cabañas, Villa Carlos Paz', altLogo:'Brisas de Oro Hotel y Cabañas',
@@ -283,7 +283,7 @@ const I18N = {
     footerAloj1:'Small cabin (up to 3 guests)', footerAloj2:'Medium cabin (up to 6 guests)',
     footerAloj3:'Large cabin (up to 8 guests)', footerAloj4:'Hotel rooms', footerAloj5:'Apart Hotel',
     footerAloj6:'House with Pool · Icho Cruz (up to 10 guests)', footerCasaDir:'Uruguay & Lombardo, Icho Cruz',
-    topbarDirCorta:'Av. Ramón J. Cárcano 2590', topbarCasa:'House with Pool · Icho Cruz', topbarCasaCorta:'House · Icho Cruz',
+    topbarDirCorta:'Av. Ramón J. Cárcano 2590', topbarCasa:'House with Pool · Icho Cruz, Córdoba', topbarCasaCorta:'House · Icho Cruz',
     footerInfo:'Information', footerCheckin:'Check-in: 1:00 pm', footerCheckout:'Check-out: 10:00 am',
     footerTambien:'Also on',
     metaTitulo:'Availability | Brisas de Oro Hotel & Cabins', metaDesc:'Availability check — Brisas de Oro Hotel & Cabins, Villa Carlos Paz', altLogo:'Brisas de Oro Hotel & Cabins',
@@ -419,7 +419,7 @@ const I18N = {
     footerAloj1:'Chalé pequeno (até 3 pess.)', footerAloj2:'Chalé médio (até 6 pess.)',
     footerAloj3:'Chalé grande (até 8 pess.)', footerAloj4:'Quartos de hotel', footerAloj5:'Apart Hotel',
     footerAloj6:'Casa com Piscina · Icho Cruz (até 10 pess.)', footerCasaDir:'Uruguay esq. Lombardo, Icho Cruz',
-    topbarDirCorta:'Av. Ramón J. Cárcano 2590', topbarCasa:'Casa com Piscina · Icho Cruz', topbarCasaCorta:'Casa · Icho Cruz',
+    topbarDirCorta:'Av. Ramón J. Cárcano 2590', topbarCasa:'Casa com Piscina · Icho Cruz, Córdoba', topbarCasaCorta:'Casa · Icho Cruz',
     footerInfo:'Informações', footerCheckin:'Check-in: 13:00 hs', footerCheckout:'Check-out: 10:00 hs',
     footerTambien:'Também em',
     metaTitulo:'Disponibilidade | Brisas de Oro Hotel e Cabanas', metaDesc:'Consulta de disponibilidade — Brisas de Oro Hotel e Cabanas, Villa Carlos Paz', altLogo:'Brisas de Oro Hotel e Cabanas',
@@ -1285,14 +1285,14 @@ export default function Disponibilidad() {
           <div className="topbar-dirs">
             <a className="topbar-dir" href="https://www.google.com/maps/search/Av.+Ram%C3%B3n+J.+C%C3%A1rcano+2590+Villa+Carlos+Paz+C%C3%B3rdoba+Argentina" target="_blank" rel="noopener noreferrer">
               <IconoPin />
-              <span className="solo-desktop">Av. Ramón J. Cárcano 2590 · Villa Carlos Paz, Córdoba</span>
-              <span className="solo-mobile">{t.topbarDirCorta}</span>
+              <span className="topbar-largo">Av. Ramón J. Cárcano 2590, Villa Carlos Paz, Córdoba</span>
+              <span className="topbar-corto">{t.topbarDirCorta}<span className="topbar-loc">, Villa Carlos Paz</span></span>
             </a>
             <span className="topbar-sep" />
             <a className="topbar-dir" href={MAPS_CASA} target="_blank" rel="noopener noreferrer">
               <IconoPin />
-              <span className="solo-desktop">{t.topbarCasa}</span>
-              <span className="solo-mobile">{t.topbarCasaCorta}</span>
+              <span className="topbar-largo">{t.topbarCasa}</span>
+              <span className="topbar-corto">{t.topbarCasaCorta}</span>
             </a>
           </div>
         </div>
