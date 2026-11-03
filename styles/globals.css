@@ -1959,11 +1959,28 @@ footer { background: var(--footer-bg); color: var(--footer-text); padding: 3.5re
 
 /* Unidades disponibles (dentro de card-body) */
 .disp-unidades {
-  font-size: 0.74rem;
+  align-self: center;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.04em;
-  color: var(--oro);
-  margin-top: 12px;
+  color: var(--oro-oscuro);
+  background: rgba(184, 152, 42, 0.10);
+  border: 1px solid rgba(184, 152, 42, 0.35);
+  border-radius: 999px;
+  padding: 0.3rem 0.85rem;
+  margin-top: 16px;
+  margin-bottom: 0;
+}
+.disp-unidades::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #25D366;
+  flex: 0 0 auto;
 }
 
 /* Botón WhatsApp siempre visible en el card-body */

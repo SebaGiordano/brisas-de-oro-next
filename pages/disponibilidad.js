@@ -1052,6 +1052,7 @@ function CardAlojamiento({ item, destacado, noDisponible, sinBadge, etiqueta, un
           </>
         )}
         {nota && <p className="card-nota">{nota}</p>}
+        <div style={{ flex: 1 }} />
         {contador ? (
           <p className="disp-unidades">{contador}</p>
         ) : unidadesLibres > 0 ? (
@@ -1059,7 +1060,6 @@ function CardAlojamiento({ item, destacado, noDisponible, sinBadge, etiqueta, un
         ) : !noDisponible && item.unidadesDisponibles > 0 && (
           <p className="disp-unidades">{item.unidadesDisponibles === 1 ? `1 ${t.unidad}` : `${item.unidadesDisponibles} ${t.unidades}`}</p>
         )}
-        <div style={{ flex: 1 }} />
         {!noDisponible && (
           <a className="disp-wsp-btn" href={wspUrl} target="_blank" rel="noopener noreferrer"><IconoWsp />{t.btnWsp}</a>
         )}
